@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maya Yoo — Marketing, brand, and content</title>
+<meta name="description" content="Three brands founded, 5.4M views in a month, and the campaigns behind them.">
+<meta property="og:title" content="Maya Yoo — Marketing, brand, and content">
+<meta property="og:description" content="Three brands founded, 5.4M views in a month, and the campaigns behind them.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23201a15'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' fill='%23c8763f' text-anchor='middle'%3EMY%3C/text%3E%3C/svg%3E">
+<style>
+  body{margin:0;background:oklch(0.97 0.01 60);}
+  a{color:oklch(0.5 0.13 45);text-decoration:none;}
+  a:hover{color:oklch(0.4 0.13 45);}
+  ::selection{background:oklch(0.56 0.13 45);color:#fff;}
+  @keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes lightboxFade{from{opacity:0}to{opacity:1}}
+  @keyframes lightboxScale{from{opacity:0;transform:scale(0.94)}to{opacity:1;transform:scale(1)}}
+  @keyframes cursorSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes wordIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes scrollCue{0%{transform:scaleY(0);opacity:0}40%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1) translateY(10px);opacity:0}}
+  @keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  @keyframes wordIn2{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+  body{cursor:none;}
+  a,[onclick],button{cursor:none;}
+</style>
+</helmet>
+<div style="font-family:'Public Sans',sans-serif;background:oklch(0.97 0.01 60);color:oklch(0.2 0.015 50);min-height:100vh;overflow-x:hidden;">
+  <div id="cursor-glow" style="{{ cursorGlowStyle }}"></div>
+  <div id="cursor-ring" style="{{ cursorRingStyle }}"></div>
+
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px clamp(16px,3vw,40px);background:oklch(0.97 0.01 60 / 0.88);backdrop-filter:blur(14px);border-bottom:1px solid oklch(0.85 0.01 55);">
+    <div onClick="{{ goHome }}" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;letter-spacing:0.2px;cursor:pointer;">Maya Yoo</div>
+    <div style="display:flex;align-items:center;gap:clamp(14px,2vw,30px);flex-wrap:wrap;">
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+        <div onClick="{{ item.onClick }}" style="{{ item.style }}">{{ item.label }}</div>
+      </sc-for>
+      <a href="{{ resumeUrl }}" target="_blank" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:10px 20px;border-radius:100px;font-weight:700;font-size:13px;" style-hover="background:oklch(0.56 0.13 45);">Résumé ↓</a>
+    </div>
+  </nav>
+
+    <section style="position:relative;min-height:100vh;display:flex;align-items:center;padding:clamp(88px,11vw,120px) clamp(20px,4vw,40px) 80px;box-sizing:border-box;overflow:hidden;">
+      <div style="position:absolute;right:-6%;top:-10%;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,oklch(0.82 0.1 55 / 0.42),transparent 62%);pointer-events:none;"></div>
+      <div style="position:absolute;left:-14%;bottom:-30%;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,oklch(0.9 0.04 55 / 0.7),transparent 62%);pointer-events:none;"></div>
+      <div style="position:absolute;left:40px;right:40px;bottom:0;height:1px;background:oklch(0.85 0.01 55);"></div>
+      <div style="position:relative;max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:60px;align-items:center;">
+        <div>
+          <div style="font-size:13px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:22px;animation:riseIn .7s ease-out both;">Brand Strategy · Growth Marketing · Product &amp; Visual Design</div>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:oklch(0.94 0.014 55);padding:7px 14px;border-radius:100px;font-size:12.5px;font-weight:700;color:oklch(0.4 0.02 50);margin-bottom:18px;animation:riseIn .7s ease-out .1s both;"><span style="width:7px;height:7px;border-radius:50%;background:oklch(0.6 0.15 145);display:inline-block;"></span>Open to summer 2027 internships</div>
+          <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(52px,5.4vw,74px);line-height:1;font-weight:800;margin:0 0 28px;letter-spacing:-1.8px;animation:riseIn .8s ease-out .18s both;">I build things<br>people actually<span style="{{ heroWordStyle }}">{{ heroWord }}</span></h1>
+          <p style="font-size:19px;line-height:1.55;color:oklch(0.4 0.02 50);max-width:540px;margin:0 0 32px;animation:riseIn .8s ease-out .3s both;">Three brands built from scratch, one of them a studio I co-founded. Millions of people who've stopped scrolling because of something I made. I'm Maya — and I'd like to build the same kind of thing for you.</p>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;animation:riseIn .8s ease-out .4s both;">
+            <a href="{{ resumeUrl }}" target="_blank" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:15px 26px;border-radius:100px;font-weight:700;font-size:14.5px;transition:background .25s,transform .25s;" style-hover="background:oklch(0.56 0.13 45);transform:translateY(-2px);">Download Résumé</a>
+            <div onClick="{{ goto.about }}" style="border:1.5px solid oklch(0.2 0.015 50);padding:15px 26px;border-radius:100px;font-weight:700;font-size:14.5px;cursor:pointer;transition:background .25s,color .25s,transform .25s;" style-hover="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);transform:translateY(-2px);">Get in Touch →</div>
+          </div>
+          <div style="display:flex;gap:28px;margin-top:44px;padding-top:24px;border-top:1px solid oklch(0.85 0.01 55);animation:riseIn .8s ease-out .55s both;">
+            <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:700;">6.6M+</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);letter-spacing:0.3px;">monthly views</div></div>
+            <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:700;">3</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);letter-spacing:0.3px;">brands built from zero</div></div>
+            <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:700;">30+</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);letter-spacing:0.3px;">brand partnerships</div></div>
+          </div>
+        </div>
+        <div style="position:relative;justify-self:end;animation:riseIn 1s ease-out .2s both;">
+          <div style="position:absolute;inset:-14px -14px -14px -14px;border:1.5px solid oklch(0.56 0.13 45 / 0.5);border-radius:12px;transform:rotate(-3.5deg);"></div>
+          <div style="position:absolute;inset:0;background:oklch(0.72 0.13 45);border-radius:8px;transform:translate(16px,16px);"></div>
+          <img src="uploads/maya-hero-toned.jpg" style="position:relative;display:block;width:min(330px,72vw);height:auto;aspect-ratio:33/42;object-fit:cover;border-radius:8px;box-shadow:0 30px 60px oklch(0.2 0.02 50 / 0.28);">
+          <div style="position:absolute;bottom:-22px;left:-40px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:14px 18px;border-radius:10px;box-shadow:0 16px 36px oklch(0.2 0.02 50 / 0.3);">
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;color:oklch(0.72 0.13 45);">5.4M+</div>
+            <div style="font-size:10.5px;color:oklch(0.75 0.01 55);letter-spacing:0.4px;">monthly profile views</div>
+          </div>
+          <div style="position:absolute;top:-16px;right:-26px;background:oklch(0.97 0.01 60);border:1px solid oklch(0.85 0.01 55);padding:9px 13px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:0.6px;color:oklch(0.2 0.015 50);box-shadow:0 10px 24px oklch(0.2 0.02 50 / 0.12);">UC DAVIS · DESIGN</div>
+        </div>
+      </div>
+      <div style="position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:oklch(0.5 0.02 50);font-size:10.5px;letter-spacing:1.5px;font-weight:700;">SCROLL<div style="width:1px;height:26px;background:oklch(0.56 0.13 45);animation:scrollCue 1.6s ease-in-out infinite;transform-origin:top;"></div></div>
+    </section>
+
+
+    <section data-stats-bar="" style="padding:54px clamp(20px,4vw,40px);border-bottom:1px solid oklch(0.85 0.01 55);">
+      <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;text-align:center;">
+        <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:38px;font-weight:700;color:oklch(0.56 0.13 45);">{{ displayViews }}</div><div style="font-size:12.5px;color:oklch(0.45 0.02 50);margin-top:6px;">combined monthly views</div></div>
+        <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:38px;font-weight:700;color:oklch(0.2 0.015 50);">{{ displayLaunch }}</div><div style="font-size:12.5px;color:oklch(0.45 0.02 50);margin-top:6px;">brand partnerships</div></div>
+        <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:38px;font-weight:700;color:oklch(0.56 0.13 45);">{{ displayGuides }}</div><div style="font-size:12.5px;color:oklch(0.45 0.02 50);margin-top:6px;">of reach from non-followers</div></div>
+      </div>
+    </section>
+
+    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:86px clamp(20px,4vw,40px) 0;max-width:1200px;margin:0 auto;">
+      <div style="font-size:13px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:26px;">WHAT OTHER PEOPLE SAY</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;">
+        <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:24px;">
+          <div style="font-size:11px;letter-spacing:1.3px;font-weight:800;color:oklch(0.56 0.13 45);margin-bottom:12px;">PRESS</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-0.3px;">The California Aggie</div>
+          <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.55;text-wrap:pretty;">Profiled me and DavisWithMaya — “a digital diary” of college life at UC Davis.</div>
+        </div>
+        <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:24px;">
+          <div style="font-size:11px;letter-spacing:1.3px;font-weight:800;color:oklch(0.56 0.13 45);margin-bottom:12px;">AWARDS</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-0.3px;">Ambassador of the Month, twice</div>
+          <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.55;text-wrap:pretty;">Named by BeachWaver in March and Elevated Faith in June, out of their full ambassador rosters.</div>
+        </div>
+        <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:24px;">
+          <div style="font-size:11px;letter-spacing:1.3px;font-weight:800;color:oklch(0.56 0.13 45);margin-bottom:12px;">COMMUNITY</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-0.3px;">Unprompted student DMs</div>
+          <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.55;text-wrap:pretty;">Students message Daily UC Davis to say it’s how they find out what’s happening on campus.</div>
+        </div>
+      </div>
+      <div style="margin-top:16px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);border-radius:14px;padding:24px 26px;display:flex;gap:26px;flex-wrap:wrap;align-items:center;">
+        <div style="font-size:11px;letter-spacing:1.3px;font-weight:800;color:oklch(0.72 0.13 45);">AND I WORK ON TEAMS</div>
+        <div style="font-size:14.5px;line-height:1.55;color:oklch(0.86 0.01 60);flex:1;min-width:260px;text-wrap:pretty;">One of four marketing leads at ASUCD · 7-person design team at Fourth &amp; Hope · 9-person product team at CodeLab Davis. The solo brands are a choice, not a limit.</div>
+      </div>
+    </section>
+
+    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:clamp(64px,8vw,96px) clamp(20px,4vw,40px) 30px;max-width:1200px;margin:0 auto;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:13px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:14px;">START HERE · THREE BRANDS I FOUNDED</div>
+          <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,4.4vw,58px);font-weight:800;letter-spacing:-1.6px;line-height:1.02;margin:0;max-width:820px;text-wrap:pretty;">If you only read three things, read these.</h2>
+        </div>
+        <div onClick="{{ goto.ventures }}" style="cursor:pointer;font-weight:700;color:oklch(0.56 0.13 45);padding-bottom:8px;">All three ventures in detail →</div>
+      </div>
+    </section>
+
+    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:20px clamp(20px,4vw,40px) 24px;max-width:1200px;margin:0 auto;">
+      <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;align-items:center;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);border-radius:24px;padding:clamp(22px,3vw,38px);overflow:hidden;">
+        <div style="position:absolute;top:-38px;right:-6px;font-family:'Bricolage Grotesque',sans-serif;font-size:150px;font-weight:800;color:oklch(0.25 0.02 50);line-height:1;pointer-events:none;letter-spacing:-8px;">01</div>
+        <div style="position:relative;">
+          <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.72 0.13 45);font-weight:700;margin-bottom:16px;">FOUNDER · MEDIA BRAND · MAR 2025–PRESENT</div>
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(27px,2.7vw,37px);font-weight:800;letter-spacing:-1.3px;line-height:1.04;margin:0 0 16px;">DavisWithMaya</h3>
+          <p style="font-size:14.5px;color:oklch(0.82 0.01 55);line-height:1.55;margin:0 0 28px;max-width:480px;text-wrap:pretty;">5.4M profile views in a single month — no team, no template. Faith, college life, and the stuff nobody says out loud, turned into a brand people trust and a product line that actually sells.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px;margin-bottom:22px;max-width:480px;">
+            <div style="border-top:1px solid oklch(0.35 0.02 50);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.72 0.13 45);">5.4M+</div><div style="font-size:11.5px;color:oklch(0.7 0.01 55);margin-top:3px;">profile views, one month</div></div>
+            <div style="border-top:1px solid oklch(0.35 0.02 50);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.72 0.13 45);">5</div><div style="font-size:11.5px;color:oklch(0.7 0.01 55);margin-top:3px;">videos past 1M views</div></div>
+            <div style="border-top:1px solid oklch(0.35 0.02 50);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.72 0.13 45);">131</div><div style="font-size:11.5px;color:oklch(0.7 0.01 55);margin-top:3px;">guides sold</div></div>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="daviswithmaya.html" style="display:inline-flex;align-items:center;gap:8px;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);padding:12px 20px;border-radius:100px;font-weight:700;font-size:13px;transition:background .25s,transform .25s;" style-hover="background:oklch(0.97 0.01 60);transform:translateY(-2px);">Read the case study →</a>
+            <a href="https://www.instagram.com/daviswithmaya" target="_blank" style="display:inline-flex;align-items:center;gap:8px;border:1.5px solid oklch(0.45 0.02 50);color:oklch(0.9 0.01 55);padding:12px 18px;border-radius:100px;font-weight:700;font-size:13px;" style-hover="border-color:oklch(0.72 0.13 45);color:oklch(0.72 0.13 45);">@daviswithmaya ↗</a>
+          </div>
+          <div style="display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:12px;color:oklch(0.75 0.01 55);"><span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;color:oklch(0.72 0.13 45);letter-spacing:0.8px;font-size:10.5px;">PRESS</span>Featured in The California Aggie — “Davis with Maya: a digital diary”</div>
+        </div>
+        <div style="position:relative;height:288px;border-radius:16px;">
+          <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateX(-108px) translateY(20px) rotate(-11deg);transition:transform .35s ease;" style-hover="transform:translate(-50%,-50%) translateX(-108px) translateY(20px) rotate(-11deg) scale(1.06);z-index:5;">
+            <div style="animation:floatA 6.5s ease-in-out infinite;">
+              <div style="position:relative;width:82px;aspect-ratio:9/16;border-radius:18px;overflow:hidden;border:5px solid oklch(0.33 0.02 50);background:oklch(0.15 0.01 50);box-shadow:0 26px 50px oklch(0 0 0 / 0.45);">
+                <img src="uploads/dwm-thankfulness.png" alt="Thankfulness reel" style="width:100%;height:100%;object-fit:cover;display:block;">
+                <div style="position:absolute;left:0;right:0;bottom:0;padding:26px 9px 9px;background:linear-gradient(180deg,transparent,oklch(0 0 0 / 0.75));">
+                  <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;color:#fff;line-height:1;">2.2M</div>
+                  <div style="font-size:10px;color:oklch(0.85 0.01 55);margin-top:4px;letter-spacing:0.4px;">views</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateX(108px) translateY(20px) rotate(11deg);transition:transform .35s ease;" style-hover="transform:translate(-50%,-50%) translateX(108px) translateY(20px) rotate(11deg) scale(1.06);z-index:5;">
+            <div style="animation:floatB 7.5s ease-in-out infinite;">
+              <div style="position:relative;width:82px;aspect-ratio:9/16;border-radius:18px;overflow:hidden;border:5px solid oklch(0.33 0.02 50);background:oklch(0.15 0.01 50);box-shadow:0 26px 50px oklch(0 0 0 / 0.45);">
+                <img src="uploads/dwm-friends.png" alt="Friends reel" style="width:100%;height:100%;object-fit:cover;display:block;">
+                <div style="position:absolute;left:0;right:0;bottom:0;padding:26px 9px 9px;background:linear-gradient(180deg,transparent,oklch(0 0 0 / 0.75));">
+                  <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;color:#fff;line-height:1;">2.4M</div>
+                  <div style="font-size:10px;color:oklch(0.85 0.01 55);margin-top:4px;letter-spacing:0.4px;">views</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateX(-36px) translateY(-14px) rotate(-4deg);transition:transform .35s ease;" style-hover="transform:translate(-50%,-50%) translateX(-36px) translateY(-14px) rotate(-4deg) scale(1.06);z-index:5;">
+            <div style="animation:floatB 6s ease-in-out infinite;">
+              <div style="position:relative;width:82px;aspect-ratio:9/16;border-radius:18px;overflow:hidden;border:5px solid oklch(0.33 0.02 50);background:oklch(0.15 0.01 50);box-shadow:0 26px 50px oklch(0 0 0 / 0.45);">
+                <img src="uploads/dwm-faith-in-jesus.png" alt="Faith in Jesus video" style="width:100%;height:100%;object-fit:cover;display:block;">
+                <div style="position:absolute;left:0;right:0;bottom:0;padding:26px 9px 9px;background:linear-gradient(180deg,transparent,oklch(0 0 0 / 0.75));">
+                  <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;color:#fff;line-height:1;">3.5M</div>
+                  <div style="font-size:10px;color:oklch(0.85 0.01 55);margin-top:4px;letter-spacing:0.4px;">views</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateX(36px) translateY(-14px) rotate(4deg);transition:transform .35s ease;" style-hover="transform:translate(-50%,-50%) translateX(36px) translateY(-14px) rotate(4deg) scale(1.06);z-index:5;">
+            <div style="animation:floatA 7s ease-in-out infinite;">
+              <div style="position:relative;width:82px;aspect-ratio:9/16;border-radius:18px;overflow:hidden;border:5px solid oklch(0.33 0.02 50);background:oklch(0.15 0.01 50);box-shadow:0 26px 50px oklch(0 0 0 / 0.45);">
+                <img src="uploads/dwm-side-quests.png" alt="Side quests reel" style="width:100%;height:100%;object-fit:cover;display:block;">
+                <div style="position:absolute;left:0;right:0;bottom:0;padding:26px 9px 9px;background:linear-gradient(180deg,transparent,oklch(0 0 0 / 0.75));">
+                  <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;color:#fff;line-height:1;">2.3M</div>
+                  <div style="font-size:10px;color:oklch(0.85 0.01 55);margin-top:4px;letter-spacing:0.4px;">views</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="position:absolute;right:8px;top:8px;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);padding:8px 12px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:0.6px;animation:floatA 5.5s ease-in-out infinite;z-index:6;">833K LIKES · ONE POST</div>
+          <div style="position:absolute;left:8px;bottom:8px;background:oklch(0.97 0.01 60);color:oklch(0.2 0.015 50);padding:8px 12px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:0.6px;animation:floatB 6.5s ease-in-out infinite;z-index:6;">94.5% NON-FOLLOWER REACH</div>
+        </div>
+      </div>
+    </section>
+
+    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:0 clamp(20px,4vw,40px) 40px;max-width:1200px;margin:0 auto;">
+      <div style="position:relative;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;background:oklch(0.94 0.014 55);border-radius:24px;padding:clamp(22px,3vw,38px);overflow:hidden;">
+        <div style="position:absolute;top:-38px;left:-2px;font-family:'Bricolage Grotesque',sans-serif;font-size:150px;font-weight:800;color:oklch(0.9 0.02 55);line-height:1;pointer-events:none;letter-spacing:-8px;">02</div>
+        <div style="position:relative;">
+          <div style="background:oklch(0.28 0.02 50);border-radius:14px;padding:12px 12px 14px;box-shadow:0 28px 60px oklch(0.2 0.02 50 / 0.3);">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:oklch(0.7 0.14 30);"></div>
+              <div style="width:8px;height:8px;border-radius:50%;background:oklch(0.8 0.12 80);"></div>
+              <div style="width:8px;height:8px;border-radius:50%;background:oklch(0.65 0.1 145);"></div>
+              <div style="margin-left:10px;flex:1;background:oklch(0.35 0.02 50);border-radius:6px;padding:4px 10px;font-size:10px;color:oklch(0.8 0.01 55);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;">storyandspoon.co</div>
+            </div>
+            <div style="position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:oklch(0.97 0.005 55);">
+              <iframe src="https://storyandspoon.co" title="Story &amp; Spoon website — scrollable preview" loading="lazy" scrolling="yes" style="position:absolute;top:0;left:0;width:250%;height:250%;border:0;transform:scale(0.4);transform-origin:0 0;display:block;"></iframe>
+            </div>
+          </div>
+          <div style="position:absolute;top:-14px;right:-12px;display:inline-flex;align-items:center;gap:7px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:8px 12px;border-radius:100px;font-size:10.5px;font-weight:800;letter-spacing:0.6px;box-shadow:0 10px 24px oklch(0.2 0.02 50 / 0.25);"><span style="width:7px;height:7px;border-radius:50%;background:oklch(0.72 0.13 45);display:inline-block;"></span>LIVE SITE · STORY &amp; SPOON</div>
+          <a href="https://storyandspoon.co" target="_blank" style="position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);background:oklch(0.56 0.13 45);color:oklch(0.97 0.01 60);padding:9px 14px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:0.6px;white-space:nowrap;box-shadow:0 10px 24px oklch(0.2 0.02 50 / 0.25);" style-hover="background:oklch(0.2 0.015 50);">SCROLL IT · OR OPEN FULL SITE ↗</a>
+        </div>
+        <div style="position:relative;">
+          <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:16px;">CO-FOUNDER · PRE-LAUNCH · JUL 2026–PRESENT</div>
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(27px,2.7vw,37px);font-weight:800;letter-spacing:-1.3px;line-height:1.04;margin:0 0 16px;">Story &amp; Spoon</h3>
+          <p style="font-size:14.5px;color:oklch(0.4 0.02 50);line-height:1.55;margin:0 0 14px;max-width:480px;text-wrap:pretty;">A restaurant marketing studio I co-founded: one shoot day, and an owner-operated restaurant walks away with real photos, video, a managed Instagram, and a website that does the food justice.</p>
+          <p style="font-size:14px;color:oklch(0.5 0.02 50);line-height:1.55;margin:0 0 28px;max-width:480px;text-wrap:pretty;">The studio site is in the frame — scroll it. <a href="work/halfpast/index.html" target="_blank">Half Past</a> is the showcase restaurant build we made to show owners the full package before they sign.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px;margin-bottom:22px;max-width:480px;">
+            <div style="border-top:1px solid oklch(0.82 0.015 55);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.56 0.13 45);">50</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);margin-top:3px;">restaurants researched and scored</div></div>
+            <div style="border-top:1px solid oklch(0.82 0.015 55);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.56 0.13 45);">20</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);margin-top:3px;">owners contacted directly</div></div>
+            <div style="border-top:1px solid oklch(0.82 0.015 55);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.56 0.13 45);">3</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);margin-top:3px;">proposal decks built</div></div>
+          </div>
+          <p style="font-size:13.5px;color:oklch(0.5 0.02 50);line-height:1.55;margin:-16px 0 28px;max-width:480px;">No paying clients yet — this is the validation work before launch.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="story-and-spoon.html" style="display:inline-flex;align-items:center;gap:8px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:12px 20px;border-radius:100px;font-weight:700;font-size:13px;transition:background .25s,transform .25s;" style-hover="background:oklch(0.56 0.13 45);transform:translateY(-2px);">Read the case study →</a>
+            <a href="https://storyandspoon.co" target="_blank" style="display:inline-flex;align-items:center;gap:8px;border:1.5px solid oklch(0.7 0.02 50);color:oklch(0.3 0.02 50);padding:12px 18px;border-radius:100px;font-weight:700;font-size:13px;" style-hover="border-color:oklch(0.56 0.13 45);color:oklch(0.56 0.13 45);">storyandspoon.co ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:0 clamp(20px,4vw,40px) 40px;max-width:1200px;margin:0 auto;">
+      <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;align-items:center;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:24px;padding:clamp(22px,3vw,38px);overflow:hidden;">
+        <div style="position:absolute;top:-38px;right:-6px;font-family:'Bricolage Grotesque',sans-serif;font-size:150px;font-weight:800;color:oklch(0.94 0.012 55);line-height:1;pointer-events:none;letter-spacing:-8px;">03</div>
+        <div style="position:relative;">
+          <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:16px;">FOUNDER · CAMPUS MEDIA · 2025–PRESENT</div>
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(27px,2.7vw,37px);font-weight:800;letter-spacing:-1.3px;line-height:1.04;margin:0 0 16px;">Daily UC Davis</h3>
+          <p style="font-size:14.5px;color:oklch(0.45 0.02 50);line-height:1.55;margin:0 0 28px;max-width:480px;text-wrap:pretty;">A 30,000-person campus with its news scattered across group chats. I built the page that consolidated it — then sold local businesses a channel to reach it.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-bottom:22px;max-width:480px;">
+            <div style="border-top:1px solid oklch(0.85 0.01 55);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.56 0.13 45);">1.2M+</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);margin-top:3px;">views in 30 days</div></div>
+            <div style="border-top:1px solid oklch(0.85 0.01 55);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.56 0.13 45);">57.8%</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);margin-top:3px;">from non-followers</div></div>
+            <div style="border-top:1px solid oklch(0.85 0.01 55);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.56 0.13 45);">20+</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);margin-top:3px;">business collabs</div></div>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="daily.html" style="display:inline-flex;align-items:center;gap:8px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:12px 20px;border-radius:100px;font-weight:700;font-size:13px;transition:background .25s,transform .25s;" style-hover="background:oklch(0.56 0.13 45);transform:translateY(-2px);">Read the case study →</a>
+            <a href="https://www.instagram.com/dailyucdavis" target="_blank" style="display:inline-flex;align-items:center;gap:8px;border:1.5px solid oklch(0.7 0.02 50);color:oklch(0.3 0.02 50);padding:12px 18px;border-radius:100px;font-weight:700;font-size:13px;" style-hover="border-color:oklch(0.56 0.13 45);color:oklch(0.56 0.13 45);">@dailyucdavis ↗</a>
+          </div>
+        </div>
+        <div style="position:relative;">
+          <img src="uploads/Slide1.jpeg" alt="Daily UC Davis case study" style="width:100%;border-radius:14px;border:1px solid oklch(0.85 0.01 55);display:block;">
+        </div>
+      </div>
+    </section>
+
+    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:clamp(56px,7vw,80px) clamp(20px,4vw,40px);background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);">
+      <div style="max-width:1200px;margin:0 auto;">
+        <div style="font-size:12.5px;letter-spacing:1.5px;color:oklch(0.72 0.13 45);font-weight:700;margin-bottom:40px;">HOW I GOT HERE</div>
+        <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:30px;">
+          <div style="position:absolute;left:0;right:0;top:5px;height:1px;background:linear-gradient(90deg,oklch(0.72 0.13 45),oklch(0.72 0.13 45 / 0.15));"></div>
+          <sc-for list="{{ storyBeats }}" as="s" hint-placeholder-count="4">
+            <div style="position:relative;padding-top:26px;transition:transform .3s ease;" style-hover="transform:translateY(-6px);">
+              <div style="position:absolute;top:0;left:0;width:11px;height:11px;border-radius:50%;background:oklch(0.72 0.13 45);box-shadow:0 0 0 5px oklch(0.72 0.13 45 / 0.18);"></div>
+              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;color:oklch(0.72 0.13 45);margin-bottom:14px;font-weight:600;">{{ s.year }}</div>
+              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:600;margin-bottom:10px;">{{ s.title }}</div>
+              <div style="font-size:14.5px;color:oklch(0.8 0.01 55);line-height:1.6;">{{ s.text }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:36px 0 30px;border-bottom:1px solid oklch(0.85 0.01 55);overflow:hidden;">
+      <div style="max-width:1200px;margin:0 auto 20px;padding:0 clamp(20px,4vw,40px);font-size:12px;letter-spacing:1.5px;color:oklch(0.5 0.02 50);font-weight:700;text-align:center;">BRANDS &amp; ORGS I'VE MARKETED FOR</div>
+      <div style="display:flex;overflow:hidden;">
+        <div style="display:flex;align-items:center;flex-shrink:0;animation:marquee 32s linear infinite;">
+          <sc-for list="{{ marqueeBrands }}" as="mb" hint-placeholder-count="10">
+            <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;margin-right:52px;">
+              <img src="{{ mb.image }}" style="width:26px;height:26px;border-radius:6px;object-fit:cover;">
+              <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:15.5px;color:oklch(0.4 0.02 50);white-space:nowrap;">{{ mb.name }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:clamp(70px,9vw,110px) clamp(20px,4vw,40px);max-width:1200px;margin:0 auto;">
+      <div style="font-size:13px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">WHAT I DO</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:38px;font-weight:700;margin:0 0 50px;max-width:680px;">One hire, every skill a growing brand actually needs.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;">
+        <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="4">
+          <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:28px 24px;transition:border-color .25s,transform .25s;" style-hover="transform:translateY(-4px);border-color:oklch(0.56 0.13 45);">
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:700;color:oklch(0.85 0.01 55);margin-bottom:16px;">{{ p.num }}</div>
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:600;margin-bottom:10px;">{{ p.title }}</div>
+            <div style="font-size:14px;color:oklch(0.45 0.02 50);line-height:1.55;">{{ p.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    
+
+    
+
+    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:0 clamp(20px,4vw,40px) 110px;max-width:1200px;margin:0 auto;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:36px;">
+        <div>
+          <div style="font-size:13px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">FEATURED WORK</div>
+          <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:34px;font-weight:700;margin:0;">Selected projects</h2>
+        </div>
+        <div onClick="{{ goto.projects }}" style="cursor:pointer;font-weight:700;color:oklch(0.56 0.13 45);">View all →</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px;">
+        <sc-for list="{{ featuredProjects }}" as="proj" hint-placeholder-count="4">
+          <div onClick="{{ proj.open }}" style="cursor:pointer;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;overflow:hidden;transition:transform .25s,border-color .25s;" style-hover="border-color:oklch(0.56 0.13 45);transform:translateY(-4px);">
+            <sc-if value="{{ proj.hasImage }}" hint-placeholder-val="{{ true }}"><div style="height:180px;overflow:hidden;position:relative;background:oklch(0.96 0.018 60);">
+              <img src="{{ proj.image }}" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;" style-hover="transform:scale(1.05);">
+              <div style="position:absolute;inset:0;background:oklch(0.3 0.06 45 / 0.14);"></div>
+            </div></sc-if>
+            <div style="padding:22px;">
+              <div style="font-size:11.5px;color:oklch(0.56 0.13 45);font-weight:700;letter-spacing:0.8px;margin-bottom:8px;">{{ proj.tag }}</div>
+              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:700;margin-bottom:8px;">{{ proj.title }}</div>
+              <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.5;margin-bottom:8px;">{{ proj.stat }}</div>
+              <div style="font-size:11.5px;color:oklch(0.55 0.02 50);">{{ proj.role }} · {{ proj.skills }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:50px clamp(20px,4vw,40px);max-width:1200px;margin:0 auto;">
+      <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;">
+        <a href="https://www.instagram.com/daviswithmaya" target="_blank" style="display:flex;align-items:center;gap:8px;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);padding:12px 20px;border-radius:100px;font-weight:700;font-size:13.5px;" style-hover="border-color:oklch(0.56 0.13 45);color:oklch(0.56 0.13 45);">Instagram — @daviswithmaya</a>
+        <a href="http://www.linkedin.com/in/mayayoo" target="_blank" style="display:flex;align-items:center;gap:8px;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);padding:12px 20px;border-radius:100px;font-weight:700;font-size:13.5px;" style-hover="border-color:oklch(0.56 0.13 45);color:oklch(0.56 0.13 45);">LinkedIn</a>
+        <a href="https://storyandspoon.co" target="_blank" style="display:flex;align-items:center;gap:8px;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);padding:12px 20px;border-radius:100px;font-weight:700;font-size:13.5px;" style-hover="border-color:oklch(0.56 0.13 45);color:oklch(0.56 0.13 45);">Story &amp; Spoon</a>
+        <a href="mailto:{{ email }}" style="display:flex;align-items:center;gap:8px;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);padding:12px 20px;border-radius:100px;font-weight:700;font-size:13.5px;" style-hover="border-color:oklch(0.56 0.13 45);color:oklch(0.56 0.13 45);">Email</a>
+      </div>
+    </section>
+
+
+    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:clamp(88px,11vw,120px) clamp(20px,4vw,40px);text-align:center;">
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:38px;font-weight:700;margin:0 0 16px;">Let's build something that grows.</h2>
+      <p style="color:oklch(0.45 0.02 50);font-size:16px;margin:0 0 30px;">Marketing roles, design roles, or something in between — I'm ready.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="mailto:{{ email }}" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:15px 28px;border-radius:100px;font-weight:700;" style-hover="background:oklch(0.56 0.13 45);">Email Me</a>
+        <div onClick="{{ goto.about }}" style="border:1.5px solid oklch(0.2 0.015 50);padding:15px 28px;border-radius:100px;font-weight:700;cursor:pointer;" style-hover="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);">Full Contact Page →</div>
+      </div>
+    </section>
+
+  <sc-if value="{{ slideLightbox }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeSlide }}" style="position:fixed;inset:0;background:oklch(0.08 0.01 50 / 0.94);z-index:210;display:flex;align-items:center;justify-content:center;padding:32px;animation:lightboxFade .25s ease;">
+      <div onClick="{{ stopProp }}" style="max-width:1040px;width:100%;display:flex;flex-direction:column;animation:lightboxScale .3s cubic-bezier(0.2,0.8,0.3,1);">
+        <img src="{{ slideLightbox.src }}" style="width:100%;max-height:76vh;object-fit:contain;border-radius:8px;">
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;color:#fff;">
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:700;">{{ slideLightbox.label }}</div>
+          <div style="font-size:12.5px;color:oklch(0.65 0.02 55);flex-shrink:0;">{{ slideLightbox.counter }}</div>
+        </div>
+      </div>
+      <div onClick="{{ prevSlide }}" style="position:absolute;left:18px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:oklch(1 0 0 / 0.1);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;transition:background .2s;" style-hover="background:oklch(1 0 0 / 0.2);">‹</div>
+      <div onClick="{{ nextSlide }}" style="position:absolute;right:18px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:oklch(1 0 0 / 0.1);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;transition:background .2s;" style-hover="background:oklch(1 0 0 / 0.2);">›</div>
+      <div onClick="{{ closeSlide }}" style="position:absolute;top:22px;right:26px;color:#fff;font-size:26px;font-weight:300;cursor:pointer;">×</div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ activeVideo }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeVideo }}" style="position:fixed;inset:0;background:oklch(0.08 0.01 50 / 0.94);z-index:200;display:flex;align-items:center;justify-content:center;padding:32px;animation:lightboxFade .25s ease;">
+      <div onClick="{{ stopProp }}" style="max-width:400px;width:100%;display:flex;flex-direction:column;animation:lightboxScale .3s cubic-bezier(0.2,0.8,0.3,1);position:relative;">
+        <div style="position:relative;width:100%;height:min(72vh,700px);border-radius:12px;overflow:hidden;background:oklch(0.15 0.02 50);">
+          <sc-if value="{{ activeVideo.canEmbed }}" hint-placeholder-val="{{ true }}">
+            <iframe src="{{ activeVideo.embedUrl }}" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="" scrolling="no"></iframe>
+          </sc-if>
+          <sc-if value="{{ activeVideo.noEmbed }}" hint-placeholder-val="{{ false }}">
+            <a href="{{ activeVideo.link }}" target="_blank" rel="noopener" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:14px;padding:26px;text-align:center;background-image:linear-gradient(oklch(0.15 0.02 50 / 0.1),oklch(0.15 0.02 50 / 0.85)),url('{{ activeVideo.tileCover }}');background-size:cover;background-position:center;color:oklch(0.97 0.01 60);">
+              <span style="width:58px;height:58px;border-radius:50%;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);display:flex;align-items:center;justify-content:center;font-size:20px;padding-left:4px;">▶</span>
+              <span style="font-size:13.5px;font-weight:700;color:oklch(0.97 0.01 60);">Watch on {{ activeVideo.platform }} ↗</span>
+            </a>
+          </sc-if>
+        </div>
+        <div style="margin-top:16px;color:#fff;">
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;">{{ activeVideo.title }}</div>
+          <div style="font-size:13px;color:oklch(0.65 0.02 55);margin-top:4px;">{{ activeVideo.views }} · {{ activeVideo.subStat }}</div>
+          <a href="{{ activeVideo.link }}" target="_blank" style="display:inline-block;margin-top:12px;font-size:12.5px;color:oklch(0.72 0.13 45);font-weight:700;">Open original ↗</a>
+        </div>
+        <div onClick="{{ closeVideo }}" style="position:absolute;top:-38px;right:0;color:#fff;font-size:26px;font-weight:300;cursor:pointer;">×</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <footer style="padding:56px clamp(20px,4vw,40px) 40px;border-top:1px solid oklch(0.85 0.01 55);">
+    <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:26px;">
+      <div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px;">Maya Faith Yoo</div>
+        <div style="font-size:12.5px;color:oklch(0.5 0.02 50);">Marketing · Design · Business · AI</div>
+      </div>
+      <div style="display:flex;gap:22px;font-size:12.5px;color:oklch(0.5 0.02 50);flex-wrap:wrap;">
+        <a href="mailto:{{ email }}">{{ email }}</a>
+        <a href="photography.html">Photography</a>
+        <a href="http://www.linkedin.com/in/mayayoo" target="_blank">LinkedIn</a>
+        <a href="https://www.instagram.com/daviswithmaya" target="_blank">Instagram</a>
+        <a href="https://storyandspoon.co" target="_blank">Story &amp; Spoon</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;resumeUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://drive.google.com/file/d/1POKkfz5ka_epCnrfIOHhEX-hjA__O_J8/view?usp=sharing&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tweaks&quot;},&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;maya.faith.yoo@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tweaks&quot;}}">
+const IMG = 'https://images.squarespace-cdn.com/content/v1/67a1585e91654d42a21cd470/';
+const CURRENT_PAGE = 'home';
+const PAGE_HREFS = {"home":"index.html","marketing":"marketing.html","design":"design.html","ventures":"ventures.html","content":"storytelling.html","storytelling":"storytelling.html","photography":"photography.html","about":"about.html"};
+const PROJECT_PAGE = {asucd:'marketing',daily:'ventures',tmg:'marketing',worship:'marketing',nonprofit:'design',vintage:'design',quickbite:'design',nova:'design',green:'design'};
+
+class Component extends DCLogic {
+  state = { page: 'home', t: 0, openProject: null, statsStarted: false, lightboxIndex: null, activeVideoId: null, cx: -100, cy: -100, cursorDown: false, heroWordIdx: 0, slideLB: null };
+
+  componentDidMount() {
+    this.setupStatsObserver();
+    const hid = (location.hash || '').slice(1);
+    if (hid && !/^p-/.test(hid)) { let tries = 0; const jump = () => { const el = document.getElementById(hid); if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 110, behavior: 'smooth' }); } else if (tries++ < 40) requestAnimationFrame(jump); }; requestAnimationFrame(jump); }
+    const hp = (location.hash || '').match(/^#p-(.+)$/);
+    if (hp) { const pid = decodeURIComponent(hp[1]); this.setState({ openProject: pid }, () => { requestAnimationFrame(() => { const el = document.querySelector('[data-project="' + pid + '"]'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 110, behavior: 'smooth' }); }); }); }
+    const pagesList = ['home', 'ventures', 'projects', 'content', 'marketing', 'photography', 'about'];
+    const h0 = (location.hash || '').slice(1);
+    if (pagesList.includes(h0) && h0 !== this.state.page) this.setState({ page: h0 });
+    this._onHash = () => { const h = (location.hash || '#home').slice(1); if (pagesList.includes(h) && h !== this.state.page) this.setState({ page: h }, () => window.scrollTo(0, 0)); };
+    window.addEventListener('hashchange', this._onHash);
+    this._wordTimer = setInterval(() => { if (CURRENT_PAGE === 'home') this.setState(s => ({ heroWordIdx: s.heroWordIdx + 1 })); }, 2600);
+    this._onKeyDown = (e) => {
+      if (this.state.slideLB) {
+        if (e.key === 'Escape') this.closeSlide();
+        if (e.key === 'ArrowLeft') this.prevSlide();
+        if (e.key === 'ArrowRight') this.nextSlide();
+        return;
+      }
+      if (this.state.lightboxIndex === null) return;
+      if (e.key === 'Escape') this.closeLightbox();
+      if (e.key === 'ArrowLeft') this.prevPhoto();
+      if (e.key === 'ArrowRight') this.nextPhoto();
+    };
+    window.addEventListener('keydown', this._onKeyDown);
+    this._onMouseMove = (e) => {
+      this.cx = e.clientX; this.cy = e.clientY;
+      const glow = document.getElementById('cursor-glow');
+      const ring = document.getElementById('cursor-ring');
+      if (glow) glow.style.transform = `translate(${this.cx - 23}px, ${this.cy - 23}px) scale(${this.cursorDown ? 1.4 : 1})`;
+      if (ring) ring.style.transform = `translate(${this.cx - 15}px, ${this.cy - 15}px) scale(${this.cursorDown ? 0.7 : 1})`;
+    };
+    this._revealCheck = () => { document.querySelectorAll('section[data-reveal]').forEach(el => { if (el.dataset.shown) return; const r = el.getBoundingClientRect(); if (r.top < window.innerHeight * 0.92 && r.bottom > 0) { el.style.opacity = '1'; el.style.transform = 'none'; el.dataset.shown = '1'; } }); };
+    let rafR = 0; this._onScrollReveal = () => { if (rafR) return; rafR = requestAnimationFrame(() => { rafR = 0; this._revealCheck(); }); };
+    window.addEventListener('scroll', this._onScrollReveal, { passive: true }); window.addEventListener('resize', this._onScrollReveal);
+    this._revealTimer = setInterval(this._revealCheck, 500); this._revealCheck();
+    this._onMouseDown = () => { this.cursorDown = true; };
+    this._onMouseUp = () => { this.cursorDown = false; };
+    window.addEventListener('mousemove', this._onMouseMove);
+    window.addEventListener('mousedown', this._onMouseDown);
+    window.addEventListener('mouseup', this._onMouseUp);
+  }
+  componentWillUnmount() { if (this._raf) cancelAnimationFrame(this._raf); if (this._revealTimer) clearInterval(this._revealTimer); window.removeEventListener('scroll', this._onScrollReveal); window.removeEventListener('resize', this._onScrollReveal); if (this._statsPoll) clearInterval(this._statsPoll); if (this._io) this._io.disconnect(); window.removeEventListener('keydown', this._onKeyDown); window.removeEventListener('mousemove', this._onMouseMove); window.removeEventListener('mousedown', this._onMouseDown); window.removeEventListener('mouseup', this._onMouseUp); if (this._wordTimer) clearInterval(this._wordTimer); window.removeEventListener('hashchange', this._onHash); }
+  componentDidUpdate() { this.setupStatsObserver(); if (this._revealCheck) this._revealCheck(); }
+
+  setupStatsObserver() {
+    if (this._statsPoll || this.state.statsStarted) return;
+    const check = () => {
+      if (this.state.statsStarted) { clearInterval(this._statsPoll); this._statsPoll = null; return; }
+      const el = document.querySelector('[data-stats-bar]');
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) {
+        clearInterval(this._statsPoll); this._statsPoll = null;
+        this.startCounters();
+      }
+    };
+    this._statsPoll = setInterval(check, 200);
+    check();
+  }
+
+  startCounters() {
+    this.setState({ statsStarted: true });
+    const start = performance.now();
+    const dur = 1500;
+    const tick = (now) => {
+      const p = Math.min(1, (now - start) / dur);
+      this.setState({ t: 1 - Math.pow(1 - p, 3) });
+      if (p < 1) this._raf = requestAnimationFrame(tick);
+    };
+    this._raf = requestAnimationFrame(tick);
+  }
+
+  setPage = (p) => { if (location.hash !== '#' + p) { try { history.pushState(null, '', '#' + p); } catch (err) {} } this.setState({ page: p }); window.scrollTo(0, 0); };
+  toggleProject = (id) => {
+    const closing = this.state.openProject === id;
+    if (closing) {
+      const y = this._preOpenScroll;
+      this.setState({ openProject: null }, () => {
+        if (typeof y === 'number') window.scrollTo({ top: y, behavior: 'smooth' });
+        this._preOpenScroll = null;
+      });
+      return;
+    }
+    this._preOpenScroll = window.scrollY;
+    this.setState({ openProject: id }, () => {
+      requestAnimationFrame(() => {
+        const el = document.querySelector('[data-project="' + id + '"]');
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY - 96;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  };
+  openLightbox = (idx) => this.setState({ lightboxIndex: idx });
+  closeLightbox = () => this.setState({ lightboxIndex: null });
+  stopProp = (e) => e.stopPropagation();
+  openVideo = (id) => this.setState({ activeVideoId: id });
+  closeVideo = () => this.setState({ activeVideoId: null });
+  openProjectDirect = (id) => {
+    const target = PROJECT_PAGE[id];
+    if (target && target !== CURRENT_PAGE) { window.location.href = PAGE_HREFS[target] + '#p-' + id; return; }
+    this.setState({ openProject: id }, () => {
+      requestAnimationFrame(() => {
+        const el = document.querySelector('[data-project="' + id + '"]');
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 110, behavior: 'smooth' });
+      });
+    });
+  };
+  closeSlide = () => this.setState({ slideLB: null });
+  nextSlide = (e) => { if (e) e.stopPropagation(); this.setState(s => s.slideLB ? { slideLB: { items: s.slideLB.items, idx: (s.slideLB.idx + 1) % s.slideLB.items.length } } : null); };
+  prevSlide = (e) => { if (e) e.stopPropagation(); this.setState(s => s.slideLB ? { slideLB: { items: s.slideLB.items, idx: (s.slideLB.idx - 1 + s.slideLB.items.length) % s.slideLB.items.length } } : null); };
+  toEmbedUrl(link) {
+    if (!link) return '';
+    if (link.includes('tiktok.com')) {
+      const m = link.match(/\/video\/(\d+)/) || link.match(/\/(\d{12,})/);
+      return m ? `https://www.tiktok.com/embed/v2/${m[1]}` : '';
+    }
+    if (link.includes('instagram.com')) {
+      const m = link.match(/instagram\.com\/(?:[^\/?#]+\/)?(reel|reels|p|tv)\/([A-Za-z0-9_-]{5,})/);
+      if (!m) return '';
+      const kind = (m[1] === 'p' || m[1] === 'tv') ? 'p' : 'reel';
+      return `https://www.instagram.com/${kind}/${m[2]}/embed`;
+    }
+    return link;
+  }
+  nextPhoto = (e) => { if (e) e.stopPropagation(); this.setState(s => ({ lightboxIndex: (s.lightboxIndex + 1) % this.allPhotos.length })); };
+  prevPhoto = (e) => { if (e) e.stopPropagation(); this.setState(s => ({ lightboxIndex: (s.lightboxIndex - 1 + this.allPhotos.length) % this.allPhotos.length })); };
+
+  navStyle(active) {
+    return { fontSize: '13.5px', fontWeight: 600, cursor: 'pointer', color: active ? 'oklch(0.2 0.015 50)' : 'oklch(0.5 0.02 50)', borderBottom: active ? '2px solid oklch(0.56 0.13 45)' : '2px solid transparent', paddingBottom: '4px', transition: 'color .2s,border-color .2s' };
+  }
+
+  renderVals() {
+    const t = this.state.t;
+    const page = CURRENT_PAGE;
+    const pages = ['home', 'ventures', 'marketing', 'storytelling', 'design', 'about'];
+    const labels = { home: 'Home', marketing: 'Marketing', storytelling: 'Storytelling', design: 'Design', ventures: 'Ventures', about: 'About' };
+    const navItems = pages.map(id => ({ label: labels[id], onClick: () => { if (id !== CURRENT_PAGE) window.location.href = PAGE_HREFS[id]; }, style: this.navStyle(page === id) }));
+    const goto = {};
+    pages.concat(['content','photography']).forEach(id => { goto[id] = () => { if (id !== CURRENT_PAGE) window.location.href = PAGE_HREFS[id]; }; });
+
+    const resumeUrl = this.props.resumeUrl ?? 'https://drive.google.com/file/d/1POKkfz5ka_epCnrfIOHhEX-hjA__O_J8/view?usp=sharing';
+    const email = this.props.contactEmail ?? 'maya.faith.yoo@gmail.com';
+    const showFaithWork = this.props.showFaithWork ?? true;
+    const heroWords = ['stick around for.', 'come back to.', 'share with friends.', 'talk about.'];
+    const heroWord = heroWords[this.state.heroWordIdx % heroWords.length];
+    const heroWordStyle = { color: 'oklch(0.56 0.13 45)', display: 'block', minHeight: '1em', whiteSpace: 'nowrap', animation: (this.state.heroWordIdx % 2 === 0 ? 'wordIn' : 'wordIn2') + ' .5s ease' };
+    const marqueeBase = [
+      { name: 'Hero Cosmetics', image: 'https://unavatar.io/herocosmetics.com' },
+      { name: 'CapCut', image: 'https://unavatar.io/capcut.com' },
+      { name: 'BeachWaver Co', image: 'https://unavatar.io/beachwaver.com' },
+      { name: 'Olive & June', image: 'https://unavatar.io/oliveandjune.com' },
+      { name: 'Elevated Faith', image: 'https://unavatar.io/elevatedfaith.com' },
+      { name: 'Tower 28 Beauty', image: 'https://unavatar.io/tower28beauty.com' },
+      { name: 'Daily UC Davis', image: IMG + '5037c585-fa9e-4676-b097-27d8b738e838/DailyDavis+%283%29.png' },
+      { name: 'The Midnight Grind', image: IMG + 'abbfa2fd-8ff9-4c6a-8648-d257d47993c0/Screenshot+2025-09-06+at+2.24.12%E2%80%AFAM.png' },
+      { name: 'DavisWithMaya', image: IMG + 'ed1ffa9f-9bd3-4191-9a87-9385ca903d5c/34.png' },
+      { name: '#Include at Davis', image: IMG + 'a56758dc-f022-4833-ab7e-a63ff4e27fbf/include.jpg' },
+    ];
+    const marqueeBrands = marqueeBase.concat(marqueeBase);
+
+    const storyBeats = [
+      { year: '2024', title: 'A camera and no plan', text: 'Started posting about UC Davis life with zero strategy. Just wanted to make something people related to.' },
+      { year: '2024–25', title: 'It actually worked', text: 'Daily UC Davis hit 1.2M views in a month. I realized growth wasn\u2019t luck — it was a system I could repeat.' },
+      { year: '2025', title: 'Built my own brand', text: 'DavisWithMaya became personal — faith, burnout, friendship. It grew faster than anything I\u2019d run for someone else.' },
+      { year: '2026', title: 'Went from creator to founder', text: 'Co-founded Story & Spoon to do this for restaurants who\u2019ll never post it themselves. Now I build the whole thing, not just the content.' },
+    ];
+
+    const pillars = [
+      { num: '01', title: 'Marketing & Growth', desc: 'Campaign strategy, brand partnerships, and organic growth that turns strangers into audiences.' },
+      { num: '02', title: 'Product & UX Design', desc: 'Research, wireframes, and high-fidelity prototypes in Figma — from concept to demo day.' },
+      { num: '03', title: 'Brand & Business', desc: 'Founded and scaled platforms and a studio from zero, owning strategy and operations.' },
+      { num: '04', title: 'AI-Powered Workflow', desc: 'Fluent in prompting and AI tools woven into research, design, and content production.' },
+    ];
+
+    const featuredProjects = [
+      { id: 'daily', title: 'DailyDavis', tag: 'MEDIA · GROWTH', stat: '1.2M+ views in the first 30 days from zero', role: 'Founder', skills: 'Content strategy, partnerships', image: 'uploads/Slide1.jpeg' },
+      { id: 'tmg', title: 'The Midnight Grind', tag: 'MARKETING · PARTNERSHIPS', stat: '382 RSVPs at a single event across 20+ events run', role: 'Business Lead', skills: 'Event marketing, funnels', image: 'uploads/Screenshot 2026-07-07 at 5.06.46 PM.png' },
+      { id: 'vintage', title: 'Yesterday Vintage', tag: 'UI/UX DESIGN', stat: 'End-to-end app & web redesign for a Davis retailer', role: 'UI/UX Designer', skills: 'Figma, visual identity', image: 'uploads/1 3.30.45 PM-cc774448.png' },
+      { id: 'nonprofit', title: 'Fourth & Hope', tag: 'UI/UX DESIGN · RESEARCH', stat: 'Nonprofit site redesign: 80% of testers struggled to navigate the old one', role: 'UX/UI Designer', skills: 'Research, Figma, mobile', image: 'uploads/fh-01.png' },
+    ].map(f => ({ ...f, hasImage: !!f.image, open: () => this.openProjectDirect(f.id) }));
+
+    const storyAndSpoonTags = ['Photography', 'Video', 'Social Media', 'Web Design'];
+    const dwmTags = ['Content Strategy', 'Growth', 'Video Editing', 'Digital Products'];
+    const spoonProcess = ['Discover', 'Shoot', 'Edit', 'Launch'];
+    const dwmProcess = ['Strategy', 'Create', 'Post', 'Monetize'];
+    const spoonProcessDetail = [
+      { n: '01', title: 'Visit', desc: 'We walk the space and learn what makes it worth talking about' },
+      { n: '02', title: 'Film', desc: 'Food, room, people, motion — captured in one organized shoot day' },
+      { n: '03', title: 'Build', desc: 'Website, Instagram, Google presence, brand assets' },
+      { n: '04', title: 'Launch', desc: 'A professional rollout across every channel guests actually use' },
+      { n: '05', title: 'Hand off', desc: 'We train the team and deliver every asset — or stay on monthly' },
+    ];
+    const dwmProcessDetail = [
+      { n: '01', title: 'Strategy', desc: 'Pick the story — faith, college life, the stuff nobody says out loud' },
+      { n: '02', title: 'Create', desc: 'Film and edit short-form video solo, fast turnaround' },
+      { n: '03', title: 'Post & read', desc: 'Publish, track what resonates, double down on it' },
+      { n: '04', title: 'Productize', desc: 'Free UC Davis Starter Guide, dorm & packing guides, resource hubs' },
+      { n: '05', title: 'Monetize', desc: 'Amazon storefront, digital guides, brand collaborations' },
+    ];
+    const spoonStats = [{ num: '50', label: 'restaurants researched and scored' }, { num: '20', label: 'owners contacted' }, { num: '3', label: 'proposal decks built' }, { num: '30+', label: 'local restaurants already partnered with via DavisWithMaya' }];
+    const dwmStats = [{ num: '5.4M+', label: 'profile views in one month' }, { num: '131', label: 'digital guide purchases' }, { num: '3.4M', label: 'top video views' }, { num: '998', label: 'comments on one giveaway post' }];
+    const spoonImages = [
+      { src: 'uploads/Screenshot 2026-07-22 at 3.45.12 PM.png', pos: 'center' },
+      { src: IMG + 'aa9bdb91-fe66-491e-8e9f-f6130f8fc8bd/Screenshot+2026-06-03+at+9.19.50%E2%80%AFPM.png', pos: 'center' },
+      { src: 'uploads/IMG_4808.jpeg', pos: 'center' },
+    ];
+    const dwmImages = [ { src: 'uploads/15.png' }, { src: 'uploads/17.png' }, { src: 'uploads/18.png' } ];
+
+    const brandLogos = [
+      { image: 'https://unavatar.io/herocosmetics.com' },
+      { image: 'https://unavatar.io/beachwaver.com' },
+      { image: 'https://unavatar.io/capcut.com' },
+      { image: 'https://unavatar.io/oliveandjune.com' },
+      { image: 'https://unavatar.io/elevatedfaith.com' },
+      { image: 'https://unavatar.io/tower28beauty.com' },
+      { image: 'https://unavatar.io/instagram/daviswithmaya' },
+    ];
+
+    const homeContentStats = [
+      { num: '3.5M', label: 'views · single video' },
+      { num: '833K', label: 'likes on top post' },
+      { num: '700+', label: 'shares · most-shared post' },
+    ];
+
+    const openId = this.state.openProject;
+    const mk = (id, o) => {
+      const isOpen = openId === id;
+      const r = { id, imageFlip: false, hasLink: false, imagePos: 'center', isOpen, toggle: () => this.toggleProject(id), toggleIcon: isOpen ? '−' : '+', cardStyle: { background: 'oklch(0.995 0.004 60)', border: '1px solid oklch(0.85 0.01 55)', borderRadius: '14px', padding: '20px', gridColumn: isOpen ? '1 / -1' : 'auto' }, ...o };
+      r.hasGallery = Array.isArray(r.gallery) && r.gallery.length > 0;
+      if (r.hasGallery) { const items = r.gallery; r.gallery = items.map((g, i) => ({ ...g, open: () => this.setState({ slideLB: { items, idx: i } }) })); }
+      r.hasImage = !!r.image;
+      return r;
+    };
+    const U = 'uploads/';
+    const spoonDeck = [
+      { src: U + 'Screenshot 2026-09-01 at 3.40.49 PM.png', label: 'Who we are \u2014 the founding team' },
+      { src: U + 'Screenshot 2026-09-01 at 3.41.01 PM.png', label: 'Example website \u2014 full page build' },
+      { src: U + 'Screenshot 2026-09-01 at 3.41.09 PM.png', label: 'How it works \u2014 sign, shoot, post, grow' },
+    ];
+    const dwmPress = [
+      { src: U + 'CalAggie_DWM.png', label: 'Featured in The California Aggie' },
+      { src: U + 'DWM_Metrics.png', label: 'Top videos \u2014 2.8M & 2.4M views' },
+      { src: U + 'Collab_DWM.JPG', label: 'Business collab \u2014 giveaway campaign' },
+      { src: U + 'HeroCosmetics.JPG', label: 'Hero Cosmetics campus activation' },
+    ];
+    const allProjects = [
+      mk('asucd', { tag: 'STUDENT GOVERNMENT · CONTENT STRATEGY', title: 'ASUCD Marketing', hook: 'Two repeatable content formats for a 14K-follower student government — built, shipped and measured over one summer.', role: 'Marketing Staff, one of four leads', timeline: 'Jun 2026 – Present', overview: 'Students use ASUCD every day — Unitrans, the CoHo, Aggie Reuse, The Pantry — and don\u2019t know it exists. The account posted announcements, which are useful once and forgettable immediately. With fall quarter as the deadline, I built two formats that give students a reason to follow: Davis Hacks, a numbered POV video series, and Did You Know, a two-card carousel that turns a campus fact into a guessing game.', bullets: ['Owned short-form video and the campus-fact carousel series end to end — strategy, production, design, and publishing in Loomly', '17,257 plays and 9,743 accounts reached on the first Davis Hacks episode, over a summer when campus is empty', '1.8\u00d7 plays per person reached, a 5.3% engagement rate against reach, and 89 saves — the metric the format was built for', 'Designed inside ASUCD\u2019s brand system: navy on gold, type in solid blocks, logo on payoff frames only'], image: U + 'Screenshot 2026-09-02 at 8.34.25 PM.png', imagePos: 'center', screenImage: U + '07-the-series.png', visual: 'mockup', mockupType: 'computer', gallery: [
+        {src:U+'01-title-c7e7fd85.png',label:'ASUCD Marketing \u2014 portfolio case study'},
+        {src:U+'02-at-a-glance.png',label:'At a glance \u2014 17,257 plays, 9,743 reached, 89 saves'},
+        {src:U+'03-opportunity.png',label:'The opportunity \u2014 students use ASUCD and don\u2019t know it'},
+        {src:U+'04-my-role.png',label:'My role \u2014 strategy, production, design, publishing'},
+        {src:U+'05-davis-hacks.png',label:'Davis Hacks \u2014 a numbered video series'},
+        {src:U+'06-did-you-know.png',label:'Did You Know \u2014 two cards, one fact'},
+        {src:U+'07-the-series.png',label:'The series \u2014 three entries, one shape'},
+        {src:U+'08-growth.png',label:'Growth & performance'},
+        {src:U+'09-the-system.png',label:'The system \u2014 Aggie blue, Aggie gold, white'},
+        {src:U+'10-whats-next.png',label:'What\u2019s next'}
+      ], hasLink: true, link: 'https://www.instagram.com/asucd', linkLabel: 'View @asucd' }),
+      mk('daily', { tag: 'MEDIA · GROWTH', title: 'Daily UC Davis', hook: 'Built, branded and grown from zero to 1.2M views in 30 days.', role: 'Founder & Marketing Lead', timeline: '2025 – Present', overview: 'UC Davis had demand without a home — students hunting campus news, events and food across scattered group chats, existing pages posting irregularly with no recognizable voice, and local businesses with no trusted student channel to buy. I built Daily UC Davis to fill that gap at scale, running brand, content, growth, partnerships and operations end to end.', bullets: ['1.2M+ views in the first 30 days from zero \u2014 then 3.3M views and 608K accounts reached (+53%) across the first 90 days', '57.8% of views came from non-followers — reach well beyond the existing audience', '6K+ followers, fully organic, and a 98% click rate on the link hub', '20+ business collaborations sourced and delivered, from local shops to national ambassadorships'], image: U + 'Slide1.jpeg', screenImage: U + 'Slide7.jpeg', visual: 'mockup', mockupType: 'computer', gallery: [
+        {src:U + 'Slide1.jpeg',label:'Daily UC Davis — portfolio case study'},
+        {src:U + 'Slide2.jpeg',label:'At a glance — first 90 days at scale'},
+        {src:U + 'Slide3.jpeg',label:'The opportunity — the gap nobody was running'},
+        {src:U + 'Slide4.jpeg',label:'My role — strategy through operations'},
+        {src:U + 'Slide5.jpeg',label:'Brand identity — wordmark, type, palette'},
+        {src:U + 'Slide6.jpeg',label:'Content strategy — three pillars, one format'},
+        {src:U + 'Slide7.jpeg',label:'Growth & performance — Instagram insights'},
+        {src:U + 'Slide8.jpeg',label:'Content samples — promotion inside the format'},
+        {src:U + 'Slide9.jpeg',label:'Collaborations — local, campus, national'},
+        {src:U + 'Slide10.jpeg',label:'Community response — unprompted student DMs'},
+        {src:U + 'Slide11.jpeg',label:'Takeaways'}
+      ], hasLink: true, link: 'https://www.instagram.com/dailyucdavis', linkLabel: 'View @dailyucdavis' }),
+      mk('worship', { tag: 'FOUNDER · EVENT MARKETING', title: 'Worship on the Lawn', hook: 'Founded a campus event now running monthly, a year later.', role: 'Founder', timeline: 'Dec 2025 – Jun 2026', overview: 'Founded and launched a monthly student-led worship gathering on the UC Davis Quad, leading vision, planning, and execution while partnering with five Christian fellowships on programming, marketing, logistics, and volunteers.', bullets: ['Grew a founding idea into a recurring monthly campus event', 'Coordinated marketing and logistics across 5 partner fellowships', '100+ attendees at the inaugural event', '60+ students at every gathering since, sustained through consistent promotion'], image: 'uploads/IMG_1777.JPG', visual: 'stat', stats: [['100+', 'launch attendees'], ['60+', 'monthly, ongoing']], hasLink: true, link: 'https://www.instagram.com/worshiponthelawn.ucd/', linkLabel: 'View @worshiponthelawn.ucd' }),
+      mk('nonprofit', { embed: 'https://fourth-and-hope-demo.vercel.app/', embedType: 'site', embedLabel: 'fourth-and-hope-demo.vercel.app · live build', tag: 'UI/UX DESIGN · RESEARCH', title: 'Fourth & Hope', hook: 'Redesigned a nonprofit\u2019s site so giving and volunteering take one click, not five.', role: 'UX/UI Designer & Researcher, 7-person team', timeline: 'Sep 2024 – Mar 2025', overview: 'Redesigned the website and mobile experience for Fourth & Hope, a Sacramento nonprofit, restructuring Home, Programs, Events, Get Involved, and Donate around clearer calls-to-action for both desktop and mobile.', bullets: ['Cut homepage navigation down to fewer, clearer items built around mission and programs', 'Designed a full parallel mobile-view system alongside the desktop redesign', 'Added a donation progress bar, program certifications, and "impact by the numbers" to build donor trust', 'Simplified Get Involved and Contact flows to make volunteering and giving easier to start'], image: U + 'fh-01.png', screenImage: U + 'fh-home-screen.png', visual: 'mockup', mockupType: 'computer', gallery: [
+        {src:U+'fh-01.png',label:'Fourth & Hope \u00d7 #include \u2014 website design'},
+        {src:U+'fh-02.png',label:'About the client \u2014 services'},
+        {src:U+'fh-03.png',label:'Existing website \u2014 client wants & painpoints'},
+        {src:U+'fh-04.png',label:'User testing \u2014 10 tests, 80% struggled to navigate'},
+        {src:U+'fh-05.png',label:'Design system \u2014 Be Vietnam Pro, three-color palette'},
+        {src:U+'fh-19.png',label:'Meet the team \u2014 7-person #include team'},
+        {src:U+'fh-21.png',label:'Development \u2014 live demo'}
+      ] }),
+      mk('tmg', { tag: 'MARKETING · PARTNERSHIPS', title: 'The Midnight Grind', hook: 'Turned a "nowhere to study after 7pm" complaint into a funded campus business.', role: 'Business Lead & Video Marketing Coordinator', timeline: '2025 – Present', overview: 'UC Davis had no late-night, social study space with food after 7pm. I led marketing and partnerships across TMG\u2019s Big Bang pitch, then built the marketing and partnerships behind its launch as a student-run "third space" between nightlife and productivity.', bullets: ['Led creative direction and video production for the Big Bang business pitch', 'Team hit 380+ RSVPs at our highest-turnout event, across 20+ events and 6+ partnerships', 'Love & Lattes case highlight: 310 RSVPs converted to 130+ attendees \u2014 a 42% show-up rate', 'Drove a 97.5% Linktree click-through rate across campaign content'], image: 'uploads/Screenshot 2026-07-07 at 5.06.46 PM.png', imagePos: 'center top', screenImage: U + '10-58d1200d.png', visual: 'mockup', mockupType: 'computer', gallery: [{src:U+'3-2d3e649a.png',label:'The problem'},{src:U+'4-67ef5fed.png',label:'The opportunity'},{src:U+'8-3e961705.png',label:'The solution'},{src:U+'6-e2d14c31.png',label:'My role'},{src:U+'5-c0993875.png',label:'Big Bang pitch video'},{src:U+'9-ed8139c3.png',label:'Impact'},{src:U+'10-58d1200d.png',label:'Case highlight — Love & Lattes'}], hasLink: true, link: 'https://www.instagram.com/tmgatdavis', linkLabel: 'View @tmgatdavis' }),
+      mk('green', { tag: 'RESEARCH · SUSTAINABILITY', title: 'Green Haven', hook: 'Made climate action feel hopeful instead of hopeless — with a seed packet.', image: U + 'Screenshot 2026-09-02 at 8.33.55 PM.png', imagePos: 'center', visual: 'mockup', mockupType: 'computer', role: 'Design Researcher', timeline: 'Sep 2024 – Apr 2025', overview: 'Designed a community-centered, seed-based wildfire prevention concept — reframing sustainability around optimism instead of guilt, grounded in real research rather than symbolism.', bullets: ['Researched native plants, wildfire risk, and barriers to sustainable-planting education', 'Designed a seed-kit concept that reframes sustainability as preventative care, not sacrifice', 'Moved from annotated sketches to low-fidelity prototypes testing physical interaction and accessibility', 'Presented at the 2025 UC Davis Undergraduate Research Conference'], gallery: [
+        {src:U+'2 3.47.05 PM.jpg',label:'Project overview'},
+        {src:U+'3 3.47.05 PM.jpg',label:'The problem — optimism over fear'},
+        {src:U+'4 3.47.05 PM.jpg',label:'Research focus — three key areas'},
+        {src:U+'5 3.47.05 PM.jpg',label:'Why native plants'},
+        {src:U+'6 3.47.05 PM.jpg',label:'Early ideation sketches'},
+        {src:U+'8 3.47.05 PM.jpg',label:'Design development — annotated sketches'},
+        {src:U+'7 3.47.05 PM.jpg',label:'Prototyping — concept, accessibility, content'},
+        {src:U+'9 3.47.05 PM.jpg',label:'Iteration & refinement'},
+        {src:U+'10 3.47.05 PM.jpg',label:'Design system — palette, logo, typography'},
+        {src:U+'11 3.47.05 PM.jpg',label:'Final design — what shipped'},
+        {src:U+'12 3.47.05 PM.jpg',label:'Deliverables — site, pamphlets, seed packets'},
+        {src:U+'13 3.47.05 PM.jpg',label:'Final prototype'},
+        {src:U+'14-b2eefbb8.jpg',label:'Presenting at the UC Davis Research Conference'},
+        {src:U+'15-32a18165.jpg',label:'Impact & reflection'}
+      ] }),
+      mk('vintage', { embed: 'https://www.yesterdaydavis.com/', embedType: 'site', embedLabel: 'yesterdaydavis.com · live site', tag: 'UI/UX DESIGN', title: 'Yesterday Vintage', hook: 'A Y2K-styled shop redesign, from wireframe to Demo Day.', role: 'UI/UX Designer & Presenter', timeline: 'Sep 2025 – Mar 2026', overview: 'Yesterday Vintage is a curated vintage clothing store in downtown Davis carrying 1950s\u2013early 2000s pieces in XS\u20133X for all genders. The site buried the things customers actually needed \u2014 sizing, events, store info. Our HMW: how might we design a site that surfaces relevant information and uses a balanced visual approach to pull people into the store in person?', bullets: ['Ran competitive analysis on 3 client-chosen reference sites, turning their pros/cons into our design constraints', 'Mapped two task flows \u2014 sizing/contact and browse-to-checkout \u2014 before any visual design', 'Built the shared design system: 3 typefaces, a 25-swatch palette, iconography, and reusable components', 'Delivered hi-fi desktop and mobile prototypes and presented to the store owners on Demo Day'], image: U + '1 3.30.45 PM-cc774448.png', screenImage: U + 'Screenshot 2026-09-01 at 3.37.35 PM.png', phoneImage: U + 'Screenshot 2026-09-01 at 3.36.47 PM.png', hasLink: true, link: 'https://www.yesterdaydavis.com/about', linkLabel: 'Visit yesterdaydavis.com', visual: 'mockup', mockupType: 'both', gallery: [
+        {src:U+'1 3.30.45 PM-cc774448.png',label:'Yesterday Vintage \u00d7 #include'},
+        {src:U+'2 3.30.45 PM-68538776.png',label:'Project overview \u2014 client & HMW'},
+        {src:U+'4 3.30.45 PM-6e1a213e.png',label:'User flows \u2014 two task paths'},
+        {src:U+'5 3.30.45 PM-f5043821.png',label:'Low-fidelity sketches'},
+        {src:U+'6 3.30.45 PM-cf211da0.png',label:'Mid-fidelity wireframes'},
+        {src:U+'7-d7ef2778.png',label:'Design system \u2014 type, color, components'},
+        {src:U+'8 3.30.45 PM-33089a3b.png',label:'High-fidelity prototypes \u2014 desktop & mobile'}
+      ] }),
+      mk('quickbite', { embed: 'https://embed.figma.com/proto/7Yaz63cU5zXtK8qgs5vzo9/Final-Project---Maya-Yoo?node-id=2048-146&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&embed-host=share', embedType: 'proto', embedTall: true, embedLink: 'https://www.figma.com/proto/7Yaz63cU5zXtK8qgs5vzo9/Final-Project---Maya-Yoo?node-id=2048-146', embedLabel: 'Figma prototype · tap through it', tag: 'MOBILE APP DESIGN · RESEARCH', title: 'CampusBites', hook: 'Designed an app that fights decision fatigue at every meal.', role: 'UI/UX Designer, Researcher, Prototyper', timeline: 'May – Jun 2026', overview: 'A DES 112 final project: designing a mobile app that helps college students beat meal-decision fatigue by recommending meals fast based on budget, time, and preference.', bullets: ['Grounded the concept in research on decision fatigue and its effect on mental energy and willpower', 'Built a full visual system, then wireframed core browse-and-save user flows', 'Usability-tested with 5 UC Davis students; shipped fixes for type size, back navigation, and reviews', 'Delivered a complete case study covering research, design decisions, and reflection'], image: U + 'Screenshot 2026-08-28 at 3.36.46 PM-a19680d1.png', screenImage: U + 'Screenshot 2026-08-28 at 3.37.05 PM-a27b20d3.png', visual: 'mockup', mockupType: 'computer', gallery: [
+        {src:U+'Screenshot 2026-08-28 at 3.35.17 PM-79c76de9.png',label:'CampusBites — helping students decide faster'},
+        {src:U+'Screenshot 2026-08-28 at 3.35.24 PM-013f99a0.png',label:'The problem & the solution'},
+        {src:U+'Screenshot 2026-08-28 at 3.35.42 PM-d3f864eb.png',label:'Why it matters — decision fatigue research'},
+        {src:U+'Screenshot 2026-08-28 at 3.35.51 PM-20f83386.png',label:'Research findings from 11 students'},
+        {src:U+'Screenshot 2026-08-28 at 3.36.00 PM-af3ce151.png',label:'Design system & early wireframes'},
+        {src:U+'Screenshot 2026-08-28 at 3.36.17 PM-c0e465cf.png',label:'User flows'},
+        {src:U+'Screenshot 2026-08-28 at 3.36.30 PM-ce9a087e.png',label:'Design decisions — problem to solution'},
+        {src:U+'Screenshot 2026-08-28 at 3.36.46 PM-a19680d1.png',label:'Final design'},
+        {src:U+'Screenshot 2026-08-28 at 3.37.05 PM-a27b20d3.png',label:'Key tasks — find & save a meal'},
+        {src:U+'Screenshot 2026-08-28 at 3.37.15 PM.png',label:'Key tasks — meal planning & student reviews'},
+        {src:U+'Screenshot 2026-08-28 at 3.37.30 PM-5bb41562.png',label:'Usability testing with 5 students'},
+        {src:U+'Screenshot 2026-08-28 at 3.37.44 PM-0502924e.png',label:'Live prototype'}
+      ] }),
+      mk('nova', { embed: 'https://embed.figma.com/proto/Qy3JSyl7hBHXMUVFCn7pgA/CodeLab-Open-Source-%E2%80%94%C2%A0SQ26?node-id=2426-7179&starting-point-node-id=2426%3A7179&embed-host=share', embedType: 'proto', embedLink: 'https://www.figma.com/proto/Qy3JSyl7hBHXMUVFCn7pgA/CodeLab-Open-Source-%E2%80%94%C2%A0SQ26?node-id=2426-7179&starting-point-node-id=2426%3A7179', embedLabel: 'Figma prototype · tap through it', tag: 'PRODUCT DESIGN · OPEN SOURCE', title: 'Nova Open Source', hook: 'Designed a leaderboard that makes open-source work visible.', role: 'Designer, CodeLab Davis — 9-person team', timeline: 'Spring 2025', overview: 'CodeLab Davis had no centralized way to track or celebrate contributions across its open-source projects — GitHub alone wasn\u2019t enough. I designed the CodeLab OS Leaderboard, a web app that tracks, scores, and celebrates contributions across projects like Nextgit and Anchor.', bullets: ['Designed a weighted scoring system and live leaderboard to replace scattered GitHub tracking', 'Built an interactive, color-coded contribution graph with light gamification', 'Designed sidebar navigation, dropdown filters, and per-project status tags for fast scanning', 'Worked daily with mentors, a PM, and 4 developers through design reviews'], image: U + 'Screenshot 2026-08-28 at 3.39.48 PM-f022b3f5.png', visual: 'mockup', mockupType: 'computer', gallery: [
+        {src:U+'Screenshot 2026-08-28 at 3.38.43 PM-5e069640.png',label:'Nova Open Source — Spring 2026 CodeLab cohort'},
+        {src:U+'Screenshot 2026-08-28 at 3.38.52 PM-46b83444.png',label:'The team — 9 people, I was one of 2 designers'},
+        {src:U+'Screenshot 2026-08-28 at 3.39.09 PM-eb5d703f.png',label:'The problem — GitHub alone doesn\u2019t cut it'},
+        {src:U+'Screenshot 2026-08-28 at 3.39.21 PM-b3be1f54.png',label:'The solution — CodeLab OS Leaderboard'},
+        {src:U+'Screenshot 2026-08-28 at 3.39.36 PM-26abf8fc.png',label:'Interactive graph, color-coded data, gamification'},
+        {src:U+'Screenshot 2026-08-28 at 3.39.48 PM-f022b3f5.png',label:'Project overview, filters & sidebar navigation'},
+        {src:U+'Screenshot 2026-08-28 at 3.45.48 PM-a8e6188b.png',label:'Track.'},
+        {src:U+'Screenshot 2026-08-28 at 3.45.56 PM-711775d6.png',label:'Recognize.'},
+        {src:U+'Screenshot 2026-08-28 at 3.46.04 PM-3dcbe874.png',label:'Reward.'}
+      ] }),
+    ];
+
+    const contentAccountsRaw = [
+      { name: 'Davis With Maya', handle: '@daviswithmaya', role: 'Creative Direction, Strategy, Editing', desc: 'Personal storytelling platform exploring faith, college life, and reflection through short-form video.', cover: 'uploads/IMG_4026.JPG', impact: [{ num: '5.4M+', label: 'monthly views' }, { num: '3.5M', label: 'top video' }],
+        videos: [
+          { title: 'Faith in Jesus', views: '3.5M views', subStat: '833K likes · 56K saves', link: 'https://www.tiktok.com/@daviswithmaya/video/7555530233898650893', cover: 'uploads/dwm-faith-in-jesus.png' },
+          { title: 'Thankfulness', views: '2.2M views', subStat: '268K likes · 51K shares', link: 'https://www.instagram.com/reel/DRkmKVHknI1/', cover: 'uploads/dwm-thankfulness.png' },
+          { title: 'Friends', views: '2.4M views', subStat: '330K likes · 61K shares · 110K saves', link: 'https://www.instagram.com/reel/DT30YDHEi1j/', cover: 'uploads/dwm-friends.png' },
+          { title: 'Side Quests', views: '2.3M views', subStat: 'College depression can\u2019t hit if you\u2019re busy', link: 'https://www.instagram.com/daviswithmaya/reels/', cover: 'uploads/dwm-side-quests.png' },
+        ] },
+      { name: 'Daily UC Davis', handle: '@dailyucdavis', role: 'Growth Strategy, Editing', desc: 'Campus media platform covering student life, events, and everyday UC Davis culture.', cover: IMG + '5037c585-fa9e-4676-b097-27d8b738e838/DailyDavis+%283%29.png', impact: [{ num: '1.2M+', label: '30-day views' }, { num: '400K', label: 'top video' }],
+        videos: [
+          { title: 'T% Challenge', views: '400K views', subStat: '21K likes · 540 shares', link: 'https://www.instagram.com/reel/DJz9lEXhxy5/', cover: 'uploads/dud-t-challenge.png' },
+          { title: 'ASUCD Merch Drop', views: '169K views', subStat: '', link: 'https://www.instagram.com/reel/DHJxzIvSAkV/', cover: 'uploads/Screenshot 2026-09-02 at 8.35.40 PM.png' },
+          { title: 'ASUCD Giveaway', views: '103K views', subStat: '1.6K likes · 588 shares', link: 'https://www.instagram.com/reel/DKAISUmppyu/', cover: 'uploads/dud-giveaway.png' },
+          { title: 'Dorm Challenge', views: '102K views', subStat: '4.8K likes · 390 shares', link: 'https://www.instagram.com/reel/DJ14_vxJkxM/', cover: 'uploads/dud-dorm-challenge.png' },
+        ] },
+      { name: 'The Midnight Grind', handle: '@tmgatdavis', role: 'Creative Direction, Campaign Strategy', desc: 'Student-run late-night café — community-centered nightlife through live music and event campaigns.', cover: 'uploads/Screenshot 2026-07-07 at 5.06.46 PM.png', impact: [{ num: '20+', label: 'campaigns' }, { num: '370+', label: 'RSVPs' }],
+        videos: [
+          { title: 'Winter Quarter Recap', views: 'Event recap', subStat: 'Community campaign', link: 'https://www.instagram.com/reel/DSAvy-TElTw/', cover: 'uploads/tmg-quarter-recap.png' },
+          { title: 'KDVS Collab', views: 'Live music', subStat: 'Cross-org collaboration', link: 'https://www.instagram.com/reel/DXnYKm6pSG_/', cover: 'uploads/tmg-kdvs.png' },
+          { title: 'Café Promotion', views: 'Brand awareness', subStat: 'Digital push', link: 'https://www.instagram.com/reel/DWy2Md6SLeF/', cover: 'uploads/tmg-cafe-promo.png' },
+          { title: 'Love & Lattes Event', views: 'Themed event', subStat: 'Turnout campaign', link: 'https://www.instagram.com/reel/DXwqP9qKF-g/', cover: 'uploads/tmg-love-lattes.png' },
+        ] },
+      { name: 'Worship on the Lawn', handle: 'DCF Outreach', role: 'Founder, Event Promotion', desc: 'Student-led public worship initiative making faith more accessible, hosted with 5 campus fellowships.', cover: 'uploads/IMG_1777.JPG', impact: [{ num: '100+', label: 'launch attendees' }, { num: '60+', label: 'monthly, ongoing' }],
+        videos: [
+          { title: 'Worship Preview', views: 'Launch teaser', subStat: 'Campaign video', link: 'https://www.instagram.com/reel/DVKOFytAVWT/', cover: 'uploads/wotl-launch-teaser.png' },
+          { title: 'Event Promotion', views: 'Awareness push', subStat: 'Campaign video', link: 'https://www.instagram.com/reel/DWxMYSJjzRQ/', cover: 'uploads/wotl-awareness-push.png' },
+          { title: 'First Event Promotion', views: 'Founding push', subStat: 'Campaign video', link: 'https://www.instagram.com/p/DUEaZ2CEnVd/', cover: 'uploads/wotl-founding-push.png' },
+          { title: 'Event Recap', views: 'Community recap', subStat: 'Campaign video', link: 'https://www.instagram.com/p/DWkqVZggdhK/', cover: 'uploads/wotl-event-recap.png' },
+        ] },
+      { name: '#Include at Davis', handle: 'Design & tech org', role: 'Social Media Content Strategy', desc: 'Student design and technology organization — accessibility, collaboration, and client work.', cover: IMG + 'a56758dc-f022-4833-ab7e-a63ff4e27fbf/include.jpg', coverSize: '180%', impact: [{ num: '15+', label: 'person board' }, { num: '3', label: 'client teams' }],
+        videos: [
+          { title: 'Figma Workshop', views: 'Workshop recap', subStat: 'Recruitment content', link: 'https://www.instagram.com/reel/DW4abvtk5fN/', cover: 'uploads/inc-workshop-recap.png' },
+          { title: 'Event Recap', views: 'Demo day', subStat: 'Community content', link: 'https://www.instagram.com/reel/DV9sIHdAVKv/', cover: 'uploads/inc-demo-day.png' },
+          { title: 'Club Promotion', views: 'Recruitment week', subStat: 'Campaign video', link: 'https://www.instagram.com/reel/DVg6SEXErw7/', cover: 'uploads/inc-recruitment.png' },
+          { title: 'Meeting Recap', views: 'Community content', subStat: 'Recap video', link: 'https://www.instagram.com/reel/DTi3bEzEuid/', cover: 'uploads/inc-community.png' },
+        ] },
+    ];
+    const contentAccounts = contentAccountsRaw.map(a => ({ coverSize: 'cover', ...a }));
+
+    const brandPartners = [
+      { name: 'Hero Cosmetics', role: 'College Campus Ambassador', desc: 'Brought 100+ students consistently to monthly skincare activations on campus.', image: 'https://unavatar.io/herocosmetics.com' },
+      { name: 'BeachWaver Co', role: 'College Campus Ambassador', desc: 'Named Ambassador of the Month for March — shared hair tools through relatable, college-first content.', image: 'https://unavatar.io/beachwaver.com' },
+      { name: 'CapCut', role: 'College Campus Ambassador', desc: 'Tabled and promoted CapCut on campus, driving 30+ referral signups in a single month.', image: 'https://unavatar.io/capcut.com' },
+      { name: 'Olive & June', role: 'College Campus Ambassador', desc: 'Created nail-care content translating the brand into everyday campus life.', image: 'https://unavatar.io/oliveandjune.com' },
+      { name: 'Elevated Faith', role: 'Ambassador Since 2021', desc: 'Named Ambassador of the Month in June — a five-year partnership that aligns with my own faith and how I share it.', image: 'https://unavatar.io/elevatedfaith.com' },
+      { name: 'Tower 28 Beauty', role: 'Freelance Content Creator', desc: 'Created content across TikTok and Instagram, generating 15K+ engagements for the brand.', image: 'https://unavatar.io/tower28beauty.com' },
+    ];
+
+    const socialAccounts = [
+      { name: 'Davis With Maya', role: 'Founder & Manager', stat: '5.4M+ monthly profile views', image: IMG + 'ed1ffa9f-9bd3-4191-9a87-9385ca903d5c/34.png' },
+      { name: 'Daily UC Davis', role: 'Founder', stat: '1.2M+ views in first 30 days', image: IMG + '5037c585-fa9e-4676-b097-27d8b738e838/DailyDavis+%283%29.png' },
+      { name: 'Tower 28 Beauty', role: 'Freelance Content Creator', stat: 'Multi-platform branded campaigns', image: IMG + '5c8f8180-dcfb-420a-abbf-05fa45a7ced7/1756836942094.jpg' },
+      { name: 'The Midnight Grind', role: 'Business Lead & Media Director', stat: '90+ RSVPs first pop-up · 1K followers in month one', image: IMG + 'abbfa2fd-8ff9-4c6a-8648-d257d47993c0/Screenshot+2025-09-06+at+2.24.12%E2%80%AFAM.png' },
+      { name: '#Include', role: 'Social Media Lead Coordinator', stat: 'Brand consistency across community campaigns', image: IMG + 'a56758dc-f022-4833-ab7e-a63ff4e27fbf/include.jpg' },
+      { name: 'Worship on the Lawn', role: 'Founder & Media Director', stat: '100+ launch, 60+ every month since', image: IMG + '4d24cc90-679d-4d7c-a40f-ae888766d3cd/dcf.png' },
+      { name: 'By Mai Faith', role: 'Founder & Manager', stat: 'Portrait & lifestyle photography brand', image: IMG + 'c6425f97-5f5a-4a81-8453-cdfe9e474886/bymaifaith.jpg' },
+      { name: 'DCF Outreach', role: 'Social Media Director & Founder', stat: '30+ outreach events in year one, 700+ share post', image: IMG + '4d24cc90-679d-4d7c-a40f-ae888766d3cd/dcf.png' },
+      { name: 'Aragon Girls Basketball', role: 'Media Director, 2 Years', stat: 'Senior night features reposted by the school', image: IMG + '95baf893-ecce-4b11-8d49-7170f3f76ecb/aragon.jpg' },
+      { name: 'Aragon Flag Football', role: 'Media Director, 1 Year', stat: 'Launched the first account for a historic first season', image: IMG + '75e054b7-426a-42ab-8a8d-b9666c7a1ecb/ffb.jpg' },
+      { name: 'Aragon Service Commission', role: 'Founder & Media Director, 1 Year', stat: 'Built the org\u2019s first media account from scratch', image: IMG + 'f2aadc50-7a82-4afa-b5a5-19ec1e4138c9/svc.jpg' },
+    ];
+
+    const rawPhotoCategories = [
+      { title: 'Portraits', year: '2025', images: [
+        { src: 'uploads/93A838D7-D82C-4836-A5B2-7F2C203BF7BC_1_105_c.jpeg', style: 'aspect-ratio:3/4;', caption: 'Family', desc: 'Rooftop in LA, five minutes before sunset. She wouldn\u2019t sit still, so I stopped asking her to.' },
+        { src: 'uploads/51724271-36D4-4931-ADE7-D63A4E3AC352_1_105_c.jpeg', style: 'aspect-ratio:3/4;', caption: 'Wedding', desc: 'Guest table at a friend\u2019s wedding. I wasn\u2019t the hired photographer \u2014 I just kept my camera out between courses.' },
+        { src: 'uploads/IMG_2319.JPG', style: 'aspect-ratio:3/4;', caption: 'Orchard', desc: 'The almond orchards outside Davis bloom for about two weeks. We planned this around them and got there at blue hour.' },
+        { src: 'uploads/IMG_0362.jpg', style: 'aspect-ratio:3/4;', caption: 'Friends Photoshoot', desc: 'Patio bench, string lights, one flash. We were supposed to be leaving.' },
+        { src: 'uploads/IMG_4332.JPG', style: 'aspect-ratio:3/4;', caption: 'Graduation, USC', desc: 'Drove to LA for this. Two stoles, a skyline, and the throwing-up-the-L bit they insisted on.' },
+        { src: IMG + '7caecab4-284f-4bce-ac95-ff1466e62fa4/IMG_9513.JPG', style: 'aspect-ratio:3/4;', caption: 'Friendsgiving', desc: 'Every year, same apartment, too much food. I take the photos because otherwise nobody does.' },
+        { src: IMG + '30285159-0c5a-4fe7-81d7-ac4430dd4ee9/IMG_1846_VSCO.JPG', style: 'aspect-ratio:3/4;', caption: 'Film Portrait', desc: 'I edit warm. The grain and color here are the look I keep coming back to on every shoot.' },
+        { src: IMG + '1766656189085-W8VJ8C7711ZUHVVWAZOB/gradpic.jpg', style: 'aspect-ratio:3/4;', caption: 'Graduation Portrait', desc: 'UC Davis grad photos. The trick is shooting right after the crowd leaves the Quad.' },
+      ] },
+      { title: 'Lifestyle', year: '2025', images: [
+        { src: 'uploads/IMG_0305_VSCO.jpg', style: 'aspect-ratio:4/5;', caption: 'Shinjuku, Japan', desc: 'Tokyo, first night there. Every sign was a different typeface and I couldn\u2019t stop looking up.' },
+        { src: IMG + 'f64d2992-6c6c-4867-afa8-831be4e22d4d/9ED52C42-62E0-455E-B886-CE870D370746.jpg', style: 'aspect-ratio:4/5;', caption: 'North Star, Tahoe', desc: 'Ski weekend with friends. The best photos from trips are never the ones on the mountain.' },
+        { src: IMG + '4242369f-f0a6-461d-94b2-fabdd94c8210/79589E6F-8DF2-42D4-8876-3CA71CA0A822.jpg', style: 'aspect-ratio:4/5;', caption: "Levi's Stadium", desc: 'A gameday I shot for me \u2014 no client, no brief, just practice on a moving crowd.' },
+        { src: IMG + 'ffe8ad85-0f0a-406e-9cc5-e58e980747fe/6055F301-530A-47D1-9634-2182C069F6C1.jpg', style: 'aspect-ratio:4/5;', caption: 'UC Davis Arboretum', desc: 'Where I go when a paper isn\u2019t happening. I\u2019ve shot this path more times than I can count.' },
+        { src: 'uploads/9E098E6A-F8D7-43C1-AAFA-AD68AAD07F66.jpg', style: 'aspect-ratio:4/5;', caption: 'Las Vegas, Nevada', desc: 'Cirque show in Vegas. Handheld, way too dark, and still one of my favorites.' },
+        { src: 'uploads/B27A60A7-AC1C-4AEE-8503-0E9CD779FAB4.jpg', style: 'aspect-ratio:4/5;', caption: 'Las Vegas, Nevada', desc: 'Same night, a few minutes later. I liked the color enough to keep both.' },
+        { src: 'uploads/IMG_4808.jpeg', style: 'aspect-ratio:4/5;', caption: 'Wedding, Bay Area', desc: 'Between the ceremony and the reception \u2014 when everyone\u2019s just standing around and the light is best.' },
+        { src: IMG + 'db40376d-c7b9-42ef-9d3a-7926c994c271/IMG_2241.JPG', style: 'aspect-ratio:4/5;', caption: 'Twelvemonth', desc: 'A styled shoot for a local brand. Their brief was one line; the rest was mine.' },
+      ] },
+      { title: 'Events', year: '2025', images: [
+        { src: 'uploads/20250525_200559_D38770.JPEG', style: 'aspect-ratio:1/1;', caption: 'Pilipino Cultural Night', desc: 'Backstage at Pilipino Cultural Night. The nerves before the biggest student show at Davis are their own kind of photo.' },
+        { src: 'uploads/IMG_5256-14bc76a7.JPG', style: 'aspect-ratio:1/1;', caption: 'DCF Baptism', desc: 'A baptism with our campus fellowship. You get one shot at these \u2014 no re-dos.' },
+        { src: 'uploads/IMG_8332-0e20a8da.JPG', style: 'aspect-ratio:1/1;', caption: 'Fellowship Gathering', desc: 'Our speaker turned around to take a selfie with the whole lawn. So did I.' },
+        { src: 'uploads/20250525_200629_D2B949-bc0defba.JPEG', style: 'aspect-ratio:1/1;', caption: 'Pilipino Cultural Night', desc: 'On stage. Shooting from the pit means you get sweat and faces, not a wide.' },
+        { src: 'uploads/F29BBF06-4415-4EF7-A79B-2F1EA2F0A28C.jpg', style: 'aspect-ratio:1/1;', caption: 'Fellowship Gathering', desc: 'Before the program starts \u2014 the twenty minutes where people actually talk.' },
+        { src: 'uploads/20250525_200629_D1FC62.JPEG', style: 'aspect-ratio:1/1;', caption: 'Pilipino Cultural Night', desc: 'Pulled back to show how full the room was. That\u2019s the story of the night.' },
+        { src: 'uploads/053513BD-AB93-44E8-86A3-B1EFE0977571-7507dc80.jpg', style: 'aspect-ratio:1/1;', caption: 'DCF Baptism', desc: 'Right after. Wet, cold, laughing, and about two seconds before everyone rushed in for hugs.' },
+        { src: 'uploads/IMG_7820.JPG', style: 'aspect-ratio:1/1;', caption: 'Fellowship Gathering', desc: 'A group I\u2019ve been in for a few years. This is what most Thursday nights look like.' },
+      ] },
+    ];
+    let photoIdx = 0;
+    this.allPhotos = [];
+    const photoCategories = rawPhotoCategories.map(cat => ({
+      title: cat.title,
+      desc: cat.title === 'Portraits' ? 'People I know, mostly. I\u2019d rather catch someone mid-laugh than pose them.' : cat.title === 'Lifestyle' ? 'Trips, campus, the odd night out \u2014 shot for nobody but me.' : 'Cultural nights, baptisms, Thursday fellowship. Low light, no re-dos.',
+      images: cat.images.map(im => {
+        const idx = photoIdx++;
+        const title = im.caption || (cat.title === 'Portraits' ? 'Portrait' : cat.title);
+        const photo = { src: im.src, title, category: cat.title, year: cat.year, desc: im.desc };
+        this.allPhotos.push(photo);
+        return { ...im, title, category: cat.title, open: () => this.openLightbox(idx) };
+      }),
+    }));
+    const lightboxPhoto = this.state.lightboxIndex !== null ? this.allPhotos[this.state.lightboxIndex] : null;
+    this.allVideos = this.allVideos || [];
+    this.allVideos.length = 0;
+    contentAccounts.forEach(acc => { acc.videos.forEach(v => { v.id = v.link; v.tileCover = v.cover || acc.cover; v.open = () => this.openVideo(v.id); v.embedUrl = this.toEmbedUrl(v.link); v.canEmbed = !!v.embedUrl; v.noEmbed = !v.embedUrl; v.platform = v.link.includes('tiktok.com') ? 'TikTok' : 'Instagram'; this.allVideos.push(v); }); });
+    const activeVideo = this.state.activeVideoId ? this.allVideos.find(v => v.id === this.state.activeVideoId) : null;
+    const featPick = [
+      { link: 'https://www.instagram.com/daviswithmaya/reels/', role: 'PERSONAL BRAND', big: '2.3M views', account: '@daviswithmaya', why: 'Side quests. Shot with friends on a random night out \u2014 no hook, no trend, it traveled because it was real.' },
+      { link: 'https://www.instagram.com/reel/DKAISUmppyu/', role: 'CAMPUS MEDIA', big: '3,145 entries', account: '@dailyucdavis', why: 'The ASUCD giveaway. 103K views and 588 shares \u2014 a campaign built to make people act, not just watch.' },
+      { link: 'https://www.instagram.com/reel/DXwqP9qKF-g/', role: 'EVENT MARKETING', big: '310 RSVPs', account: '@tmgatdavis', why: 'The Love & Lattes push. 310 RSVPs, 130+ people in the room \u2014 content built to fill seats, not feeds.' },
+      { link: 'https://www.instagram.com/reel/DVKOFytAVWT/', role: 'LAUNCH', big: '100+ at launch', account: 'Worship on the Lawn', why: 'The teaser for an event that didn\u2019t exist yet. It\u2019s still running monthly a year later.' },
+    ];
+    const featuredVideos = featPick.map(f => { const v = this.allVideos.find(x => x.link === f.link); return v ? { ...f, title: v.title, tileCover: v.tileCover, open: v.open } : null; }).filter(Boolean);
+    const scrollToId = (id) => () => { const el = document.getElementById(id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 110, behavior: 'smooth' }); };
+    const mktHighlights = [
+      { brand: 'DAILY UC DAVIS \u00b7 FOUNDER', num: '3.3M', text: 'views in the first 90 days at scale, 57.8% from non-followers. Brand, format, and 20+ partnerships built from zero.', cta: 'Open case study \u2192', open: () => this.openProjectDirect('daily') },
+      { brand: 'THE MIDNIGHT GRIND \u00b7 BUSINESS LEAD', num: '310 RSVPs', text: 'for Love & Lattes \u2014 130+ through the door, a 42% show-up rate, and a 97.5% Linktree click-through.', cta: 'Open case study \u2192', open: () => this.openProjectDirect('tmg') },
+      { brand: 'ASUCD \u00b7 MARKETING LEAD', num: '17,257', text: 'plays on the first Davis Hacks episode, posted over a summer when campus is empty. 89 saves \u2014 the metric the format was built for.', cta: 'Open case study \u2192', open: () => this.openProjectDirect('asucd') },
+      { brand: 'HERO COSMETICS & CAPCUT \u00b7 AMBASSADOR', num: '100+', text: 'students at monthly skincare activations, plus 30+ CapCut referral signups from one month of tabling.', cta: 'See the ambassadorships \u2193', open: scrollToId('mkt-amb') },
+    ];
+    const mktApproach = [
+      { n: '01', title: 'Find the gap', desc: 'Start where demand already exists and nobody is serving it well.', proof: 'Daily UC Davis: scattered group chats \u2192 one page, 6K followers, fully organic' },
+      { n: '02', title: 'Make the format repeatable', desc: 'One shape the audience recognizes and the team can keep producing without me.', proof: 'ASUCD: Davis Hacks + Did You Know, 1.8\u00d7 plays per person reached' },
+      { n: '03', title: 'Get people to show up', desc: 'Content that ends in a room, a sign-up, or a sale \u2014 not just a view.', proof: 'TMG: 380+ RSVPs at peak \u00b7 DWM: 131 guides sold' },
+      { n: '04', title: 'Read the numbers, then adjust', desc: 'Non-follower reach, saves, click-through: the metrics that predict growth, not vanity.', proof: 'DWM: 94.5% non-follower reach \u00b7 Daily: 98% link-hub click rate' },
+    ];
+    const sl = this.state.slideLB;
+    const slideLightbox = sl ? { src: sl.items[sl.idx].src, label: sl.items[sl.idx].label, counter: (sl.idx + 1) + ' / ' + sl.items.length } : null;
+
+    const skillGroups = [
+      { title: 'Marketing', items: 'Growth strategy, brand partnerships, campaign execution, paid & organic social' },
+      { title: 'Design', items: 'Figma, wireframing, prototyping, usability testing, visual identity' },
+      { title: 'Business', items: '0→1 platform building, monetization, ops, partnerships, analytics' },
+      { title: 'AI & Tools', items: 'AI-assisted workflows, Canva, CapCut, Google Sheets, Adobe' },
+    ];
+
+    const byId = {}; allProjects.forEach(p => { byId[p.id] = p; });
+    const marketingProjects = ["asucd","daily","tmg","worship"].map(i => byId[i]).filter(Boolean);
+    const designProjects = ["nonprofit","vintage","quickbite","nova","green"].map(i => byId[i]).filter(Boolean);
+
+    return {
+      marketingProjects, designProjects,
+      isHome: page === 'home', isVentures: page === 'ventures', isProjects: page === 'projects', isContent: page === 'content', isMarketing: page === 'marketing', isPhotography: page === 'photography', isAbout: page === 'about',
+      activeVideo, closeVideo: this.closeVideo,
+      heroWord, heroWordStyle, marqueeBrands, slideLightbox, closeSlide: this.closeSlide, nextSlide: this.nextSlide, prevSlide: this.prevSlide,
+      goHome: () => this.setPage('home'), goto, navItems, resumeUrl, email, showFaithWork, lightboxPhoto, closeLightbox: this.closeLightbox, prevPhoto: this.prevPhoto, nextPhoto: this.nextPhoto, stopProp: this.stopProp,
+      cursorGlowStyle: { position: 'fixed', left: 0, top: 0, width: '46px', height: '46px', borderRadius: '50%', background: 'radial-gradient(circle, oklch(0.72 0.13 45 / 0.35), transparent 70%)', pointerEvents: 'none', zIndex: 998, transform: 'translate(-100px,-100px)', transition: 'transform 0.05s linear' },
+      cursorRingStyle: { position: 'fixed', left: 0, top: 0, width: '30px', height: '30px', borderRadius: '50%', border: '1.5px solid oklch(0.56 0.13 45 / 0.7)', pointerEvents: 'none', zIndex: 999, transform: 'translate(-100px,-100px)', transition: 'transform 0.05s linear' },
+      displayViews: (6.6 * t).toFixed(1) + 'M+',
+      displayLaunch: Math.round(30 * t) + '+',
+      displayGuides: (94.5 * t).toFixed(1) + '%',
+      storyBeats, pillars, featuredProjects, storyAndSpoonTags, dwmTags, spoonProcess, dwmProcess, spoonProcessDetail, dwmProcessDetail, spoonStats, dwmStats, spoonImages, dwmImages, spoonDeck, dwmPress, spoonImage0: spoonImages[0].src, dwmImage0: dwmImages[0].src, brandLogos, homeContentStats,
+      allProjects, contentAccounts, featuredVideos, mktHighlights, mktApproach, brandPartners, socialAccounts, photoCategories, skillGroups,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+  <sc-if value="{{ isStat }}" hint-placeholder-val="{{ true }}">
+    <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.87 0.012 55);border-radius:16px;padding:36px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="2">
+        <div style="text-align:center;padding:24px 10px;background:oklch(0.96 0.018 60);border-radius:10px;border:1px solid oklch(0.9 0.02 55);">
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:36px;font-weight:700;color:oklch(0.56 0.13 45);">{{ s.0 }}</div>
+          <div style="font-size:12px;color:oklch(0.45 0.02 50);margin-top:8px;line-height:1.4;">{{ s.1 }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isSiteEmbed }}" hint-placeholder-val="{{ false }}">
+    <div style="width:100%;">
+      <div style="background:oklch(0.28 0.02 50);border-radius:12px;padding:11px 11px 14px;width:100%;box-sizing:border-box;box-shadow:0 18px 44px oklch(0.3 0.04 45 / 0.22);">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:9px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:oklch(0.68 0.16 25);"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:oklch(0.8 0.13 85);"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:oklch(0.72 0.14 145);"></div>
+          <div style="margin-left:8px;flex:1;min-width:0;background:oklch(0.35 0.02 50);border-radius:6px;padding:4px 10px;font-size:10px;color:oklch(0.8 0.01 55);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ embedLabel }}</div>
+        </div>
+        <div style="position:relative;aspect-ratio:16/10;border-radius:6px;overflow:hidden;background:oklch(0.97 0.005 55);">
+          <iframe src="{{ embed }}" title="Live site preview" loading="lazy" scrolling="yes" style="position:absolute;top:0;left:0;width:250%;height:250%;border:0;transform:scale(0.4);transform-origin:0 0;display:block;"></iframe>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;margin-top:12px;">
+        <a href="{{ embed }}" target="_blank" style="background:oklch(0.56 0.13 45);color:oklch(0.97 0.01 60);padding:9px 14px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:0.6px;white-space:nowrap;" style-hover="background:oklch(0.2 0.015 50);">SCROLL IT · OR OPEN FULL SITE ↗</a>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isProtoWide }}" hint-placeholder-val="{{ false }}">
+    <div style="width:100%;">
+      <div style="background:oklch(0.28 0.02 50);border-radius:12px;padding:11px;width:100%;box-sizing:border-box;box-shadow:0 18px 44px oklch(0.3 0.04 45 / 0.22);">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px;padding:0 3px;">
+          <div style="font-size:10px;color:oklch(0.8 0.01 55);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;">{{ embedLabel }}</div>
+          <div style="font-size:9.5px;letter-spacing:1px;font-weight:800;color:oklch(0.72 0.13 45);white-space:nowrap;">INTERACTIVE</div>
+        </div>
+        <div style="position:relative;aspect-ratio:16/10;border-radius:6px;overflow:hidden;background:oklch(0.15 0.01 50);">
+          <iframe src="{{ embed }}" title="Figma prototype" loading="lazy" allowfullscreen="true" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;margin-top:12px;">
+        <a href="{{ embedOpen }}" target="_blank" style="background:oklch(0.56 0.13 45);color:oklch(0.97 0.01 60);padding:9px 14px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:0.6px;white-space:nowrap;" style-hover="background:oklch(0.2 0.015 50);">TAP THROUGH IT · OR OPEN IN FIGMA ↗</a>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isProtoTall }}" hint-placeholder-val="{{ false }}">
+    <div style="width:100%;">
+      <div style="background:oklch(0.28 0.02 50);border-radius:12px;padding:11px;width:100%;box-sizing:border-box;box-shadow:0 18px 44px oklch(0.3 0.04 45 / 0.22);">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px;padding:0 3px;">
+          <div style="font-size:10px;color:oklch(0.8 0.01 55);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;">{{ embedLabel }}</div>
+          <div style="font-size:9.5px;letter-spacing:1px;font-weight:800;color:oklch(0.72 0.13 45);white-space:nowrap;">INTERACTIVE</div>
+        </div>
+        <div style="position:relative;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:oklch(0.15 0.01 50);">
+          <iframe src="{{ embed }}" title="Figma prototype" loading="lazy" allowfullscreen="true" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;margin-top:12px;">
+        <a href="{{ embedOpen }}" target="_blank" style="background:oklch(0.56 0.13 45);color:oklch(0.97 0.01 60);padding:9px 14px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:0.6px;white-space:nowrap;" style-hover="background:oklch(0.2 0.015 50);">TAP THROUGH IT · OR OPEN IN FIGMA ↗</a>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isComputer }}" hint-placeholder-val="{{ false }}">
+    <div style="background:oklch(0.28 0.02 50);border-radius:12px;padding:11px 11px 22px;width:100%;box-shadow:0 18px 44px oklch(0.3 0.04 45 / 0.22);">
+      <div style="display:flex;gap:6px;margin-bottom:9px;">
+        <div style="width:8px;height:8px;border-radius:50%;background:oklch(0.68 0.16 25);"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:oklch(0.8 0.13 85);"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:oklch(0.72 0.14 145);"></div>
+      </div>
+      <div style="aspect-ratio:16/10;border-radius:6px;overflow:hidden;background:oklch(0.96 0.018 60);display:flex;align-items:center;justify-content:center;">
+        <sc-if value="{{ hasScreen }}" hint-placeholder-val="{{ true }}">
+          <img src="{{ screen }}" style="width:100%;height:100%;object-fit:contain;"/>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isPhone }}" hint-placeholder-val="{{ false }}">
+    <div style="width:194px;border:7px solid oklch(0.28 0.02 50);border-radius:30px;padding:7px;background:oklch(0.28 0.02 50);box-shadow:0 18px 44px oklch(0.3 0.04 45 / 0.22);">
+      <div style="aspect-ratio:9/19;border-radius:22px;overflow:hidden;background:oklch(0.96 0.018 60);display:flex;align-items:center;justify-content:center;">
+        <sc-if value="{{ hasScreen }}" hint-placeholder-val="{{ true }}">
+          <img src="{{ screen }}" style="width:100%;height:100%;object-fit:cover;"/>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isBoth }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;align-items:flex-end;position:relative;width:100%;justify-content:center;">
+      <div style="background:oklch(0.28 0.02 50);border-radius:11px;padding:9px 9px 18px;width:78%;box-shadow:0 18px 44px oklch(0.3 0.04 45 / 0.22);">
+        <div style="display:flex;gap:5px;margin-bottom:7px;">
+          <div style="width:6px;height:6px;border-radius:50%;background:oklch(0.68 0.16 25);"></div>
+          <div style="width:6px;height:6px;border-radius:50%;background:oklch(0.8 0.13 85);"></div>
+          <div style="width:6px;height:6px;border-radius:50%;background:oklch(0.72 0.14 145);"></div>
+        </div>
+        <div style="aspect-ratio:16/10;border-radius:5px;overflow:hidden;background:oklch(0.96 0.018 60);display:flex;align-items:center;justify-content:center;">
+          <sc-if value="{{ hasScreen }}" hint-placeholder-val="{{ true }}">
+            <img src="{{ screen }}" style="width:100%;height:100%;object-fit:contain;"/>
+          </sc-if>
+        </div>
+      </div>
+      <div style="width:78px;border:5px solid oklch(0.28 0.02 50);border-radius:16px;padding:4px;background:oklch(0.28 0.02 50);margin-left:-30px;box-shadow:0 18px 44px oklch(0.3 0.04 45 / 0.22);">
+        <div style="aspect-ratio:9/19;border-radius:12px;overflow:hidden;background:oklch(0.96 0.018 60);display:flex;align-items:center;justify-content:center;">
+          <sc-if value="{{ hasPhoneScreen }}" hint-placeholder-val="{{ true }}">
+            <img src="{{ phoneScreen }}" style="width:100%;height:100%;object-fit:cover;"/>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:340},&quot;proj&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;object&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const proj = this.props.proj || {};
+    const visual = proj.visual;
+    const mt = proj.mockupType;
+    const screen = proj.screenImage || proj.image;
+    const phoneScreen = proj.phoneImage || screen;
+    const embed = proj.embed || '';
+    const isSiteEmbed = !!embed && proj.embedType !== 'proto';
+    const isProtoEmbed = !!embed && proj.embedType === 'proto';
+    return {
+      embed, isSiteEmbed, isProtoEmbed,
+      isProtoWide: isProtoEmbed && !proj.embedTall,
+      isProtoTall: isProtoEmbed && !!proj.embedTall,
+      embedOpen: proj.embedLink || embed,
+      embedLabel: proj.embedLabel || 'live preview',
+      isStat: !embed && visual === 'stat',
+      isComputer: !embed && visual === 'mockup' && mt === 'computer',
+      isPhone: !embed && visual === 'mockup' && mt === 'phone',
+      isBoth: !embed && visual === 'mockup' && mt === 'both',
+      stats: proj.stats || [],
+      screen, hasScreen: !!screen,
+      phoneScreen, hasPhoneScreen: !!phoneScreen,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -83,16 +83,16 @@
       <p style="color:oklch(0.45 0.02 50);font-size:15px;line-height:1.6;margin:0 0 22px;max-width:620px;text-wrap:pretty;">Where the eye for story started. It’s still how I think about every brand and every frame.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;">
         <a href="photography.html" style="display:block;border-radius:12px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);">
-          <img src="uploads/93A838D7-D82C-4836-A5B2-7F2C203BF7BC_1_105_c.jpeg" alt="Family portrait" style="width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .4s;" style-hover="transform:scale(1.04);">
+          <img src="uploads/93a838d7-d82c-4836-a5b2-7f2c203bf7bc-1-105-c.jpg" alt="Family portrait" style="width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .4s;" style-hover="transform:scale(1.04);">
         </a>
         <a href="photography.html" style="display:block;border-radius:12px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);">
-          <img src="uploads/IMG_4332.JPG" alt="Graduation portraits, USC" style="width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .4s;" style-hover="transform:scale(1.04);">
+          <img src="uploads/img-4332.jpg" alt="Graduation portraits, USC" style="width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .4s;" style-hover="transform:scale(1.04);">
         </a>
         <a href="photography.html" style="display:block;border-radius:12px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);">
-          <img src="uploads/IMG_0305_VSCO.jpg" alt="Shinjuku, Japan" style="width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .4s;" style-hover="transform:scale(1.04);">
+          <img src="uploads/img-0305-vsco.jpg" alt="Shinjuku, Japan" style="width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .4s;" style-hover="transform:scale(1.04);">
         </a>
         <a href="photography.html" style="display:block;border-radius:12px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);">
-          <img src="uploads/20250525_200559_D38770.JPEG" alt="Pilipino Cultural Night" style="width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .4s;" style-hover="transform:scale(1.04);">
+          <img src="uploads/20250525-200559-d38770.jpg" alt="Pilipino Cultural Night" style="width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .4s;" style-hover="transform:scale(1.04);">
         </a>
       </div>
     </section>
@@ -352,10 +352,10 @@ class Component extends DCLogic {
     ];
 
     const featuredProjects = [
-      { id: 'daily', title: 'DailyDavis', tag: 'MEDIA · GROWTH', stat: '1.2M+ views in the first 30 days from zero', role: 'Founder', skills: 'Content strategy, partnerships', image: 'uploads/Slide1.jpeg' },
-      { id: 'tmg', title: 'The Midnight Grind', tag: 'MARKETING · PARTNERSHIPS', stat: '382 RSVPs at a single event across 20+ events run', role: 'Business Lead', skills: 'Event marketing, funnels', image: 'uploads/Screenshot 2026-07-07 at 5.06.46 PM.png' },
-      { id: 'vintage', title: 'Yesterday Vintage', tag: 'UI/UX DESIGN', stat: 'End-to-end app & web redesign for a Davis retailer', role: 'UI/UX Designer', skills: 'Figma, visual identity', image: 'uploads/1 3.30.45 PM-cc774448.png' },
-      { id: 'nonprofit', title: 'Fourth & Hope', tag: 'UI/UX DESIGN · RESEARCH', stat: 'Nonprofit site redesign: 80% of testers struggled to navigate the old one', role: 'UX/UI Designer', skills: 'Research, Figma, mobile', image: 'uploads/fh-01.png' },
+      { id: 'daily', title: 'DailyDavis', tag: 'MEDIA · GROWTH', stat: '1.2M+ views in the first 30 days from zero', role: 'Founder', skills: 'Content strategy, partnerships', image: 'uploads/slide1.jpg' },
+      { id: 'tmg', title: 'The Midnight Grind', tag: 'MARKETING · PARTNERSHIPS', stat: '382 RSVPs at a single event across 20+ events run', role: 'Business Lead', skills: 'Event marketing, funnels', image: 'uploads/screenshot-2026-07-07-at-5-06-46-pm.jpg' },
+      { id: 'vintage', title: 'Yesterday Vintage', tag: 'UI/UX DESIGN', stat: 'End-to-end app & web redesign for a Davis retailer', role: 'UI/UX Designer', skills: 'Figma, visual identity', image: 'uploads/1-3-30-45-pm-cc774448.png' },
+      { id: 'nonprofit', title: 'Fourth & Hope', tag: 'UI/UX DESIGN · RESEARCH', stat: 'Nonprofit site redesign: 80% of testers struggled to navigate the old one', role: 'UX/UI Designer', skills: 'Research, Figma, mobile', image: 'uploads/fh-01.jpg' },
     ].map(f => ({ ...f, hasImage: !!f.image, open: () => this.openProjectDirect(f.id) }));
 
     const storyAndSpoonTags = ['Photography', 'Video', 'Social Media', 'Web Design'];
@@ -379,9 +379,9 @@ class Component extends DCLogic {
     const spoonStats = [{ num: '50', label: 'restaurants researched and scored' }, { num: '20', label: 'owners contacted' }, { num: '3', label: 'proposal decks built' }, { num: '30+', label: 'local restaurants already partnered with via DavisWithMaya' }];
     const dwmStats = [{ num: '5.4M+', label: 'profile views in one month' }, { num: '131', label: 'digital guide purchases' }, { num: '3.4M', label: 'top video views' }, { num: '998', label: 'comments on one giveaway post' }];
     const spoonImages = [
-      { src: 'uploads/Screenshot 2026-07-22 at 3.45.12 PM.png', pos: 'center' },
+      { src: 'uploads/screenshot-2026-07-22-at-3-45-12-pm.jpg', pos: 'center' },
       { src: IMG + 'aa9bdb91-fe66-491e-8e9f-f6130f8fc8bd/Screenshot+2026-06-03+at+9.19.50%E2%80%AFPM.png', pos: 'center' },
-      { src: 'uploads/IMG_4808.jpeg', pos: 'center' },
+      { src: 'uploads/img-4808.jpg', pos: 'center' },
     ];
     const dwmImages = [ { src: 'uploads/15.png' }, { src: 'uploads/17.png' }, { src: 'uploads/18.png' } ];
 
@@ -435,22 +435,22 @@ class Component extends DCLogic {
         {src:U+'09-the-system.png',label:'The system \u2014 Aggie blue, Aggie gold, white'},
         {src:U+'10-whats-next.png',label:'What\u2019s next'}
       ], hasLink: true, link: 'https://www.instagram.com/asucd', linkLabel: 'View @asucd' }),
-      mk('daily', { tag: 'MEDIA · GROWTH', title: 'Daily UC Davis', hook: 'Built, branded and grown from zero to 1.2M views in 30 days.', role: 'Founder & Marketing Lead', timeline: '2025 – Present', overview: 'UC Davis had demand without a home — students hunting campus news, events and food across scattered group chats, existing pages posting irregularly with no recognizable voice, and local businesses with no trusted student channel to buy. I built Daily UC Davis to fill that gap at scale, running brand, content, growth, partnerships and operations end to end.', bullets: ['1.2M+ views in the first 30 days from zero \u2014 then 3.3M views and 608K accounts reached (+53%) across the first 90 days', '57.8% of views came from non-followers — reach well beyond the existing audience', '6K+ followers, fully organic, and a 98% click rate on the link hub', '20+ business collaborations sourced and delivered, from local shops to national ambassadorships'], image: U + 'Slide1.jpeg', screenImage: U + 'Slide7.jpeg', visual: 'mockup', mockupType: 'computer', gallery: [
-        {src:U + 'Slide1.jpeg',label:'Daily UC Davis — portfolio case study'},
-        {src:U + 'Slide2.jpeg',label:'At a glance — first 90 days at scale'},
-        {src:U + 'Slide3.jpeg',label:'The opportunity — the gap nobody was running'},
-        {src:U + 'Slide4.jpeg',label:'My role — strategy through operations'},
-        {src:U + 'Slide5.jpeg',label:'Brand identity — wordmark, type, palette'},
-        {src:U + 'Slide6.jpeg',label:'Content strategy — three pillars, one format'},
-        {src:U + 'Slide7.jpeg',label:'Growth & performance — Instagram insights'},
-        {src:U + 'Slide8.jpeg',label:'Content samples — promotion inside the format'},
-        {src:U + 'Slide9.jpeg',label:'Collaborations — local, campus, national'},
-        {src:U + 'Slide10.jpeg',label:'Community response — unprompted student DMs'},
-        {src:U + 'Slide11.jpeg',label:'Takeaways'}
+      mk('daily', { tag: 'MEDIA · GROWTH', title: 'Daily UC Davis', hook: 'Built, branded and grown from zero to 1.2M views in 30 days.', role: 'Founder & Marketing Lead', timeline: '2025 – Present', overview: 'UC Davis had demand without a home — students hunting campus news, events and food across scattered group chats, existing pages posting irregularly with no recognizable voice, and local businesses with no trusted student channel to buy. I built Daily UC Davis to fill that gap at scale, running brand, content, growth, partnerships and operations end to end.', bullets: ['1.2M+ views in the first 30 days from zero \u2014 then 3.3M views and 608K accounts reached (+53%) across the first 90 days', '57.8% of views came from non-followers — reach well beyond the existing audience', '6K+ followers, fully organic, and a 98% click rate on the link hub', '20+ business collaborations sourced and delivered, from local shops to national ambassadorships'], image: U + 'slide1.jpg', screenImage: U + 'slide7.jpg', visual: 'mockup', mockupType: 'computer', gallery: [
+        {src:U + 'slide1.jpg',label:'Daily UC Davis — portfolio case study'},
+        {src:U + 'slide2.jpg',label:'At a glance — first 90 days at scale'},
+        {src:U + 'slide3.jpg',label:'The opportunity — the gap nobody was running'},
+        {src:U + 'slide4.jpg',label:'My role — strategy through operations'},
+        {src:U + 'slide5.jpg',label:'Brand identity — wordmark, type, palette'},
+        {src:U + 'slide6.jpg',label:'Content strategy — three pillars, one format'},
+        {src:U + 'slide7.jpg',label:'Growth & performance — Instagram insights'},
+        {src:U + 'slide8.jpg',label:'Content samples — promotion inside the format'},
+        {src:U + 'slide9.jpg',label:'Collaborations — local, campus, national'},
+        {src:U + 'slide10.jpg',label:'Community response — unprompted student DMs'},
+        {src:U + 'slide11.jpg',label:'Takeaways'}
       ], hasLink: true, link: 'https://www.instagram.com/dailyucdavis', linkLabel: 'View @dailyucdavis' }),
-      mk('worship', { tag: 'FOUNDER · EVENT MARKETING', title: 'Worship on the Lawn', hook: 'Founded a campus event now running monthly, a year later.', role: 'Founder', timeline: 'Dec 2025 – Jun 2026', overview: 'Founded and launched a monthly student-led worship gathering on the UC Davis Quad, leading vision, planning, and execution while partnering with five Christian fellowships on programming, marketing, logistics, and volunteers.', bullets: ['Grew a founding idea into a recurring monthly campus event', 'Coordinated marketing and logistics across 5 partner fellowships', '100+ attendees at the inaugural event', '60+ students at every gathering since, sustained through consistent promotion'], image: 'uploads/IMG_1777.JPG', visual: 'stat', stats: [['100+', 'launch attendees'], ['60+', 'monthly, ongoing']], hasLink: true, link: 'https://www.instagram.com/worshiponthelawn.ucd/', linkLabel: 'View @worshiponthelawn.ucd' }),
-      mk('nonprofit', { embed: 'https://fourth-and-hope-demo.vercel.app/', embedType: 'site', embedLabel: 'fourth-and-hope-demo.vercel.app · live build', tag: 'UI/UX DESIGN · RESEARCH', title: 'Fourth & Hope', hook: 'Redesigned a nonprofit\u2019s site so giving and volunteering take one click, not five.', role: 'UX/UI Designer & Researcher, 7-person team', timeline: 'Sep 2024 – Mar 2025', overview: 'Redesigned the website and mobile experience for Fourth & Hope, a Sacramento nonprofit, restructuring Home, Programs, Events, Get Involved, and Donate around clearer calls-to-action for both desktop and mobile.', bullets: ['Cut homepage navigation down to fewer, clearer items built around mission and programs', 'Designed a full parallel mobile-view system alongside the desktop redesign', 'Added a donation progress bar, program certifications, and "impact by the numbers" to build donor trust', 'Simplified Get Involved and Contact flows to make volunteering and giving easier to start'], image: U + 'fh-01.png', screenImage: U + 'fh-home-screen.png', visual: 'mockup', mockupType: 'computer', gallery: [
-        {src:U+'fh-01.png',label:'Fourth & Hope \u00d7 #include \u2014 website design'},
+      mk('worship', { tag: 'FOUNDER · EVENT MARKETING', title: 'Worship on the Lawn', hook: 'Founded a campus event now running monthly, a year later.', role: 'Founder', timeline: 'Dec 2025 – Jun 2026', overview: 'Founded and launched a monthly student-led worship gathering on the UC Davis Quad, leading vision, planning, and execution while partnering with five Christian fellowships on programming, marketing, logistics, and volunteers.', bullets: ['Grew a founding idea into a recurring monthly campus event', 'Coordinated marketing and logistics across 5 partner fellowships', '100+ attendees at the inaugural event', '60+ students at every gathering since, sustained through consistent promotion'], image: 'uploads/img-1777.jpg', visual: 'stat', stats: [['100+', 'launch attendees'], ['60+', 'monthly, ongoing']], hasLink: true, link: 'https://www.instagram.com/worshiponthelawn.ucd/', linkLabel: 'View @worshiponthelawn.ucd' }),
+      mk('nonprofit', { embed: 'https://fourth-and-hope-demo.vercel.app/', embedType: 'site', embedLabel: 'fourth-and-hope-demo.vercel.app · live build', tag: 'UI/UX DESIGN · RESEARCH', title: 'Fourth & Hope', hook: 'Redesigned a nonprofit\u2019s site so giving and volunteering take one click, not five.', role: 'UX/UI Designer & Researcher, 7-person team', timeline: 'Sep 2024 – Mar 2025', overview: 'Redesigned the website and mobile experience for Fourth & Hope, a Sacramento nonprofit, restructuring Home, Programs, Events, Get Involved, and Donate around clearer calls-to-action for both desktop and mobile.', bullets: ['Cut homepage navigation down to fewer, clearer items built around mission and programs', 'Designed a full parallel mobile-view system alongside the desktop redesign', 'Added a donation progress bar, program certifications, and "impact by the numbers" to build donor trust', 'Simplified Get Involved and Contact flows to make volunteering and giving easier to start'], image: U + 'fh-01.jpg', screenImage: U + 'fh-home-screen.png', visual: 'mockup', mockupType: 'computer', gallery: [
+        {src:U+'fh-01.jpg',label:'Fourth & Hope \u00d7 #include \u2014 website design'},
         {src:U+'fh-02.png',label:'About the client \u2014 services'},
         {src:U+'fh-03.png',label:'Existing website \u2014 client wants & painpoints'},
         {src:U+'fh-04.png',label:'User testing \u2014 10 tests, 80% struggled to navigate'},
@@ -458,7 +458,7 @@ class Component extends DCLogic {
         {src:U+'fh-19.png',label:'Meet the team \u2014 7-person #include team'},
         {src:U+'fh-21.png',label:'Development \u2014 live demo'}
       ] }),
-      mk('tmg', { tag: 'MARKETING · PARTNERSHIPS', title: 'The Midnight Grind', hook: 'Turned a "nowhere to study after 7pm" complaint into a funded campus business.', role: 'Business Lead & Video Marketing Coordinator', timeline: '2025 – Present', overview: 'UC Davis had no late-night, social study space with food after 7pm. I led marketing and partnerships across TMG\u2019s Big Bang pitch, then built the marketing and partnerships behind its launch as a student-run "third space" between nightlife and productivity.', bullets: ['Led creative direction and video production for the Big Bang business pitch', 'Team hit 380+ RSVPs at our highest-turnout event, across 20+ events and 6+ partnerships', 'Love & Lattes case highlight: 310 RSVPs converted to 130+ attendees \u2014 a 42% show-up rate', 'Drove a 97.5% Linktree click-through rate across campaign content'], image: 'uploads/Screenshot 2026-07-07 at 5.06.46 PM.png', imagePos: 'center top', screenImage: U + '10-58d1200d.png', visual: 'mockup', mockupType: 'computer', gallery: [{src:U+'3-2d3e649a.png',label:'The problem'},{src:U+'4-67ef5fed.png',label:'The opportunity'},{src:U+'8-3e961705.png',label:'The solution'},{src:U+'6-e2d14c31.png',label:'My role'},{src:U+'5-c0993875.png',label:'Big Bang pitch video'},{src:U+'9-ed8139c3.png',label:'Impact'},{src:U+'10-58d1200d.png',label:'Case highlight — Love & Lattes'}], hasLink: true, link: 'https://www.instagram.com/tmgatdavis', linkLabel: 'View @tmgatdavis' }),
+      mk('tmg', { tag: 'MARKETING · PARTNERSHIPS', title: 'The Midnight Grind', hook: 'Turned a "nowhere to study after 7pm" complaint into a funded campus business.', role: 'Business Lead & Video Marketing Coordinator', timeline: '2025 – Present', overview: 'UC Davis had no late-night, social study space with food after 7pm. I led marketing and partnerships across TMG\u2019s Big Bang pitch, then built the marketing and partnerships behind its launch as a student-run "third space" between nightlife and productivity.', bullets: ['Led creative direction and video production for the Big Bang business pitch', 'Team hit 380+ RSVPs at our highest-turnout event, across 20+ events and 6+ partnerships', 'Love & Lattes case highlight: 310 RSVPs converted to 130+ attendees \u2014 a 42% show-up rate', 'Drove a 97.5% Linktree click-through rate across campaign content'], image: 'uploads/screenshot-2026-07-07-at-5-06-46-pm.jpg', imagePos: 'center top', screenImage: U + '10-58d1200d.png', visual: 'mockup', mockupType: 'computer', gallery: [{src:U+'3-2d3e649a.png',label:'The problem'},{src:U+'4-67ef5fed.png',label:'The opportunity'},{src:U+'8-3e961705.png',label:'The solution'},{src:U+'6-e2d14c31.png',label:'My role'},{src:U+'5-c0993875.png',label:'Big Bang pitch video'},{src:U+'9-ed8139c3.png',label:'Impact'},{src:U+'10-58d1200d.png',label:'Case highlight — Love & Lattes'}], hasLink: true, link: 'https://www.instagram.com/tmgatdavis', linkLabel: 'View @tmgatdavis' }),
       mk('green', { tag: 'RESEARCH · SUSTAINABILITY', title: 'Green Haven', hook: 'Made climate action feel hopeful instead of hopeless — with a seed packet.', image: U + 'Screenshot 2026-09-02 at 8.33.55 PM.png', imagePos: 'center', visual: 'mockup', mockupType: 'computer', role: 'Design Researcher', timeline: 'Sep 2024 – Apr 2025', overview: 'Designed a community-centered, seed-based wildfire prevention concept — reframing sustainability around optimism instead of guilt, grounded in real research rather than symbolism.', bullets: ['Researched native plants, wildfire risk, and barriers to sustainable-planting education', 'Designed a seed-kit concept that reframes sustainability as preventative care, not sacrifice', 'Moved from annotated sketches to low-fidelity prototypes testing physical interaction and accessibility', 'Presented at the 2025 UC Davis Undergraduate Research Conference'], gallery: [
         {src:U+'2 3.47.05 PM.jpg',label:'Project overview'},
         {src:U+'3 3.47.05 PM.jpg',label:'The problem — optimism over fear'},
@@ -475,8 +475,8 @@ class Component extends DCLogic {
         {src:U+'14-b2eefbb8.jpg',label:'Presenting at the UC Davis Research Conference'},
         {src:U+'15-32a18165.jpg',label:'Impact & reflection'}
       ] }),
-      mk('vintage', { embed: 'https://www.yesterdaydavis.com/', embedType: 'site', embedLabel: 'yesterdaydavis.com · live site', tag: 'UI/UX DESIGN', title: 'Yesterday Vintage', hook: 'A Y2K-styled shop redesign, from wireframe to Demo Day.', role: 'UI/UX Designer & Presenter', timeline: 'Sep 2025 – Mar 2026', overview: 'Yesterday Vintage is a curated vintage clothing store in downtown Davis carrying 1950s\u2013early 2000s pieces in XS\u20133X for all genders. The site buried the things customers actually needed \u2014 sizing, events, store info. Our HMW: how might we design a site that surfaces relevant information and uses a balanced visual approach to pull people into the store in person?', bullets: ['Ran competitive analysis on 3 client-chosen reference sites, turning their pros/cons into our design constraints', 'Mapped two task flows \u2014 sizing/contact and browse-to-checkout \u2014 before any visual design', 'Built the shared design system: 3 typefaces, a 25-swatch palette, iconography, and reusable components', 'Delivered hi-fi desktop and mobile prototypes and presented to the store owners on Demo Day'], image: U + '1 3.30.45 PM-cc774448.png', screenImage: U + 'Screenshot 2026-09-01 at 3.37.35 PM.png', phoneImage: U + 'Screenshot 2026-09-01 at 3.36.47 PM.png', hasLink: true, link: 'https://www.yesterdaydavis.com/about', linkLabel: 'Visit yesterdaydavis.com', visual: 'mockup', mockupType: 'both', gallery: [
-        {src:U+'1 3.30.45 PM-cc774448.png',label:'Yesterday Vintage \u00d7 #include'},
+      mk('vintage', { embed: 'https://www.yesterdaydavis.com/', embedType: 'site', embedLabel: 'yesterdaydavis.com · live site', tag: 'UI/UX DESIGN', title: 'Yesterday Vintage', hook: 'A Y2K-styled shop redesign, from wireframe to Demo Day.', role: 'UI/UX Designer & Presenter', timeline: 'Sep 2025 – Mar 2026', overview: 'Yesterday Vintage is a curated vintage clothing store in downtown Davis carrying 1950s\u2013early 2000s pieces in XS\u20133X for all genders. The site buried the things customers actually needed \u2014 sizing, events, store info. Our HMW: how might we design a site that surfaces relevant information and uses a balanced visual approach to pull people into the store in person?', bullets: ['Ran competitive analysis on 3 client-chosen reference sites, turning their pros/cons into our design constraints', 'Mapped two task flows \u2014 sizing/contact and browse-to-checkout \u2014 before any visual design', 'Built the shared design system: 3 typefaces, a 25-swatch palette, iconography, and reusable components', 'Delivered hi-fi desktop and mobile prototypes and presented to the store owners on Demo Day'], image: U + '1-3-30-45-pm-cc774448.png', screenImage: U + 'Screenshot 2026-09-01 at 3.37.35 PM.png', phoneImage: U + 'Screenshot 2026-09-01 at 3.36.47 PM.png', hasLink: true, link: 'https://www.yesterdaydavis.com/about', linkLabel: 'Visit yesterdaydavis.com', visual: 'mockup', mockupType: 'both', gallery: [
+        {src:U+'1-3-30-45-pm-cc774448.png',label:'Yesterday Vintage \u00d7 #include'},
         {src:U+'2 3.30.45 PM-68538776.png',label:'Project overview \u2014 client & HMW'},
         {src:U+'4 3.30.45 PM-6e1a213e.png',label:'User flows \u2014 two task paths'},
         {src:U+'5 3.30.45 PM-f5043821.png',label:'Low-fidelity sketches'},
@@ -512,40 +512,40 @@ class Component extends DCLogic {
     ];
 
     const contentAccountsRaw = [
-      { name: 'Davis With Maya', handle: '@daviswithmaya', role: 'Creative Direction, Strategy, Editing', desc: 'Personal storytelling platform exploring faith, college life, and reflection through short-form video.', cover: 'uploads/IMG_4026.JPG', impact: [{ num: '5.4M+', label: 'monthly views' }, { num: '3.5M', label: 'top video' }],
+      { name: 'Davis With Maya', handle: '@daviswithmaya', role: 'Creative Direction, Strategy, Editing', desc: 'Personal storytelling platform exploring faith, college life, and reflection through short-form video.', cover: 'uploads/img-4026.jpg', impact: [{ num: '5.4M+', label: 'monthly views' }, { num: '3.5M', label: 'top video' }],
         videos: [
-          { title: 'Faith in Jesus', views: '3.5M views', subStat: '833K likes · 56K saves', link: 'https://www.tiktok.com/@daviswithmaya/video/7555530233898650893', cover: 'uploads/dwm-faith-in-jesus.png' },
-          { title: 'Thankfulness', views: '2.2M views', subStat: '268K likes · 51K shares', link: 'https://www.instagram.com/reel/DRkmKVHknI1/', cover: 'uploads/dwm-thankfulness.png' },
-          { title: 'Friends', views: '2.4M views', subStat: '330K likes · 61K shares · 110K saves', link: 'https://www.instagram.com/reel/DT30YDHEi1j/', cover: 'uploads/dwm-friends.png' },
-          { title: 'Side Quests', views: '2.3M views', subStat: 'College depression can\u2019t hit if you\u2019re busy', link: 'https://www.instagram.com/daviswithmaya/reels/', cover: 'uploads/dwm-side-quests.png' },
+          { title: 'Faith in Jesus', views: '3.5M views', subStat: '833K likes · 56K saves', link: 'https://www.tiktok.com/@daviswithmaya/video/7555530233898650893', cover: 'uploads/dwm-faith-in-jesus.jpg' },
+          { title: 'Thankfulness', views: '2.2M views', subStat: '268K likes · 51K shares', link: 'https://www.instagram.com/reel/DRkmKVHknI1/', cover: 'uploads/dwm-thankfulness.jpg' },
+          { title: 'Friends', views: '2.4M views', subStat: '330K likes · 61K shares · 110K saves', link: 'https://www.instagram.com/reel/DT30YDHEi1j/', cover: 'uploads/dwm-friends.jpg' },
+          { title: 'Side Quests', views: '2.3M views', subStat: 'College depression can\u2019t hit if you\u2019re busy', link: 'https://www.instagram.com/daviswithmaya/reels/', cover: 'uploads/dwm-side-quests.jpg' },
         ] },
       { name: 'Daily UC Davis', handle: '@dailyucdavis', role: 'Growth Strategy, Editing', desc: 'Campus media platform covering student life, events, and everyday UC Davis culture.', cover: IMG + '5037c585-fa9e-4676-b097-27d8b738e838/DailyDavis+%283%29.png', impact: [{ num: '1.2M+', label: '30-day views' }, { num: '400K', label: 'top video' }],
         videos: [
-          { title: 'T% Challenge', views: '400K views', subStat: '21K likes · 540 shares', link: 'https://www.instagram.com/reel/DJz9lEXhxy5/', cover: 'uploads/dud-t-challenge.png' },
-          { title: 'ASUCD Merch Drop', views: '169K views', subStat: '', link: 'https://www.instagram.com/reel/DHJxzIvSAkV/', cover: 'uploads/Screenshot 2026-09-02 at 8.35.40 PM.png' },
-          { title: 'ASUCD Giveaway', views: '103K views', subStat: '1.6K likes · 588 shares', link: 'https://www.instagram.com/reel/DKAISUmppyu/', cover: 'uploads/dud-giveaway.png' },
-          { title: 'Dorm Challenge', views: '102K views', subStat: '4.8K likes · 390 shares', link: 'https://www.instagram.com/reel/DJ14_vxJkxM/', cover: 'uploads/dud-dorm-challenge.png' },
+          { title: 'T% Challenge', views: '400K views', subStat: '21K likes · 540 shares', link: 'https://www.instagram.com/reel/DJz9lEXhxy5/', cover: 'uploads/dud-t-challenge.jpg' },
+          { title: 'ASUCD Merch Drop', views: '169K views', subStat: '', link: 'https://www.instagram.com/reel/DHJxzIvSAkV/', cover: 'uploads/screenshot-2026-09-02-at-8-35-40-pm.jpg' },
+          { title: 'ASUCD Giveaway', views: '103K views', subStat: '1.6K likes · 588 shares', link: 'https://www.instagram.com/reel/DKAISUmppyu/', cover: 'uploads/dud-giveaway.jpg' },
+          { title: 'Dorm Challenge', views: '102K views', subStat: '4.8K likes · 390 shares', link: 'https://www.instagram.com/reel/DJ14_vxJkxM/', cover: 'uploads/dud-dorm-challenge.jpg' },
         ] },
-      { name: 'The Midnight Grind', handle: '@tmgatdavis', role: 'Creative Direction, Campaign Strategy', desc: 'Student-run late-night café — community-centered nightlife through live music and event campaigns.', cover: 'uploads/Screenshot 2026-07-07 at 5.06.46 PM.png', impact: [{ num: '20+', label: 'campaigns' }, { num: '370+', label: 'RSVPs' }],
+      { name: 'The Midnight Grind', handle: '@tmgatdavis', role: 'Creative Direction, Campaign Strategy', desc: 'Student-run late-night café — community-centered nightlife through live music and event campaigns.', cover: 'uploads/screenshot-2026-07-07-at-5-06-46-pm.jpg', impact: [{ num: '20+', label: 'campaigns' }, { num: '370+', label: 'RSVPs' }],
         videos: [
-          { title: 'Winter Quarter Recap', views: 'Event recap', subStat: 'Community campaign', link: 'https://www.instagram.com/reel/DSAvy-TElTw/', cover: 'uploads/tmg-quarter-recap.png' },
-          { title: 'KDVS Collab', views: 'Live music', subStat: 'Cross-org collaboration', link: 'https://www.instagram.com/reel/DXnYKm6pSG_/', cover: 'uploads/tmg-kdvs.png' },
-          { title: 'Café Promotion', views: 'Brand awareness', subStat: 'Digital push', link: 'https://www.instagram.com/reel/DWy2Md6SLeF/', cover: 'uploads/tmg-cafe-promo.png' },
-          { title: 'Love & Lattes Event', views: 'Themed event', subStat: 'Turnout campaign', link: 'https://www.instagram.com/reel/DXwqP9qKF-g/', cover: 'uploads/tmg-love-lattes.png' },
+          { title: 'Winter Quarter Recap', views: 'Event recap', subStat: 'Community campaign', link: 'https://www.instagram.com/reel/DSAvy-TElTw/', cover: 'uploads/tmg-quarter-recap.jpg' },
+          { title: 'KDVS Collab', views: 'Live music', subStat: 'Cross-org collaboration', link: 'https://www.instagram.com/reel/DXnYKm6pSG_/', cover: 'uploads/tmg-kdvs.jpg' },
+          { title: 'Café Promotion', views: 'Brand awareness', subStat: 'Digital push', link: 'https://www.instagram.com/reel/DWy2Md6SLeF/', cover: 'uploads/tmg-cafe-promo.jpg' },
+          { title: 'Love & Lattes Event', views: 'Themed event', subStat: 'Turnout campaign', link: 'https://www.instagram.com/reel/DXwqP9qKF-g/', cover: 'uploads/tmg-love-lattes.jpg' },
         ] },
-      { name: 'Worship on the Lawn', handle: 'DCF Outreach', role: 'Founder, Event Promotion', desc: 'Student-led public worship initiative making faith more accessible, hosted with 5 campus fellowships.', cover: 'uploads/IMG_1777.JPG', impact: [{ num: '100+', label: 'launch attendees' }, { num: '60+', label: 'monthly, ongoing' }],
+      { name: 'Worship on the Lawn', handle: 'DCF Outreach', role: 'Founder, Event Promotion', desc: 'Student-led public worship initiative making faith more accessible, hosted with 5 campus fellowships.', cover: 'uploads/img-1777.jpg', impact: [{ num: '100+', label: 'launch attendees' }, { num: '60+', label: 'monthly, ongoing' }],
         videos: [
-          { title: 'Worship Preview', views: 'Launch teaser', subStat: 'Campaign video', link: 'https://www.instagram.com/reel/DVKOFytAVWT/', cover: 'uploads/wotl-launch-teaser.png' },
-          { title: 'Event Promotion', views: 'Awareness push', subStat: 'Campaign video', link: 'https://www.instagram.com/reel/DWxMYSJjzRQ/', cover: 'uploads/wotl-awareness-push.png' },
-          { title: 'First Event Promotion', views: 'Founding push', subStat: 'Campaign video', link: 'https://www.instagram.com/p/DUEaZ2CEnVd/', cover: 'uploads/wotl-founding-push.png' },
-          { title: 'Event Recap', views: 'Community recap', subStat: 'Campaign video', link: 'https://www.instagram.com/p/DWkqVZggdhK/', cover: 'uploads/wotl-event-recap.png' },
+          { title: 'Worship Preview', views: 'Launch teaser', subStat: 'Campaign video', link: 'https://www.instagram.com/reel/DVKOFytAVWT/', cover: 'uploads/wotl-launch-teaser.jpg' },
+          { title: 'Event Promotion', views: 'Awareness push', subStat: 'Campaign video', link: 'https://www.instagram.com/reel/DWxMYSJjzRQ/', cover: 'uploads/wotl-awareness-push.jpg' },
+          { title: 'First Event Promotion', views: 'Founding push', subStat: 'Campaign video', link: 'https://www.instagram.com/p/DUEaZ2CEnVd/', cover: 'uploads/wotl-founding-push.jpg' },
+          { title: 'Event Recap', views: 'Community recap', subStat: 'Campaign video', link: 'https://www.instagram.com/p/DWkqVZggdhK/', cover: 'uploads/wotl-event-recap.jpg' },
         ] },
       { name: '#Include at Davis', handle: 'Design & tech org', role: 'Social Media Content Strategy', desc: 'Student design and technology organization — accessibility, collaboration, and client work.', cover: IMG + 'a56758dc-f022-4833-ab7e-a63ff4e27fbf/include.jpg', coverSize: '180%', impact: [{ num: '15+', label: 'person board' }, { num: '3', label: 'client teams' }],
         videos: [
-          { title: 'Figma Workshop', views: 'Workshop recap', subStat: 'Recruitment content', link: 'https://www.instagram.com/reel/DW4abvtk5fN/', cover: 'uploads/inc-workshop-recap.png' },
-          { title: 'Event Recap', views: 'Demo day', subStat: 'Community content', link: 'https://www.instagram.com/reel/DV9sIHdAVKv/', cover: 'uploads/inc-demo-day.png' },
-          { title: 'Club Promotion', views: 'Recruitment week', subStat: 'Campaign video', link: 'https://www.instagram.com/reel/DVg6SEXErw7/', cover: 'uploads/inc-recruitment.png' },
-          { title: 'Meeting Recap', views: 'Community content', subStat: 'Recap video', link: 'https://www.instagram.com/reel/DTi3bEzEuid/', cover: 'uploads/inc-community.png' },
+          { title: 'Figma Workshop', views: 'Workshop recap', subStat: 'Recruitment content', link: 'https://www.instagram.com/reel/DW4abvtk5fN/', cover: 'uploads/inc-workshop-recap.jpg' },
+          { title: 'Event Recap', views: 'Demo day', subStat: 'Community content', link: 'https://www.instagram.com/reel/DV9sIHdAVKv/', cover: 'uploads/inc-demo-day.jpg' },
+          { title: 'Club Promotion', views: 'Recruitment week', subStat: 'Campaign video', link: 'https://www.instagram.com/reel/DVg6SEXErw7/', cover: 'uploads/inc-recruitment.jpg' },
+          { title: 'Meeting Recap', views: 'Community content', subStat: 'Recap video', link: 'https://www.instagram.com/reel/DTi3bEzEuid/', cover: 'uploads/inc-community.jpg' },
         ] },
     ];
     const contentAccounts = contentAccountsRaw.map(a => ({ coverSize: 'cover', ...a }));
@@ -575,34 +575,34 @@ class Component extends DCLogic {
 
     const rawPhotoCategories = [
       { title: 'Portraits', year: '2025', images: [
-        { src: 'uploads/93A838D7-D82C-4836-A5B2-7F2C203BF7BC_1_105_c.jpeg', style: 'aspect-ratio:3/4;', caption: 'Family', desc: 'Rooftop in LA, five minutes before sunset. She wouldn\u2019t sit still, so I stopped asking her to.' },
-        { src: 'uploads/51724271-36D4-4931-ADE7-D63A4E3AC352_1_105_c.jpeg', style: 'aspect-ratio:3/4;', caption: 'Wedding', desc: 'Guest table at a friend\u2019s wedding. I wasn\u2019t the hired photographer \u2014 I just kept my camera out between courses.' },
-        { src: 'uploads/IMG_2319.JPG', style: 'aspect-ratio:3/4;', caption: 'Orchard', desc: 'The almond orchards outside Davis bloom for about two weeks. We planned this around them and got there at blue hour.' },
-        { src: 'uploads/IMG_0362.jpg', style: 'aspect-ratio:3/4;', caption: 'Friends Photoshoot', desc: 'Patio bench, string lights, one flash. We were supposed to be leaving.' },
-        { src: 'uploads/IMG_4332.JPG', style: 'aspect-ratio:3/4;', caption: 'Graduation, USC', desc: 'Drove to LA for this. Two stoles, a skyline, and the throwing-up-the-L bit they insisted on.' },
+        { src: 'uploads/93a838d7-d82c-4836-a5b2-7f2c203bf7bc-1-105-c.jpg', style: 'aspect-ratio:3/4;', caption: 'Family', desc: 'Rooftop in LA, five minutes before sunset. She wouldn\u2019t sit still, so I stopped asking her to.' },
+        { src: 'uploads/51724271-36d4-4931-ade7-d63a4e3ac352-1-105-c.jpg', style: 'aspect-ratio:3/4;', caption: 'Wedding', desc: 'Guest table at a friend\u2019s wedding. I wasn\u2019t the hired photographer \u2014 I just kept my camera out between courses.' },
+        { src: 'uploads/img-2319.jpg', style: 'aspect-ratio:3/4;', caption: 'Orchard', desc: 'The almond orchards outside Davis bloom for about two weeks. We planned this around them and got there at blue hour.' },
+        { src: 'uploads/img-0362.jpg', style: 'aspect-ratio:3/4;', caption: 'Friends Photoshoot', desc: 'Patio bench, string lights, one flash. We were supposed to be leaving.' },
+        { src: 'uploads/img-4332.jpg', style: 'aspect-ratio:3/4;', caption: 'Graduation, USC', desc: 'Drove to LA for this. Two stoles, a skyline, and the throwing-up-the-L bit they insisted on.' },
         { src: IMG + '7caecab4-284f-4bce-ac95-ff1466e62fa4/IMG_9513.JPG', style: 'aspect-ratio:3/4;', caption: 'Friendsgiving', desc: 'Every year, same apartment, too much food. I take the photos because otherwise nobody does.' },
         { src: IMG + '30285159-0c5a-4fe7-81d7-ac4430dd4ee9/IMG_1846_VSCO.JPG', style: 'aspect-ratio:3/4;', caption: 'Film Portrait', desc: 'I edit warm. The grain and color here are the look I keep coming back to on every shoot.' },
         { src: IMG + '1766656189085-W8VJ8C7711ZUHVVWAZOB/gradpic.jpg', style: 'aspect-ratio:3/4;', caption: 'Graduation Portrait', desc: 'UC Davis grad photos. The trick is shooting right after the crowd leaves the Quad.' },
       ] },
       { title: 'Lifestyle', year: '2025', images: [
-        { src: 'uploads/IMG_0305_VSCO.jpg', style: 'aspect-ratio:4/5;', caption: 'Shinjuku, Japan', desc: 'Tokyo, first night there. Every sign was a different typeface and I couldn\u2019t stop looking up.' },
+        { src: 'uploads/img-0305-vsco.jpg', style: 'aspect-ratio:4/5;', caption: 'Shinjuku, Japan', desc: 'Tokyo, first night there. Every sign was a different typeface and I couldn\u2019t stop looking up.' },
         { src: IMG + 'f64d2992-6c6c-4867-afa8-831be4e22d4d/9ED52C42-62E0-455E-B886-CE870D370746.jpg', style: 'aspect-ratio:4/5;', caption: 'North Star, Tahoe', desc: 'Ski weekend with friends. The best photos from trips are never the ones on the mountain.' },
         { src: IMG + '4242369f-f0a6-461d-94b2-fabdd94c8210/79589E6F-8DF2-42D4-8876-3CA71CA0A822.jpg', style: 'aspect-ratio:4/5;', caption: "Levi's Stadium", desc: 'A gameday I shot for me \u2014 no client, no brief, just practice on a moving crowd.' },
         { src: IMG + 'ffe8ad85-0f0a-406e-9cc5-e58e980747fe/6055F301-530A-47D1-9634-2182C069F6C1.jpg', style: 'aspect-ratio:4/5;', caption: 'UC Davis Arboretum', desc: 'Where I go when a paper isn\u2019t happening. I\u2019ve shot this path more times than I can count.' },
-        { src: 'uploads/9E098E6A-F8D7-43C1-AAFA-AD68AAD07F66.jpg', style: 'aspect-ratio:4/5;', caption: 'Las Vegas, Nevada', desc: 'Cirque show in Vegas. Handheld, way too dark, and still one of my favorites.' },
-        { src: 'uploads/B27A60A7-AC1C-4AEE-8503-0E9CD779FAB4.jpg', style: 'aspect-ratio:4/5;', caption: 'Las Vegas, Nevada', desc: 'Same night, a few minutes later. I liked the color enough to keep both.' },
-        { src: 'uploads/IMG_4808.jpeg', style: 'aspect-ratio:4/5;', caption: 'Wedding, Bay Area', desc: 'Between the ceremony and the reception \u2014 when everyone\u2019s just standing around and the light is best.' },
+        { src: 'uploads/9e098e6a-f8d7-43c1-aafa-ad68aad07f66.jpg', style: 'aspect-ratio:4/5;', caption: 'Las Vegas, Nevada', desc: 'Cirque show in Vegas. Handheld, way too dark, and still one of my favorites.' },
+        { src: 'uploads/b27a60a7-ac1c-4aee-8503-0e9cd779fab4.jpg', style: 'aspect-ratio:4/5;', caption: 'Las Vegas, Nevada', desc: 'Same night, a few minutes later. I liked the color enough to keep both.' },
+        { src: 'uploads/img-4808.jpg', style: 'aspect-ratio:4/5;', caption: 'Wedding, Bay Area', desc: 'Between the ceremony and the reception \u2014 when everyone\u2019s just standing around and the light is best.' },
         { src: IMG + 'db40376d-c7b9-42ef-9d3a-7926c994c271/IMG_2241.JPG', style: 'aspect-ratio:4/5;', caption: 'Twelvemonth', desc: 'A styled shoot for a local brand. Their brief was one line; the rest was mine.' },
       ] },
       { title: 'Events', year: '2025', images: [
-        { src: 'uploads/20250525_200559_D38770.JPEG', style: 'aspect-ratio:1/1;', caption: 'Pilipino Cultural Night', desc: 'Backstage at Pilipino Cultural Night. The nerves before the biggest student show at Davis are their own kind of photo.' },
-        { src: 'uploads/IMG_5256-14bc76a7.JPG', style: 'aspect-ratio:1/1;', caption: 'DCF Baptism', desc: 'A baptism with our campus fellowship. You get one shot at these \u2014 no re-dos.' },
-        { src: 'uploads/IMG_8332-0e20a8da.JPG', style: 'aspect-ratio:1/1;', caption: 'Fellowship Gathering', desc: 'Our speaker turned around to take a selfie with the whole lawn. So did I.' },
-        { src: 'uploads/20250525_200629_D2B949-bc0defba.JPEG', style: 'aspect-ratio:1/1;', caption: 'Pilipino Cultural Night', desc: 'On stage. Shooting from the pit means you get sweat and faces, not a wide.' },
-        { src: 'uploads/F29BBF06-4415-4EF7-A79B-2F1EA2F0A28C.jpg', style: 'aspect-ratio:1/1;', caption: 'Fellowship Gathering', desc: 'Before the program starts \u2014 the twenty minutes where people actually talk.' },
-        { src: 'uploads/20250525_200629_D1FC62.JPEG', style: 'aspect-ratio:1/1;', caption: 'Pilipino Cultural Night', desc: 'Pulled back to show how full the room was. That\u2019s the story of the night.' },
-        { src: 'uploads/053513BD-AB93-44E8-86A3-B1EFE0977571-7507dc80.jpg', style: 'aspect-ratio:1/1;', caption: 'DCF Baptism', desc: 'Right after. Wet, cold, laughing, and about two seconds before everyone rushed in for hugs.' },
-        { src: 'uploads/IMG_7820.JPG', style: 'aspect-ratio:1/1;', caption: 'Fellowship Gathering', desc: 'A group I\u2019ve been in for a few years. This is what most Thursday nights look like.' },
+        { src: 'uploads/20250525-200559-d38770.jpg', style: 'aspect-ratio:1/1;', caption: 'Pilipino Cultural Night', desc: 'Backstage at Pilipino Cultural Night. The nerves before the biggest student show at Davis are their own kind of photo.' },
+        { src: 'uploads/img-5256-14bc76a7.jpg', style: 'aspect-ratio:1/1;', caption: 'DCF Baptism', desc: 'A baptism with our campus fellowship. You get one shot at these \u2014 no re-dos.' },
+        { src: 'uploads/img-8332-0e20a8da.jpg', style: 'aspect-ratio:1/1;', caption: 'Fellowship Gathering', desc: 'Our speaker turned around to take a selfie with the whole lawn. So did I.' },
+        { src: 'uploads/20250525-200629-d2b949-bc0defba.jpg', style: 'aspect-ratio:1/1;', caption: 'Pilipino Cultural Night', desc: 'On stage. Shooting from the pit means you get sweat and faces, not a wide.' },
+        { src: 'uploads/f29bbf06-4415-4ef7-a79b-2f1ea2f0a28c.jpg', style: 'aspect-ratio:1/1;', caption: 'Fellowship Gathering', desc: 'Before the program starts \u2014 the twenty minutes where people actually talk.' },
+        { src: 'uploads/20250525-200629-d1fc62.jpg', style: 'aspect-ratio:1/1;', caption: 'Pilipino Cultural Night', desc: 'Pulled back to show how full the room was. That\u2019s the story of the night.' },
+        { src: 'uploads/053513bd-ab93-44e8-86a3-b1efe0977571-7507dc80.jpg', style: 'aspect-ratio:1/1;', caption: 'DCF Baptism', desc: 'Right after. Wet, cold, laughing, and about two seconds before everyone rushed in for hugs.' },
+        { src: 'uploads/img-7820.jpg', style: 'aspect-ratio:1/1;', caption: 'Fellowship Gathering', desc: 'A group I\u2019ve been in for a few years. This is what most Thursday nights look like.' },
       ] },
     ];
     let photoIdx = 0;

@@ -426,7 +426,7 @@ class Component extends DCLogic {
     const featuredProjects = [
       { id: 'daily', title: 'DailyDavis', tag: 'MEDIA · GROWTH', stat: '1.2M+ views in the first 30 days from zero', role: 'Founder', skills: 'Content strategy, partnerships', image: 'slide1.jpg' },
       { id: 'tmg', title: 'The Midnight Grind', tag: 'MARKETING · PARTNERSHIPS', stat: '382 RSVPs at a single event across 20+ events run', role: 'Business Lead', skills: 'Event marketing, funnels', image: 'screenshot-2026-07-07-at-5-06-46-pm.jpg' },
-      { id: 'vintage', title: 'Yesterday Vintage', tag: 'UI/UX DESIGN', stat: 'End-to-end app & web redesign for a Davis retailer', role: 'UI/UX Designer', skills: 'Figma, visual identity', image: '1-3-30-45-pm-cc774448.png' },
+      { id: 'vintage', title: 'Yesterday Vintage', tag: 'UI/UX DESIGN', stat: 'End-to-end app & web redesign for a Davis retailer', role: 'UI/UX Designer', skills: 'Figma, visual identity', image: '1-3-30-45-pm-cc774448.jpg' },
       { id: 'nonprofit', title: 'Fourth & Hope', tag: 'UI/UX DESIGN · RESEARCH', stat: 'Nonprofit site redesign: 80% of testers struggled to navigate the old one', role: 'UX/UI Designer', skills: 'Research, Figma, mobile', image: 'fh-01.jpg' },
     ].map(f => ({ ...f, hasImage: !!f.image, open: () => this.openProjectDirect(f.id) }));
 
@@ -455,7 +455,7 @@ class Component extends DCLogic {
       { src: IMG + 'aa9bdb91-fe66-491e-8e9f-f6130f8fc8bd/Screenshot+2026-06-03+at+9.19.50%E2%80%AFPM.png', pos: 'center' },
       { src: 'img-4808.jpg', pos: 'center' },
     ];
-    const dwmImages = [ { src: '15.png' }, { src: '17.png' }, { src: '18.png' } ];
+    const dwmImages = [ { src: '15.jpg' }, { src: '17.jpg' }, { src: '18.jpg' } ];
 
     const brandLogos = [
       { image: 'https://unavatar.io/herocosmetics.com' },
@@ -490,22 +490,22 @@ class Component extends DCLogic {
     ];
     const dwmPress = [
       { src: U + 'calaggie-dwm.jpg', label: 'Featured in The California Aggie' },
-      { src: U + 'dwm-metrics.png', label: 'Top videos \u2014 2.8M & 2.4M views' },
+      { src: U + 'dwm-metrics.jpg', label: 'Top videos \u2014 2.8M & 2.4M views' },
       { src: U + 'collab-dwm.jpg', label: 'Business collab \u2014 giveaway campaign' },
       { src: U + 'herocosmetics.jpg', label: 'Hero Cosmetics campus activation' },
     ];
     const allProjects = [
-      mk('asucd', { tag: 'STUDENT GOVERNMENT · CONTENT STRATEGY', title: 'ASUCD Marketing', hook: 'Two repeatable content formats for a 14K-follower student government — built, shipped and measured over one summer.', role: 'Marketing Staff, one of four leads', timeline: 'Jun 2026 – Present', overview: 'Students use ASUCD every day — Unitrans, the CoHo, Aggie Reuse, The Pantry — and don\u2019t know it exists. The account posted announcements, which are useful once and forgettable immediately. With fall quarter as the deadline, I built two formats that give students a reason to follow: Davis Hacks, a numbered POV video series, and Did You Know, a two-card carousel that turns a campus fact into a guessing game.', bullets: ['Owned short-form video and the campus-fact carousel series end to end — strategy, production, design, and publishing in Loomly', '17,257 plays and 9,743 accounts reached on the first Davis Hacks episode, over a summer when campus is empty', '1.8\u00d7 plays per person reached, a 5.3% engagement rate against reach, and 89 saves — the metric the format was built for', 'Designed inside ASUCD\u2019s brand system: navy on gold, type in solid blocks, logo on payoff frames only'], image: U + 'screenshot-2026-09-02-at-8-34-25-pm.png', imagePos: 'center', screenImage: U + '07-the-series.png', visual: 'mockup', mockupType: 'computer', gallery: [
-        {src:U+'01-title-c7e7fd85.png',label:'ASUCD Marketing \u2014 portfolio case study'},
-        {src:U+'02-at-a-glance.png',label:'At a glance \u2014 17,257 plays, 9,743 reached, 89 saves'},
-        {src:U+'03-opportunity.png',label:'The opportunity \u2014 students use ASUCD and don\u2019t know it'},
-        {src:U+'04-my-role.png',label:'My role \u2014 strategy, production, design, publishing'},
-        {src:U+'05-davis-hacks.png',label:'Davis Hacks \u2014 a numbered video series'},
-        {src:U+'06-did-you-know.png',label:'Did You Know \u2014 two cards, one fact'},
-        {src:U+'07-the-series.png',label:'The series \u2014 three entries, one shape'},
-        {src:U+'08-growth.png',label:'Growth & performance'},
-        {src:U+'09-the-system.png',label:'The system \u2014 Aggie blue, Aggie gold, white'},
-        {src:U+'10-whats-next.png',label:'What\u2019s next'}
+      mk('asucd', { tag: 'STUDENT GOVERNMENT · CONTENT STRATEGY', title: 'ASUCD Marketing', hook: 'Two repeatable content formats for a 14K-follower student government — built, shipped and measured over one summer.', role: 'Marketing Staff, one of four leads', timeline: 'Jun 2026 – Present', overview: 'Students use ASUCD every day — Unitrans, the CoHo, Aggie Reuse, The Pantry — and don\u2019t know it exists. The account posted announcements, which are useful once and forgettable immediately. With fall quarter as the deadline, I built two formats that give students a reason to follow: Davis Hacks, a numbered POV video series, and Did You Know, a two-card carousel that turns a campus fact into a guessing game.', bullets: ['Owned short-form video and the campus-fact carousel series end to end — strategy, production, design, and publishing in Loomly', '17,257 plays and 9,743 accounts reached on the first Davis Hacks episode, over a summer when campus is empty', '1.8\u00d7 plays per person reached, a 5.3% engagement rate against reach, and 89 saves — the metric the format was built for', 'Designed inside ASUCD\u2019s brand system: navy on gold, type in solid blocks, logo on payoff frames only'], image: U + 'screenshot-2026-09-02-at-8-34-25-pm.png', imagePos: 'center', screenImage: U + '07-the-series.jpg', visual: 'mockup', mockupType: 'computer', gallery: [
+        {src:U+'01-title-c7e7fd85.jpg',label:'ASUCD Marketing \u2014 portfolio case study'},
+        {src:U+'02-at-a-glance.jpg',label:'At a glance \u2014 17,257 plays, 9,743 reached, 89 saves'},
+        {src:U+'03-opportunity.jpg',label:'The opportunity \u2014 students use ASUCD and don\u2019t know it'},
+        {src:U+'04-my-role.jpg',label:'My role \u2014 strategy, production, design, publishing'},
+        {src:U+'05-davis-hacks.jpg',label:'Davis Hacks \u2014 a numbered video series'},
+        {src:U+'06-did-you-know.jpg',label:'Did You Know \u2014 two cards, one fact'},
+        {src:U+'07-the-series.jpg',label:'The series \u2014 three entries, one shape'},
+        {src:U+'08-growth.jpg',label:'Growth & performance'},
+        {src:U+'09-the-system.jpg',label:'The system \u2014 Aggie blue, Aggie gold, white'},
+        {src:U+'10-whats-next.jpg',label:'What\u2019s next'}
       ], hasLink: true, link: 'https://www.instagram.com/asucd', linkLabel: 'View @asucd' }),
       mk('daily', { tag: 'MEDIA · GROWTH', title: 'Daily UC Davis', hook: 'Built, branded and grown from zero to 1.2M views in 30 days.', role: 'Founder & Marketing Lead', timeline: '2025 – Present', overview: 'UC Davis had demand without a home — students hunting campus news, events and food across scattered group chats, existing pages posting irregularly with no recognizable voice, and local businesses with no trusted student channel to buy. I built Daily UC Davis to fill that gap at scale, running brand, content, growth, partnerships and operations end to end.', bullets: ['1.2M+ views in the first 30 days from zero \u2014 then 3.3M views and 608K accounts reached (+53%) across the first 90 days', '57.8% of views came from non-followers — reach well beyond the existing audience', '6K+ followers, fully organic, and a 98% click rate on the link hub', '20+ business collaborations sourced and delivered, from local shops to national ambassadorships'], image: U + 'slide1.jpg', screenImage: U + 'slide7.jpg', visual: 'mockup', mockupType: 'computer', gallery: [
         {src:U + 'slide1.jpg',label:'Daily UC Davis — portfolio case study'},
@@ -521,65 +521,65 @@ class Component extends DCLogic {
         {src:U + 'slide11.jpg',label:'Takeaways'}
       ], hasLink: true, link: 'https://www.instagram.com/dailyucdavis', linkLabel: 'View @dailyucdavis' }),
       mk('worship', { tag: 'FOUNDER · EVENT MARKETING', title: 'Worship on the Lawn', hook: 'Founded a campus event now running monthly, a year later.', role: 'Founder', timeline: 'Dec 2025 – Jun 2026', overview: 'Founded and launched a monthly student-led worship gathering on the UC Davis Quad, leading vision, planning, and execution while partnering with five Christian fellowships on programming, marketing, logistics, and volunteers.', bullets: ['Grew a founding idea into a recurring monthly campus event', 'Coordinated marketing and logistics across 5 partner fellowships', '100+ attendees at the inaugural event', '60+ students at every gathering since, sustained through consistent promotion'], image: 'img-1777.jpg', visual: 'stat', stats: [['100+', 'launch attendees'], ['60+', 'monthly, ongoing']], hasLink: true, link: 'https://www.instagram.com/worshiponthelawn.ucd/', linkLabel: 'View @worshiponthelawn.ucd' }),
-      mk('nonprofit', { embed: 'https://fourth-and-hope-demo.vercel.app/', embedType: 'site', embedLabel: 'fourth-and-hope-demo.vercel.app · live build', tag: 'UI/UX DESIGN · RESEARCH', title: 'Fourth & Hope', hook: 'Redesigned a nonprofit\u2019s site so giving and volunteering take one click, not five.', role: 'UX/UI Designer & Researcher, 7-person team', timeline: 'Sep 2024 – Mar 2025', overview: 'Redesigned the website and mobile experience for Fourth & Hope, a Sacramento nonprofit, restructuring Home, Programs, Events, Get Involved, and Donate around clearer calls-to-action for both desktop and mobile.', bullets: ['Cut homepage navigation down to fewer, clearer items built around mission and programs', 'Designed a full parallel mobile-view system alongside the desktop redesign', 'Added a donation progress bar, program certifications, and "impact by the numbers" to build donor trust', 'Simplified Get Involved and Contact flows to make volunteering and giving easier to start'], image: U + 'fh-01.jpg', screenImage: U + 'fh-home-screen.png', visual: 'mockup', mockupType: 'computer', gallery: [
+      mk('nonprofit', { embed: 'https://fourth-and-hope-demo.vercel.app/', embedType: 'site', embedLabel: 'fourth-and-hope-demo.vercel.app · live build', tag: 'UI/UX DESIGN · RESEARCH', title: 'Fourth & Hope', hook: 'Redesigned a nonprofit\u2019s site so giving and volunteering take one click, not five.', role: 'UX/UI Designer & Researcher, 7-person team', timeline: 'Sep 2024 – Mar 2025', overview: 'Redesigned the website and mobile experience for Fourth & Hope, a Sacramento nonprofit, restructuring Home, Programs, Events, Get Involved, and Donate around clearer calls-to-action for both desktop and mobile.', bullets: ['Cut homepage navigation down to fewer, clearer items built around mission and programs', 'Designed a full parallel mobile-view system alongside the desktop redesign', 'Added a donation progress bar, program certifications, and "impact by the numbers" to build donor trust', 'Simplified Get Involved and Contact flows to make volunteering and giving easier to start'], image: U + 'fh-01.jpg', screenImage: U + 'fh-home-screen.jpg', visual: 'mockup', mockupType: 'computer', gallery: [
         {src:U+'fh-01.jpg',label:'Fourth & Hope \u00d7 #include \u2014 website design'},
-        {src:U+'fh-02.png',label:'About the client \u2014 services'},
-        {src:U+'fh-03.png',label:'Existing website \u2014 client wants & painpoints'},
-        {src:U+'fh-04.png',label:'User testing \u2014 10 tests, 80% struggled to navigate'},
-        {src:U+'fh-05.png',label:'Design system \u2014 Be Vietnam Pro, three-color palette'},
-        {src:U+'fh-19.png',label:'Meet the team \u2014 7-person #include team'},
-        {src:U+'fh-21.png',label:'Development \u2014 live demo'}
+        {src:U+'fh-02.jpg',label:'About the client \u2014 services'},
+        {src:U+'fh-03.jpg',label:'Existing website \u2014 client wants & painpoints'},
+        {src:U+'fh-04.jpg',label:'User testing \u2014 10 tests, 80% struggled to navigate'},
+        {src:U+'fh-05.jpg',label:'Design system \u2014 Be Vietnam Pro, three-color palette'},
+        {src:U+'fh-19.jpg',label:'Meet the team \u2014 7-person #include team'},
+        {src:U+'fh-21.jpg',label:'Development \u2014 live demo'}
       ] }),
-      mk('tmg', { tag: 'MARKETING · PARTNERSHIPS', title: 'The Midnight Grind', hook: 'Turned a "nowhere to study after 7pm" complaint into a funded campus business.', role: 'Business Lead & Video Marketing Coordinator', timeline: '2025 – Present', overview: 'UC Davis had no late-night, social study space with food after 7pm. I led marketing and partnerships across TMG\u2019s Big Bang pitch, then built the marketing and partnerships behind its launch as a student-run "third space" between nightlife and productivity.', bullets: ['Led creative direction and video production for the Big Bang business pitch', 'Team hit 380+ RSVPs at our highest-turnout event, across 20+ events and 6+ partnerships', 'Love & Lattes case highlight: 310 RSVPs converted to 130+ attendees \u2014 a 42% show-up rate', 'Drove a 97.5% Linktree click-through rate across campaign content'], image: 'screenshot-2026-07-07-at-5-06-46-pm.jpg', imagePos: 'center top', screenImage: U + '10-58d1200d.png', visual: 'mockup', mockupType: 'computer', gallery: [{src:U+'3-2d3e649a.png',label:'The problem'},{src:U+'4-67ef5fed.png',label:'The opportunity'},{src:U+'8-3e961705.png',label:'The solution'},{src:U+'6-e2d14c31.png',label:'My role'},{src:U+'5-c0993875.png',label:'Big Bang pitch video'},{src:U+'9-ed8139c3.png',label:'Impact'},{src:U+'10-58d1200d.png',label:'Case highlight — Love & Lattes'}], hasLink: true, link: 'https://www.instagram.com/tmgatdavis', linkLabel: 'View @tmgatdavis' }),
+      mk('tmg', { tag: 'MARKETING · PARTNERSHIPS', title: 'The Midnight Grind', hook: 'Turned a "nowhere to study after 7pm" complaint into a funded campus business.', role: 'Business Lead & Video Marketing Coordinator', timeline: '2025 – Present', overview: 'UC Davis had no late-night, social study space with food after 7pm. I led marketing and partnerships across TMG\u2019s Big Bang pitch, then built the marketing and partnerships behind its launch as a student-run "third space" between nightlife and productivity.', bullets: ['Led creative direction and video production for the Big Bang business pitch', 'Team hit 380+ RSVPs at our highest-turnout event, across 20+ events and 6+ partnerships', 'Love & Lattes case highlight: 310 RSVPs converted to 130+ attendees \u2014 a 42% show-up rate', 'Drove a 97.5% Linktree click-through rate across campaign content'], image: 'screenshot-2026-07-07-at-5-06-46-pm.jpg', imagePos: 'center top', screenImage: U + '10-58d1200d.jpg', visual: 'mockup', mockupType: 'computer', gallery: [{src:U+'3-2d3e649a.jpg',label:'The problem'},{src:U+'4-67ef5fed.jpg',label:'The opportunity'},{src:U+'8-3e961705.jpg',label:'The solution'},{src:U+'6-e2d14c31.jpg',label:'My role'},{src:U+'5-c0993875.jpg',label:'Big Bang pitch video'},{src:U+'9-ed8139c3.jpg',label:'Impact'},{src:U+'10-58d1200d.jpg',label:'Case highlight — Love & Lattes'}], hasLink: true, link: 'https://www.instagram.com/tmgatdavis', linkLabel: 'View @tmgatdavis' }),
       mk('green', { tag: 'RESEARCH · SUSTAINABILITY', title: 'Green Haven', hook: 'Made climate action feel hopeful instead of hopeless — with a seed packet.', image: U + 'screenshot-2026-09-02-at-8-33-55-pm.jpg', imagePos: 'center', visual: 'mockup', mockupType: 'computer', role: 'Design Researcher', timeline: 'Sep 2024 – Apr 2025', overview: 'Designed a community-centered, seed-based wildfire prevention concept — reframing sustainability around optimism instead of guilt, grounded in real research rather than symbolism.', bullets: ['Researched native plants, wildfire risk, and barriers to sustainable-planting education', 'Designed a seed-kit concept that reframes sustainability as preventative care, not sacrifice', 'Moved from annotated sketches to low-fidelity prototypes testing physical interaction and accessibility', 'Presented at the 2025 UC Davis Undergraduate Research Conference'], gallery: [
-        {src:U+'2 3.47.05 PM.jpg',label:'Project overview'},
-        {src:U+'3 3.47.05 PM.jpg',label:'The problem — optimism over fear'},
-        {src:U+'4 3.47.05 PM.jpg',label:'Research focus — three key areas'},
-        {src:U+'5 3.47.05 PM.jpg',label:'Why native plants'},
-        {src:U+'6 3.47.05 PM.jpg',label:'Early ideation sketches'},
-        {src:U+'8 3.47.05 PM.jpg',label:'Design development — annotated sketches'},
-        {src:U+'7 3.47.05 PM.jpg',label:'Prototyping — concept, accessibility, content'},
-        {src:U+'9 3.47.05 PM.jpg',label:'Iteration & refinement'},
-        {src:U+'10 3.47.05 PM.jpg',label:'Design system — palette, logo, typography'},
-        {src:U+'11 3.47.05 PM.jpg',label:'Final design — what shipped'},
-        {src:U+'12 3.47.05 PM.jpg',label:'Deliverables — site, pamphlets, seed packets'},
-        {src:U+'13 3.47.05 PM.jpg',label:'Final prototype'},
+        {src:U+'2-3-47-05-pm.jpg',label:'Project overview'},
+        {src:U+'3-3-47-05-pm.jpg',label:'The problem — optimism over fear'},
+        {src:U+'4-3-47-05-pm.jpg',label:'Research focus — three key areas'},
+        {src:U+'5-3-47-05-pm.jpg',label:'Why native plants'},
+        {src:U+'6-3-47-05-pm.jpg',label:'Early ideation sketches'},
+        {src:U+'8-3-47-05-pm.jpg',label:'Design development — annotated sketches'},
+        {src:U+'7-3-47-05-pm.jpg',label:'Prototyping — concept, accessibility, content'},
+        {src:U+'9-3-47-05-pm.jpg',label:'Iteration & refinement'},
+        {src:U+'10-3-47-05-pm.jpg',label:'Design system — palette, logo, typography'},
+        {src:U+'11-3-47-05-pm.jpg',label:'Final design — what shipped'},
+        {src:U+'12-3-47-05-pm.jpg',label:'Deliverables — site, pamphlets, seed packets'},
+        {src:U+'13-3-47-05-pm.jpg',label:'Final prototype'},
         {src:U+'14-b2eefbb8.jpg',label:'Presenting at the UC Davis Research Conference'},
         {src:U+'15-32a18165.jpg',label:'Impact & reflection'}
       ] }),
-      mk('vintage', { embed: 'https://www.yesterdaydavis.com/', embedType: 'site', embedLabel: 'yesterdaydavis.com · live site', tag: 'UI/UX DESIGN', title: 'Yesterday Vintage', hook: 'A Y2K-styled shop redesign, from wireframe to Demo Day.', role: 'UI/UX Designer & Presenter', timeline: 'Sep 2025 – Mar 2026', overview: 'Yesterday Vintage is a curated vintage clothing store in downtown Davis carrying 1950s\u2013early 2000s pieces in XS\u20133X for all genders. The site buried the things customers actually needed \u2014 sizing, events, store info. Our HMW: how might we design a site that surfaces relevant information and uses a balanced visual approach to pull people into the store in person?', bullets: ['Ran competitive analysis on 3 client-chosen reference sites, turning their pros/cons into our design constraints', 'Mapped two task flows \u2014 sizing/contact and browse-to-checkout \u2014 before any visual design', 'Built the shared design system: 3 typefaces, a 25-swatch palette, iconography, and reusable components', 'Delivered hi-fi desktop and mobile prototypes and presented to the store owners on Demo Day'], image: U + '1-3-30-45-pm-cc774448.png', screenImage: U + 'screenshot-2026-09-01-at-3-37-35-pm.jpg', phoneImage: U + 'screenshot-2026-09-01-at-3-36-47-pm.jpg', hasLink: true, link: 'https://www.yesterdaydavis.com/about', linkLabel: 'Visit yesterdaydavis.com', visual: 'mockup', mockupType: 'both', gallery: [
-        {src:U+'1-3-30-45-pm-cc774448.png',label:'Yesterday Vintage \u00d7 #include'},
-        {src:U+'2 3.30.45 PM-68538776.png',label:'Project overview \u2014 client & HMW'},
-        {src:U+'4 3.30.45 PM-6e1a213e.png',label:'User flows \u2014 two task paths'},
-        {src:U+'5 3.30.45 PM-f5043821.png',label:'Low-fidelity sketches'},
-        {src:U+'6 3.30.45 PM-cf211da0.png',label:'Mid-fidelity wireframes'},
-        {src:U+'7-d7ef2778.png',label:'Design system \u2014 type, color, components'},
-        {src:U+'8 3.30.45 PM-33089a3b.png',label:'High-fidelity prototypes \u2014 desktop & mobile'}
+      mk('vintage', { embed: 'https://www.yesterdaydavis.com/', embedType: 'site', embedLabel: 'yesterdaydavis.com · live site', tag: 'UI/UX DESIGN', title: 'Yesterday Vintage', hook: 'A Y2K-styled shop redesign, from wireframe to Demo Day.', role: 'UI/UX Designer & Presenter', timeline: 'Sep 2025 – Mar 2026', overview: 'Yesterday Vintage is a curated vintage clothing store in downtown Davis carrying 1950s\u2013early 2000s pieces in XS\u20133X for all genders. The site buried the things customers actually needed \u2014 sizing, events, store info. Our HMW: how might we design a site that surfaces relevant information and uses a balanced visual approach to pull people into the store in person?', bullets: ['Ran competitive analysis on 3 client-chosen reference sites, turning their pros/cons into our design constraints', 'Mapped two task flows \u2014 sizing/contact and browse-to-checkout \u2014 before any visual design', 'Built the shared design system: 3 typefaces, a 25-swatch palette, iconography, and reusable components', 'Delivered hi-fi desktop and mobile prototypes and presented to the store owners on Demo Day'], image: U + '1-3-30-45-pm-cc774448.jpg', screenImage: U + 'screenshot-2026-09-01-at-3-37-35-pm.jpg', phoneImage: U + 'screenshot-2026-09-01-at-3-36-47-pm.jpg', hasLink: true, link: 'https://www.yesterdaydavis.com/about', linkLabel: 'Visit yesterdaydavis.com', visual: 'mockup', mockupType: 'both', gallery: [
+        {src:U+'1-3-30-45-pm-cc774448.jpg',label:'Yesterday Vintage \u00d7 #include'},
+        {src:U+'2-3-30-45-pm-68538776.jpg',label:'Project overview \u2014 client & HMW'},
+        {src:U+'4-3-30-45-pm-6e1a213e.jpg',label:'User flows \u2014 two task paths'},
+        {src:U+'5-3-30-45-pm-f5043821.jpg',label:'Low-fidelity sketches'},
+        {src:U+'6-3-30-45-pm-cf211da0.jpg',label:'Mid-fidelity wireframes'},
+        {src:U+'7-d7ef2778.jpg',label:'Design system \u2014 type, color, components'},
+        {src:U+'8-3-30-45-pm-33089a3b.jpg',label:'High-fidelity prototypes \u2014 desktop & mobile'}
       ] }),
-      mk('quickbite', { embed: 'https://embed.figma.com/proto/7Yaz63cU5zXtK8qgs5vzo9/Final-Project---Maya-Yoo?node-id=2048-146&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&embed-host=share', embedType: 'proto', embedTall: true, embedLink: 'https://www.figma.com/proto/7Yaz63cU5zXtK8qgs5vzo9/Final-Project---Maya-Yoo?node-id=2048-146', embedLabel: 'Figma prototype · tap through it', tag: 'MOBILE APP DESIGN · RESEARCH', title: 'CampusBites', hook: 'Designed an app that fights decision fatigue at every meal.', role: 'UI/UX Designer, Researcher, Prototyper', timeline: 'May – Jun 2026', overview: 'A DES 112 final project: designing a mobile app that helps college students beat meal-decision fatigue by recommending meals fast based on budget, time, and preference.', bullets: ['Grounded the concept in research on decision fatigue and its effect on mental energy and willpower', 'Built a full visual system, then wireframed core browse-and-save user flows', 'Usability-tested with 5 UC Davis students; shipped fixes for type size, back navigation, and reviews', 'Delivered a complete case study covering research, design decisions, and reflection'], image: U + 'screenshot-2026-08-28-at-3-36-46-pm-a19680d1.png', screenImage: U + 'screenshot-2026-08-28-at-3-37-05-pm-a27b20d3.png', visual: 'mockup', mockupType: 'computer', gallery: [
-        {src:U+'Screenshot 2026-08-28 at 3.35.17 PM-79c76de9.png',label:'CampusBites — helping students decide faster'},
-        {src:U+'Screenshot 2026-08-28 at 3.35.24 PM-013f99a0.png',label:'The problem & the solution'},
-        {src:U+'Screenshot 2026-08-28 at 3.35.42 PM-d3f864eb.png',label:'Why it matters — decision fatigue research'},
-        {src:U+'Screenshot 2026-08-28 at 3.35.51 PM-20f83386.png',label:'Research findings from 11 students'},
-        {src:U+'Screenshot 2026-08-28 at 3.36.00 PM-af3ce151.png',label:'Design system & early wireframes'},
-        {src:U+'Screenshot 2026-08-28 at 3.36.17 PM-c0e465cf.png',label:'User flows'},
-        {src:U+'Screenshot 2026-08-28 at 3.36.30 PM-ce9a087e.png',label:'Design decisions — problem to solution'},
-        {src:U+'screenshot-2026-08-28-at-3-36-46-pm-a19680d1.png',label:'Final design'},
-        {src:U+'screenshot-2026-08-28-at-3-37-05-pm-a27b20d3.png',label:'Key tasks — find & save a meal'},
-        {src:U+'Screenshot 2026-08-28 at 3.37.15 PM.png',label:'Key tasks — meal planning & student reviews'},
-        {src:U+'Screenshot 2026-08-28 at 3.37.30 PM-5bb41562.png',label:'Usability testing with 5 students'},
-        {src:U+'Screenshot 2026-08-28 at 3.37.44 PM-0502924e.png',label:'Live prototype'}
+      mk('quickbite', { embed: 'https://embed.figma.com/proto/7Yaz63cU5zXtK8qgs5vzo9/Final-Project---Maya-Yoo?node-id=2048-146&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&embed-host=share', embedType: 'proto', embedTall: true, embedLink: 'https://www.figma.com/proto/7Yaz63cU5zXtK8qgs5vzo9/Final-Project---Maya-Yoo?node-id=2048-146', embedLabel: 'Figma prototype · tap through it', tag: 'MOBILE APP DESIGN · RESEARCH', title: 'CampusBites', hook: 'Designed an app that fights decision fatigue at every meal.', role: 'UI/UX Designer, Researcher, Prototyper', timeline: 'May – Jun 2026', overview: 'A DES 112 final project: designing a mobile app that helps college students beat meal-decision fatigue by recommending meals fast based on budget, time, and preference.', bullets: ['Grounded the concept in research on decision fatigue and its effect on mental energy and willpower', 'Built a full visual system, then wireframed core browse-and-save user flows', 'Usability-tested with 5 UC Davis students; shipped fixes for type size, back navigation, and reviews', 'Delivered a complete case study covering research, design decisions, and reflection'], image: U + 'screenshot-2026-08-28-at-3-36-46-pm-a19680d1.jpg', screenImage: U + 'screenshot-2026-08-28-at-3-37-05-pm-a27b20d3.jpg', visual: 'mockup', mockupType: 'computer', gallery: [
+        {src:U+'screenshot-2026-08-28-at-3-35-17-pm-79c76de9.jpg',label:'CampusBites — helping students decide faster'},
+        {src:U+'screenshot-2026-08-28-at-3-35-24-pm-013f99a0.jpg',label:'The problem & the solution'},
+        {src:U+'screenshot-2026-08-28-at-3-35-42-pm-d3f864eb.jpg',label:'Why it matters — decision fatigue research'},
+        {src:U+'screenshot-2026-08-28-at-3-35-51-pm-20f83386.jpg',label:'Research findings from 11 students'},
+        {src:U+'screenshot-2026-08-28-at-3-36-00-pm-af3ce151.jpg',label:'Design system & early wireframes'},
+        {src:U+'screenshot-2026-08-28-at-3-36-17-pm-c0e465cf.jpg',label:'User flows'},
+        {src:U+'screenshot-2026-08-28-at-3-36-30-pm-ce9a087e.jpg',label:'Design decisions — problem to solution'},
+        {src:U+'screenshot-2026-08-28-at-3-36-46-pm-a19680d1.jpg',label:'Final design'},
+        {src:U+'screenshot-2026-08-28-at-3-37-05-pm-a27b20d3.jpg',label:'Key tasks — find & save a meal'},
+        {src:U+'screenshot-2026-08-28-at-3-37-15-pm.jpg',label:'Key tasks — meal planning & student reviews'},
+        {src:U+'screenshot-2026-08-28-at-3-37-30-pm-5bb41562.jpg',label:'Usability testing with 5 students'},
+        {src:U+'screenshot-2026-08-28-at-3-37-44-pm-0502924e.jpg',label:'Live prototype'}
       ] }),
-      mk('nova', { embed: 'https://embed.figma.com/proto/Qy3JSyl7hBHXMUVFCn7pgA/CodeLab-Open-Source-%E2%80%94%C2%A0SQ26?node-id=2426-7179&starting-point-node-id=2426%3A7179&embed-host=share', embedType: 'proto', embedLink: 'https://www.figma.com/proto/Qy3JSyl7hBHXMUVFCn7pgA/CodeLab-Open-Source-%E2%80%94%C2%A0SQ26?node-id=2426-7179&starting-point-node-id=2426%3A7179', embedLabel: 'Figma prototype · tap through it', tag: 'PRODUCT DESIGN · OPEN SOURCE', title: 'Nova Open Source', hook: 'Designed a leaderboard that makes open-source work visible.', role: 'Designer, CodeLab Davis — 9-person team', timeline: 'Spring 2025', overview: 'CodeLab Davis had no centralized way to track or celebrate contributions across its open-source projects — GitHub alone wasn\u2019t enough. I designed the CodeLab OS Leaderboard, a web app that tracks, scores, and celebrates contributions across projects like Nextgit and Anchor.', bullets: ['Designed a weighted scoring system and live leaderboard to replace scattered GitHub tracking', 'Built an interactive, color-coded contribution graph with light gamification', 'Designed sidebar navigation, dropdown filters, and per-project status tags for fast scanning', 'Worked daily with mentors, a PM, and 4 developers through design reviews'], image: U + 'screenshot-2026-08-28-at-3-39-48-pm-f022b3f5.png', visual: 'mockup', mockupType: 'computer', gallery: [
-        {src:U+'Screenshot 2026-08-28 at 3.38.43 PM-5e069640.png',label:'Nova Open Source — Spring 2026 CodeLab cohort'},
-        {src:U+'Screenshot 2026-08-28 at 3.38.52 PM-46b83444.png',label:'The team — 9 people, I was one of 2 designers'},
-        {src:U+'Screenshot 2026-08-28 at 3.39.09 PM-eb5d703f.png',label:'The problem — GitHub alone doesn\u2019t cut it'},
-        {src:U+'Screenshot 2026-08-28 at 3.39.21 PM-b3be1f54.png',label:'The solution — CodeLab OS Leaderboard'},
-        {src:U+'Screenshot 2026-08-28 at 3.39.36 PM-26abf8fc.png',label:'Interactive graph, color-coded data, gamification'},
-        {src:U+'screenshot-2026-08-28-at-3-39-48-pm-f022b3f5.png',label:'Project overview, filters & sidebar navigation'},
-        {src:U+'Screenshot 2026-08-28 at 3.45.48 PM-a8e6188b.png',label:'Track.'},
-        {src:U+'Screenshot 2026-08-28 at 3.45.56 PM-711775d6.png',label:'Recognize.'},
-        {src:U+'Screenshot 2026-08-28 at 3.46.04 PM-3dcbe874.png',label:'Reward.'}
+      mk('nova', { embed: 'https://embed.figma.com/proto/Qy3JSyl7hBHXMUVFCn7pgA/CodeLab-Open-Source-%E2%80%94%C2%A0SQ26?node-id=2426-7179&starting-point-node-id=2426%3A7179&embed-host=share', embedType: 'proto', embedLink: 'https://www.figma.com/proto/Qy3JSyl7hBHXMUVFCn7pgA/CodeLab-Open-Source-%E2%80%94%C2%A0SQ26?node-id=2426-7179&starting-point-node-id=2426%3A7179', embedLabel: 'Figma prototype · tap through it', tag: 'PRODUCT DESIGN · OPEN SOURCE', title: 'Nova Open Source', hook: 'Designed a leaderboard that makes open-source work visible.', role: 'Designer, CodeLab Davis — 9-person team', timeline: 'Spring 2025', overview: 'CodeLab Davis had no centralized way to track or celebrate contributions across its open-source projects — GitHub alone wasn\u2019t enough. I designed the CodeLab OS Leaderboard, a web app that tracks, scores, and celebrates contributions across projects like Nextgit and Anchor.', bullets: ['Designed a weighted scoring system and live leaderboard to replace scattered GitHub tracking', 'Built an interactive, color-coded contribution graph with light gamification', 'Designed sidebar navigation, dropdown filters, and per-project status tags for fast scanning', 'Worked daily with mentors, a PM, and 4 developers through design reviews'], image: U + 'screenshot-2026-08-28-at-3-39-48-pm-f022b3f5.jpg', visual: 'mockup', mockupType: 'computer', gallery: [
+        {src:U+'screenshot-2026-08-28-at-3-38-43-pm-5e069640.jpg',label:'Nova Open Source — Spring 2026 CodeLab cohort'},
+        {src:U+'screenshot-2026-08-28-at-3-38-52-pm-46b83444.jpg',label:'The team — 9 people, I was one of 2 designers'},
+        {src:U+'screenshot-2026-08-28-at-3-39-09-pm-eb5d703f.jpg',label:'The problem — GitHub alone doesn\u2019t cut it'},
+        {src:U+'screenshot-2026-08-28-at-3-39-21-pm-b3be1f54.jpg',label:'The solution — CodeLab OS Leaderboard'},
+        {src:U+'screenshot-2026-08-28-at-3-39-36-pm-26abf8fc.jpg',label:'Interactive graph, color-coded data, gamification'},
+        {src:U+'screenshot-2026-08-28-at-3-39-48-pm-f022b3f5.jpg',label:'Project overview, filters & sidebar navigation'},
+        {src:U+'screenshot-2026-08-28-at-3-45-48-pm-a8e6188b.jpg',label:'Track.'},
+        {src:U+'screenshot-2026-08-28-at-3-45-56-pm-711775d6.jpg',label:'Recognize.'},
+        {src:U+'screenshot-2026-08-28-at-3-46-04-pm-3dcbe874.jpg',label:'Reward.'}
       ] }),
     ];
 

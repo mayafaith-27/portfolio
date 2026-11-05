@@ -10,12 +10,20 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg">
 <script src="./support.js"></script>
+<script data-mute-all>(function(){function m(v){if(!v.hasAttribute('controls')){v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.volume=0;}}
+document.addEventListener('play',function(e){if(e.target&&e.target.tagName==='VIDEO')m(e.target);},true);
+document.addEventListener('volumechange',function(e){var v=e.target;if(v&&v.tagName==='VIDEO'&&!v.hasAttribute('controls')&&!v.muted)m(v);},true);
+new MutationObserver(function(){document.querySelectorAll('video').forEach(m);}).observe(document.documentElement,{childList:true,subtree:true});})();</script>
+<script data-force-download>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[download]');if(!a)return;var href=a.getAttribute('href');if(!href||!/\.pdf($|\?)/i.test(href))return;e.preventDefault();var name=a.getAttribute('download')||'download.pdf';fetch(a.href).then(function(r){if(!r.ok)throw 0;return r.blob();}).then(function(b){var u=URL.createObjectURL(b),t=document.createElement('a');t.href=u;t.download=name;document.body.appendChild(t);t.click();t.remove();setTimeout(function(){URL.revokeObjectURL(u);},4000);}).catch(function(){window.location.href=a.href;});},true);</script>
 </head>
 <body>
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://embed.figma.com" crossorigin="">
+<link rel="preconnect" href="https://www.figma.com" crossorigin="">
+<link rel="preconnect" href="https://fourth-and-hope-demo.vercel.app">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Public+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23201a15'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' fill='%23c8763f' text-anchor='middle'%3EMY%3C/text%3E%3C/svg%3E">
 <style>
   body{margin:0;background:oklch(0.97 0.01 60);}
@@ -32,8 +40,8 @@
   @keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
   @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
   @keyframes wordIn2{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-  body{cursor:none;}
-  a,[onclick],button{cursor:none;}
+  
+  
 
   @media (max-width:760px){
     html{-webkit-text-size-adjust:100%;}
@@ -66,97 +74,121 @@
 </style>
 </helmet>
 <div style="font-family:'Public Sans',sans-serif;background:oklch(0.97 0.01 60);color:oklch(0.2 0.015 50);min-height:100vh;overflow-x:hidden;">
-  <div id="cursor-glow" style="{{ cursorGlowStyle }}"></div>
-  <div id="cursor-ring" style="{{ cursorRingStyle }}"></div>
 
   <nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px clamp(16px,3vw,40px);background:oklch(0.97 0.01 60 / 0.88);backdrop-filter:blur(14px);border-bottom:1px solid oklch(0.85 0.01 55);">
     <div onClick="{{ goHome }}" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;letter-spacing:0.2px;cursor:pointer;">Maya Yoo</div>
     <div style="display:flex;align-items:center;gap:clamp(14px,2vw,30px);flex-wrap:wrap;">
-      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="5">
         <div onClick="{{ item.onClick }}" style="{{ item.style }}">{{ item.label }}</div>
       </sc-for>
-      <a href="{{ resumeUrl }}" target="_blank" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:10px 20px;border-radius:100px;font-weight:700;font-size:13px;" style-hover="background:oklch(0.56 0.13 45);">Résumé ↓</a>
+      <a href="{{ resumeUrl }}" download="MayaYoo_Resume.pdf" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:10px 20px;border-radius:100px;font-weight:700;font-size:13px;" style-hover="background:oklch(0.56 0.13 45);">Résumé ↓</a>
     </div>
   </nav>
-    <section style="padding:clamp(96px,12vw,160px) clamp(20px,4vw,40px) 40px;max-width:1200px;margin:0 auto;">
-      <div style="font-size:13px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">DESIGN CASE STUDIES</div>
-      <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(30px,5vw,44px);font-weight:700;margin:0 0 16px;">Products I&rsquo;ve designed</h1>
-      <p style="color:oklch(0.45 0.02 50);font-size:16px;max-width:660px;line-height:1.6;margin:0 0 40px;">Five projects taken from research to high-fidelity prototype — two of them live sites you can click through. Tap any project to open the full story, including every slide of the process. Campaign work lives under <span onClick="{{ goto.marketing }}" style="cursor:pointer;color:oklch(0.56 0.13 45);font-weight:700;">Marketing</span>.</p>
-    </section>
-    <section style="padding:0 clamp(20px,4vw,40px) 80px;max-width:1200px;margin:0 auto;">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;">
-        <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:22px;">
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;color:oklch(0.85 0.01 55);margin-bottom:10px;">01</div>
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:600;margin-bottom:8px;">Research first</div>
-          <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.55;text-wrap:pretty;">Interviews, competitive analysis, and usability tests before a single screen. 11 students for CampusBites; 10 tests for Fourth &amp; Hope.</div>
+    <section data-screen-label="Design hero" style="padding:clamp(96px,10vw,124px) clamp(20px,4vw,44px) clamp(22px,2.6vw,32px);max-width:1200px;margin:0 auto;">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px 48px;">
+        <div style="flex:1 1 520px;min-width:0;">
+          <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11.5px;font-weight:700;color:oklch(0.5 0.13 45);margin-bottom:18px;">/ product &amp; ux design</div>
+          <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(36px,5.2vw,64px);font-weight:800;letter-spacing:-2.6px;line-height:0.95;margin:0;max-width:16ch;text-wrap:pretty;">I design from what users struggle with.</h1>
         </div>
-        <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:22px;">
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;color:oklch(0.85 0.01 55);margin-bottom:10px;">02</div>
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:600;margin-bottom:8px;">Map the flows</div>
-          <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.55;text-wrap:pretty;">Task flows on paper before visual design, so the structure is argued out early rather than discovered late.</div>
-        </div>
-        <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:22px;">
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;color:oklch(0.85 0.01 55);margin-bottom:10px;">03</div>
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:600;margin-bottom:8px;">Build the system</div>
-          <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.55;text-wrap:pretty;">Type, palette, iconography and reusable components — so the work stays consistent and someone else can pick it up.</div>
-        </div>
-        <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:22px;">
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;color:oklch(0.85 0.01 55);margin-bottom:10px;">04</div>
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:600;margin-bottom:8px;">Test, then fix</div>
-          <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.55;text-wrap:pretty;">Put it in front of real users and ship the changes they expose. Type size, back navigation, reviews — all testing outcomes.</div>
-        </div>
-      </div>
-      <p style="font-size:13px;color:oklch(0.45 0.02 50);margin:22px 0 0;">Teams of 7 and 9 designers and engineers on the client projects — plus two builds that shipped to real users.</p>
-    </section>
-    <section style="padding:0 clamp(20px,4vw,40px) 140px;max-width:1200px;margin:0 auto;">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;">
-        <sc-for list="{{ designProjects }}" as="proj" hint-placeholder-count="5">
-          <div data-project="{{ proj.id }}" style="{{ proj.cardStyle }}">
-            <div onClick="{{ proj.toggle }}" style="cursor:pointer;">
-              <sc-if value="{{ proj.hasImage }}" hint-placeholder-val="{{ true }}"><div style="height:150px;border-radius:10px;overflow:hidden;margin-bottom:16px;position:relative;background:oklch(0.96 0.018 60);">
-                <img src="{{ proj.image }}" style="width:100%;height:100%;object-fit:cover;object-position:{{ proj.imagePos }};">
-                <div style="position:absolute;inset:0;background:oklch(0.3 0.06 45 / 0.12);"></div>
-              </div></sc-if>
-              <div style="font-size:11px;color:oklch(0.56 0.13 45);font-weight:700;letter-spacing:0.6px;margin-bottom:8px;">{{ proj.tag }}</div>
-              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;">
-                <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:700;">{{ proj.title }}</div>
-                <div style="font-size:20px;color:oklch(0.56 0.13 45);flex-shrink:0;">{{ proj.toggleIcon }}</div>
-              </div>
-              <div style="font-size:13.5px;color:oklch(0.45 0.02 50);margin-top:6px;">{{ proj.hook }}</div>
-              <div style="font-size:11.5px;color:oklch(0.55 0.02 50);margin-top:10px;">{{ proj.role }} · {{ proj.timeline }}</div>
-            </div>
-            <sc-if value="{{ proj.isOpen }}" hint-placeholder-val="{{ false }}">
-              <div style="margin-top:24px;padding-top:24px;border-top:1px solid oklch(0.85 0.01 55);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;">
-                <div>
-                  <p style="color:oklch(0.3 0.02 50);line-height:1.65;font-size:15px;margin:0 0 18px;">{{ proj.overview }}</p>
-                  <div style="display:flex;flex-direction:column;gap:9px;">
-                    <sc-for list="{{ proj.bullets }}" as="b" hint-placeholder-count="4">
-                      <div style="font-size:14px;color:oklch(0.4 0.02 50);padding-left:18px;position:relative;line-height:1.5;"><span style="position:absolute;left:0;color:oklch(0.56 0.13 45);">—</span>{{ b }}</div>
-                    </sc-for>
-                  </div>
-                  <sc-if value="{{ proj.hasLink }}" hint-placeholder-val="{{ false }}">
-                    <a href="{{ proj.link }}" target="_blank" style="display:inline-block;margin-top:18px;font-weight:700;color:oklch(0.56 0.13 45);">{{ proj.linkLabel }} →</a>
-                  </sc-if>
-                </div>
-                <div><dc-import name="ProjectVisual" proj="{{ proj }}" hint-size="100%,260px"></dc-import></div>
-              </div>
-              <sc-if value="{{ proj.hasGallery }}" hint-placeholder-val="{{ false }}">
-                <div style="margin-top:34px;padding-top:26px;border-top:1px solid oklch(0.88 0.01 55);">
-                  <div style="font-size:11.5px;letter-spacing:1.5px;font-weight:700;color:oklch(0.56 0.13 45);margin-bottom:14px;">THE PROCESS</div>
-                  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px;">
-                    <sc-for list="{{ proj.gallery }}" as="g" hint-placeholder-count="4">
-                      <figure onClick="{{ g.open }}" style="margin:0;cursor:pointer;">
-                        <div style="aspect-ratio:16/9;overflow:hidden;border-radius:6px;border:1px solid oklch(0.87 0.01 55);background:oklch(0.97 0.005 55);"><img src="{{ g.src }}" alt="{{ g.label }}" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" style-hover="transform:scale(1.05);"></div>
-                        <figcaption style="font-size:11.5px;color:oklch(0.5 0.02 50);margin-top:8px;letter-spacing:0.4px;text-transform:uppercase;font-weight:600;">{{ g.label }}</figcaption>
-                      </figure>
-                    </sc-for>
-                  </div>
-                </div>
-              </sc-if>
-            </sc-if>
+        <div style="flex:0 1 400px;min-width:260px;display:flex;flex-direction:column;gap:14px;">
+          <p style="color:oklch(0.38 0.02 50);font-size:15px;line-height:1.6;margin:0;text-wrap:pretty;">Five projects, one at a time. Each shows the problem, what users showed me, the decisions that came from it, and what shipped.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <sc-for list="{{ designProof }}" as="m" hint-placeholder-count="4">
+              <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;font-weight:500;padding:6px 10px;border-radius:6px;border:1px solid oklch(0.86 0.02 55);background:oklch(0.995 0.004 60);"><strong style="font-weight:700;color:oklch(0.2 0.015 50);">{{ m.num }}</strong> <span style="color:oklch(0.45 0.02 50);">{{ m.label }}</span></div>
+            </sc-for>
           </div>
-        </sc-for>
+        </div>
       </div>
+    </section>
+
+    <section id="design-work" data-screen-label="Projects" style="padding:0 clamp(12px,3vw,44px) clamp(48px,6vw,80px);max-width:1240px;margin:0 auto;">
+      <div style="position:sticky;top:62px;z-index:20;background:oklch(0.97 0.01 60 / 0.92);backdrop-filter:blur(12px);padding:14px clamp(8px,1vw,4px) 14px;border-bottom:1px solid oklch(0.88 0.015 55);">
+        <div style="display:flex;gap:clamp(10px,1.4vw,18px);overflow-x:auto;padding:8px 6px 4px;scrollbar-width:none;">
+          <sc-for list="{{ designTabs }}" as="t" hint-placeholder-count="5">
+            <div onClick="{{ t.pick }}" style="flex:0 0 auto;width:clamp(128px,15vw,184px);cursor:pointer;display:flex;flex-direction:column;gap:6px;">
+              <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;font-weight:700;letter-spacing:0.3px;color:oklch(0.5 0.02 50);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ t.num }} · {{ t.title }}</div>
+              <div style="position:relative;">
+                <div style="aspect-ratio:16/10;border-radius:4px;overflow:hidden;background:oklch(0.93 0.015 55);transition:opacity .25s,transform .25s;{{ t.thumbStyle }}" style-hover="opacity:1;transform:translateY(-2px);"><img decoding="async" src="{{ t.image }}" alt="{{ t.title }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:{{ t.imagePos }};display:block;"></div>
+                <sc-if value="{{ t.active }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute;inset:-4px;border:1.5px solid oklch(0.56 0.13 45);border-radius:6px;pointer-events:none;"></div>
+                  <div style="position:absolute;left:-7px;top:-7px;width:7px;height:7px;background:#fff;border:1.5px solid oklch(0.56 0.13 45);"></div>
+                  <div style="position:absolute;right:-7px;top:-7px;width:7px;height:7px;background:#fff;border:1.5px solid oklch(0.56 0.13 45);"></div>
+                  <div style="position:absolute;left:-7px;bottom:-7px;width:7px;height:7px;background:#fff;border:1.5px solid oklch(0.56 0.13 45);"></div>
+                  <div style="position:absolute;right:-7px;bottom:-7px;width:7px;height:7px;background:#fff;border:1.5px solid oklch(0.56 0.13 45);"></div>
+                </sc-if>
+              </div>
+              <div style="font-size:11.5px;color:oklch(0.45 0.02 50);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ t.kind }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="margin-top:clamp(18px,2.2vw,28px);border:1px solid oklch(0.86 0.02 55);border-radius:18px;overflow:hidden;background-color:oklch(0.975 0.006 60);background-image:radial-gradient(oklch(0.82 0.015 55) 1px,transparent 1.2px);background-size:18px 18px;">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 20px;padding:clamp(16px,2vw,22px) clamp(18px,2.6vw,32px);border-bottom:1px solid oklch(0.88 0.015 55);background:oklch(0.995 0.004 60 / 0.9);">
+          <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;min-width:0;">
+            <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;font-weight:700;color:oklch(0.5 0.13 45);">{{ d.num }} / 05</div>
+            <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,2.8vw,34px);font-weight:800;letter-spacing:-1.2px;line-height:1;margin:0;">{{ d.title }}</h2>
+            <div style="font-size:13px;color:oklch(0.45 0.02 50);font-weight:600;">{{ d.tag }}</div>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <div onClick="{{ dPrev }}" aria-label="Previous project" style="width:38px;height:38px;border-radius:50%;border:1.5px solid oklch(0.82 0.02 55);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;background:oklch(0.995 0.004 60);transition:background .2s,color .2s,transform .2s;" style-hover="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);transform:translateX(-2px);">←</div>
+            <div onClick="{{ dNext }}" aria-label="Next project" style="width:38px;height:38px;border-radius:50%;border:1.5px solid oklch(0.82 0.02 55);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;background:oklch(0.995 0.004 60);transition:background .2s,color .2s,transform .2s;" style-hover="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);transform:translateX(2px);">→</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(22px,3vw,40px);padding:clamp(20px,2.8vw,36px) clamp(18px,2.6vw,32px);align-items:start;">
+          <div style="display:flex;flex-direction:column;gap:16px;min-width:0;">
+            <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;color:oklch(0.5 0.02 50);">{{ d.visualLabel }}</div>
+            <div style="background:oklch(0.995 0.004 60);border-radius:12px;padding:10px;box-shadow:0 18px 40px -24px oklch(0.2 0.02 50 / 0.45);border:1px solid oklch(0.88 0.015 55);"><dc-import name="ProjectVisual" proj="{{ d }}" hint-size="100%,300px"></dc-import></div>
+            <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:oklch(0.88 0.015 55);border:1px solid oklch(0.88 0.015 55);border-radius:10px;overflow:hidden;">
+              <sc-for list="{{ d.metrics }}" as="m" hint-placeholder-count="4">
+                <div style="background:oklch(0.995 0.004 60);padding:12px 12px 13px;min-width:0;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(17px,1.8vw,22px);font-weight:800;letter-spacing:-0.8px;line-height:1;">{{ m.num }}</div><div style="font-size:11px;color:oklch(0.42 0.02 50);font-weight:600;margin-top:6px;line-height:1.35;">{{ m.label }}</div></div>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:12.5px;">
+              <span style="color:oklch(0.4 0.02 50);"><strong style="color:oklch(0.2 0.015 50);">{{ d.role }}</strong> · {{ d.timeline }}</span>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;">
+              <sc-if value="{{ d.hasLink }}" hint-placeholder-val="{{ false }}"><a href="{{ d.link }}" target="_blank" rel="noopener" style="font-size:12.5px;font-weight:700;padding:9px 14px;border-radius:100px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);transition:background .2s,transform .2s;" style-hover="background:oklch(0.56 0.13 45);color:oklch(0.97 0.01 60);transform:translateY(-2px);">{{ d.linkLabel }} ↗</a></sc-if>
+              <sc-if value="{{ d.hasProto }}" hint-placeholder-val="{{ false }}"><a href="{{ d.embedLink }}" target="_blank" rel="noopener" style="font-size:12.5px;font-weight:700;padding:9px 14px;border-radius:100px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);transition:background .2s,transform .2s;" style-hover="background:oklch(0.56 0.13 45);color:oklch(0.97 0.01 60);transform:translateY(-2px);">Open Figma prototype ↗</a></sc-if>
+              <div onClick="{{ d.deckOpen }}" style="cursor:pointer;font-size:12.5px;font-weight:700;padding:9px 14px;border-radius:100px;border:1.5px solid oklch(0.82 0.02 55);background:oklch(0.995 0.004 60);transition:border-color .2s,transform .2s;" style-hover="border-color:oklch(0.2 0.015 50);transform:translateY(-2px);">{{ d.deckLabel }}</div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:clamp(18px,2.2vw,24px);min-width:0;">
+            <div>
+              <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:0.6px;font-weight:700;color:oklch(0.5 0.13 45);text-transform:uppercase;margin-bottom:10px;">01 · Problem</div>
+              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(20px,2.2vw,27px);font-weight:800;letter-spacing:-0.9px;line-height:1.12;margin:0 0 10px;text-wrap:pretty;">{{ d.question }}</h3>
+              <p style="font-size:14px;color:oklch(0.38 0.02 50);line-height:1.6;margin:0;text-wrap:pretty;">{{ d.situation }}</p>
+            </div>
+            <div style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);border-radius:12px;padding:16px 18px;">
+              <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;font-weight:700;color:oklch(0.78 0.13 45);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.6px;">02 · What users showed me</div>
+              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(16px,1.6vw,19px);font-weight:600;line-height:1.38;letter-spacing:-0.3px;text-wrap:pretty;">{{ d.insight }}</div>
+            </div>
+            <div>
+              <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:0.6px;font-weight:700;color:oklch(0.5 0.13 45);text-transform:uppercase;margin-bottom:10px;">03 · Process</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                <sc-for list="{{ d.steps }}" as="s" hint-placeholder-count="4">
+                  <div title="{{ s.cap }}" style="display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;padding:6px 11px;border-radius:100px;background:oklch(0.995 0.004 60);border:1px solid oklch(0.86 0.02 55);"><span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;color:oklch(0.5 0.13 45);">{{ s.n }}</span>{{ s.step }}</div>
+                </sc-for>
+              </div>
+              <div style="font-size:12.5px;color:oklch(0.42 0.02 50);line-height:1.55;margin-top:10px;text-wrap:pretty;">{{ d.processLine }}</div>
+            </div>
+            <div>
+              <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:0.6px;font-weight:700;color:oklch(0.5 0.13 45);text-transform:uppercase;margin-bottom:6px;">04 · Decisions</div>
+              <div style="display:flex;flex-direction:column;">
+                <sc-for list="{{ d.decisions }}" as="x" hint-placeholder-count="4">
+                  <div style="display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;padding:11px 0;border-bottom:1px dashed oklch(0.84 0.02 55);">
+                    <div style="width:22px;height:22px;border-radius:50% 50% 50% 2px;background:oklch(0.56 0.13 45);color:#fff;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;">{{ x.n }}</div>
+                    <div style="min-width:0;"><div style="font-size:12.5px;color:oklch(0.5 0.02 50);line-height:1.45;">{{ x.p }}</div><div style="font-size:14px;font-weight:600;color:oklch(0.2 0.015 50);line-height:1.45;margin-top:3px;text-wrap:pretty;">{{ x.d }}</div></div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:oklch(0.45 0.02 50);margin:20px 4px 0;">Campaign work lives under <span onClick="{{ goto.marketing }}" style="cursor:pointer;color:oklch(0.5 0.13 45);font-weight:700;">Marketing</span>.</p>
     </section>
 
   
@@ -164,7 +196,7 @@
   <sc-if value="{{ slideLightbox }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ closeSlide }}" style="position:fixed;inset:0;background:oklch(0.08 0.01 50 / 0.94);z-index:210;display:flex;align-items:center;justify-content:center;padding:32px;animation:lightboxFade .25s ease;">
       <div onClick="{{ stopProp }}" style="max-width:1040px;width:100%;display:flex;flex-direction:column;animation:lightboxScale .3s cubic-bezier(0.2,0.8,0.3,1);">
-        <img src="{{ slideLightbox.src }}" style="width:100%;max-height:76vh;object-fit:contain;border-radius:8px;">
+        <img decoding="async" src="{{ slideLightbox.src }}" style="width:100%;max-height:76vh;object-fit:contain;border-radius:8px;">
         <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;color:#fff;">
           <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:700;">{{ slideLightbox.label }}</div>
           <div style="font-size:12.5px;color:oklch(0.65 0.02 55);flex-shrink:0;">{{ slideLightbox.counter }}</div>
@@ -181,7 +213,7 @@
       <div onClick="{{ stopProp }}" style="max-width:400px;width:100%;display:flex;flex-direction:column;animation:lightboxScale .3s cubic-bezier(0.2,0.8,0.3,1);position:relative;">
         <div style="position:relative;width:100%;height:min(72vh,700px);border-radius:12px;overflow:hidden;background:oklch(0.15 0.02 50);">
           <sc-if value="{{ activeVideo.canEmbed }}" hint-placeholder-val="{{ true }}">
-            <iframe src="{{ activeVideo.embedUrl }}" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="" scrolling="no"></iframe>
+            <iframe loading="lazy" src="{{ activeVideo.embedUrl }}" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="" scrolling="no"></iframe>
           </sc-if>
           <sc-if value="{{ activeVideo.noEmbed }}" hint-placeholder-val="{{ false }}">
             <a href="{{ activeVideo.link }}" target="_blank" rel="noopener" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:14px;padding:26px;text-align:center;background-image:linear-gradient(oklch(0.15 0.02 50 / 0.1),oklch(0.15 0.02 50 / 0.85)),url('{{ activeVideo.tileCover }}');background-size:cover;background-position:center;color:oklch(0.97 0.01 60);">
@@ -200,7 +232,7 @@
     </div>
   </sc-if>
 
-  <footer style="padding:56px clamp(20px,4vw,40px) 40px;border-top:1px solid oklch(0.85 0.01 55);">
+  <footer style="padding:56px clamp(20px,4vw,40px) 28px;border-top:1px solid oklch(0.85 0.01 55);">
     <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:26px;">
       <div>
         <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px;">Maya Faith Yoo</div>
@@ -219,14 +251,14 @@
 
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;showFaithWork&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Tweaks&quot;},&quot;resumeUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://drive.google.com/file/d/1POKkfz5ka_epCnrfIOHhEX-hjA__O_J8/view?usp=sharing&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tweaks&quot;},&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;maya.faith.yoo@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tweaks&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;showFaithWork&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Tweaks&quot;},&quot;resumeUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;maya-yoo-resume.pdf&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tweaks&quot;},&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;maya.faith.yoo@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tweaks&quot;}}">
 const IMG = 'https://images.squarespace-cdn.com/content/v1/67a1585e91654d42a21cd470/';
 const CURRENT_PAGE = 'design';
 const PAGE_HREFS = {"home":"index.html","marketing":"marketing.html","design":"design.html","ventures":"ventures.html","content":"storytelling.html","storytelling":"storytelling.html","photography":"photography.html","about":"about.html"};
 const PROJECT_PAGE = {asucd:'marketing',daily:'ventures',tmg:'marketing',worship:'marketing',nonprofit:'design',vintage:'design',quickbite:'design',nova:'design',green:'design'};
 
 class Component extends DCLogic {
-  state = { page: 'home', t: 0, openProject: null, statsStarted: false, lightboxIndex: null, activeVideoId: null, cx: -100, cy: -100, cursorDown: false, heroWordIdx: 0, slideLB: null };
+  state = { page: 'home', t: 0, openProject: null, statsStarted: false, lightboxIndex: null, activeVideoId: null, cx: -100, cy: -100, cursorDown: false, heroWordIdx: 0, slideLB: null, dIdx: 0 };
 
   componentDidMount() {
     this.setupStatsObserver();
@@ -266,9 +298,9 @@ class Component extends DCLogic {
     this._revealTimer = setInterval(this._revealCheck, 500); this._revealCheck();
     this._onMouseDown = () => { this.cursorDown = true; };
     this._onMouseUp = () => { this.cursorDown = false; };
-    window.addEventListener('mousemove', this._onMouseMove);
-    window.addEventListener('mousedown', this._onMouseDown);
-    window.addEventListener('mouseup', this._onMouseUp);
+    
+    
+    
   }
   componentWillUnmount() { if (this._raf) cancelAnimationFrame(this._raf); if (this._revealTimer) clearInterval(this._revealTimer); window.removeEventListener('scroll', this._onScrollReveal); window.removeEventListener('resize', this._onScrollReveal); if (this._statsPoll) clearInterval(this._statsPoll); if (this._io) this._io.disconnect(); window.removeEventListener('keydown', this._onKeyDown); window.removeEventListener('mousemove', this._onMouseMove); window.removeEventListener('mousedown', this._onMouseDown); window.removeEventListener('mouseup', this._onMouseUp); if (this._wordTimer) clearInterval(this._wordTimer); window.removeEventListener('hashchange', this._onHash); }
   componentDidUpdate() { this.setupStatsObserver(); if (this._revealCheck) this._revealCheck(); }
@@ -365,13 +397,13 @@ class Component extends DCLogic {
   renderVals() {
     const t = this.state.t;
     const page = CURRENT_PAGE;
-    const pages = ['home', 'ventures', 'marketing', 'storytelling', 'design', 'about'];
-    const labels = { home: 'Home', marketing: 'Marketing', storytelling: 'Storytelling', design: 'Design', ventures: 'Ventures', about: 'About' };
-    const navItems = pages.map(id => ({ label: labels[id], onClick: () => { if (id !== CURRENT_PAGE) window.location.href = PAGE_HREFS[id]; }, style: this.navStyle(page === id) }));
+    const pages = ['ventures', 'marketing', 'design', 'storytelling', 'about'];
+    const labels = { home: 'Home', marketing: 'Marketing', storytelling: 'Content', design: 'Design', ventures: 'Ventures', about: 'About' };
+    const navItems = pages.map(id => ({ label: labels[id], onClick: () => { if (id !== CURRENT_PAGE) window.location.href = PAGE_HREFS[id]; }, style: this.navStyle(page === id || (id === 'storytelling' && page === 'photography')) }));
     const goto = {};
-    pages.concat(['content','photography']).forEach(id => { goto[id] = () => { if (id !== CURRENT_PAGE) window.location.href = PAGE_HREFS[id]; }; });
+    pages.concat(['home','content','photography']).forEach(id => { goto[id] = () => { if (id !== CURRENT_PAGE) window.location.href = PAGE_HREFS[id]; }; });
 
-    const resumeUrl = this.props.resumeUrl ?? 'https://drive.google.com/file/d/1POKkfz5ka_epCnrfIOHhEX-hjA__O_J8/view?usp=sharing';
+    const resumeUrl = this.props.resumeUrl ?? 'maya-yoo-resume.pdf';
     const email = this.props.contactEmail ?? 'maya.faith.yoo@gmail.com';
     const showFaithWork = this.props.showFaithWork ?? true;
     const heroWords = ['stick around for.', 'come back to.', 'share with friends.', 'talk about.'];
@@ -571,7 +603,7 @@ class Component extends DCLogic {
           { title: 'Faith in Jesus', views: '3.5M views', subStat: '833K likes · 56K saves', link: 'https://www.tiktok.com/@daviswithmaya/video/7555530233898650893', cover: 'dwm-faith-in-jesus.jpg' },
           { title: 'Thankfulness', views: '2.2M views', subStat: '268K likes · 51K shares', link: 'https://www.instagram.com/reel/DRkmKVHknI1/', cover: 'dwm-thankfulness.jpg' },
           { title: 'Friends', views: '2.4M views', subStat: '330K likes · 61K shares · 110K saves', link: 'https://www.instagram.com/reel/DT30YDHEi1j/', cover: 'dwm-friends.jpg' },
-          { title: 'Side Quests', views: '2.3M views', subStat: 'College depression can\u2019t hit if you\u2019re busy', link: 'https://www.instagram.com/daviswithmaya/reels/', cover: 'dwm-side-quests.jpg' },
+          { title: 'Side Quests', views: '2.3M views', subStat: 'College depression can\u2019t hit if you\u2019re busy', link: 'https://www.instagram.com/reel/DRVupkvEvKE/', cover: 'dwm-side-quests.jpg' },
         ] },
       { name: 'Daily UC Davis', handle: '@dailyucdavis', role: 'Growth Strategy, Editing', desc: 'Campus media platform covering student life, events, and everyday UC Davis culture.', cover: IMG + '5037c585-fa9e-4676-b097-27d8b738e838/DailyDavis+%283%29.png', impact: [{ num: '1.2M+', label: '30-day views' }, { num: '400K', label: 'top video' }],
         videos: [
@@ -678,7 +710,7 @@ class Component extends DCLogic {
     contentAccounts.forEach(acc => { acc.videos.forEach(v => { v.id = v.link; v.tileCover = v.cover || acc.cover; v.open = () => this.openVideo(v.id); v.embedUrl = this.toEmbedUrl(v.link); v.canEmbed = !!v.embedUrl; v.noEmbed = !v.embedUrl; v.platform = v.link.includes('tiktok.com') ? 'TikTok' : 'Instagram'; this.allVideos.push(v); }); });
     const activeVideo = this.state.activeVideoId ? this.allVideos.find(v => v.id === this.state.activeVideoId) : null;
     const featPick = [
-      { link: 'https://www.instagram.com/daviswithmaya/reels/', role: 'PERSONAL BRAND', big: '2.3M views', account: '@daviswithmaya', why: 'Side quests. Shot with friends on a random night out \u2014 no hook, no trend, it traveled because it was real.' },
+      { link: 'https://www.instagram.com/reel/DRVupkvEvKE/', role: 'PERSONAL BRAND', big: '2.3M views', account: '@daviswithmaya', why: 'Side quests. Shot with friends on a random night out \u2014 no hook, no trend, it traveled because it was real.' },
       { link: 'https://www.instagram.com/reel/DKAISUmppyu/', role: 'CAMPUS MEDIA', big: '3,145 entries', account: '@dailyucdavis', why: 'The ASUCD giveaway. 103K views and 588 shares \u2014 a campaign built to make people act, not just watch.' },
       { link: 'https://www.instagram.com/reel/DXwqP9qKF-g/', role: 'EVENT MARKETING', big: '310 RSVPs', account: '@tmgatdavis', why: 'The Love & Lattes push. 310 RSVPs, 130+ people in the room \u2014 content built to fill seats, not feeds.' },
       { link: 'https://www.instagram.com/reel/DVKOFytAVWT/', role: 'LAUNCH', big: '100+ at launch', account: 'Worship on the Lawn', why: 'The teaser for an event that didn\u2019t exist yet. It\u2019s still running monthly a year later.' },
@@ -709,14 +741,61 @@ class Component extends DCLogic {
 
     const byId = {}; allProjects.forEach(p => { byId[p.id] = p; });
     const marketingProjects = ["asucd","daily","tmg","worship"].map(i => byId[i]).filter(Boolean);
+
+    const dx = {
+      nonprofit: { headNum: '80%', headLabel: 'of testers lost on the old site',
+        question: 'How might a nonprofit site make giving or volunteering a one-click decision?',
+        insight: '80% of testers couldn\u2019t find their way around the old site. That one finding set the brief: fewer choices, clearer calls to action.',
+        steps: [{g:2,step:'Audit',cap:'Mapped the client\u2019s wants against the old site\u2019s pain points.'},{g:3,step:'Test',cap:'10 usability tests on the existing site.'},{g:4,step:'System',cap:'Be Vietnam Pro and a three-color palette, desktop and mobile.'},{g:6,step:'Build',cap:'Handed off to developers and shipped a live demo.'}],
+        decisions: [{p:'Testers got lost in a crowded menu.',d:'Cut homepage navigation to fewer items, built around mission and programs.'},{p:'Donors need a reason to trust before they give.',d:'Added a donation progress bar, program certifications and \u201cimpact by the numbers.\u201d'},{p:'Volunteering and giving took too many steps.',d:'Simplified Get Involved and Contact so either one starts in a click.'},{p:'A desktop layout breaks on a phone.',d:'Designed a full parallel mobile system, not a squeezed desktop.'}],
+        metrics: [{num:'10',label:'usability tests run'},{num:'80%',label:'struggled on the old site'},{num:'7',label:'person #include team'},{num:'Live',label:'build shipped'}] },
+      vintage: { headNum: 'Live', headLabel: 'site, desktop + mobile',
+        question: 'How might a shop\u2019s site surface what shoppers need \u2014 and still pull them into the store?',
+        insight: 'The questions shoppers ask most \u2014 sizing, events, where the store is \u2014 were the hardest things to find.',
+        steps: [{g:2,step:'Flows',cap:'Two task paths: sizing/contact and browse-to-checkout.'},{g:3,step:'Sketch',cap:'Low-fi layouts to settle structure before style.'},{g:4,step:'Wireframe',cap:'Mid-fi wireframes checked against the flows.'},{g:5,step:'System',cap:'3 typefaces, 25 swatches, shared components.'},{g:6,step:'Hi-fi',cap:'Desktop and mobile prototypes for Demo Day.'}],
+        decisions: [{p:'Sizing and store info were buried.',d:'Built the first task flow around sizing and contact, before any visuals.'},{p:'The client pointed to three sites they liked.',d:'Ran a competitive analysis and turned each site\u2019s pros and cons into design constraints.'},{p:'A 7-person team needed one look.',d:'Built the shared system: 3 typefaces, a 25-swatch palette, reusable components.'},{p:'The goal was foot traffic, not just clicks.',d:'Balanced a Y2K visual style with clear store info to bring people in person.'}],
+        metrics: [{num:'3',label:'reference sites analyzed'},{num:'2',label:'task flows mapped first'},{num:'25',label:'swatch palette'},{num:'Demo Day',label:'presented to the owners'}] },
+      quickbite: { headNum: '5 → 3', headLabel: 'test sessions → fixes shipped',
+        question: 'How might an app take the decision out of \u201cwhat should I eat?\u201d',
+        insight: 'Decision fatigue drains the energy students need for everything else \u2014 and choosing a meal happens several times a day.',
+        steps: [{g:3,step:'Research',cap:'Findings from interviews with 11 students.'},{g:5,step:'Flows',cap:'Core browse-and-save flows.'},{g:4,step:'System',cap:'Visual system and early wireframes.'},{g:10,step:'Test',cap:'5 usability sessions with UC Davis students.'},{g:7,step:'Final',cap:'Find and save a meal in a few taps.'}],
+        decisions: [{p:'Too many options is what causes the fatigue.',d:'Recommend meals by budget, time and preference instead of listing everything.'},{p:'Testers found the type too small.',d:'Increased type size across cards and detail screens.'},{p:'Testers got stuck a level deep.',d:'Added clear back navigation on every screen.'},{p:'Reviews were hard to find when deciding.',d:'Moved student reviews to where the decision happens.'}],
+        metrics: [{num:'11',label:'students researched'},{num:'5',label:'usability sessions'},{num:'3',label:'fixes shipped from testing'},{num:'Figma',label:'clickable prototype'}] },
+      nova: { headNum: '1 of 2', headLabel: 'designers on a 9-person team',
+        question: 'How do you make open-source work visible \u2014 and worth celebrating?',
+        insight: 'Contributions disappeared into GitHub. Nobody could see who was doing the work across projects.',
+        steps: [{g:2,step:'Problem',cap:'Why GitHub alone wasn\u2019t enough.'},{g:3,step:'Concept',cap:'One leaderboard across every CodeLab project.'},{g:4,step:'Data viz',cap:'Color-coded graph with light gamification.'},{g:5,step:'Navigation',cap:'Sidebar, filters and status tags.'},{g:7,step:'Brand',cap:'Track. Recognize. Reward.'}],
+        decisions: [{p:'Contributions were scattered across repos.',d:'Designed a weighted scoring system and one live leaderboard.'},{p:'Raw activity data was hard to read.',d:'Built a color-coded contribution graph with light gamification.'},{p:'Many projects to scan at once.',d:'Sidebar navigation, dropdown filters and per-project status tags.'},{p:'Engineers had to build what I designed.',d:'Worked daily with mentors, a PM and 4 developers through design reviews.'}],
+        metrics: [{num:'9',label:'person team'},{num:'1 of 2',label:'designers'},{num:'4',label:'developers built it'},{num:'Figma',label:'clickable prototype'}] },
+      green: { headNum: 'URC 2025', headLabel: 'presented at UC Davis research conference',
+        question: 'How might climate action feel hopeful instead of hopeless?',
+        insight: 'Fear-based climate messaging makes people tune out. Optimism \u2014 something they can do \u2014 gets them to act.',
+        steps: [{g:2,step:'Research',cap:'Native plants, wildfire risk, education barriers.'},{g:4,step:'Ideate',cap:'Early sketches of the seed-kit idea.'},{g:6,step:'Prototype',cap:'Lo-fi tests of physical interaction and accessibility.'},{g:8,step:'System',cap:'Palette, logo and typography.'},{g:10,step:'Deliver',cap:'Site, pamphlets and seed packets.'}],
+        decisions: [{p:'Sustainability felt like guilt and sacrifice.',d:'Reframed planting as preventative care against wildfire.'},{p:'Climate action felt abstract.',d:'Made it physical: a seed kit you can hold and plant.'},{p:'Symbolic design doesn\u2019t change behavior.',d:'Grounded every choice in research on native plants and wildfire risk.'},{p:'Not everyone handles a kit the same way.',d:'Tested physical interaction and accessibility in lo-fi prototypes.'}],
+        metrics: [{num:'3',label:'research focus areas'},{num:'3',label:'deliverables: site, pamphlet, seeds'},{num:'14',label:'process stages documented'},{num:'URC',label:'2025 presentation'}] },
+    };
+    const designProof = [{num:'21',label:'usability sessions across two client builds'},{num:'2',label:'live sites you can click through'},{num:'5',label:'case studies, research to hi-fi'},{num:'7–9',label:'person teams with PMs and engineers'}];
+    const designCases = ["nonprofit","vintage","quickbite","nova","green"].map(i => byId[i]).filter(Boolean).map((p, n) => { const x = dx[p.id] || {}; const gal = p.gallery || []; return { ...p, ...x, num: '0' + (n + 1), steps: (x.steps || []).filter(s => gal[s.g]).map((s, k) => ({ ...s, n: '0' + (k + 1), src: gal[s.g].src, open: gal[s.g].open })), deckOpen: gal[0] ? gal[0].open : null, deckLabel: 'All ' + gal.length + ' process slides' }; });
+
+    const dSit = {"nonprofit":"Fourth & Hope is a Sacramento nonprofit. Giving or volunteering meant digging through several pages, on desktop and on phones.","vintage":"A curated vintage store in downtown Davis: 1950s to early-2000s pieces, XS–3X, all genders. The old site buried sizing, events and store info.","quickbite":"A DES 112 final project: a mobile app that recommends meals fast, based on budget, time and preference.","nova":"CodeLab Davis runs several open-source projects at once, with no central way to track or celebrate who contributes.","green":"A research project on wildfire prevention through native planting, presented at the 2025 UC Davis Undergraduate Research Conference."};
+    const dKind = {"nonprofit":"Nonprofit website","vintage":"Retail website","quickbite":"Mobile app","nova":"Web app · data viz","green":"Research · physical"};
+    const dIdx = Math.max(0, Math.min(designCases.length - 1, this.state.dIdx || 0));
+    const pickD = (i) => { this.setState({ dIdx: (i + designCases.length) % designCases.length }); const el = document.getElementById('design-work'); if (el) { const top = el.getBoundingClientRect().top + window.scrollY - 70; if (window.scrollY > top + 40) window.scrollTo({ top, behavior: 'smooth' }); } };
+    const designTabs = designCases.map((c, i) => ({ num: c.num, title: c.title, kind: dKind[c.id] || '', image: c.image, imagePos: c.imagePos || 'center', active: i === dIdx, thumbStyle: i === dIdx ? 'opacity:1;' : 'opacity:0.6;', pick: () => pickD(i) }));
+    const dPreviewPick = {"quickbite":[7,8,9,11],"nova":[3,4,5,6,7,8],"green":null};
+    const dPrevSlides = (c) => { const g = c.gallery || []; if (!(c.id in dPreviewPick)) return null; const p = dPreviewPick[c.id]; return (p ? p.map(i => g[i]).filter(Boolean) : g).map(x => ({ src: x.src, label: x.label })); };
+    const dc0 = designCases[dIdx] || {};
+    const d = { ...dc0, visualLabel: dc0.id === 'green' ? '↳ full case deck · use the arrows' : (dc0.embedType === 'proto' ? '↳ final screens · use the arrows' : '↳ live site · scroll inside'), previewSlides: dPrevSlides(dc0), situation: dSit[dc0.id] || '', hasProto: dc0.embedType === 'proto' && !!dc0.embedLink, steps: (dc0.steps || []), processLine: (dc0.steps || []).map(s => s.step + ': ' + s.cap).join(' '), decisions: (dc0.decisions || []).map((x, k) => ({ ...x, n: k + 1 })), deckLabel: 'Original deck · ' + ((dc0.gallery || []).length) + ' slides' };
+    const dPrev = () => pickD(dIdx - 1); const dNext = () => pickD(dIdx + 1);
     const designProjects = ["nonprofit","vintage","nova","quickbite","green"].map(i => byId[i]).filter(Boolean);
+    if (!this._preloaded) { this._preloaded = true; const urls = []; designCases.forEach(c => { if (c.image) urls.push(c.image); if (c.screenImage) urls.push(c.screenImage); (c.gallery || []).forEach(g => g && g.src && urls.push(g.src)); }); const uniq = [...new Set(urls)]; this._preImgs = []; let k = 0; const step = () => { const end = Math.min(k + 4, uniq.length); for (; k < end; k++) { const im = new Image(); im.decoding = 'async'; im.src = uniq[k]; this._preImgs.push(im); } if (k < uniq.length) idle(step); }; const idle = window.requestIdleCallback ? (f) => requestIdleCallback(f, { timeout: 500 }) : (f) => setTimeout(f, 120); setTimeout(() => idle(step), 600); }
 
     return {
-      marketingProjects, designProjects,
+      marketingProjects, designProjects, designCases, designProof, designTabs, d, dPrev, dNext,
       isHome: page === 'home', isVentures: page === 'ventures', isProjects: page === 'projects', isContent: page === 'content', isMarketing: page === 'marketing', isPhotography: page === 'photography', isAbout: page === 'about',
       activeVideo, closeVideo: this.closeVideo,
       heroWord, heroWordStyle, marqueeBrands, slideLightbox, closeSlide: this.closeSlide, nextSlide: this.nextSlide, prevSlide: this.prevSlide,
-      goHome: () => this.setPage('home'), goto, navItems, resumeUrl, email, showFaithWork, lightboxPhoto, closeLightbox: this.closeLightbox, prevPhoto: this.prevPhoto, nextPhoto: this.nextPhoto, stopProp: this.stopProp,
+      goHome: () => { const home = (typeof PAGE_HREFS !== 'undefined' && PAGE_HREFS.home) || 'index.html'; if (typeof CURRENT_PAGE !== 'undefined' && CURRENT_PAGE !== 'home') { window.location.href = home; } else { window.scrollTo({ top: 0, behavior: 'smooth' }); } }, goto, navItems, resumeUrl, email, showFaithWork, lightboxPhoto, closeLightbox: this.closeLightbox, prevPhoto: this.prevPhoto, nextPhoto: this.nextPhoto, stopProp: this.stopProp,
       cursorGlowStyle: { position: 'fixed', left: 0, top: 0, width: '46px', height: '46px', borderRadius: '50%', background: 'radial-gradient(circle, oklch(0.72 0.13 45 / 0.35), transparent 70%)', pointerEvents: 'none', zIndex: 998, transform: 'translate(-100px,-100px)', transition: 'transform 0.05s linear' },
       cursorRingStyle: { position: 'fixed', left: 0, top: 0, width: '30px', height: '30px', borderRadius: '50%', border: '1.5px solid oklch(0.56 0.13 45 / 0.7)', pointerEvents: 'none', zIndex: 999, transform: 'translate(-100px,-100px)', transition: 'transform 0.05s linear' },
       displayViews: (6.6 * t).toFixed(1) + 'M+',

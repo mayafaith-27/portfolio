@@ -9,7 +9,13 @@
 <meta property="og:description" content="5.4M profile views in a single month, run by one person.">
 <meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg">
+<script src="./case-embed.js"></script>
 <script src="./support.js"></script>
+<script data-mute-all>(function(){function m(v){if(!v.hasAttribute('controls')){v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.volume=0;}}
+document.addEventListener('play',function(e){if(e.target&&e.target.tagName==='VIDEO')m(e.target);},true);
+document.addEventListener('volumechange',function(e){var v=e.target;if(v&&v.tagName==='VIDEO'&&!v.hasAttribute('controls')&&!v.muted)m(v);},true);
+new MutationObserver(function(){document.querySelectorAll('video').forEach(m);}).observe(document.documentElement,{childList:true,subtree:true});})();</script>
+<script data-force-download>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[download]');if(!a)return;var href=a.getAttribute('href');if(!href||!/\.pdf($|\?)/i.test(href))return;e.preventDefault();var name=a.getAttribute('download')||'download.pdf';fetch(a.href).then(function(r){if(!r.ok)throw 0;return r.blob();}).then(function(b){var u=URL.createObjectURL(b),t=document.createElement('a');t.href=u;t.download=name;document.body.appendChild(t);t.click();t.remove();setTimeout(function(){URL.revokeObjectURL(u);},4000);}).catch(function(){window.location.href=a.href;});},true);</script>
 </head>
 <body>
 <x-dc>
@@ -18,483 +24,500 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
+  html{scroll-behavior:smooth;}
   body{margin:0;background:oklch(0.97 0.01 60);}
   a{color:oklch(0.5 0.13 45);text-decoration:none;}
   a:hover{color:oklch(0.4 0.13 45);}
   img{cursor:zoom-in}
   ::selection{background:oklch(0.56 0.13 45);color:#fff;}
-  .shelf::-webkit-scrollbar{height:6px}
-  .shelf::-webkit-scrollbar-thumb{background:oklch(0.8 0.01 55);border-radius:3px}
-
+  details>summary::-webkit-details-marker{display:none;}
+  details[open] [data-open-label]{display:none;}
+  details:not([open]) [data-close-label]{display:none;}
+  [data-rail]::-webkit-scrollbar,[data-shelf]::-webkit-scrollbar,[data-subnav]::-webkit-scrollbar{display:none;}
   @media (max-width:760px){
     html{-webkit-text-size-adjust:100%;}
-    body,a,[onclick],button{cursor:auto !important;}
-    #cursor-glow,#cursor-ring{display:none !important;}
-    nav{padding:9px 12px !important;gap:8px !important;flex-wrap:nowrap !important;overflow:visible !important;}
-    nav>div:first-child{flex-shrink:0 !important;font-size:17px !important;}
-    nav>div:last-child{flex:1 1 auto !important;min-width:0 !important;overflow-x:auto !important;flex-wrap:nowrap !important;justify-content:flex-end !important;gap:14px !important;}
+    nav{padding:8px 12px !important;gap:8px !important;flex-wrap:nowrap !important;}
+    nav>a:first-child{font-size:16px !important;flex-shrink:0;}
+    nav>div:last-child{flex:1 1 auto;min-width:0;overflow-x:auto;flex-wrap:nowrap !important;justify-content:flex-end;gap:13px !important;}
     nav>div:last-child::-webkit-scrollbar{display:none;}
-    nav div{font-size:12.5px !important;flex-shrink:0 !important;}
-    nav a{position:sticky !important;right:0 !important;flex-shrink:0 !important;padding:7px 12px !important;font-size:11.5px !important;white-space:nowrap !important;box-shadow:-14px 0 14px 6px oklch(0.97 0.01 60) !important;}
-    section{padding-left:18px !important;padding-right:18px !important;}
-    nav+section,section:first-of-type{padding-top:104px !important;}
-    section[style*="min-height:100vh"],section[style*="min-height: 100vh"]{min-height:auto !important;padding-top:104px !important;padding-bottom:44px !important;}
-    h1{font-size:33px !important;letter-spacing:-0.9px !important;line-height:1.08 !important;}
-    h2{font-size:25px !important;letter-spacing:-0.6px !important;line-height:1.15 !important;}
-    h3{font-size:20px !important;letter-spacing:-0.4px !important;}
-    p{font-size:14.5px !important;line-height:1.62 !important;}
-    div[style*="grid-template-columns:1fr 1fr"],div[style*="grid-template-columns: 1fr 1fr"],div[style*="grid-template-columns:1fr 280px"],div[style*="grid-template-columns: 1fr 280px"]{grid-template-columns:1fr !important;}
-    div[style*="gap:60px"],div[style*="gap: 60px"],div[style*="gap:50px"],div[style*="gap: 50px"]{gap:28px !important;}
-    div[style*="gap:28px"],div[style*="gap: 28px"]{gap:18px !important;flex-wrap:wrap !important;}
-    div[style*="justify-self:end"],div[style*="justify-self: end"]{justify-self:center !important;margin:8px auto 26px !important;}
-    div[style*="bottom:-22px"][style*="left:-40px"],div[style*="bottom: -22px"][style*="left: -40px"]{left:-8px !important;}
-    div[style*="top:-16px"][style*="right:-26px"],div[style*="top: -16px"][style*="right: -26px"]{right:-6px !important;}
-    div[style*="font-size:150px"],div[style*="font-size: 150px"]{font-size:84px !important;}
-    div[style*="font-size:38px"],div[style*="font-size: 38px"]{font-size:28px !important;}
-    div[style*="grid-template-columns:1.2fr 0.8fr"],div[style*="grid-template-columns: 1.2fr 0.8fr"],div[style*="grid-template-columns:110px 1fr"],div[style*="grid-template-columns: 110px 1fr"],figure[style*="grid-template-columns:1fr 1fr"],figure[style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr !important;}
+    nav>div:last-child a{font-size:11.5px !important;flex-shrink:0;white-space:nowrap;}
+    nav a[data-resume]{position:sticky;right:0;padding:6px 11px !important;font-size:11px !important;box-shadow:-14px 0 14px 6px oklch(0.97 0.01 60);}
+    [data-crumb]{display:none !important;}
+    [data-pad]{padding-left:20px !important;padding-right:20px !important;}
+    [data-stack]{grid-template-columns:1fr !important;gap:28px !important;}
+    [data-hero-grid]{grid-template-columns:1fr !important;gap:32px !important;padding-top:112px !important;}
+    [data-hero-reel]{justify-self:center !important;max-width:260px !important;margin-right:0 !important;}
+    [data-aggie-chip]{right:-28px !important;width:130px !important;}
+    [data-metrics]>div:last-child{grid-column:1 / -1;padding-left:0 !important;}
+    [data-hero-reel]{max-width:300px !important;justify-self:center !important;}
+    [data-metrics]{grid-template-columns:1fr 1fr !important;}
+    [data-metrics]>div{border-left:0 !important;padding:18px 12px 18px 0 !important;border-bottom:1px solid oklch(0.34 0.02 50);}
+    [data-model]{grid-template-columns:1fr !important;gap:0 !important;}
+    [data-model-arrow]{transform:rotate(90deg);justify-self:start;margin:4px 0 4px 6px;}
+    [data-rail]{display:flex !important;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px !important;margin:0 -20px;padding:0 20px 8px;}
+    [data-rail]>*{flex:0 0 84%;scroll-snap-align:center;}
+    [data-flow]{grid-template-columns:1fr !important;}
+    [data-flow-arrow]{display:none !important;}
+    h1{font-size:36px !important;letter-spacing:-1px !important;line-height:1.02 !important;}
+    h2{font-size:30px !important;letter-spacing:-0.8px !important;line-height:1.08 !important;}
+    p{font-size:16px !important;line-height:1.6 !important;}
     img{max-width:100%;}
   }
 </style>
 </helmet>
-<div style="font-family:'Public Sans',sans-serif;background:oklch(0.97 0.01 60);color:oklch(0.2 0.015 50);min-height:100vh;overflow-x:hidden;">
+<div style="font-family:'Public Sans',sans-serif;background:oklch(0.97 0.01 60);color:oklch(0.2 0.015 50);min-height:100vh;overflow-x:clip;">
 
-  <nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 40px;background:oklch(0.97 0.01 60 / 0.88);backdrop-filter:blur(14px);border-bottom:1px solid oklch(0.85 0.01 55);">
-    <a href="index.html" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;letter-spacing:0.2px;color:oklch(0.2 0.015 50);">Maya Yoo</a>
-    <div style="display:flex;align-items:center;gap:26px;">
-      <a href="ventures.html" style="font-size:13.5px;font-weight:600;color:oklch(0.45 0.02 50);">← All ventures</a>
-      <a href="daily.html" style="font-size:13.5px;font-weight:600;color:oklch(0.45 0.02 50);">Daily UC Davis →</a>
-      <a href="story-and-spoon.html" style="font-size:13.5px;font-weight:600;color:oklch(0.45 0.02 50);">Story &amp; Spoon →</a>
-      <a href="https://www.tiktok.com/@daviswithmaya" target="_blank" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:10px 20px;border-radius:100px;font-weight:700;font-size:13px;" style-hover="background:oklch(0.56 0.13 45);color:oklch(0.97 0.01 60);">@daviswithmaya ↗</a>
+  <div style="position:fixed;top:0;left:0;right:0;z-index:100;">
+    <nav style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px clamp(16px,3vw,40px);background:oklch(0.97 0.01 60 / 0.9);backdrop-filter:blur(14px);border-bottom:1px solid oklch(0.85 0.01 55);">
+      <a href="index.html" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;letter-spacing:0.2px;color:oklch(0.2 0.015 50);">Maya Yoo</a>
+      <div style="display:flex;align-items:center;gap:clamp(12px,1.8vw,26px);">
+        <a href="ventures.html" style="font-size:12.5px;font-weight:600;color:oklch(0.2 0.015 50);padding-bottom:3px;border-bottom:2px solid oklch(0.56 0.13 45);">Ventures</a>
+        <a href="marketing.html" style="font-size:12.5px;font-weight:600;color:oklch(0.5 0.02 50);padding-bottom:3px;border-bottom:2px solid transparent;" style-hover="color:oklch(0.2 0.015 50);">Marketing</a>
+        <a href="design.html" style="font-size:12.5px;font-weight:600;color:oklch(0.5 0.02 50);padding-bottom:3px;border-bottom:2px solid transparent;" style-hover="color:oklch(0.2 0.015 50);">Design</a>
+        <a href="storytelling.html" style="font-size:12.5px;font-weight:600;color:oklch(0.5 0.02 50);padding-bottom:3px;border-bottom:2px solid transparent;" style-hover="color:oklch(0.2 0.015 50);">Content</a>
+        <a href="about.html" style="font-size:12.5px;font-weight:600;color:oklch(0.5 0.02 50);padding-bottom:3px;border-bottom:2px solid transparent;" style-hover="color:oklch(0.2 0.015 50);">About</a>
+        <a data-resume="" href="maya-yoo-resume.pdf" download="MayaYoo_Resume.pdf" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:9px 17px;border-radius:100px;font-weight:700;font-size:12px;white-space:nowrap;" style-hover="background:oklch(0.56 0.13 45);color:oklch(0.97 0.01 60);">Résumé ↓</a>
+      </div>
+    </nav>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 clamp(16px,3vw,40px);opacity:{{ subOpacity }};transform:translateY({{ subShift }});pointer-events:{{ subPE }};transition:opacity .3s ease, transform .3s ease;background:oklch(0.94 0.014 55 / 0.94);backdrop-filter:blur(12px);border-bottom:1px solid oklch(0.86 0.02 55);font-size:12px;">
+      <div data-crumb="" style="display:flex;align-items:center;gap:9px;min-width:0;padding:9px 0;">
+        <a href="ventures.html" style="font-weight:700;color:oklch(0.5 0.13 45);white-space:nowrap;">← Ventures</a>
+        <span style="color:oklch(0.7 0.02 55);">/</span>
+        <span style="font-weight:700;color:oklch(0.2 0.015 50);white-space:nowrap;">DavisWithMaya</span>
+      </div>
+      <div data-subnav="" style="display:flex;align-items:center;gap:22px;overflow-x:auto;min-width:0;">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" onClick="{{ n.go }}" style="white-space:nowrap;font-weight:700;padding:9px 0 7px;border-bottom:2px solid {{ n.border }};color:{{ n.color }};">{{ n.label }}</a>
+        </sc-for>
+      </div>
     </div>
-  </nav>
+  </div>
 
-  <!-- COVER -->
-  <section data-screen-label="Cover" style="position:relative;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);overflow:hidden;">
-    <div style="position:absolute;top:-260px;right:-180px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,oklch(0.72 0.13 45 / 0.3),transparent 66%);pointer-events:none;"></div>
-    <div style="position:relative;max-width:1240px;margin:0 auto;padding:130px 40px 0;display:grid;grid-template-columns:minmax(340px,1.3fr) minmax(270px,310px);gap:60px;align-items:center;">
+  <!-- HERO · dark -->
+  <section id="overview" data-screen-label="Hero" style="position:relative;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);overflow:hidden;">
+    <div style="position:absolute;top:-260px;right:-180px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,oklch(0.72 0.13 45 / 0.26),transparent 66%);pointer-events:none;"></div>
+    <div data-pad="" data-stack="" data-cover-grid="" style="position:relative;max-width:1200px;margin:0 auto;padding:132px 40px 64px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(300px,0.7fr);gap:56px;align-items:center;">
       <div>
         <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:26px;">
-          <span style="font-size:11px;letter-spacing:1.4px;font-weight:800;color:oklch(0.18 0.02 50);background:oklch(0.72 0.13 45);padding:6px 12px;border-radius:100px;">CASE STUDY</span>
-          <span style="font-size:11.5px;letter-spacing:2px;font-weight:700;color:oklch(0.72 0.015 55);">DAVISWITHMAYA · SOLO-RUN MEDIA BRAND</span>
+          <span style="font-size:10.5px;letter-spacing:1.4px;font-weight:800;color:oklch(0.18 0.02 50);background:oklch(0.72 0.13 45);padding:5px 11px;border-radius:100px;">CASE STUDY</span>
+          <span style="font-size:11.5px;letter-spacing:1.8px;font-weight:700;color:oklch(0.75 0.015 55);">DAVISWITHMAYA · SOLO-RUN MEDIA BRAND</span>
         </div>
-        <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(46px,6.1vw,84px);line-height:0.94;font-weight:800;margin:0 0 26px;letter-spacing:-2.2px;text-wrap:balance;">Zero to <span style="color:oklch(0.72 0.13 45);">5.4M</span> profile views in one month, run by one person.</h1>
-        <p style="color:oklch(0.8 0.015 55);font-size:19px;line-height:1.55;margin:0 0 34px;max-width:600px;text-wrap:pretty;">A hyper-local TikTok and Instagram brand for UC Davis students that I grew, monetized, and turned into a playbook I ran a second time.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
-          <a href="https://www.tiktok.com/@daviswithmaya" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:oklch(0.72 0.13 45);color:oklch(0.18 0.02 50);padding:14px 24px;border-radius:100px;font-weight:800;font-size:14px;" style-hover="background:oklch(0.8 0.12 45);color:oklch(0.18 0.02 50);">Watch @daviswithmaya ↗</a>
-          <a href="https://theaggie.org/2026/5/5/daviscasocialmediacommunitydiary" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;border:1.5px solid oklch(0.42 0.02 50);color:oklch(0.9 0.01 55);padding:13px 22px;border-radius:100px;font-weight:700;font-size:14px;" style-hover="border-color:oklch(0.72 0.13 45);color:oklch(0.97 0.01 60);">Read the Aggie feature ↗</a>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:stretch;gap:14px;width:100%;max-width:340px;justify-self:end;">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-          <span style="font-size:10.5px;letter-spacing:1.3px;font-weight:800;color:oklch(0.72 0.13 45);">FEATURED REEL</span>
-          <a href="{{ heroLink }}" target="_blank" rel="noopener" style="font-size:11.5px;font-weight:700;color:oklch(0.85 0.01 55);" style-hover="color:oklch(0.72 0.13 45);">@daviswithmaya ↗</a>
-        </div>
-        <div style="position:relative;width:100%;height:640px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 34px 70px -30px oklch(0 0 0 / 0.75);border:1px solid oklch(0.34 0.02 50);">
-          <iframe src="{{ heroEmbed }}" title="Featured Instagram reel" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true" scrolling="no"></iframe>
+        <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(44px,5.8vw,82px);line-height:0.92;font-weight:800;margin:0 0 22px;letter-spacing:-2.8px;text-wrap:balance;">From zero to <span style="color:oklch(0.72 0.13 45);">5.4M</span> profile views in one month.</h1>
+        <p style="color:oklch(0.82 0.015 55);font-size:19px;line-height:1.5;margin:0 0 32px;max-width:520px;text-wrap:pretty;">A student media brand I built from zero — content, audience, partnerships, and products.</p>
+        <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+          <a href="#content" onClick="{{ goContent }}" style="display:inline-flex;align-items:center;gap:8px;background:oklch(0.72 0.13 45);color:oklch(0.18 0.02 50);padding:15px 26px;border-radius:100px;font-weight:800;font-size:13.5px;letter-spacing:0.5px;" style-hover="background:oklch(0.8 0.12 45);color:oklch(0.18 0.02 50);">SEE HOW I BUILT IT ↓</a>
+          <a href="https://www.instagram.com/daviswithmaya/" target="_blank" rel="noopener" style="font-size:14px;font-weight:700;color:oklch(0.85 0.01 55);" style-hover="color:oklch(0.72 0.13 45);">@daviswithmaya ↗</a>
         </div>
       </div>
-    </div>
-    <div style="position:relative;max-width:1240px;margin:56px auto 0;padding:0 40px;">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));border-top:1px solid oklch(0.34 0.02 50);">
-        <div style="padding:26px 26px 34px 0;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,4vw,54px);font-weight:800;line-height:1;letter-spacing:-1.4px;color:oklch(0.72 0.13 45);">5.4M</div><div style="font-size:13.5px;color:oklch(0.78 0.015 55);margin-top:10px;line-height:1.4;font-weight:600;">profile views in a single month</div></div>
-        <div style="padding:26px 26px 34px;border-left:1px solid oklch(0.34 0.02 50);"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,4vw,54px);font-weight:800;line-height:1;letter-spacing:-1.4px;">1M+</div><div style="font-size:13.5px;color:oklch(0.78 0.015 55);margin-top:10px;line-height:1.4;font-weight:600;">views on multiple videos</div></div>
-        <div style="padding:26px 26px 34px;border-left:1px solid oklch(0.34 0.02 50);"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,4vw,54px);font-weight:800;line-height:1;letter-spacing:-1.4px;color:oklch(0.72 0.13 45);">30+</div><div style="font-size:13.5px;color:oklch(0.78 0.015 55);margin-top:10px;line-height:1.4;font-weight:600;">paid brand and business partnerships</div></div>
-        <div style="padding:26px 0 34px 26px;border-left:1px solid oklch(0.34 0.02 50);"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,4vw,54px);font-weight:800;line-height:1;letter-spacing:-1.4px;">131</div><div style="font-size:13.5px;color:oklch(0.78 0.015 55);margin-top:10px;line-height:1.4;font-weight:600;">digital guide purchases</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CREDITS RAIL -->
-  <section data-screen-label="Credits" style="border-bottom:1px solid oklch(0.85 0.01 55);background:oklch(0.995 0.004 60);">
-    <div style="max-width:1240px;margin:0 auto;padding:28px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:28px;">
-      <div>
-        <div style="font-size:10.5px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:7px;">ROLE</div>
-        <div style="font-size:13px;line-height:1.5;color:oklch(0.3 0.02 50);"><strong>Founder and sole operator</strong> — strategy, filming, editing, copy, partnerships, product, analytics.</div>
-      </div>
-      <div>
-        <div style="font-size:10.5px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:7px;">PLATFORMS</div>
-        <div style="font-size:13px;line-height:1.5;color:oklch(0.3 0.02 50);">TikTok, Instagram</div>
-      </div>
-      <div>
-        <div style="font-size:10.5px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:7px;">TIMELINE</div>
-        <div style="font-size:13px;line-height:1.5;color:oklch(0.3 0.02 50);">March 2025–present</div>
-      </div>
-      <div>
-        <div style="font-size:10.5px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:7px;">VERIFIED BY</div>
-        <a href="https://theaggie.org/2026/5/5/daviscasocialmediacommunitydiary" target="_blank" style="font-size:13px;line-height:1.5;color:oklch(0.3 0.02 50);text-decoration:underline;text-decoration-color:oklch(0.72 0.13 45);text-underline-offset:3px;">The California Aggie, May 2026 ↗</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRESS -->
-  <section data-reveal="1" data-screen-label="Press" style="padding:48px 40px 48px;max-width:1200px;margin:0 auto;">
-    <a href="https://theaggie.org/2026/5/5/daviscasocialmediacommunitydiary" target="_blank" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;align-items:center;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:18px;padding:18px;color:oklch(0.2 0.015 50);" style-hover="border-color:oklch(0.56 0.13 45);color:oklch(0.2 0.015 50);">
-      <div style="border-radius:10px;overflow:hidden;"><img src="dwm-aggie-print.jpg" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:35% 20%;" alt="The California Aggie print feature"></div>
-      <div>
-        <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:10px;">IN PRINT · THE CALIFORNIA AGGIE · MAY 2026</div>
-        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:700;line-height:1.15;margin-bottom:10px;">“Davis with Maya: a digital diary”</div>
-        <div style="font-size:14px;color:oklch(0.4 0.02 50);line-height:1.6;text-wrap:pretty;">UC Davis' student newspaper profiled both accounts — a third-party record of the launch dates, the audience, and why students follow. Read the article ↗</div>
-      </div>
-    </a>
-  </section>
-
-  <!-- TIMELINE -->
-  <section data-reveal="1" data-screen-label="Timeline" style="padding:16px 40px 56px;max-width:1200px;margin:0 auto;">
-    <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;">
-      <div style="position:absolute;top:6px;left:0;right:0;height:1px;background:oklch(0.85 0.01 55);"></div>
-      <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="4">
-        <div style="position:relative;padding-top:26px;">
-          <div style="position:absolute;top:0;left:0;width:13px;height:13px;border-radius:50%;background:oklch(0.56 0.13 45);border:3px solid oklch(0.97 0.01 60);box-shadow:0 0 0 1px oklch(0.56 0.13 45);"></div>
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15px;color:oklch(0.56 0.13 45);margin-bottom:8px;">{{ t.when }}</div>
-          <div style="font-size:13.5px;line-height:1.55;color:oklch(0.35 0.02 50);text-wrap:pretty;">{{ t.what }}</div>
-        </div>
-      </sc-for>
-    </div>
-  </section>
-
-  <!-- CONTENT ENGINE -->
-  
-
-  <!-- PARTNERSHIPS -->
-  <section data-reveal="1" data-screen-label="Content engine" style="padding:64px 0;background:oklch(0.94 0.014 55);border-top:1px solid oklch(0.85 0.01 55);border-bottom:1px solid oklch(0.85 0.01 55);">
-    <div style="max-width:1200px;margin:0 auto;padding:0 40px;">
-      <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">THE CONTENT ENGINE</div>
-      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,46px);font-weight:800;margin:0 0 14px;max-width:900px;line-height:1.05;letter-spacing:-0.8px;text-wrap:pretty;">Posting was a system, not a hobby: fixed cadence, recurring series, hook-first edits built for the first two seconds.</h2>
-      <div style="font-size:12.5px;color:oklch(0.5 0.02 50);margin-bottom:28px;">Scroll the shelf → every frame is the real post, playing on the page.</div>
-    </div>
-    <div class="shelf" style="display:flex;gap:26px;overflow-x:auto;padding:10px max(40px, calc((100vw - 1200px) / 2 + 40px)) 28px;scroll-snap-type:x mandatory;scroll-padding-left:40px;">
-      <sc-for list="{{ shelf }}" as="v" hint-placeholder-count="5">
-        <div style="flex:0 0 280px;width:280px;scroll-snap-align:start;">
-          <div style="position:relative;background:oklch(0.2 0.015 50);border-radius:36px;padding:9px;box-shadow:0 26px 50px -26px oklch(0.2 0.015 50 / 0.55);transition:transform .4s cubic-bezier(.2,.7,.2,1);" style-hover="transform:translateY(-8px) rotate(-1deg);">
-            <div style="position:relative;border-radius:29px;overflow:hidden;background:#000;aspect-ratio:9/20;">
-              <iframe src="{{ v.embedUrl }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true" scrolling="no"></iframe>
-              <sc-if value="{{ v.isPlaceholder }}" hint-placeholder-val="{{ false }}">
-                <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,oklch(0.3 0.02 50) 0 10px,oklch(0.26 0.02 50) 10px 20px);display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;"><div style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:oklch(0.85 0.01 55);line-height:1.6;">{{ v.placeholder }}</div></div>
-              </sc-if>
-            </div>
-            <div style="position:absolute;top:22px;left:22px;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13.5px;padding:6px 13px;border-radius:100px;pointer-events:none;box-shadow:0 6px 16px -6px oklch(0.2 0.015 50 / 0.6);white-space:nowrap;">{{ v.tag }}</div>
-          </div>
-          <div style="font-size:12.5px;color:oklch(0.4 0.02 50);margin-top:12px;line-height:1.5;padding:0 6px;">{{ v.caption }} <sc-if value="{{ v.hasEmbed }}" hint-placeholder-val="{{ true }}"><a href="{{ v.link }}" target="_blank" rel="noopener" style="font-weight:700;white-space:nowrap;">Open ↗</a></sc-if></div>
-        </div>
-      </sc-for>
-    </div><div style="max-width: 1200px; margin: 40px auto 0; padding: 0 40px; display: grid; grid-template-columns: repeat(auto-fit,minmax(360px,1fr)); gap: 40px; align-items: start; position: relative">
-      
-      <div>
-        <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:16px;">WHAT I DID EVERY WEEK</div>
-        <div style="display:flex;flex-direction:column;gap:14px;">
-          <div style="display:grid;grid-template-columns:110px 1fr;gap:14px;font-size:16px;line-height:1.55;color:oklch(0.35 0.02 50);"><div style="font-weight:700;color:oklch(0.2 0.015 50);">Cadence</div><div>2 posts/week on DavisWithMaya, 2–3/day on DailyUCDavis</div></div>
-          <div style="display:grid;grid-template-columns:110px 1fr;gap:14px;font-size:16px;line-height:1.55;color:oklch(0.35 0.02 50);"><div style="font-weight:700;color:oklch(0.2 0.015 50);">Themes</div><div>New food in Davis · random UC Davis student experiences · giveaways (five with local restaurants) — no series names, just formats people came back for</div></div>
-          <div style="display:grid;grid-template-columns:110px 1fr;gap:14px;font-size:16px;line-height:1.55;color:oklch(0.35 0.02 50);"><div style="font-weight:700;color:oklch(0.2 0.015 50);">Hooks</div><div>Tested opening lines and covers, cut anything that lost viewers before three seconds</div></div>
-          <div style="display:grid;grid-template-columns:110px 1fr;gap:14px;font-size:16px;line-height:1.55;color:oklch(0.35 0.02 50);"><div style="font-weight:700;color:oklch(0.2 0.015 50);">Cross-post</div><div>Same footage, platform-specific captions, covers, and post times</div></div>
-        </div><img src="screenshot-2026-09-02-at-4-07-26-pm.jpg" alt="Instagram top posts by views: 2.4M, 2.4M, 2.2M, 1.8M" style="display:block;width:100%;height:auto;margin-top:28px;border-radius:14px;border:1px solid oklch(0.85 0.01 55);">
-        
-      </div><div style="display:flex;flex-direction:column;gap:16px;">
-        <div style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);border-radius:18px;padding:26px 28px;">
-          <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.72 0.13 45);font-weight:700;margin-bottom:14px;">RESULT</div><div style="display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.5;">
-            <div style="display:flex;gap:12px;"><span style="color:oklch(0.72 0.13 45);font-weight:800;">→</span><span><strong>5.4M</strong> profile views in one month</span></div>
-            <div style="display:flex;gap:12px;"><span style="color:oklch(0.72 0.13 45);font-weight:800;">→</span><span>Multiple videos over <strong>1M</strong>, top video <strong>3.5M</strong> — five Instagram posts alone cleared 1M</span></div>
-            <div style="display:flex;gap:12px;"><span style="color:oklch(0.72 0.13 45);font-weight:800;">→</span><span>Last 90 days at 2 posts/week: <strong>841,333</strong> views · <strong>81,406</strong> interactions · <strong>437</strong> bio link taps · 67.4% non-followers</span></div>
-            <div style="display:flex;gap:12px;"><span style="color:oklch(0.72 0.13 45);font-weight:800;">→</span><span>Last 30 days: <strong>290,915</strong> views · <strong>310</strong> bio link taps</span></div>
+      <div data-hero-reel="" style="position:relative;justify-self:start;width:100%;max-width:300px;">
+        <div data-pop="{{ heroLink }}" style="position:relative;background:oklch(0.14 0.015 50);border-radius:38px;padding:9px;box-shadow:0 40px 80px -30px oklch(0 0 0 / 0.8);cursor:pointer;">
+          <div style="position:relative;border-radius:30px;overflow:hidden;background:oklch(0.3 0.015 50);aspect-ratio:9/19;">
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px;text-align:center;color:oklch(0.8 0.015 55);font-size:12.5px;line-height:1.45;"><span style="font-size:11px;letter-spacing:1.2px;font-weight:800;color:oklch(0.72 0.13 45);">VIDEO</span><span>Add <strong style="color:oklch(0.97 0.01 60);">{{ coverVideo }}</strong> to the site folder</span></div>
+            <video data-autoplay="" autoplay="" preload="auto" src="{{ coverVideo }}" muted="" loop="" playsinline="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
           </div>
         </div>
-        <figure style="margin:0;">
-          <div style="border-radius:14px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);background:oklch(0.995 0.004 60);"><img src="dwm-insights-posts.jpg" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;" alt="Instagram insights, last 30 days: 5,467,771 views"></div>
-          <figcaption style="font-size:11.5px;color:oklch(0.45 0.02 50);margin-top:8px;line-height:1.5;">Instagram insights · Nov 23–Dec 22 · <strong>5,467,771</strong> views, 94.5% from non-followers · 2,728,209 accounts reached (+122.4%)</figcaption>
-          <figcaption style="font-size:11.5px;color:oklch(0.45 0.02 50);margin-top:6px;line-height:1.5;">Top posts by views — five over 1M on Instagram alone: 2.8M · 2.4M · 2.4M · 2.2M · 1.8M</figcaption>
-        </figure>
+        <a data-aggie-chip="" href="https://theaggie.org/2026/5/5/daviscasocialmediacommunitydiary" target="_blank" rel="noopener" style="position:absolute;right:-48px;bottom:44px;width:170px;display:block;background:oklch(0.97 0.01 60);color:oklch(0.2 0.015 50);border-radius:5px;padding:8px 8px 10px;box-shadow:0 24px 48px -18px oklch(0 0 0 / 0.75);transform:rotate(4deg);" style-hover="transform:rotate(0deg);color:oklch(0.2 0.015 50);">
+          <div style="font-size:8.5px;letter-spacing:1.2px;font-weight:800;color:oklch(0.4 0.02 50);padding:0 2px 6px;">THE CALIFORNIA AGGIE</div>
+          <div style="border-radius:2px;overflow:hidden;aspect-ratio:4/3;"><img decoding="async" src="calaggie-dwm.jpg" alt="The California Aggie feature" style="display:block;width:100%;height:100%;object-fit:cover;object-position:62% 30%;"></div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-size:13px;font-weight:700;line-height:1.15;margin:7px 2px 3px;">“Davis with Maya: a digital diary”</div>
+          <div style="font-size:10px;font-weight:700;color:oklch(0.5 0.13 45);padding:0 2px;">Featured · May 2026 ↗</div>
+        </a>
       </div>
     </div>
-    
-  </section><section data-reveal="1" data-screen-label="Partnerships" style="padding:64px 40px;max-width:1200px;margin:0 auto;">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:48px;align-items:start;">
-      <div>
-        <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">PARTNERSHIPS</div>
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,46px);font-weight:800;margin:0 0 18px;line-height:1.05;letter-spacing:-0.8px;text-wrap:pretty;">The way to reach UC Davis students.</h2>
-        <p style="color:oklch(0.4 0.02 50);line-height:1.6;font-size:17px;margin:0 0 28px;text-wrap:pretty;">Once the audience was real, DavisWithMaya became the way to reach UC Davis students — for local restaurants with no marketing, and for national brands targeting college women. I handle every pitch, contract, shoot, edit, post, and results recap myself.</p>
-        <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:10px;">LOCAL</div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;">
-          <sc-for list="{{ localPartners }}" as="p" hint-placeholder-count="6"><div style="font-size:12.5px;padding:7px 14px;border-radius:100px;border:1px solid oklch(0.7 0.02 50);color:oklch(0.35 0.02 50);">{{ p }}</div></sc-for>
-        </div>
-        <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:10px;">NATIONAL</div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px;">
-          <sc-for list="{{ nationalPartners }}" as="p" hint-placeholder-count="7"><div style="font-size:12.5px;padding:7px 14px;border-radius:100px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);font-weight:600;">{{ p }}</div></sc-for>
-        </div>
-        <div style="background:oklch(0.94 0.014 55);border-radius:18px;padding:26px 28px;">
-          <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:14px;">RESULT</div>
-          <div style="display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.5;color:oklch(0.3 0.02 50);">
-            <div style="display:flex;gap:12px;"><span style="color:oklch(0.56 0.13 45);font-weight:800;">→</span><span><strong>30+</strong> paid promotions and partnerships</span></div>
-            <div style="display:flex;gap:12px;"><span style="color:oklch(0.56 0.13 45);font-weight:800;">→</span><span><strong>400K+</strong> views and a national brand repost on a single collab</span></div>
-            <div style="display:flex;gap:12px;"><span style="color:oklch(0.56 0.13 45);font-weight:800;">→</span><span><strong>~1K</strong> new followers for Guads from a single giveaway post</span></div>
-          </div>
+    <div data-pad="" style="position:relative;max-width:1200px;margin:0 auto;padding:0 40px;">
+      <div data-metrics="" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,1.2fr);border-top:1px solid oklch(0.34 0.02 50);">
+        <div style="padding:18px 28px 0 0;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(34px,3.4vw,44px);font-weight:800;line-height:1;letter-spacing:-1.3px;color:oklch(0.72 0.13 45);">5.4M</div><div style="font-size:13px;color:oklch(0.78 0.015 55);margin-top:8px;line-height:1.35;">profile views in one month</div></div>
+        <div style="padding:18px 28px 0 28px;border-left:1px solid oklch(0.34 0.02 50);"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(34px,3.4vw,44px);font-weight:800;line-height:1;letter-spacing:-1.3px;">30+</div><div style="font-size:13px;color:oklch(0.78 0.015 55);margin-top:8px;line-height:1.35;">paid brand + business partnerships</div></div>
+        <div style="padding:18px 28px 0 28px;border-left:1px solid oklch(0.34 0.02 50);"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(34px,3.4vw,44px);font-weight:800;line-height:1;letter-spacing:-1.3px;">131</div><div style="font-size:13px;color:oklch(0.78 0.015 55);margin-top:8px;line-height:1.35;">digital guide purchases</div></div>
+        <div style="padding:18px 0 28px 28px;border-left:1px solid oklch(0.34 0.02 50);display:grid;grid-template-columns:auto minmax(0,1fr);gap:5px 12px;font-size:12px;align-content:center;">
+          <span style="font-size:9.5px;letter-spacing:1.2px;font-weight:700;color:oklch(0.6 0.015 55);padding-top:2px;">ROLE</span><span style="color:oklch(0.7 0.015 55);">Founder, sole operator</span>
+          <span style="font-size:9.5px;letter-spacing:1.2px;font-weight:700;color:oklch(0.6 0.015 55);padding-top:2px;">PLATFORMS</span><span style="color:oklch(0.7 0.015 55);">TikTok + Instagram</span>
+          <span style="font-size:9.5px;letter-spacing:1.2px;font-weight:700;color:oklch(0.6 0.015 55);padding-top:2px;">TIMELINE</span><span style="color:oklch(0.7 0.015 55);">March 2025–present</span>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:22px;">
-        <div style="display:flex;gap:22px;justify-content:center;">
-          <sc-for list="{{ partnerPhones }}" as="v" hint-placeholder-count="2">
-            <div style="flex:1 1 0;min-width:0;max-width:250px;">
-              <div style="position:relative;background:oklch(0.2 0.015 50);border-radius:34px;padding:9px;box-shadow:0 26px 50px -26px oklch(0.2 0.015 50 / 0.55);">
-                <div style="position:relative;border-radius:27px;overflow:hidden;background:#000;aspect-ratio:9/20;"><iframe src="{{ v.embedUrl }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true" scrolling="no"></iframe></div>
-                <div style="position:absolute;top:22px;left:22px;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;padding:6px 13px;border-radius:100px;pointer-events:none;box-shadow:0 6px 16px -6px oklch(0.2 0.015 50 / 0.6);">{{ v.tag }}</div>
+    </div>
+  </section>
+
+  <!-- 02 MODEL -->
+  <section data-screen-label="Model" data-pad="" style="padding:72px 40px 76px;max-width:1200px;margin:0 auto;">
+    <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:28px;">HOW THE BRAND MAKES MONEY</div>
+    <div data-model="" style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1.3fr;gap:20px;align-items:start;">
+      <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3vw,40px);font-weight:800;letter-spacing:-1px;line-height:1;">Content</div><div style="font-size:14px;color:oklch(0.45 0.02 50);margin-top:10px;line-height:1.5;">Two posts a week, every week</div></div>
+      <div data-model-arrow="" style="font-family:'Bricolage Grotesque',sans-serif;font-size:28px;color:oklch(0.72 0.13 45);line-height:1.2;">→</div>
+      <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3vw,40px);font-weight:800;letter-spacing:-1px;line-height:1;">Audience</div><div style="font-size:14px;color:oklch(0.45 0.02 50);margin-top:10px;line-height:1.5;">Mostly people who didn’t follow yet</div></div>
+      <div data-model-arrow="" style="font-family:'Bricolage Grotesque',sans-serif;font-size:28px;color:oklch(0.72 0.13 45);line-height:1.2;">→</div>
+      <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3vw,40px);font-weight:800;letter-spacing:-1px;line-height:1;">Trust</div><div style="font-size:14px;color:oklch(0.45 0.02 50);margin-top:10px;line-height:1.5;">Students DM, enter, and show up</div></div>
+      <div data-model-arrow="" style="font-family:'Bricolage Grotesque',sans-serif;font-size:28px;color:oklch(0.72 0.13 45);line-height:1.2;">→</div>
+      <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3vw,40px);font-weight:800;letter-spacing:-1px;line-height:1;color:oklch(0.56 0.13 45);">Partnerships + products</div><div style="font-size:14px;color:oklch(0.45 0.02 50);margin-top:10px;line-height:1.5;">Brands pay to reach it; students buy the guides</div></div>
+    </div>
+  </section>
+
+  <!-- 03 CONTENT ENGINE -->
+  <section id="content" data-reveal="1" data-screen-label="Content" data-pad="" style="padding:80px 40px;background:oklch(0.94 0.014 55);border-top:1px solid oklch(0.87 0.015 55);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">01 · CONTENT</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:800;margin:0 0 14px;line-height:1.02;letter-spacing:-1.3px;max-width:760px;text-wrap:balance;">The posts that kept travelling.</h2>
+      <p style="font-size:17px;color:oklch(0.4 0.02 50);line-height:1.55;margin:0 0 40px;max-width:600px;text-wrap:pretty;">Student life, friendship, faith. Six of the posts that reached furthest.</p>
+      <div style="display:flex;justify-content:flex-end;gap:10px;margin:-8px 0 18px;">
+        <button onClick="{{ shelfPrev }}" aria-label="Scroll left" style="width:44px;height:44px;border-radius:50%;border:1.5px solid oklch(0.2 0.015 50);background:transparent;font-size:18px;font-weight:800;cursor:pointer;color:oklch(0.2 0.015 50);" style-hover="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);">←</button>
+        <button onClick="{{ shelfNext }}" aria-label="Scroll right" style="width:44px;height:44px;border-radius:50%;border:1.5px solid oklch(0.2 0.015 50);background:transparent;font-size:18px;font-weight:800;cursor:pointer;color:oklch(0.2 0.015 50);" style-hover="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);">→</button>
+      </div>
+      <div ref="{{ shelfRef }}" data-shelf="" style="display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:0 0 12px;scrollbar-width:none;">
+        <div style="flex:0 0 260px;min-width:0;scroll-snap-align:start;">
+            <div style="position:relative;background:oklch(0.2 0.015 50);border-radius:36px;padding:9px;box-shadow:0 26px 50px -26px oklch(0.2 0.015 50 / 0.55);">
+              <div data-pop="{{ heroLink }}" style="position:relative;border-radius:29px;overflow:hidden;background:oklch(0.3 0.015 50);aspect-ratio:9/19;cursor:pointer;">
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px;text-align:center;color:oklch(0.8 0.015 55);font-size:12.5px;line-height:1.45;"><span style="font-size:11px;letter-spacing:1.2px;font-weight:800;color:oklch(0.72 0.13 45);">VIDEO</span><span>Add <strong style="color:oklch(0.97 0.01 60);">content-featured.mp4</strong> to the site folder</span></div>
+                <video data-autoplay="" autoplay="" preload="auto" src="content-featured.mp4" muted="" loop="" playsinline="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
               </div>
-              <div style="font-size:12.5px;color:oklch(0.4 0.02 50);margin-top:12px;line-height:1.5;padding:0 6px;">{{ v.caption }} <sc-if value="{{ v.hasEmbed }}" hint-placeholder-val="{{ true }}"><a href="{{ v.link }}" target="_blank" rel="noopener" style="font-weight:700;white-space:nowrap;">Open ↗</a></sc-if></div>
+              <div style="position:absolute;top:22px;left:22px;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;padding:6px 13px;border-radius:100px;pointer-events:none;box-shadow:0 6px 16px -6px oklch(0.2 0.015 50 / 0.6);white-space:nowrap;">{{ featuredViews }}</div>
             </div>
-          </sc-for>
-        </div>
-        <div style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);border-radius:20px;padding:34px 34px;">
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:700;line-height:1.1;margin-bottom:6px;"><span style="color:oklch(0.72 0.13 45);">1 of 50</span> — Hero Cosmetics national ambassadors</div>
-          <p style="color:oklch(0.82 0.01 55);line-height:1.6;font-size:14.5px;margin:14px 0 0;text-wrap:pretty;">I run monthly giveaways and in-person pop-ups for UC Davis students — 5+ tablings so far. The first pop-up, promoted with one post and stories the day before, drew 100+ people; about 50 were lined up before I arrived.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GIVEAWAYS -->
-  <section data-reveal="1" data-screen-label="Giveaways" style="padding:64px 0;background:oklch(0.94 0.014 55);border-top:1px solid oklch(0.85 0.01 55);border-bottom:1px solid oklch(0.85 0.01 55);">
-    <div style="max-width:1200px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:start;">
-      <div style="width:100%;max-width:419px;">
-        <div style="position:relative;background:oklch(0.2 0.015 50);border-radius:36px;padding:9px;box-shadow:0 26px 50px -26px oklch(0.2 0.015 50 / 0.55);width:100%;box-sizing:border-box;">
-          <div style="position:relative;border-radius:29px;overflow:hidden;background:#000;aspect-ratio:9/20;">
-            <sc-if value="{{ guadsHasEmbed }}" hint-placeholder-val="{{ true }}"><iframe src="{{ guadsEmbed }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true" scrolling="no"></iframe></sc-if>
-            <sc-if value="{{ guadsIsPlaceholder }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,oklch(0.3 0.02 50) 0 10px,oklch(0.26 0.02 50) 10px 20px);display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;"><div style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:oklch(0.85 0.01 55);line-height:1.6;">paste: Guads giveaway post link</div></div></sc-if>
+            <div style="font-size:11px;letter-spacing:1.2px;font-weight:800;color:oklch(0.56 0.13 45);margin:14px 4px 4px;">FEATURED REEL</div>
+            <div style="font-size:14px;color:oklch(0.35 0.02 50);line-height:1.45;padding:0 4px;">{{ featuredTitle }}</div>
           </div>
-          <div style="position:absolute;top:22px;left:22px;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13.5px;padding:6px 13px;border-radius:100px;pointer-events:none;box-shadow:0 6px 16px -6px oklch(0.2 0.015 50 / 0.6);">998 entries</div>
-        </div>
-      </div>
-      <div>
-        <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">GIVEAWAYS</div>
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,46px);font-weight:800;margin:0 0 18px;line-height:1.05;letter-spacing:-0.8px;text-wrap:pretty;">Giveaways built for engagement, not views.</h2>
-        <p style="color:oklch(0.4 0.02 50);line-height:1.6;font-size:17px;margin:0 0 26px;text-wrap:pretty;">Giveaways were a growth tool for the partner. Every one was designed around comments and follows, because those are what a business actually keeps.</p>
-        <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">MECHANICS</div>
-        <div style="display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.55;color:oklch(0.35 0.02 50);margin-bottom:28px;">
-          <div style="display:flex;gap:12px;"><span style="font-family:'Bricolage Grotesque',sans-serif;color:oklch(0.56 0.13 45);font-weight:700;">01</span><span>Follow both accounts + comment tagging a friend to enter; reshare to your story for an extra entry</span></div>
-          <div style="display:flex;gap:12px;"><span style="font-family:'Bricolage Grotesque',sans-serif;color:oklch(0.56 0.13 45);font-weight:700;">02</span><span>Filmed on-site so the prize felt real</span></div>
-          <div style="display:flex;gap:12px;"><span style="font-family:'Bricolage Grotesque',sans-serif;color:oklch(0.56 0.13 45);font-weight:700;">03</span><span>Both platforms, one deadline, reminder story on the last day</span></div>
-        </div>
-        <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:18px;padding:26px 28px;">
-          <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:14px;">RESULT · SIX LOCAL GIVEAWAYS</div>
-          <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px 22px;font-size:13.5px;line-height:1.4;color:oklch(0.3 0.02 50);align-items:baseline;">
-            <div style="font-size:10.5px;letter-spacing:1px;color:oklch(0.5 0.02 50);font-weight:700;">PARTNER</div><div style="font-size:10.5px;letter-spacing:1px;color:oklch(0.5 0.02 50);font-weight:700;text-align:right;">VIEWS</div><div style="font-size:10.5px;letter-spacing:1px;color:oklch(0.5 0.02 50);font-weight:700;text-align:right;">ENTRIES</div>
-            <sc-for list="{{ giveaways }}" as="g" hint-placeholder-count="6">
-              <div style="font-weight:600;">{{ g.name }}</div><div style="text-align:right;font-variant-numeric:tabular-nums;">{{ g.views }}</div><div style="text-align:right;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;color:oklch(0.56 0.13 45);font-variant-numeric:tabular-nums;">{{ g.entries }}</div>
-            </sc-for>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.5;color:oklch(0.3 0.02 50);margin-top:18px;padding-top:16px;border-top:1px solid oklch(0.88 0.01 55);">
-            <div style="display:flex;gap:12px;"><span style="color:oklch(0.56 0.13 45);font-weight:800;">→</span><span><strong>3,660</strong> entries across six posts — every one a comment on the partner's collab</span></div>
-            <div style="display:flex;gap:12px;"><span style="color:oklch(0.56 0.13 45);font-weight:800;">→</span><span><strong>~1K</strong> new followers for Guads from one post</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRODUCTS -->
-  <section data-reveal="1" data-screen-label="Products" style="padding:64px 40px;max-width:1200px;margin:0 auto;">
-    <div style="max-width:720px;margin-bottom:36px;">
-      <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">GUIDES &amp; PRODUCTS</div>
-      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,46px);font-weight:800;margin:0 0 18px;line-height:1.05;letter-spacing:-0.8px;text-wrap:pretty;">Turning trust into products.</h2>
-      <p style="color:oklch(0.4 0.02 50);line-height:1.6;font-size:17px;margin:0;text-wrap:pretty;">The DMs kept asking the same questions. I packaged the answers instead of answering one at a time. The broad guide is free for every incoming student; the deep-dive guides sit behind it, sold through content that gives part of the solution away.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,0.9fr);gap:36px;align-items:center;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);border-radius:20px;padding:36px;margin-bottom:22px;">
-      <div>
-        <div style="display:inline-flex;align-items:center;gap:7px;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);padding:6px 12px;border-radius:100px;font-size:10.5px;font-weight:800;letter-spacing:0.8px;margin-bottom:16px;">FREE · 16 PAGES · WRITTEN &amp; DESIGNED SOLO</div>
-        <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3vw,36px);font-weight:800;margin:0 0 12px;line-height:1.05;letter-spacing:-0.6px;text-wrap:pretty;">The UC Davis Starter Guide — 25 things I wish I knew before coming to Davis.</h3>
-        <p style="color:oklch(0.8 0.01 55);font-size:15px;line-height:1.6;margin:0 0 20px;text-wrap:pretty;">The flagship free guide: first week, getting around, campus vocabulary, apps, food, and the bucket list — written the way I'd say it over coffee at the CoHo, not the way a brochure would. It's the top of the funnel for every paid guide below it.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;font-size:11.5px;font-weight:700;">
-          <span style="padding:5px 11px;border-radius:100px;border:1px solid oklch(0.45 0.02 50);color:oklch(0.85 0.01 55);">First week</span><span style="padding:5px 11px;border-radius:100px;border:1px solid oklch(0.45 0.02 50);color:oklch(0.85 0.01 55);">Bikes &amp; Unitrans</span><span style="padding:5px 11px;border-radius:100px;border:1px solid oklch(0.45 0.02 50);color:oklch(0.85 0.01 55);">Campus vocabulary</span><span style="padding:5px 11px;border-radius:100px;border:1px solid oklch(0.45 0.02 50);color:oklch(0.85 0.01 55);">Apps</span><span style="padding:5px 11px;border-radius:100px;border:1px solid oklch(0.45 0.02 50);color:oklch(0.85 0.01 55);">Food</span><span style="padding:5px 11px;border-radius:100px;border:1px solid oklch(0.45 0.02 50);color:oklch(0.85 0.01 55);">Bucket list</span>
-        </div>
-        <a href="uc-davis-starter-guide.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);padding:13px 22px;border-radius:100px;font-weight:700;font-size:13.5px;" style-hover="background:oklch(0.97 0.01 60);color:oklch(0.15 0.02 50);">Read the full guide ↗</a>
-      </div>
-      <div style="background:oklch(0.27 0.02 50);border-radius:14px;padding:10px;border:1px solid oklch(0.35 0.02 50);box-shadow:0 24px 60px oklch(0 0 0 / 0.35);">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;padding:0 4px;">
-          <div style="font-size:10.5px;color:oklch(0.8 0.01 55);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;">uc-davis-starter-guide.pdf</div>
-          <div style="font-size:10px;letter-spacing:1px;font-weight:700;color:oklch(0.72 0.13 45);white-space:nowrap;">SCROLL INSIDE</div>
-        </div>
-        <div style="position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:oklch(0.97 0.005 55);">
-          <iframe src="uc-davis-starter-guide.pdf#view=FitH&amp;toolbar=0" title="UC Davis Starter Guide — scrollable PDF" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe>
-        </div>
-      </div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-bottom:22px;">
-      <sc-for list="{{ products }}" as="p" hint-placeholder-count="5">
-        <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:10px;min-height:170px;">
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;color:oklch(0.56 0.13 45);line-height:1;">{{ p.price }}</div>
-          <div style="font-weight:700;font-size:15px;">{{ p.name }}</div>
-          <div style="font-size:12.5px;color:oklch(0.45 0.02 50);line-height:1.5;">{{ p.desc }}</div>
-        </div>
-      </sc-for>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:22px;">
-      <figure style="margin:0;">
-        <div style="border-radius:14px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);background:oklch(0.995 0.004 60);aspect-ratio:16/10;"><img src="screenshot-2026-09-02-at-4-10-44-pm.jpg" alt="Dorm Guide spreadsheet — dorm life info by area" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top left;"></div>
-        <figcaption style="font-size:11.5px;color:oklch(0.45 0.02 50);margin-top:8px;line-height:1.5;">Inside the Dorms guide — every hall, closet type, bathroom setup, dining commons and market, side by side</figcaption>
-      </figure>
-      <figure style="margin:0;">
-        <div style="border-radius:14px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);background:oklch(0.995 0.004 60);aspect-ratio:16/10;"><img src="screenshot-2026-09-02-at-4-11-26-pm.jpg" alt="UC Davis Guides order page" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;"></div>
-        <figcaption style="font-size:11.5px;color:oklch(0.45 0.02 50);margin-top:8px;line-height:1.5;">Order page — Venmo + form, links emailed within 24 hours</figcaption>
-      </figure>
-      <figure style="margin:0;">
-        <div style="border-radius:14px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);background:oklch(0.995 0.004 60);aspect-ratio:16/10;"><img src="screenshot-2026-09-02-at-4-14-18-pm.jpg" alt="College Life 101 course dashboard" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top left;"></div>
-        <figcaption style="font-size:11.5px;color:oklch(0.45 0.02 50);margin-top:8px;line-height:1.5;">College Life 101 — the free eight-module course, from academic survival to roommates and post-college planning</figcaption>
-      </figure>
-    </div>
-    <div style="background:oklch(0.94 0.014 55);border-radius:18px;padding:22px 28px;display:flex;gap:36px;align-items:center;flex-wrap:wrap;">
-      <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;">RESULT</div>
-      <div style="font-size:14.5px;color:oklch(0.3 0.02 50);"><strong>131</strong> purchases · <strong>198</strong> guides and checklists delivered (bundles count two)</div>
-      <div style="font-size:14.5px;color:oklch(0.3 0.02 50);"><strong>4</strong> guides and a free course, every one built solo</div>
-      <div style="font-size:14.5px;color:oklch(0.3 0.02 50);"><strong>116.5%</strong> Linktree click rate · <strong>8.05K</strong> clicks on 6.91K views</div>
-      <div style="font-size:14.5px;color:oklch(0.3 0.02 50);"><strong>127</strong> contacts collected</div>
-    </div>
-    <figure style="margin:16px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center;">
-      <div style="border-radius:14px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);background:oklch(0.995 0.004 60);padding:14px;"><img src="dwm-linktree-metrics.jpg" style="display:block;width:100%;" alt="Linktree lifetime totals"></div>
-      <figcaption style="font-size:12.5px;color:oklch(0.45 0.02 50);line-height:1.55;">Linktree lifetime totals. A click rate over 100% means the average visitor clicks more than one link — the guides, the storefront, and the free trackers are all one tap from every post.</figcaption>
-    </figure>
-  </section>
-
-  <!-- SECOND RUN -->
-  <section data-reveal="1" data-screen-label="Second run" style="padding:64px 40px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);">
-    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:48px;align-items:center;">
-      <div>
-        <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.72 0.13 45);font-weight:700;margin-bottom:12px;">DAILYUCDAVIS</div>
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,46px);font-weight:800;margin:0 0 18px;line-height:1.05;letter-spacing:-0.8px;text-wrap:pretty;">Running the playbook a second time.</h2>
-        <p style="color:oklch(0.82 0.01 55);line-height:1.6;font-size:17px;margin:0 0 28px;text-wrap:pretty;">DailyUCDavis is the proof the system isn't luck: a separate campus account, no personal-brand halo, same cadence and hook approach from day one. It cleared 1.2M profile views in its first month and is now the account parents DM before move-in.</p>
-        <div style="background:oklch(0.27 0.02 50);border-radius:18px;padding:26px 28px;">
-          <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.72 0.13 45);font-weight:700;margin-bottom:14px;">RESULT</div>
-          <div style="display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.5;">
-            <div style="display:flex;gap:12px;"><span style="color:oklch(0.72 0.13 45);font-weight:800;">→</span><span><strong>1.2M</strong> profile views in month one, from zero</span></div>
-            <div style="display:flex;gap:12px;"><span style="color:oklch(0.72 0.13 45);font-weight:800;">→</span><span><strong>6,400+</strong> followers</span></div>
-            <div style="display:flex;gap:12px;"><span style="color:oklch(0.72 0.13 45);font-weight:800;">→</span><span><strong>6.6M+</strong> combined monthly profile views across both brands</span></div>
-          </div>
-        </div>
-      </div>
-      <div style="display:flex;gap:22px;justify-content:center;">
-        <sc-for list="{{ dudPhones }}" as="v" hint-placeholder-count="2">
-          <div style="flex:1 1 0;min-width:0;max-width:250px;">
-            <div style="position:relative;background:oklch(0.3 0.02 50);border-radius:34px;padding:9px;box-shadow:0 26px 50px -26px oklch(0 0 0 / 0.7);">
-              <div style="position:relative;border-radius:27px;overflow:hidden;background:#000;aspect-ratio:9/20;"><iframe src="{{ v.embedUrl }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true" scrolling="no"></iframe></div>
-              <div style="position:absolute;top:22px;left:22px;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;padding:6px 13px;border-radius:100px;pointer-events:none;">{{ v.tag }}</div>
+        <sc-for list="{{ shelf }}" as="v" hint-placeholder-count="6">
+          <div style="flex:0 0 260px;min-width:0;scroll-snap-align:start;">
+            <div style="position:relative;background:oklch(0.2 0.015 50);border-radius:36px;padding:9px;box-shadow:0 26px 50px -26px oklch(0.2 0.015 50 / 0.55);">
+              <div data-pop="{{ v.link }}" style="position:relative;border-radius:29px;overflow:hidden;background:oklch(0.3 0.015 50);aspect-ratio:9/19;cursor:pointer;">
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px;text-align:center;color:oklch(0.8 0.015 55);font-size:12.5px;line-height:1.45;"><span style="font-size:11px;letter-spacing:1.2px;font-weight:800;color:oklch(0.72 0.13 45);">VIDEO</span><span>Add <strong style="color:oklch(0.97 0.01 60);">{{ v.file }}</strong> to the site folder</span></div>
+                <video data-autoplay="" autoplay="" preload="auto" src="{{ v.file }}" muted="" loop="" playsinline="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+              </div>
+              <div style="position:absolute;top:22px;left:22px;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;padding:6px 13px;border-radius:100px;pointer-events:none;box-shadow:0 6px 16px -6px oklch(0.2 0.015 50 / 0.6);white-space:nowrap;">{{ v.views }}</div>
             </div>
-            <div style="font-size:12.5px;color:oklch(0.75 0.01 55);margin-top:12px;line-height:1.5;padding:0 6px;">{{ v.caption }} <sc-if value="{{ v.hasEmbed }}" hint-placeholder-val="{{ true }}"><a href="{{ v.link }}" target="_blank" rel="noopener" style="font-weight:700;white-space:nowrap;">Open ↗</a></sc-if></div>
+            <div style="font-size:11px;letter-spacing:1.2px;font-weight:800;color:oklch(0.56 0.13 45);margin:14px 4px 4px;">{{ v.cat }}</div>
+            <div style="font-size:14px;color:oklch(0.35 0.02 50);line-height:1.45;padding:0 4px;">{{ v.title }}</div>
           </div>
         </sc-for>
       </div>
     </div>
   </section>
 
-  <!-- WHAT THIS PROVES -->
-  <section data-reveal="1" data-screen-label="What this proves" style="padding:64px 40px;max-width:1200px;margin:0 auto;">
-    <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">WHAT THIS PROVES</div>
-    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,46px);font-weight:800;margin:0 0 34px;line-height:1.05;letter-spacing:-0.8px;">Six things a hiring manager can take from this.</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
-      <sc-for list="{{ proves }}" as="p" hint-placeholder-count="6">
-        <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:16px;padding:24px;">
-          <div style="font-weight:700;font-size:15px;margin-bottom:8px;color:oklch(0.56 0.13 45);">{{ p.title }}</div>
-          <div style="font-size:13.5px;color:oklch(0.35 0.02 50);line-height:1.55;text-wrap:pretty;">{{ p.text }}</div>
+  <!-- 04 SYSTEM + RESULTS -->
+  <section data-reveal="1" id="audience" data-screen-label="System" data-pad="" style="padding:88px 40px;background:oklch(0.995 0.004 60);border-top:1px solid oklch(0.87 0.015 55);border-bottom:1px solid oklch(0.87 0.015 55);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">02 · AUDIENCE</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:800;margin:0 0 48px;line-height:1.02;letter-spacing:-1.3px;">A system built to repeat.</h2>
+      <div data-stack="" style="display:grid;grid-template-columns:minmax(0,0.8fr) minmax(0,1.2fr);gap:64px;align-items:start;">
+        <div>
+          <div style="font-size:12px;letter-spacing:1.3px;font-weight:800;color:oklch(0.45 0.02 50);margin-bottom:22px;">WHAT I DID</div>
+          <div style="display:flex;flex-direction:column;">
+            <div style="padding:18px 0;border-top:1px solid oklch(0.88 0.01 55);"><div style="font-weight:800;font-size:15px;margin-bottom:4px;">Cadence</div><div style="font-size:16px;color:oklch(0.38 0.02 50);line-height:1.5;">2 posts a week, every week</div></div>
+            <div style="padding:18px 0;border-top:1px solid oklch(0.88 0.01 55);"><div style="font-weight:800;font-size:15px;margin-bottom:4px;">Themes</div><div style="font-size:16px;color:oklch(0.38 0.02 50);line-height:1.5;">Student life, local food, faith, community</div></div>
+            <div style="padding:18px 0;border-top:1px solid oklch(0.88 0.01 55);"><div style="font-weight:800;font-size:15px;margin-bottom:4px;">Hooks</div><div style="font-size:16px;color:oklch(0.38 0.02 50);line-height:1.5;">Tested openers and covers; cut anything that lost people in 3 seconds</div></div>
+            <div style="padding:18px 0;border-top:1px solid oklch(0.88 0.01 55);border-bottom:1px solid oklch(0.88 0.01 55);"><div style="font-weight:800;font-size:15px;margin-bottom:4px;">Cross-platform</div><div style="font-size:16px;color:oklch(0.38 0.02 50);line-height:1.5;">Same footage, different caption and cover for TikTok and Instagram</div></div>
+          </div>
         </div>
-      </sc-for>
-      <div style="background:oklch(0.94 0.014 55);border:1px solid oklch(0.85 0.01 55);border-radius:16px;padding:24px;">
-        <div style="font-weight:700;font-size:15px;margin-bottom:8px;color:oklch(0.56 0.13 45);">What's next</div>
-        <div style="font-size:13.5px;color:oklch(0.35 0.02 50);line-height:1.55;">I've proven I can build an audience and a business alone. Next I want to do it inside a team with real budget and reach — where the system I built for one campus gets to run at a scale I can't hit by myself.</div>
+        <div>
+          <div style="font-size:12px;letter-spacing:1.3px;font-weight:800;color:oklch(0.45 0.02 50);margin-bottom:22px;">WHAT HAPPENED</div>
+          <figure style="margin:0 0 28px;">
+            <div style="border-radius:16px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);box-shadow:0 30px 60px -36px oklch(0.2 0.015 50 / 0.45);"><img decoding="async" src="dwm-insights-posts.jpg" style="display:block;width:100%;height:auto;" alt="Instagram insights, last 30 days: 5,467,771 views"></div>
+            <figcaption style="font-size:12.5px;color:oklch(0.45 0.02 50);margin-top:10px;line-height:1.5;">Instagram Insights, Nov 23–Dec 22 · 5.47M views, 2.73M accounts reached</figcaption>
+          </figure>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 28px;">
+            <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:40px;font-weight:800;letter-spacing:-1.2px;line-height:1;color:oklch(0.56 0.13 45);">5.4M</div><div style="font-size:14.5px;color:oklch(0.35 0.02 50);margin-top:8px;line-height:1.45;">profile views in one month</div></div>
+            <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:40px;font-weight:800;letter-spacing:-1.2px;line-height:1;">94.5%</div><div style="font-size:14.5px;color:oklch(0.35 0.02 50);margin-top:8px;line-height:1.45;">of views from non-followers</div></div>
+            <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:40px;font-weight:800;letter-spacing:-1.2px;line-height:1;">5 · 3.4M</div><div style="font-size:14.5px;color:oklch(0.35 0.02 50);margin-top:8px;line-height:1.45;">Instagram posts over 1M · top TikTok</div></div>
+            <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:40px;font-weight:800;letter-spacing:-1.2px;line-height:1;">841K</div><div style="font-size:14.5px;color:oklch(0.35 0.02 50);margin-top:8px;line-height:1.45;">views in the last 90 days, still at 2 posts a week</div></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer style="border-top:1px solid oklch(0.85 0.01 55);padding:40px;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+  <!-- 04b COMMUNITY ACTION -->
+  <section id="community" data-reveal="1" data-screen-label="Community action" data-pad="" style="padding:88px 40px;background:oklch(0.94 0.014 55);border-top:1px solid oklch(0.87 0.015 55);border-bottom:1px solid oklch(0.87 0.015 55);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div data-stack="" style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,0.8fr);gap:48px;align-items:end;margin-bottom:40px;">
+        <div>
+          <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">03 · COMMUNITY ACTION</div>
+          <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:800;margin:0 0 16px;line-height:1.02;letter-spacing:-1.3px;">From viewers to participants.</h2>
+          <p style="font-size:16px;color:oklch(0.4 0.02 50);line-height:1.6;margin:0;max-width:520px;text-wrap:pretty;">Local restaurant collabs. Entering meant following both accounts and tagging a friend — the Guads post alone brought the restaurant about 1K new followers.</p>
+        </div>
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(64px,8vw,104px);font-weight:800;letter-spacing:-3px;line-height:0.9;color:oklch(0.56 0.13 45);">3,660</div>
+          <div style="font-size:16px;font-weight:700;margin-top:10px;">entries across six giveaways</div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end;gap:10px;margin:0 0 18px;">
+        <button onClick="{{ collabPrev }}" aria-label="Scroll left" style="width:44px;height:44px;border-radius:50%;border:1.5px solid oklch(0.2 0.015 50);background:transparent;font-size:18px;font-weight:800;cursor:pointer;color:oklch(0.2 0.015 50);" style-hover="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);">←</button>
+        <button onClick="{{ collabNext }}" aria-label="Scroll right" style="width:44px;height:44px;border-radius:50%;border:1.5px solid oklch(0.2 0.015 50);background:transparent;font-size:18px;font-weight:800;cursor:pointer;color:oklch(0.2 0.015 50);" style-hover="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);">→</button>
+      </div>
+      <div ref="{{ collabRef }}" data-shelf="" style="display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:0 0 12px;scrollbar-width:none;">
+        <sc-for list="{{ giveaways }}" as="g" hint-placeholder-count="6">
+          <div style="flex:0 0 260px;min-width:0;scroll-snap-align:start;">
+            <div style="position:relative;background:oklch(0.2 0.015 50);border-radius:36px;padding:9px;box-shadow:0 26px 50px -26px oklch(0.2 0.015 50 / 0.55);">
+              <div data-pop="{{ g.link }}" style="position:relative;border-radius:29px;overflow:hidden;background:oklch(0.3 0.015 50);aspect-ratio:9/19;cursor:pointer;">
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px;text-align:center;color:oklch(0.8 0.015 55);font-size:12.5px;line-height:1.45;"><span style="font-size:11px;letter-spacing:1.2px;font-weight:800;color:oklch(0.72 0.13 45);">VIDEO</span><span>Add <strong style="color:oklch(0.97 0.01 60);">{{ g.file }}</strong> to the site folder</span></div>
+                <video data-autoplay="" autoplay="" preload="auto" src="{{ g.file }}" muted="" loop="" playsinline="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+              </div>
+              <div style="position:absolute;top:22px;left:22px;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;padding:6px 13px;border-radius:100px;pointer-events:none;box-shadow:0 6px 16px -6px oklch(0.2 0.015 50 / 0.6);white-space:nowrap;">{{ g.entries }} entries</div>
+            </div>
+            <div style="font-weight:800;font-size:15px;margin:14px 4px 2px;">{{ g.name }}</div>
+            <div style="font-size:13.5px;color:oklch(0.45 0.02 50);padding:0 4px;">{{ g.views }} views</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 PARTNERSHIPS -->
+  <section id="partnerships" data-reveal="1" data-screen-label="Partnerships" data-pad="" style="padding:88px 40px 72px;max-width:1200px;margin:0 auto;">
+    <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">04 · BRAND PARTNERSHIPS</div>
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:800;margin:0 0 14px;line-height:1.02;letter-spacing:-1.3px;max-width:820px;text-wrap:balance;">Turning audience trust into brand work.</h2>
+    <p style="font-size:17px;color:oklch(0.4 0.02 50);line-height:1.55;margin:0 0 56px;max-width:620px;text-wrap:pretty;">I pitch, sign, shoot, edit, post, and report back on every deal. Two that show the range:</p>
+
+    <div style="padding:0 0 64px;border-bottom:1px solid oklch(0.87 0.015 55);">
+      <div style="display:flex;flex-direction:column;gap:36px;">
+        <div style="max-width:720px;">
+          <div style="font-size:11px;letter-spacing:1.3px;font-weight:800;color:oklch(0.56 0.13 45);margin-bottom:10px;">A · NATIONAL BRAND · CAMPUS ACTIVATION</div>
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:800;letter-spacing:-0.8px;line-height:1.05;margin:0 0 14px;">Hero Cosmetics</h3>
+          <p style="font-size:16px;color:oklch(0.38 0.02 50);line-height:1.6;margin:0 0 22px;text-wrap:pretty;">One of 50 national ambassadors. I run monthly giveaways and campus pop-ups — setup, sampling, and the content after.</p>
+          <div style="display:flex;gap:32px;flex-wrap:wrap;">
+            <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:34px;font-weight:800;letter-spacing:-1px;line-height:1;color:oklch(0.56 0.13 45);">100+</div><div style="font-size:13px;color:oklch(0.45 0.02 50);margin-top:6px;">students at the first pop-up, from one post + stories</div></div>
+            <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:34px;font-weight:800;letter-spacing:-1px;line-height:1;">5+</div><div style="font-size:13px;color:oklch(0.45 0.02 50);margin-top:6px;">activations so far</div></div>
+          </div>
+        </div>
+        <div data-rail="" style="display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));gap:16px;align-items:center;">
+          <div style="border-radius:18px;overflow:hidden;aspect-ratio:3/4;"><img decoding="async" src="hero-maya-table.jpg" alt="Maya tabling for Hero Cosmetics on campus" style="display:block;width:100%;height:100%;object-fit:cover;"></div>
+          <div data-pop="{{ heroCosLink }}" style="position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:9/16;cursor:pointer;"><video data-autoplay="" autoplay="" preload="auto" src="hero-line.mp4" muted="" loop="" playsinline="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;"></video></div>
+          <div data-pop="{{ heroCosLink }}" style="position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:9/16;cursor:pointer;"><video data-autoplay="" autoplay="" preload="auto" src="hero-product.mp4" muted="" loop="" playsinline="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;"></video></div>
+          <div data-pop="{{ heroCosLink }}" style="position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:9/16;cursor:pointer;"><video data-autoplay="" autoplay="" preload="auto" src="hero-handoff.mp4" muted="" loop="" playsinline="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;"></video></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:64px 0;">
+      <div data-stack="" style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);gap:56px;align-items:center;">
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,240px));gap:20px;">
+          <div style="min-width:0;">
+            <div style="position:relative;background:oklch(0.2 0.015 50);border-radius:36px;padding:9px;box-shadow:0 26px 50px -26px oklch(0.2 0.015 50 / 0.55);">
+              <div data-pop="{{ brand1Link }}" style="position:relative;border-radius:29px;overflow:hidden;background:oklch(0.3 0.015 50);aspect-ratio:9/19;cursor:pointer;">
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px;text-align:center;color:oklch(0.8 0.015 55);font-size:12.5px;line-height:1.45;"><span style="font-size:11px;letter-spacing:1.2px;font-weight:800;color:oklch(0.72 0.13 45);">VIDEO</span><span>Add <strong style="color:oklch(0.97 0.01 60);">{{ brand1File }}</strong> to the site folder</span></div>
+                <video data-autoplay="" autoplay="" preload="auto" src="{{ brand1File }}" muted="" loop="" playsinline="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+              </div>
+              <div style="position:absolute;top:22px;left:22px;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;padding:6px 13px;border-radius:100px;pointer-events:none;box-shadow:0 6px 16px -6px oklch(0.2 0.015 50 / 0.6);white-space:nowrap;">{{ brand1Name }}</div>
+            </div>
+          </div>
+          <div style="min-width:0;">
+            <div style="position:relative;background:oklch(0.2 0.015 50);border-radius:36px;padding:9px;box-shadow:0 26px 50px -26px oklch(0.2 0.015 50 / 0.55);">
+              <div data-pop="{{ brand2Link }}" style="position:relative;border-radius:29px;overflow:hidden;background:oklch(0.3 0.015 50);aspect-ratio:9/19;cursor:pointer;">
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px;text-align:center;color:oklch(0.8 0.015 55);font-size:12.5px;line-height:1.45;"><span style="font-size:11px;letter-spacing:1.2px;font-weight:800;color:oklch(0.72 0.13 45);">VIDEO</span><span>Add <strong style="color:oklch(0.97 0.01 60);">{{ brand2File }}</strong> to the site folder</span></div>
+                <video data-autoplay="" autoplay="" preload="auto" src="{{ brand2File }}" muted="" loop="" playsinline="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+              </div>
+              <div style="position:absolute;top:22px;left:22px;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;padding:6px 13px;border-radius:100px;pointer-events:none;box-shadow:0 6px 16px -6px oklch(0.2 0.015 50 / 0.6);white-space:nowrap;">{{ brand2Name }}</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;letter-spacing:1.3px;font-weight:800;color:oklch(0.56 0.13 45);margin-bottom:10px;">B · CONTENT FOR BRANDS</div>
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:800;letter-spacing:-0.8px;line-height:1.05;margin:0 0 14px;">Different brands, same voice.</h3>
+          <p style="font-size:16px;color:oklch(0.38 0.02 50);line-height:1.6;margin:0;text-wrap:pretty;">Paid posts I write, film, and edit myself, so they play like the rest of the feed.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);border-radius:20px;padding:34px 36px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px 36px;align-items:center;" data-stack="">
+      <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:56px;font-weight:800;letter-spacing:-1.8px;line-height:1;color:oklch(0.72 0.13 45);">30+</div>
+      <div>
+        <div style="font-size:17px;font-weight:700;margin-bottom:12px;">paid promotions and business partnerships · 400K+ views on the top collab, reposted by the brand</div>
+        <div style="font-size:14px;color:oklch(0.78 0.015 55);line-height:1.7;">{{ partnerLine }}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 PRODUCTS -->
+  <section id="products" data-reveal="1" data-screen-label="Products" data-pad="" style="padding:88px 40px;max-width:1200px;margin:0 auto;">
+    <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">05 · PRODUCTS</div>
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:800;margin:0 0 40px;line-height:1.02;letter-spacing:-1.3px;max-width:820px;text-wrap:balance;">Turning repeated questions into products.</h2>
+    <div data-flow="" style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:16px;align-items:start;margin-bottom:56px;padding:24px 0;border-top:1px solid oklch(0.87 0.015 55);border-bottom:1px solid oklch(0.87 0.015 55);">
+      <div><div style="font-weight:800;font-size:15px;margin-bottom:4px;">Audience question</div><div style="font-size:14px;color:oklch(0.45 0.02 50);line-height:1.5;">Same DMs, every week</div></div>
+      <div data-flow-arrow="" style="color:oklch(0.72 0.13 45);font-size:20px;font-weight:800;">→</div>
+      <div><div style="font-weight:800;font-size:15px;margin-bottom:4px;">Free resource</div><div style="font-size:14px;color:oklch(0.45 0.02 50);line-height:1.5;">Starter Guide + free course</div></div>
+      <div data-flow-arrow="" style="color:oklch(0.72 0.13 45);font-size:20px;font-weight:800;">→</div>
+      <div><div style="font-weight:800;font-size:15px;margin-bottom:4px;">Email</div><div style="font-size:14px;color:oklch(0.45 0.02 50);line-height:1.5;">127 collected</div></div>
+      <div data-flow-arrow="" style="color:oklch(0.72 0.13 45);font-size:20px;font-weight:800;">→</div>
+      <div><div style="font-weight:800;font-size:15px;margin-bottom:4px;color:oklch(0.56 0.13 45);">Paid guide</div><div style="font-size:14px;color:oklch(0.45 0.02 50);line-height:1.5;">131 purchases</div></div>
+    </div>
+    <div data-stack="" style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);gap:56px;align-items:center;">
+      <div style="position:relative;display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:18px;align-items:end;">
+        <a href="uc-davis-starter-guide.pdf" target="_blank" style="display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:8.5/11;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);border-radius:6px 14px 14px 6px;padding:26px 22px;box-shadow:0 34px 60px -30px oklch(0.2 0.015 50 / 0.7), inset 6px 0 0 oklch(0.15 0.015 50);transform:rotate(-2deg);">
+          <div style="font-size:10px;letter-spacing:1.6px;font-weight:800;color:oklch(0.72 0.13 45);">DAVISWITHMAYA</div>
+          <div>
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,2.4vw,30px);font-weight:800;line-height:0.98;letter-spacing:-0.8px;margin-bottom:12px;">The UC Davis Starter Guide</div>
+            <div style="font-size:12.5px;color:oklch(0.8 0.015 55);line-height:1.45;">25 things I wish I knew before coming to Davis</div>
+          </div>
+          <div style="font-size:10.5px;letter-spacing:1px;font-weight:700;color:oklch(0.7 0.015 55);">16 PAGES · FREE</div>
+        </a>
+        <figure style="margin:0;">
+          <div style="border-radius:12px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);aspect-ratio:4/3;box-shadow:0 24px 50px -30px oklch(0.2 0.015 50 / 0.5);"><img decoding="async" src="screenshot-2026-09-02-at-4-10-44-pm.jpg" alt="Inside the Dorms guide — every hall compared" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top left;"></div>
+          <figcaption style="font-size:12.5px;color:oklch(0.45 0.02 50);margin-top:8px;line-height:1.45;">Inside the paid Dorms guide — every hall compared</figcaption>
+        </figure>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:1.3px;font-weight:800;color:oklch(0.56 0.13 45);margin-bottom:10px;">THE FRONT DOOR</div>
+        <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:800;letter-spacing:-0.8px;line-height:1.05;margin:0 0 14px;">A free guide that leads to the paid ones.</h3>
+        <p style="font-size:16px;color:oklch(0.38 0.02 50);line-height:1.6;margin:0 0 28px;text-wrap:pretty;">Bikes, Unitrans, campus words, food, first week. Written and designed myself, from the questions students actually sent.</p>
+        <div style="display:flex;gap:32px;flex-wrap:wrap;margin-bottom:30px;">
+          <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:40px;font-weight:800;letter-spacing:-1.2px;line-height:1;color:oklch(0.56 0.13 45);">131</div><div style="font-size:13px;color:oklch(0.45 0.02 50);margin-top:6px;">purchases</div></div>
+          <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:40px;font-weight:800;letter-spacing:-1.2px;line-height:1;">127</div><div style="font-size:13px;color:oklch(0.45 0.02 50);margin-top:6px;">emails collected</div></div>
+          <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:40px;font-weight:800;letter-spacing:-1.2px;line-height:1;">4</div><div style="font-size:13px;color:oklch(0.45 0.02 50);margin-top:6px;">guides + a free course</div></div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="uc-davis-starter-guide.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:13px 22px;border-radius:100px;font-weight:700;font-size:14px;" style-hover="background:oklch(0.56 0.13 45);color:oklch(0.97 0.01 60);">View full guide →</a>
+          <a href="#product-line" onClick="{{ openLine }}" style="display:inline-flex;align-items:center;gap:8px;border:1.5px solid oklch(0.2 0.015 50);color:oklch(0.2 0.015 50);padding:12px 22px;border-radius:100px;font-weight:700;font-size:14px;" style-hover="border-color:oklch(0.56 0.13 45);color:oklch(0.56 0.13 45);">View product line →</a>
+        </div>
+      </div>
+    </div>
+    <details id="product-line" style="margin-top:56px;">
+      <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;border-top:1px solid oklch(0.87 0.015 55);border-bottom:1px solid oklch(0.87 0.015 55);"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.3px;">The full product line</span><span style="font-size:13px;font-weight:800;color:oklch(0.56 0.13 45);"><span data-open-label="">Expand +</span><span data-close-label="">Close −</span></span></summary>
+      <div style="padding-top:26px;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;margin-bottom:32px;">
+          <sc-for list="{{ products }}" as="p" hint-placeholder-count="5">
+            <div style="padding:4px 22px 4px 0;margin-bottom:18px;">
+              <div style="font-size:11px;letter-spacing:1.2px;font-weight:800;color:oklch(0.56 0.13 45);margin-bottom:6px;">{{ p.price }}</div>
+              <div style="font-weight:700;font-size:16px;margin-bottom:6px;">{{ p.name }}</div>
+              <div style="font-size:14px;color:oklch(0.45 0.02 50);line-height:1.5;">{{ p.desc }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+          <figure style="margin:0;"><div style="border-radius:12px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);aspect-ratio:16/10;"><img decoding="async" src="screenshot-2026-09-02-at-4-11-26-pm.jpg" alt="UC Davis Guides order page" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;"></div><figcaption style="font-size:12.5px;color:oklch(0.45 0.02 50);margin-top:8px;">Order page — Venmo + form, links emailed within 24 hours</figcaption></figure>
+          <figure style="margin:0;"><div style="border-radius:12px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);aspect-ratio:16/10;"><img decoding="async" src="screenshot-2026-09-02-at-4-14-18-pm.jpg" alt="College Life 101 course dashboard" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top left;"></div><figcaption style="font-size:12.5px;color:oklch(0.45 0.02 50);margin-top:8px;">College Life 101 — the free eight-module course</figcaption></figure>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- 09 ENDING -->
+  <section id="results" data-reveal="1" data-screen-label="Results" data-pad="" style="padding:88px 40px 72px;max-width:1200px;margin:0 auto;">
+    <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:36px;">WHAT IT ADDS UP TO</div>
+    <div data-stack="" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-bottom:72px;">
+      <div style="border-top:2px solid oklch(0.2 0.015 50);padding-top:20px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.6px;margin-bottom:10px;">Audience</div><div style="font-size:16px;color:oklch(0.38 0.02 50);line-height:1.55;text-wrap:pretty;">Built from zero with a posting system I could keep up every week.</div></div>
+      <div style="border-top:2px solid oklch(0.2 0.015 50);padding-top:20px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.6px;margin-bottom:10px;">Revenue</div><div style="font-size:16px;color:oklch(0.38 0.02 50);line-height:1.55;text-wrap:pretty;">Turned attention into 30+ paid partnerships and a line of guides.</div></div>
+      <div style="border-top:2px solid oklch(0.2 0.015 50);padding-top:20px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.6px;margin-bottom:10px;">Ownership</div><div style="font-size:16px;color:oklch(0.38 0.02 50);line-height:1.55;text-wrap:pretty;">Strategy, filming, editing, deals, product, and analytics — all me.</div></div>
+    </div>
+    <a href="daily.html" style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;border-top:1px solid oklch(0.85 0.01 55);border-bottom:1px solid oklch(0.85 0.01 55);color:oklch(0.2 0.015 50);" style-hover="color:oklch(0.56 0.13 45);">
+      <span><span style="display:block;font-size:11px;letter-spacing:1.4px;font-weight:800;color:oklch(0.5 0.02 50);margin-bottom:6px;">NEXT VENTURE</span><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3vw,36px);font-weight:800;letter-spacing:-0.8px;">Daily UC Davis</span></span>
+      <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:36px;font-weight:800;">→</span>
+    </a>
+    <a href="ventures.html" style="display:inline-block;margin-top:20px;font-weight:700;font-size:14px;">← Back to Ventures</a>
+  </section>
+
+  <sc-if value="{{ popOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closePop }}" style="position:fixed;inset:0;z-index:300;background:oklch(0.12 0.015 50 / 0.82);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;">
+      <div style="position:relative;width:min(380px,100%);height:min(720px,86vh);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 40px 80px -30px oklch(0 0 0 / 0.8);">
+        <iframe loading="lazy" src="{{ popEmbed }}" title="Post" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true"></iframe>
+      </div>
+      <div style="position:absolute;top:18px;right:18px;display:flex;gap:10px;">
+        <a href="{{ popLink }}" target="_blank" rel="noopener" style="background:oklch(0.97 0.01 60);color:oklch(0.2 0.015 50);padding:10px 16px;border-radius:100px;font-weight:700;font-size:13px;">Open app ↗</a>
+        <button onClick="{{ closePop }}" aria-label="Close" style="width:44px;height:44px;border-radius:50%;border:0;background:oklch(0.97 0.01 60);color:oklch(0.2 0.015 50);font-size:20px;font-weight:800;cursor:pointer;">×</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <footer data-pad="" style="padding:32px 40px 40px;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
     <div style="font-size:13px;color:oklch(0.45 0.02 50);">Maya Yoo · DavisWithMaya case study</div>
-    <div style="display:flex;gap:26px;font-size:13.5px;font-weight:600;">
+    <div style="display:flex;gap:24px;flex-wrap:wrap;font-size:13.5px;font-weight:600;">
       <a href="https://www.tiktok.com/@daviswithmaya" target="_blank">TikTok</a>
       <a href="https://www.instagram.com/daviswithmaya/" target="_blank">Instagram</a>
-      <a href="https://www.instagram.com/dailyucdavis/" target="_blank">DailyUCDavis</a>
       <a href="https://linktr.ee/daviswithmaya" target="_blank">Guides</a>
-      <a href="ventures.html">← Back to all ventures</a>
+      <a href="ventures.html">← All ventures</a>
     </div>
   </footer>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;heroVideo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.instagram.com/reel/DQSsZFqATf1/&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Videos&quot;},&quot;guadsGiveawayLink&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.instagram.com/reel/DT6k5IHiU4L/&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Videos&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;coverVideo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;content-featured.mp4&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Videos&quot;},&quot;featuredReelViews&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;1M+&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Videos&quot;},&quot;featuredReelTitle&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Featured reel&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Videos&quot;},&quot;heroVideo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.instagram.com/reel/DQSsZFqATf1/&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Videos&quot;},&quot;guadsGiveawayLink&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.instagram.com/reel/DT6k5IHiU4L/&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Videos&quot;},&quot;brand1Video&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;brand-beachwaver.mp4&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Brand videos&quot;},&quot;brand1Name&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Beachwaver&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Brand videos&quot;},&quot;brand2Video&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;brand-2.mp4&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Brand videos&quot;},&quot;brand2Name&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Tower 28&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Brand videos&quot;}}">
 class Component extends DCLogic {
-  state = { playing: {} };
+  state = { active: 'overview', pop: '' };
+  shelfRef = React.createRef();
+  collabRef = React.createRef();
   componentDidMount() {
-    if (!this._imgOpen) { this._imgOpen = (e) => { const img = e.target.closest && e.target.closest('img'); if (!img || e.target.closest('a') || e.target.closest('[data-no-zoom]')) return; window.open(img.currentSrc || img.src, '_blank', 'noopener'); }; document.addEventListener('click', this._imgOpen); }
+    this._imgOpen = (e) => { const img = e.target.closest && e.target.closest('img'); if (!img || e.target.closest('a')) return; window.open(img.currentSrc || img.src, '_blank', 'noopener'); };
+    document.addEventListener('click', this._imgOpen);
+    this._popClick = (e) => { const el = e.target.closest && e.target.closest('[data-pop]'); if (!el) return; const l = el.getAttribute('data-pop'); if (!l) return; e.preventDefault(); this.setState({ pop: l }); };
+    document.addEventListener('click', this._popClick);
+    this._esc = (e) => { if (e.key === 'Escape') this.setState({ pop: '' }); };
+    addEventListener('keydown', this._esc);
     const show = (el) => { el.style.opacity = '1'; el.style.transform = 'none'; el.dataset.shown = '1'; };
-    const check = () => { document.querySelectorAll('section[data-reveal]').forEach(el => { if (el.dataset.shown) return; if (!el.dataset.revealed) { el.dataset.revealed = '1'; const r0 = el.getBoundingClientRect(); if (r0.top < window.innerHeight * 0.92) { el.dataset.shown = '1'; return; } el.style.opacity = '0'; el.style.transform = 'translateY(28px)'; el.style.transition = 'opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1)'; } const r = el.getBoundingClientRect(); if (r.top < window.innerHeight * 0.92 || r.bottom < 0) show(el); }); };
+    const check = () => {
+      document.querySelectorAll('section[data-reveal]').forEach(el => {
+        if (el.dataset.shown) return;
+        if (!el.dataset.revealed) { el.dataset.revealed = '1'; if (el.getBoundingClientRect().top < innerHeight * 0.92) { el.dataset.shown = '1'; return; } el.style.opacity = '0'; el.style.transform = 'translateY(28px)'; el.style.transition = 'opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1)'; }
+        const r = el.getBoundingClientRect(); if (r.top < innerHeight * 0.92 || r.bottom < 0) show(el);
+      });
+      let cur = 'overview';
+      ['overview','content','audience','community','partnerships','products'].forEach(id => { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top < 160) cur = id; });
+      if (cur !== this.state.active) this.setState({ active: cur });
+      const hero = document.getElementById('overview'); const past = hero ? hero.getBoundingClientRect().bottom < 90 : true;
+      if (past !== this.state.sub) this.setState({ sub: past });
+    };
     let raf = 0; this._onScroll = () => { if (raf) return; raf = requestAnimationFrame(() => { raf = 0; check(); }); };
-    window.addEventListener('scroll', this._onScroll, { passive: true }); window.addEventListener('resize', this._onScroll);
-    check(); this._revealTimer = setInterval(check, 400);
-    this._safety = setTimeout(() => { document.querySelectorAll('section[data-reveal]').forEach(show); clearInterval(this._revealTimer); }, 3500);
+    addEventListener('scroll', this._onScroll, { passive: true }); addEventListener('resize', this._onScroll);
+    check(); this._revealTimer = setInterval(check, 500);
+    this._safety = setTimeout(() => document.querySelectorAll('section[data-reveal]').forEach(show), 3500);
+    const kick = () => document.querySelectorAll('video[data-autoplay]').forEach(v => { v.muted = true; v.volume = 0; v.defaultMuted = true; if (v.paused) v.play().catch(() => {}); });
+    document.querySelectorAll('video[data-autoplay]').forEach(v => { v.addEventListener('canplay', kick); v.addEventListener('loadeddata', kick); v.addEventListener('volumechange', () => { if (!v.muted) v.muted = true; }); v.addEventListener('error', () => { v.style.visibility = 'hidden'; }); });
+    kick(); this._kick = setInterval(kick, 1500);
   }
-  componentWillUnmount() { clearInterval(this._revealTimer); clearTimeout(this._safety); window.removeEventListener('scroll', this._onScroll); window.removeEventListener('resize', this._onScroll); }
+  componentWillUnmount() { clearInterval(this._kick); clearInterval(this._revealTimer); clearTimeout(this._safety); removeEventListener('scroll', this._onScroll); removeEventListener('resize', this._onScroll); document.removeEventListener('click', this._imgOpen); document.removeEventListener('click', this._popClick); removeEventListener('keydown', this._esc); }
   embed(link) {
     if (!link) return '';
-    if (link.includes('tiktok.com')) { const m = link.match(/\/video\/(\d+)/) || link.match(/\/(\d{12,})/); return m ? 'https://www.tiktok.com/embed/v2/' + m[1] : ''; }
-    if (link.includes('instagram.com')) {
-      const m = link.match(/instagram\.com\/(?:[^\/?#]+\/)?(reel|reels|p|tv)\/([A-Za-z0-9_-]{5,})/);
-      return m ? 'https://www.instagram.com/' + ((m[1] === 'p' || m[1] === 'tv') ? 'p' : 'reel') + '/' + m[2] + '/embed' : '';
-    }
-    return link;
+    if (link.includes('tiktok.com')) { const m = link.match(/\/video\/(\d+)/); return m ? 'https://www.tiktok.com/embed/v2/' + m[1] : ''; }
+    const m = link.match(/instagram\.com\/(?:[^\/?#]+\/)?(reel|reels|p|tv)\/([A-Za-z0-9_-]{5,})/);
+    return m ? 'https://www.instagram.com/' + (m[1] === 'p' || m[1] === 'tv' ? 'p' : 'reel') + '/' + m[2] + '/embed' : '';
   }
-  playVideo = (link) => this.setState(s => ({ playing: { ...(s.playing || {}), [link]: true } }));
-  phone(link, tag, caption, placeholder) {
-    const embedUrl = this.embed(link);
-    const hasEmbed = !!embedUrl;
-    const playing = hasEmbed && !!(this.state.playing || {})[link];
-    return { link, tag, caption, embedUrl, hasEmbed, playing, idle: hasEmbed && !playing, play: () => this.playVideo(link),
-      platformLabel: (link || '').includes('tiktok.com') ? 'TikTok' : 'Instagram reel',
-      isPlaceholder: !hasEmbed, placeholder: placeholder || (link ? 'Open on Instagram \u2197' : 'paste link') };
-  }
+  goTo(id) { return (e) => { e.preventDefault(); const el = document.getElementById(id); if (el) scrollTo({ top: el.getBoundingClientRect().top + scrollY - 92, behavior: 'smooth' }); }; }
   renderVals() {
     const heroLink = this.props.heroVideo ?? 'https://www.instagram.com/reel/DQSsZFqATf1/';
     const guadsLink = this.props.guadsGiveawayLink ?? 'https://www.instagram.com/reel/DT6k5IHiU4L/';
-    const timeline = [
-      { when: 'Feb 2025', what: 'DailyUCDavis launches, posting 2–3x a day' },
-      { when: 'Mar 2025', what: 'DavisWithMaya launches' },
-      { when: 'Dec 2025', what: '5.4M profile views in a single month \u2014 five Instagram posts clear 1M, top TikTok hits 3.4M' },
-      { when: '2025–26', what: '30+ partnerships, 131 guide purchases, Hero Cosmetics national ambassador, second brand passes 6,400 followers' },
-    ];
     const shelf = [
-      this.phone('https://www.instagram.com/p/DRoXJ_uDi2A/', '2.8M', '\u201cAlmost the end to 2025\u201d \u2014 268K likes, 54K shares'),
-      this.phone('https://www.instagram.com/reel/DT30YDHEi1j/', '2.4M', 'Friends \u2014 330K likes, 110K saves'),
-      this.phone('https://www.instagram.com/reel/DRkmKVHknI1/', '2.2M', 'Thankfulness \u2014 268K likes, 51K shares'),
-      this.phone('https://www.tiktok.com/@daviswithmaya/video/7555530233898650893', '3.4M', 'Struggling in faith \u2014 436K likes (TikTok)'),
-      this.phone('https://www.instagram.com/p/DWx3VDtFYQ_/', '1.8M', '\u201cAll my life is yours, Jesus\u201d \u2014 298K likes, 96K shares'),
-      this.phone('https://www.instagram.com/reel/DRVupkvEvKE/', '935K', 'Reel \u2014 935K views'),
-    ];
-    const partnerPhones = [
-      this.phone('https://www.instagram.com/p/DQs3KhAkRZl/', 'Hero Cosmetics', 'National ambassador campaign'),
-      this.phone('https://www.instagram.com/p/DQdLDYICQqh/', 'Beachwaver', 'Paid brand partnership'),
-    ];
-    const dudPhones = [
-      this.phone('https://www.instagram.com/reel/DJ14_vxJkxM/', 'DailyUCDavis', 'Campus-life reel'),
-      this.phone('https://www.instagram.com/reel/DHJxzIvSAkV/', 'DailyUCDavis', 'Campus-life reel'),
-    ];
-    const products = [
-      { price: 'Free', name: 'UC Davis Starter Guide', desc: '16 pages, 25 tips \u2014 the broad guide every incoming student gets first' },
-      { price: 'Paid', name: 'Davis Life Guide', desc: 'Housing, kitchen, utilities, budgeting, housemate agreement' },
-      { price: 'Paid', name: 'Dorm Guide & Packing List', desc: 'Every hall compared, plus the list every incoming student DMs about' },
-      { price: 'Free', name: 'College Life 101', desc: 'Eight-module course, plus GE checklist and assignment tracker as lead magnets' },
-      { price: 'Affiliate', name: 'Amazon storefront', desc: 'Branded, affiliate, tied to the packing list' },
-    ];
-    const proves = [
-      { title: 'Growth marketing', text: 'Built an audience with a repeatable, analytics-driven system, then rebuilt it with a second brand' },
-      { title: 'Partnerships and sales', text: 'Pitched, closed, and delivered 30+ paid collaborations solo' },
-      { title: 'Campaign design', text: 'Engineered giveaways and collabs around outcomes a business keeps' },
-      { title: 'Product and monetization', text: 'Turned repeated audience questions into a paid product line and a lead-magnet funnel' },
-      { title: 'End-to-end execution', text: 'Strategy, creative, production, copy, community, reporting; one person, two brands' },
-    ];
+      { cat: 'STUDENT LIFE', views: '2.8M', file: 'content-end-of-2025.mp4', title: '\u201cAlmost the end to 2025\u201d', link: 'https://www.instagram.com/p/DRoXJ_uDi2A/' },
+      { cat: 'FRIENDSHIP', views: '2.4M', file: 'content-friends.mp4', title: 'Friends \u2014 110K saves', link: 'https://www.instagram.com/reel/DT30YDHEi1j/' },
+      { cat: 'FAITH', views: '3.4M', file: 'content-faith-tiktok.mp4', title: 'Struggling in faith (TikTok)', link: 'https://www.tiktok.com/@daviswithmaya/video/7555530233898650893' },
+      { cat: 'GRATITUDE', views: '2.2M', file: 'content-thankfulness.mp4', title: 'Thankfulness', link: 'https://www.instagram.com/reel/DRkmKVHknI1/' },
+      { cat: 'FAITH', views: '1.8M', file: 'content-all-my-life.mp4', title: '\u201cAll my life is yours, Jesus\u201d', link: 'https://www.instagram.com/p/DWx3VDtFYQ_/' },
+      { cat: 'STUDENT LIFE', views: '935K', file: 'content-side-quests.mp4', title: 'Side quests', link: 'https://www.instagram.com/reel/DRVupkvEvKE/' },
+    ].map(v => ({ ...v, embedUrl: this.embed(v.link) }));
+    const brandPostsUnused = [
+      { brand: 'Beachwaver', kind: 'Hair tool \u2014 paid post in my voice', link: 'https://www.instagram.com/p/DQdLDYICQqh/' },
+      { brand: 'Hero Cosmetics', kind: 'Skincare \u2014 ambassador campaign post', link: 'https://www.instagram.com/p/DQs3KhAkRZl/' },
+    ].map(v => ({ ...v, embedUrl: this.embed(v.link) }));
+    const navItems = [['overview','Overview'],['content','Content'],['audience','Audience'],['community','Community'],['partnerships','Partnerships'],['products','Products']].map(([id, label]) => {
+      const on = this.state.active === id;
+      return { label, href: '#' + id, go: this.goTo(id), color: on ? 'oklch(0.2 0.015 50)' : 'oklch(0.5 0.02 50)', border: on ? 'oklch(0.56 0.13 45)' : 'transparent' };
+    });
     return {
-      heroEmbed: this.embed(heroLink), heroLink,
-      guadsEmbed: this.embed(guadsLink), guadsHasEmbed: !!this.embed(guadsLink), guadsIsPlaceholder: !this.embed(guadsLink),
-      guadsPlaying: !!(this.state.playing || {})[guadsLink], guadsIdle: !!this.embed(guadsLink) && !(this.state.playing || {})[guadsLink], guadsPlay: () => this.playVideo(guadsLink),
-      timeline, shelf, partnerPhones, dudPhones, products, proves,
-      localPartners: ['Guads', 'Volt', 'Molly Jasmine', 'Little Gem Waffles', 'Crazy D\u2019s Chicken', 'Shabu Shack', 'Honey D Cafe', 'Urban Plates', 'T%'],
+      heroLink, heroEmbed: this.embed(heroLink), guadsEmbed: this.embed(guadsLink),
+      shelf, navItems, shelfRef: this.shelfRef, collabRef: this.collabRef,
+      collabPrev: () => { const el = this.collabRef.current; if (el) el.scrollBy({ left: -284 * 2, behavior: 'smooth' }); },
+      collabNext: () => { const el = this.collabRef.current; if (el) el.scrollBy({ left: 284 * 2, behavior: 'smooth' }); },
+      shelfPrev: () => { const el = this.shelfRef.current; if (el) el.scrollBy({ left: -284 * 2, behavior: 'smooth' }); },
+      shelfNext: () => { const el = this.shelfRef.current; if (el) el.scrollBy({ left: 284 * 2, behavior: 'smooth' }); },
+      brand1File: this.props.brand1Video ?? 'brand-beachwaver.mp4', brand1Name: this.props.brand1Name ?? 'Beachwaver',
+      brand2File: this.props.brand2Video ?? 'brand-2.mp4', brand2Name: this.props.brand2Name ?? 'Tower 28',
+      goPress: this.goTo('press'),
+      popOpen: !!this.state.pop, popLink: this.state.pop, popEmbed: this.embed(this.state.pop) || this.state.pop.replace(/\/?$/, '/embed'),
+      closePop: (e) => { if (e.target === e.currentTarget || e.currentTarget.tagName === 'BUTTON') this.setState({ pop: '' }); },
+      brand1Link: this.props.brand1Link ?? 'https://www.instagram.com/p/DQdLDYICQqh/', brand2Link: this.props.brand2Link ?? 'https://www.instagram.com/daviswithmaya/',
+      heroCosLink: this.props.heroCosmeticsLink ?? 'https://www.instagram.com/daviswithmaya/',
+      goContent: this.goTo('content'), coverVideo: this.props.coverVideo ?? 'content-featured.mp4',
+      subOpacity: this.state.sub ? 1 : 0, subShift: this.state.sub ? '0' : '-8px', subPE: this.state.sub ? 'auto' : 'none', featuredViews: this.props.featuredReelViews ?? '1M+', featuredTitle: this.props.featuredReelTitle ?? 'Featured reel',
+      openLine: (e) => { e.preventDefault(); const d = document.getElementById('product-line'); if (d) { d.open = true; scrollTo({ top: d.getBoundingClientRect().top + scrollY - 92, behavior: 'smooth' }); } },
+      partnerLine: 'Also: Tower 28 · CapCut · American Eagle · Olive & June · Elevated Faith · Guads · Volt · Molly Jasmine · Crazy D\u2019s Chicken · Shabu Shack · Honey D Cafe · Urban Plates · T%',
       giveaways: [
-        { name: 'Guads', views: '19.6K', entries: '998' },
-        { name: 'Volt', views: '18.7K', entries: '843' },
-        { name: 'Molly Jasmine', views: '13.8K', entries: '667' },
-        { name: 'Little Gem Waffles', views: '10.1K', entries: '502' },
-        { name: 'Crazy D\u2019s Chicken', views: '9.5K', entries: '313' },
-        { name: 'Shabu Shack', views: '8.7K', entries: '337' },
+        { name: 'Guads', views: '19.6K', entries: '998', file: 'collab-guads.mp4', link: guadsLink },
+        { name: 'Volt', views: '18.7K', entries: '843', file: 'collab-volt.mp4', link: this.props['voltLink'] ?? 'https://www.instagram.com/daviswithmaya/' },
+        { name: 'Molly Jasmine', views: '13.8K', entries: '667', file: 'collab-molly-jasmine.mp4', link: this.props['mollyJasmineLink'] ?? 'https://www.instagram.com/daviswithmaya/' },
+        { name: 'Little Gem Waffles', views: '10.1K', entries: '502', file: 'collab-little-gem.mp4', link: this.props['littleGemLink'] ?? 'https://www.instagram.com/daviswithmaya/' },
+        { name: 'Crazy D\u2019s Chicken', views: '9.5K', entries: '313', file: 'collab-crazy-ds.mp4', link: this.props['crazyDsLink'] ?? 'https://www.instagram.com/daviswithmaya/' },
+        { name: 'Shabu Shack', views: '8.7K', entries: '337', file: 'collab-shabu-shack.mp4', link: this.props['shabuShackLink'] ?? 'https://www.instagram.com/daviswithmaya/' },
       ],
-      nationalPartners: ['Hero Cosmetics', 'Tower 28', 'Beachwaver', 'CapCut', 'American Eagle', 'Olive & June', 'Elevated Faith'],
+      products: [
+        { price: 'FREE', name: 'UC Davis Starter Guide', desc: '16 pages, 25 tips — the one every incoming student gets first' },
+        { price: 'PAID', name: 'Davis Life Guide', desc: 'Housing, kitchen, utilities, budgeting, housemate agreement' },
+        { price: 'PAID', name: 'Dorm Guide & Packing List', desc: 'Every hall compared, plus the packing list' },
+        { price: 'FREE', name: 'College Life 101', desc: 'Eight-module course, with a GE checklist and assignment tracker' },
+        { price: 'AFFILIATE', name: 'Amazon storefront', desc: 'Tied to the packing list' },
+      ],
     };
   }
 }

@@ -4,6 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<script data-mute-all>(function(){function m(v){if(!v.hasAttribute('controls')){v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.volume=0;}}
+document.addEventListener('play',function(e){if(e.target&&e.target.tagName==='VIDEO')m(e.target);},true);
+document.addEventListener('volumechange',function(e){var v=e.target;if(v&&v.tagName==='VIDEO'&&!v.hasAttribute('controls')&&!v.muted)m(v);},true);
+new MutationObserver(function(){document.querySelectorAll('video').forEach(m);}).observe(document.documentElement,{childList:true,subtree:true});})();</script>
+<script data-force-download>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[download]');if(!a)return;var href=a.getAttribute('href');if(!href||!/\.pdf($|\?)/i.test(href))return;e.preventDefault();var name=a.getAttribute('download')||'download.pdf';fetch(a.href).then(function(r){if(!r.ok)throw 0;return r.blob();}).then(function(b){var u=URL.createObjectURL(b),t=document.createElement('a');t.href=u;t.download=name;document.body.appendChild(t);t.click();t.remove();setTimeout(function(){URL.revokeObjectURL(u);},4000);}).catch(function(){window.location.href=a.href;});},true);</script>
 </head>
 <body>
 <x-dc>
@@ -18,6 +23,26 @@
       </sc-for>
     </div>
   </sc-if>
+  <sc-if value="{{ isSlides }}" hint-placeholder-val="{{ false }}">
+    <div style="width:100%;">
+      <div style="background:oklch(0.28 0.02 50);border-radius:12px;padding:11px;width:100%;box-sizing:border-box;box-shadow:0 18px 44px oklch(0.3 0.04 45 / 0.22);">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px;padding:0 3px;">
+          <div style="font-size:10px;color:oklch(0.8 0.01 55);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">{{ slideCaption }}</div>
+          <div style="font-size:10px;font-weight:800;color:oklch(0.72 0.13 45);white-space:nowrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;">{{ slideCount }}</div>
+        </div>
+        <div style="position:relative;aspect-ratio:16/10;border-radius:6px;overflow:hidden;background:oklch(0.15 0.01 50);">
+          <img decoding="async" src="{{ slideSrc }}" alt="{{ slideCaption }}" style="width:100%;height:100%;object-fit:contain;display:block;">
+          <div onClick="{{ slidePrev }}" aria-label="Previous" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:oklch(0.97 0.01 60 / 0.92);color:oklch(0.2 0.015 50);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;box-shadow:0 6px 16px oklch(0 0 0 / 0.3);transition:transform .2s,background .2s;" style-hover="transform:translateY(-50%) scale(1.1);background:#fff;">←</div>
+          <div onClick="{{ slideNext }}" aria-label="Next" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:oklch(0.97 0.01 60 / 0.92);color:oklch(0.2 0.015 50);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;box-shadow:0 6px 16px oklch(0 0 0 / 0.3);transition:transform .2s,background .2s;" style-hover="transform:translateY(-50%) scale(1.1);background:#fff;">→</div>
+        </div>
+        <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:10px;">
+          <sc-for list="{{ slideDots }}" as="s" hint-placeholder-count="5">
+            <div onClick="{{ s.go }}" aria-label="Go to slide" style="width:{{ s.w }};height:6px;border-radius:3px;background:{{ s.bg }};cursor:pointer;transition:width .25s,background .25s;"></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-if>
   <sc-if value="{{ isSiteEmbed }}" hint-placeholder-val="{{ false }}">
     <div style="width:100%;">
       <div style="background:oklch(0.28 0.02 50);border-radius:12px;padding:11px 11px 14px;width:100%;box-sizing:border-box;box-shadow:0 18px 44px oklch(0.3 0.04 45 / 0.22);">
@@ -28,7 +53,7 @@
           <div style="margin-left:8px;flex:1;min-width:0;background:oklch(0.35 0.02 50);border-radius:6px;padding:4px 10px;font-size:10px;color:oklch(0.8 0.01 55);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ embedLabel }}</div>
         </div>
         <div style="position:relative;aspect-ratio:16/10;border-radius:6px;overflow:hidden;background:oklch(0.97 0.005 55);">
-          <iframe src="{{ embed }}" title="Live site preview" loading="lazy" scrolling="yes" style="position:absolute;top:0;left:0;width:250%;height:250%;border:0;transform:scale(0.4);transform-origin:0 0;display:block;"></iframe>
+          <iframe src="{{ embed }}" title="Live site preview" loading="eager" scrolling="yes" style="position:absolute;top:0;left:0;width:250%;height:250%;border:0;transform:scale(0.4);transform-origin:0 0;display:block;"></iframe>
         </div>
       </div>
       <div style="display:flex;justify-content:center;margin-top:12px;">
@@ -44,7 +69,17 @@
           <div style="font-size:9.5px;letter-spacing:1px;font-weight:800;color:oklch(0.72 0.13 45);white-space:nowrap;">INTERACTIVE</div>
         </div>
         <div style="position:relative;aspect-ratio:16/10;border-radius:6px;overflow:hidden;background:oklch(0.15 0.01 50);">
-          <iframe src="{{ embed }}" title="Figma prototype" loading="lazy" allowfullscreen="true" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe>
+          <sc-if value="{{ protoReady }}" hint-placeholder-val="{{ false }}"><iframe loading="lazy" src="{{ embed }}" title="Figma prototype" allowfullscreen="true" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe></sc-if>
+          <sc-if value="{{ protoIdle }}" hint-placeholder-val="{{ true }}">
+            <div onClick="{{ loadProto }}" onMouseEnter="{{ warmProto }}" style="position:absolute;inset:0;cursor:pointer;">
+              <img decoding="async" src="{{ screen }}" alt="Prototype preview" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;opacity:0.55;">
+              <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
+                <div style="width:58px;height:58px;border-radius:50%;background:oklch(0.97 0.01 60);color:oklch(0.2 0.015 50);display:flex;align-items:center;justify-content:center;font-size:20px;padding-left:4px;box-sizing:border-box;box-shadow:0 12px 30px oklch(0 0 0 / 0.4);transition:transform .25s;" style-hover="transform:scale(1.1);">▶</div>
+                <div style="background:oklch(0.2 0.015 50 / 0.85);color:oklch(0.97 0.01 60);padding:6px 12px;border-radius:100px;font-size:11.5px;font-weight:700;">Click to try the prototype</div>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ protoLoading }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:oklch(0.85 0.01 55);font-size:12px;font-weight:600;pointer-events:none;z-index:-1;">Loading from Figma…</div></sc-if>
         </div>
       </div>
       <div style="display:flex;justify-content:center;margin-top:12px;">
@@ -60,7 +95,17 @@
           <div style="font-size:9.5px;letter-spacing:1px;font-weight:800;color:oklch(0.72 0.13 45);white-space:nowrap;">INTERACTIVE</div>
         </div>
         <div style="position:relative;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:oklch(0.15 0.01 50);">
-          <iframe src="{{ embed }}" title="Figma prototype" loading="lazy" allowfullscreen="true" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe>
+          <sc-if value="{{ protoReady }}" hint-placeholder-val="{{ false }}"><iframe loading="lazy" src="{{ embed }}" title="Figma prototype" allowfullscreen="true" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe></sc-if>
+          <sc-if value="{{ protoIdle }}" hint-placeholder-val="{{ true }}">
+            <div onClick="{{ loadProto }}" onMouseEnter="{{ warmProto }}" style="position:absolute;inset:0;cursor:pointer;">
+              <img decoding="async" src="{{ screen }}" alt="Prototype preview" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;opacity:0.55;">
+              <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
+                <div style="width:58px;height:58px;border-radius:50%;background:oklch(0.97 0.01 60);color:oklch(0.2 0.015 50);display:flex;align-items:center;justify-content:center;font-size:20px;padding-left:4px;box-sizing:border-box;box-shadow:0 12px 30px oklch(0 0 0 / 0.4);transition:transform .25s;" style-hover="transform:scale(1.1);">▶</div>
+                <div style="background:oklch(0.2 0.015 50 / 0.85);color:oklch(0.97 0.01 60);padding:6px 12px;border-radius:100px;font-size:11.5px;font-weight:700;">Click to try the prototype</div>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ protoLoading }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:oklch(0.85 0.01 55);font-size:12px;font-weight:600;pointer-events:none;z-index:-1;">Loading from Figma…</div></sc-if>
         </div>
       </div>
       <div style="display:flex;justify-content:center;margin-top:12px;">
@@ -77,7 +122,7 @@
       </div>
       <div style="aspect-ratio:16/10;border-radius:6px;overflow:hidden;background:oklch(0.96 0.018 60);display:flex;align-items:center;justify-content:center;">
         <sc-if value="{{ hasScreen }}" hint-placeholder-val="{{ true }}">
-          <img src="{{ screen }}" style="width:100%;height:100%;object-fit:contain;"/>
+          <img decoding="async" src="{{ screen }}" style="width:100%;height:100%;object-fit:contain;"/>
         </sc-if>
       </div>
     </div>
@@ -86,7 +131,7 @@
     <div style="width:194px;border:7px solid oklch(0.28 0.02 50);border-radius:30px;padding:7px;background:oklch(0.28 0.02 50);box-shadow:0 18px 44px oklch(0.3 0.04 45 / 0.22);">
       <div style="aspect-ratio:9/19;border-radius:22px;overflow:hidden;background:oklch(0.96 0.018 60);display:flex;align-items:center;justify-content:center;">
         <sc-if value="{{ hasScreen }}" hint-placeholder-val="{{ true }}">
-          <img src="{{ screen }}" style="width:100%;height:100%;object-fit:cover;"/>
+          <img decoding="async" src="{{ screen }}" style="width:100%;height:100%;object-fit:cover;"/>
         </sc-if>
       </div>
     </div>
@@ -101,14 +146,14 @@
         </div>
         <div style="aspect-ratio:16/10;border-radius:5px;overflow:hidden;background:oklch(0.96 0.018 60);display:flex;align-items:center;justify-content:center;">
           <sc-if value="{{ hasScreen }}" hint-placeholder-val="{{ true }}">
-            <img src="{{ screen }}" style="width:100%;height:100%;object-fit:contain;"/>
+            <img decoding="async" src="{{ screen }}" style="width:100%;height:100%;object-fit:contain;"/>
           </sc-if>
         </div>
       </div>
       <div style="width:78px;border:5px solid oklch(0.28 0.02 50);border-radius:16px;padding:4px;background:oklch(0.28 0.02 50);margin-left:-30px;box-shadow:0 18px 44px oklch(0.3 0.04 45 / 0.22);">
         <div style="aspect-ratio:9/19;border-radius:12px;overflow:hidden;background:oklch(0.96 0.018 60);display:flex;align-items:center;justify-content:center;">
           <sc-if value="{{ hasPhoneScreen }}" hint-placeholder-val="{{ true }}">
-            <img src="{{ phoneScreen }}" style="width:100%;height:100%;object-fit:cover;"/>
+            <img decoding="async" src="{{ phoneScreen }}" style="width:100%;height:100%;object-fit:cover;"/>
           </sc-if>
         </div>
       </div>
@@ -125,19 +170,29 @@ class Component extends DCLogic {
     const mt = proj.mockupType;
     const screen = proj.screenImage || proj.image;
     const phoneScreen = proj.phoneImage || screen;
-    const embed = proj.embed || '';
+    const slides = Array.isArray(proj.previewSlides) ? proj.previewSlides : [];
+    const isSlides = slides.length > 0;
+    const sKey = proj.id || 'x';
+    const sIdx = isSlides ? (((this.state && this.state.sIdx && this.state.sIdx[sKey]) || 0) % slides.length) : 0;
+    if (isSlides) { this._pre = this._pre || {}; [sIdx + 1, sIdx - 1, sIdx + 2].forEach(j => { const u = slides[(j + slides.length) % slides.length].src; if (u && !this._pre[u]) { const im = new Image(); im.decoding = 'async'; im.src = u; this._pre[u] = im; } }); }
+    const goSlide = (i) => this.setState(s => ({ sIdx: { ...((s && s.sIdx) || {}), [sKey]: (i + slides.length) % slides.length } }));
+    const embed = isSlides ? '' : (proj.embed || '');
     const isSiteEmbed = !!embed && proj.embedType !== 'proto';
     const isProtoEmbed = !!embed && proj.embedType === 'proto';
+    const protoReady = isProtoEmbed && !!(this.state && this.state.loaded && this.state.loaded[embed]);
+    const loadProto = () => this.setState(s => ({ loaded: { ...((s && s.loaded) || {}), [embed]: true } }));
+    const warmProto = () => { if (this._warm) return; this._warm = true; ['https://embed.figma.com','https://www.figma.com','https://static.figma.com'].forEach(u => { const l = document.createElement('link'); l.rel = 'preconnect'; l.href = u; l.crossOrigin = ''; document.head.appendChild(l); }); };
     return {
-      embed, isSiteEmbed, isProtoEmbed,
+      isSlides, slideSrc: isSlides ? slides[sIdx].src : '', slideCaption: isSlides ? slides[sIdx].label : '', slideCount: isSlides ? String(sIdx + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0') : '', slidePrev: () => goSlide(sIdx - 1), slideNext: () => goSlide(sIdx + 1), slideDots: slides.map((_, i) => ({ go: () => goSlide(i), w: i === sIdx ? '20px' : '6px', bg: i === sIdx ? 'oklch(0.72 0.13 45)' : 'oklch(0.5 0.015 50)' })),
+      embed, isSiteEmbed, isProtoEmbed, protoReady, protoIdle: !protoReady, protoLoading: protoReady, loadProto, warmProto,
       isProtoWide: isProtoEmbed && !proj.embedTall,
       isProtoTall: isProtoEmbed && !!proj.embedTall,
       embedOpen: proj.embedLink || embed,
       embedLabel: proj.embedLabel || 'live preview',
-      isStat: !embed && visual === 'stat',
-      isComputer: !embed && visual === 'mockup' && mt === 'computer',
-      isPhone: !embed && visual === 'mockup' && mt === 'phone',
-      isBoth: !embed && visual === 'mockup' && mt === 'both',
+      isStat: !isSlides && !embed && visual === 'stat',
+      isComputer: !isSlides && !embed && visual === 'mockup' && mt === 'computer',
+      isPhone: !isSlides && !embed && visual === 'mockup' && mt === 'phone',
+      isBoth: !isSlides && !embed && visual === 'mockup' && mt === 'both',
       stats: proj.stats || [],
       screen, hasScreen: !!screen,
       phoneScreen, hasPhoneScreen: !!phoneScreen,

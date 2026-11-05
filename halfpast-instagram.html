@@ -17,6 +17,11 @@
       This page requires JavaScript to display.
     </div>
   </noscript>
+<script data-mute-all>(function(){function m(v){if(!v.hasAttribute('controls')){v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.volume=0;}}
+document.addEventListener('play',function(e){if(e.target&&e.target.tagName==='VIDEO')m(e.target);},true);
+document.addEventListener('volumechange',function(e){var v=e.target;if(v&&v.tagName==='VIDEO'&&!v.hasAttribute('controls')&&!v.muted)m(v);},true);
+new MutationObserver(function(){document.querySelectorAll('video').forEach(m);}).observe(document.documentElement,{childList:true,subtree:true});})();</script>
+<script data-force-download>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[download]');if(!a)return;var href=a.getAttribute('href');if(!href||!/\.pdf($|\?)/i.test(href))return;e.preventDefault();var name=a.getAttribute('download')||'download.pdf';fetch(a.href).then(function(r){if(!r.ok)throw 0;return r.blob();}).then(function(b){var u=URL.createObjectURL(b),t=document.createElement('a');t.href=u;t.download=name;document.body.appendChild(t);t.click();t.remove();setTimeout(function(){URL.revokeObjectURL(u);},4000);}).catch(function(){window.location.href=a.href;});},true);</script>
 </head>
 <body>
   <div id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" sc-camel-view-box="0 0 100 100"><rect width="100" height="100" fill="#2A1F1A"></rect><text x="50" y="66" text-anchor="middle" font-family="Georgia,serif" font-size="44" fill="#F4EBDD">½</text></svg></div>

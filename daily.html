@@ -9,7 +9,13 @@
 <meta property="og:description" content="1.2M views in 30 days: building a campus news channel and selling it to local business.">
 <meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg">
+<script src="./case-embed.js"></script>
 <script src="./support.js"></script>
+<script data-mute-all>(function(){function m(v){if(!v.hasAttribute('controls')){v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.volume=0;}}
+document.addEventListener('play',function(e){if(e.target&&e.target.tagName==='VIDEO')m(e.target);},true);
+document.addEventListener('volumechange',function(e){var v=e.target;if(v&&v.tagName==='VIDEO'&&!v.hasAttribute('controls')&&!v.muted)m(v);},true);
+new MutationObserver(function(){document.querySelectorAll('video').forEach(m);}).observe(document.documentElement,{childList:true,subtree:true});})();</script>
+<script data-force-download>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[download]');if(!a)return;var href=a.getAttribute('href');if(!href||!/\.pdf($|\?)/i.test(href))return;e.preventDefault();var name=a.getAttribute('download')||'download.pdf';fetch(a.href).then(function(r){if(!r.ok)throw 0;return r.blob();}).then(function(b){var u=URL.createObjectURL(b),t=document.createElement('a');t.href=u;t.download=name;document.body.appendChild(t);t.click();t.remove();setTimeout(function(){URL.revokeObjectURL(u);},4000);}).catch(function(){window.location.href=a.href;});},true);</script>
 </head>
 <body>
 <x-dc>
@@ -18,25 +24,28 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23201a15'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' fill='%23c8763f' text-anchor='middle'%3EMY%3C/text%3E%3C/svg%3E">
+<script src="./image-slot.js"></script>
 <style>
   body{margin:0;background:oklch(0.97 0.01 60);}
   a{color:oklch(0.56 0.13 45);text-decoration:none;}
   a:hover{color:oklch(0.42 0.13 45);}
   ::selection{background:oklch(0.56 0.13 45);color:#fff;}
+
   img{display:block;}
 
   @media (max-width:760px){
     html{-webkit-text-size-adjust:100%;}
     body,a,[onclick],button{cursor:auto !important;}
     #cursor-glow,#cursor-ring{display:none !important;}
-    nav{padding:9px 12px !important;gap:8px !important;flex-wrap:nowrap !important;overflow:visible !important;}
-    nav>div:first-child{flex-shrink:0 !important;font-size:17px !important;}
-    nav>div:last-child{flex:1 1 auto !important;min-width:0 !important;overflow-x:auto !important;flex-wrap:nowrap !important;justify-content:flex-end !important;gap:14px !important;}
+    nav{padding:8px 12px !important;gap:8px !important;flex-wrap:nowrap !important;}
+    nav>a:first-child{font-size:16px !important;flex-shrink:0;}
+    nav>div:last-child{flex:1 1 auto;min-width:0;overflow-x:auto;flex-wrap:nowrap !important;justify-content:flex-end;gap:13px !important;}
     nav>div:last-child::-webkit-scrollbar{display:none;}
-    nav div{font-size:12.5px !important;flex-shrink:0 !important;}
-    nav a{position:sticky !important;right:0 !important;flex-shrink:0 !important;padding:7px 12px !important;font-size:11.5px !important;white-space:nowrap !important;box-shadow:-14px 0 14px 6px oklch(0.97 0.01 60) !important;}
+    nav>div:last-child a{font-size:11.5px !important;flex-shrink:0;white-space:nowrap;}
+    nav a[data-resume]{position:sticky;right:0;padding:6px 11px !important;font-size:11px !important;box-shadow:-14px 0 14px 6px oklch(0.97 0.01 60);}
     section{padding-left:18px !important;padding-right:18px !important;}
-    nav+section,section:first-of-type{padding-top:104px !important;}
+    nav+section,section:first-of-type{padding-top:0 !important;}
+    section:first-of-type>div{padding-top:96px !important;}
     section[style*="min-height:100vh"],section[style*="min-height: 100vh"]{min-height:auto !important;padding-top:104px !important;padding-bottom:44px !important;}
     h1{font-size:33px !important;letter-spacing:-0.9px !important;line-height:1.08 !important;}
     h2{font-size:25px !important;letter-spacing:-0.6px !important;line-height:1.15 !important;}
@@ -50,6 +59,9 @@
     div[style*="top:-16px"][style*="right:-26px"],div[style*="top: -16px"][style*="right: -26px"]{right:-6px !important;}
     div[style*="font-size:150px"],div[style*="font-size: 150px"]{font-size:84px !important;}
     div[style*="font-size:38px"],div[style*="font-size: 38px"]{font-size:28px !important;}
+    div[data-results]{grid-template-columns:1fr 1fr !important;}
+    div[data-chapter]{grid-template-columns:1fr !important;gap:14px !important;}
+    div[data-hero]{grid-template-columns:1fr !important;}
     div[style*="grid-template-columns:1.2fr 0.8fr"],div[style*="grid-template-columns: 1.2fr 0.8fr"],div[style*="grid-template-columns:110px 1fr"],div[style*="grid-template-columns: 110px 1fr"],figure[style*="grid-template-columns:1fr 1fr"],figure[style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr !important;}
     img{max-width:100%;}
   }
@@ -57,46 +69,63 @@
 </helmet>
 <div style="font-family:'Public Sans',sans-serif;background:oklch(0.97 0.01 60);color:oklch(0.2 0.015 50);min-height:100vh;overflow-x:hidden;">
 
-  <nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px clamp(16px,3vw,40px);background:oklch(0.97 0.01 60 / 0.88);backdrop-filter:blur(14px);border-bottom:1px solid oklch(0.85 0.01 55);">
-    <a href="index.html" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;letter-spacing:0.2px;color:oklch(0.2 0.015 50);">Maya Yoo</a>
-    <div style="display:flex;align-items:center;gap:clamp(14px,2vw,26px);flex-wrap:wrap;">
-      <a href="ventures.html" style="font-size:13.5px;font-weight:600;color:oklch(0.45 0.02 50);">← All ventures</a>
-      <a href="daviswithmaya.html" style="font-size:13.5px;font-weight:600;color:oklch(0.45 0.02 50);">DavisWithMaya →</a>
-      <a href="https://www.instagram.com/dailyucdavis" target="_blank" rel="noopener" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:10px 20px;border-radius:100px;font-weight:700;font-size:13px;" style-hover="background:oklch(0.56 0.13 45);color:oklch(0.97 0.01 60);">@dailyucdavis ↗</a>
+  <div style="position:fixed;top:0;left:0;right:0;z-index:100;">
+  <nav style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px clamp(16px,3vw,40px);background:oklch(0.97 0.01 60 / 0.9);backdrop-filter:blur(14px);border-bottom:1px solid oklch(0.85 0.01 55);">
+    <a href="index.html" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;letter-spacing:0.2px;color:oklch(0.2 0.015 50);">Maya Yoo</a>
+    <div style="display:flex;align-items:center;gap:clamp(12px,1.8vw,26px);">
+      <a href="ventures.html" style="font-size:12.5px;font-weight:600;color:oklch(0.2 0.015 50);padding-bottom:3px;border-bottom:2px solid oklch(0.56 0.13 45);">Ventures</a>
+      <a href="marketing.html" style="font-size:12.5px;font-weight:600;color:oklch(0.5 0.02 50);padding-bottom:3px;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;" style-hover="color:oklch(0.2 0.015 50);">Marketing</a>
+      <a href="design.html" style="font-size:12.5px;font-weight:600;color:oklch(0.5 0.02 50);padding-bottom:3px;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;" style-hover="color:oklch(0.2 0.015 50);">Design</a>
+      <a href="storytelling.html" style="font-size:12.5px;font-weight:600;color:oklch(0.5 0.02 50);padding-bottom:3px;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;" style-hover="color:oklch(0.2 0.015 50);">Content</a>
+      <a href="about.html" style="font-size:12.5px;font-weight:600;color:oklch(0.5 0.02 50);padding-bottom:3px;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;" style-hover="color:oklch(0.2 0.015 50);">About</a>
+      <a data-resume="" href="maya-yoo-resume.pdf" download="MayaYoo_Resume.pdf" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:9px 17px;border-radius:100px;font-weight:700;font-size:12px;white-space:nowrap;" style-hover="background:oklch(0.56 0.13 45);color:oklch(0.97 0.01 60);">Résumé ↓</a>
     </div>
   </nav>
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px clamp(16px,3vw,40px);background:oklch(0.94 0.014 55 / 0.94);backdrop-filter:blur(12px);border-bottom:1px solid oklch(0.86 0.02 55);font-size:11.5px;">
+    <div style="display:flex;align-items:center;gap:9px;min-width:0;">
+      <a href="ventures.html" style="font-weight:700;color:oklch(0.5 0.13 45);white-space:nowrap;">← Ventures</a>
+      <span style="color:oklch(0.7 0.02 55);">/</span>
+      <span style="font-weight:700;color:oklch(0.2 0.015 50);white-space:nowrap;">Daily UC Davis</span>
+      <span style="color:oklch(0.5 0.02 50);letter-spacing:0.8px;font-size:10px;font-weight:700;white-space:nowrap;">CASE STUDY</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;overflow-x:auto;">
+      <a href="daviswithmaya.html" style="color:oklch(0.45 0.02 50);font-weight:600;white-space:nowrap;" style-hover="color:oklch(0.5 0.13 45);">DavisWithMaya →</a>
+      <a href="story-and-spoon.html" style="color:oklch(0.45 0.02 50);font-weight:600;white-space:nowrap;" style-hover="color:oklch(0.5 0.13 45);">Story &amp; Spoon →</a>
+    </div>
+  </div>
+  </div>
 
   <section data-screen-label="Cover" style="position:relative;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);overflow:hidden;">
     <div style="position:absolute;top:-260px;right:-180px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,oklch(0.72 0.13 45 / 0.3),transparent 66%);pointer-events:none;"></div>
-    <div style="position:relative;max-width:1240px;margin:0 auto;padding:130px clamp(20px,4vw,40px) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:56px;align-items:center;">
+    <div data-cover-grid="" style="position:relative;max-width:1200px;margin:0 auto;padding:136px clamp(20px,4vw,40px) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(40px,6vw,80px);align-items:center;">
       <div>
         <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:26px;">
           <span style="font-size:11px;letter-spacing:1.4px;font-weight:800;color:oklch(0.18 0.02 50);background:oklch(0.72 0.13 45);padding:6px 12px;border-radius:100px;">CASE STUDY</span>
-          <span style="font-size:11.5px;letter-spacing:2px;font-weight:700;color:oklch(0.72 0.015 55);">DAILY UC DAVIS · CAMPUS MEDIA BRAND</span>
+          <span style="font-size:11.5px;letter-spacing:1.6px;font-weight:700;color:oklch(0.72 0.015 55);white-space:nowrap;">DAILY UC DAVIS · CAMPUS MEDIA BRAND</span>
         </div>
-        <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(42px,6.1vw,84px);line-height:0.94;font-weight:800;margin:0 0 26px;letter-spacing:-2.2px;text-wrap:balance;">Zero to <span style="color:oklch(0.72 0.13 45);">1.2M</span> views in thirty days.</h1>
-        <p style="color:oklch(0.8 0.015 55);font-size:19px;line-height:1.55;margin:0 0 34px;max-width:600px;text-wrap:pretty;">A 30,000-person campus with its news scattered across group chats. I built the page that consolidated it — brand, format, growth and partnerships — then sold local businesses a channel to reach it.</p>
+        <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(34px,5.0vw,64px);line-height:0.94;font-weight:800;margin:0 0 26px;letter-spacing:-2.2px;text-wrap:balance;">Zero to <span style="color:oklch(0.72 0.13 45);">1.2M</span> views in thirty days.</h1>
+        <p style="color:oklch(0.8 0.015 55);font-size:19px;line-height:1.55;margin:0 0 34px;max-width:600px;text-wrap:pretty;">Campus news was scattered across group chats. I built one page for it — then sold local businesses a way to reach its audience.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
           <a href="https://www.instagram.com/dailyucdavis" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:oklch(0.72 0.13 45);color:oklch(0.18 0.02 50);padding:14px 24px;border-radius:100px;font-weight:800;font-size:14px;" style-hover="background:oklch(0.8 0.12 45);color:oklch(0.18 0.02 50);">Watch @dailyucdavis ↗</a>
-          <a href="#deck" style="display:inline-flex;align-items:center;gap:8px;border:1.5px solid oklch(0.42 0.02 50);color:oklch(0.9 0.01 55);padding:13px 22px;border-radius:100px;font-weight:700;font-size:14px;" style-hover="border-color:oklch(0.72 0.13 45);color:oklch(0.97 0.01 60);">See the full deck ↓</a>
+          <a href="#collabs" style="display:inline-flex;align-items:center;gap:8px;border:1.5px solid oklch(0.42 0.02 50);color:oklch(0.9 0.01 55);padding:13px 22px;border-radius:100px;font-weight:700;font-size:14px;" style-hover="border-color:oklch(0.72 0.13 45);color:oklch(0.97 0.01 60);">See the collabs ↓</a>
         </div>
       </div>
-      <div style="justify-self:end;width:100%;max-width:440px;">
-        <img src="slide1.jpg" alt="Daily UC Davis case study cover" style="width:100%;border-radius:16px;border:1px solid oklch(0.34 0.02 50);box-shadow:0 34px 70px -30px oklch(0 0 0 / 0.75);">
+      <div style="justify-self:end;width:100%;max-width:340px;">
+        <img decoding="async" src="dud-grid.png" alt="@dailyucdavis grid of posts" style="width:100%;border-radius:16px;border:1px solid oklch(0.34 0.02 50);box-shadow:0 34px 70px -30px oklch(0 0 0 / 0.75);">
       </div>
     </div>
-    <div style="position:relative;max-width:1240px;margin:56px auto 0;padding:0 clamp(20px,4vw,40px);">
+    <div style="position:relative;max-width:1200px;margin:64px auto 0;padding:0 clamp(20px,4vw,40px) 8px;">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));border-top:1px solid oklch(0.34 0.02 50);">
-        <div style="padding:26px 26px 34px 0;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,4vw,54px);font-weight:800;line-height:1;letter-spacing:-1.4px;color:oklch(0.72 0.13 45);">1.2M+</div><div style="font-size:13.5px;color:oklch(0.78 0.015 55);margin-top:10px;line-height:1.4;font-weight:600;">views in the first 30 days, from zero</div></div>
-        <div style="padding:26px 26px 34px;border-left:1px solid oklch(0.34 0.02 50);"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,4vw,54px);font-weight:800;line-height:1;letter-spacing:-1.4px;">57.8%</div><div style="font-size:13.5px;color:oklch(0.78 0.015 55);margin-top:10px;line-height:1.4;font-weight:600;">of views from non-followers</div></div>
-        <div style="padding:26px 26px 34px;border-left:1px solid oklch(0.34 0.02 50);"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,4vw,54px);font-weight:800;line-height:1;letter-spacing:-1.4px;color:oklch(0.72 0.13 45);">20+</div><div style="font-size:13.5px;color:oklch(0.78 0.015 55);margin-top:10px;line-height:1.4;font-weight:600;">business collaborations delivered</div></div>
-        <div style="padding:26px 0 34px 26px;border-left:1px solid oklch(0.34 0.02 50);"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,4vw,54px);font-weight:800;line-height:1;letter-spacing:-1.4px;">6K+</div><div style="font-size:13.5px;color:oklch(0.78 0.015 55);margin-top:10px;line-height:1.4;font-weight:600;">followers, fully organic</div></div>
+        <div style="padding:18px 20px 22px 0;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(30px,3.3vw,41px);font-weight:800;line-height:1;letter-spacing:-1.4px;color:oklch(0.72 0.13 45);">1.2M+</div><div style="font-size:13.5px;color:oklch(0.78 0.015 55);margin-top:10px;line-height:1.4;font-weight:600;">views in the first 30 days, from zero</div></div>
+        <div style="padding:18px 20px 22px;border-left:1px solid oklch(0.34 0.02 50);"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(30px,3.3vw,41px);font-weight:800;line-height:1;letter-spacing:-1.4px;">57.8%</div><div style="font-size:13.5px;color:oklch(0.78 0.015 55);margin-top:10px;line-height:1.4;font-weight:600;">of views from non-followers</div></div>
+        <div style="padding:18px 20px 22px;border-left:1px solid oklch(0.34 0.02 50);"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(30px,3.3vw,41px);font-weight:800;line-height:1;letter-spacing:-1.4px;color:oklch(0.72 0.13 45);">20+</div><div style="font-size:13.5px;color:oklch(0.78 0.015 55);margin-top:10px;line-height:1.4;font-weight:600;">business collaborations delivered</div></div>
+        <div style="padding:18px 0 22px 20px;border-left:1px solid oklch(0.34 0.02 50);"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(30px,3.3vw,41px);font-weight:800;line-height:1;letter-spacing:-1.4px;">6K+</div><div style="font-size:13.5px;color:oklch(0.78 0.015 55);margin-top:10px;line-height:1.4;font-weight:600;">followers, fully organic</div></div>
       </div>
     </div>
   </section>
 
   <section data-screen-label="Credits" style="border-bottom:1px solid oklch(0.85 0.01 55);background:oklch(0.995 0.004 60);">
-    <div style="max-width:1240px;margin:0 auto;padding:28px clamp(20px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:28px;">
+    <div style="max-width:1200px;margin:0 auto;padding:24px clamp(20px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px 32px;">
       <div>
         <div style="font-size:10.5px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:7px;">ROLE</div>
         <div style="font-size:13px;line-height:1.5;color:oklch(0.3 0.02 50);"><strong>Founder and marketing lead</strong> — brand, content strategy, growth, partnerships, operations.</div>
@@ -115,188 +144,162 @@
       </div>
     </div>
   </section>
-
-  <section data-screen-label="The gap" style="padding:clamp(64px,8vw,96px) clamp(20px,4vw,40px) 0;max-width:1200px;margin:0 auto;">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:52px;align-items:start;">
+  <section data-screen-label="Hero post" style="padding:clamp(44px,5.5vw,72px) clamp(20px,4vw,44px) 0;max-width:1200px;margin:0 auto;">
+    <div data-hero="" style="display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(24px,4.4vw,64px);align-items:center;">
+      <a href="https://www.instagram.com/dailyucdavis/" target="_blank" rel="noopener" style="display:block;position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:oklch(0.2 0.015 50);box-shadow:0 30px 60px -30px oklch(0.2 0.015 50 / 0.6);">
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:18px;text-align:center;font-size:12px;color:oklch(0.75 0.015 55);"><span style="font-size:22px;">▶</span><span style="font-weight:700;">Add your top post</span><span style="font-family:ui-monospace,monospace;font-size:10.5px;">daily-hero.mp4</span></div>
+        <video autoplay="" muted="" loop="" playsinline="" preload="metadata" src="daily-hero.mp4" onLoadedData="{{ showVid }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s;"></video>
+      </a>
       <div>
-        <div style="font-size:12px;letter-spacing:1.6px;color:oklch(0.56 0.13 45);font-weight:800;margin-bottom:14px;">THE OPPORTUNITY</div>
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.4vw,40px);font-weight:700;letter-spacing:-1.2px;line-height:1.1;margin:0 0 18px;text-wrap:pretty;">Demand with nowhere to go.</h2>
-        <p style="font-size:16.5px;line-height:1.65;color:oklch(0.35 0.02 50);margin:0 0 16px;text-wrap:pretty;">Students were hunting campus news, events and food across a dozen group chats. The pages that existed posted irregularly, with no recognizable voice and no reason to follow one over another.</p>
-        <p style="font-size:16.5px;line-height:1.65;color:oklch(0.35 0.02 50);margin:0;text-wrap:pretty;">Local businesses had the mirror-image problem: a campus full of customers and no trusted student channel to buy. One gap, two paying sides.</p>
-      </div>
-      <img src="slide3.jpg" alt="The opportunity — the gap nobody was running" style="width:100%;border-radius:14px;border:1px solid oklch(0.85 0.01 55);">
-    </div>
-  </section>
-
-  <section data-screen-label="Brand" style="padding:clamp(64px,8vw,96px) clamp(20px,4vw,40px) 0;max-width:1200px;margin:0 auto;">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:52px;align-items:center;">
-      <img src="slide5.jpg" alt="Brand identity — wordmark, type, palette" style="width:100%;border-radius:14px;border:1px solid oklch(0.85 0.01 55);">
-      <div>
-        <div style="font-size:12px;letter-spacing:1.6px;color:oklch(0.56 0.13 45);font-weight:800;margin-bottom:14px;">BRAND IDENTITY</div>
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.4vw,40px);font-weight:700;letter-spacing:-1.2px;line-height:1.1;margin:0 0 18px;text-wrap:pretty;">Recognizable in a feed, at thumbnail size.</h2>
-        <p style="font-size:16.5px;line-height:1.65;color:oklch(0.35 0.02 50);margin:0;text-wrap:pretty;">A wordmark, one typeface, and a fixed palette — built so a student scrolling fast knows the post is ours before they read a word. Consistency was the whole strategy: the same shape every time is what turns a page into a habit.</p>
+        <div style="font-size:11px;letter-spacing:2.2px;font-weight:800;color:oklch(0.5 0.13 45);margin-bottom:14px;">THE POST THAT PUT IT ON THE MAP</div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-1.8px;line-height:1.02;margin:0 0 16px;max-width:20ch;text-wrap:pretty;">[Post title]</h2>
+        <p style="font-size:16px;line-height:1.7;color:oklch(0.33 0.02 50);margin:0 0 26px;max-width:56ch;text-wrap:pretty;">[Why it worked, in one or two sentences: the hook, the timing, and what made students share it.]</p>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1.5px solid oklch(0.2 0.015 50);max-width:520px;">
+          <div style="padding:14px 14px 0 0;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,2.6vw,32px);font-weight:800;letter-spacing:-1.2px;color:oklch(0.5 0.13 45);">—</div><div style="font-size:12px;font-weight:600;color:oklch(0.45 0.02 50);margin-top:6px;">views</div></div>
+          <div style="padding:14px 14px 0;border-left:1px solid oklch(0.86 0.02 55);"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,2.6vw,32px);font-weight:800;letter-spacing:-1.2px;">—</div><div style="font-size:12px;font-weight:600;color:oklch(0.45 0.02 50);margin-top:6px;">shares</div></div>
+          <div style="padding:14px 0 0 14px;border-left:1px solid oklch(0.86 0.02 55);"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,2.6vw,32px);font-weight:800;letter-spacing:-1.2px;">—</div><div style="font-size:12px;font-weight:600;color:oklch(0.45 0.02 50);margin-top:6px;">saves</div></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section data-screen-label="Content system" style="padding:clamp(64px,8vw,96px) 0 0;">
-    <div style="background:oklch(0.94 0.014 55);border-top:1px solid oklch(0.85 0.01 55);border-bottom:1px solid oklch(0.85 0.01 55);padding:clamp(48px,6vw,70px) clamp(20px,4vw,40px);">
-      <div style="max-width:1200px;margin:0 auto;">
-        <div style="font-size:12px;letter-spacing:1.6px;color:oklch(0.56 0.13 45);font-weight:800;margin-bottom:14px;">CONTENT STRATEGY</div>
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.4vw,40px);font-weight:700;letter-spacing:-1.2px;line-height:1.1;margin:0 0 36px;max-width:700px;text-wrap:pretty;">Three pillars, one repeatable format.</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-bottom:32px;">
-          <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:24px;">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;color:oklch(0.85 0.01 55);margin-bottom:10px;">01</div>
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;">Campus news</div>
-            <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.55;text-wrap:pretty;">What's actually happening this week — the reason people check the page instead of scrolling past it.</div>
+  <section id="gap" data-screen-label="The story" style="scroll-margin-top:90px;padding:clamp(44px,5.5vw,72px) clamp(20px,4vw,44px) 0;max-width:1200px;margin:0 auto;">
+    <div style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);border-radius:14px;padding:clamp(26px,3.4vw,46px) clamp(22px,3.2vw,46px);margin-bottom:clamp(20px,2.6vw,32px);">
+      <div style="font-size:10.5px;letter-spacing:2px;font-weight:800;color:oklch(0.78 0.13 45);">THE QUESTION</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,3vw,38px);font-weight:800;letter-spacing:-1.8px;line-height:1.05;margin:16px 0 0;max-width:28ch;text-wrap:pretty;">Where do UC Davis students go to find out what’s happening?</h2>
+      <p style="font-size:16px;line-height:1.65;color:oklch(0.82 0.015 55);margin:20px 0 0;max-width:60ch;text-wrap:pretty;">Before Daily UC Davis, the honest answer was nowhere. So I built the place.</p>
+    </div>
+
+      <div style="display:grid;grid-template-columns:minmax(0,160px) minmax(0,1fr) minmax(0,300px);gap:clamp(16px,3.4vw,48px);align-items:start;padding:clamp(26px,3.2vw,40px) 0;border-top:1px solid oklch(0.86 0.02 55);" data-chapter="">
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:800;color:oklch(0.5 0.13 45);letter-spacing:0.4px;">01</div>
+          <div style="font-size:11px;letter-spacing:1.8px;font-weight:800;color:oklch(0.45 0.02 50);margin-top:8px;">THE PROBLEM</div>
+        </div>
+        <div style="max-width:64ch;">
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(21px,2.3vw,28px);font-weight:800;letter-spacing:-1.1px;line-height:1.1;margin:0 0 16px;text-wrap:pretty;">Nothing out there was built for Davis.</h3>
+          <p style="font-size:16px;line-height:1.7;color:oklch(0.33 0.02 50);margin:0 0 14px;text-wrap:pretty;">Other big campuses have a page every student follows. UC Davis didn’t. News, events, and food recommendations were scattered across group chats, club pages, and word of mouth. If you weren’t in the right chat, you missed it.</p>
+          <p style="font-size:16px;line-height:1.7;color:oklch(0.33 0.02 50);margin:0 0 14px;text-wrap:pretty;">Local businesses had the same problem from the other side. They wanted students, but flyers got ignored and there was no trusted channel to reach them.</p>
+        </div>
+        <figure style="margin:0;display:flex;flex-direction:column;gap:8px;">
+          <div style="position:relative;aspect-ratio:4/5;border-radius:12px;overflow:hidden;border:1px solid oklch(0.86 0.02 55);background:oklch(0.94 0.014 55);"><image-slot id="dud-ev-problem" shape="rect" placeholder="Drop a screenshot of scattered group chats or club posts"></image-slot></div>
+          <figcaption style="font-size:10.5px;letter-spacing:1.2px;font-weight:800;color:oklch(0.5 0.02 50);">BEFORE · where campus info lived</figcaption>
+        </figure>
+      </div>
+
+      <div style="display:grid;grid-template-columns:minmax(0,160px) minmax(0,1fr) minmax(0,300px);gap:clamp(16px,3.4vw,48px);align-items:start;padding:clamp(26px,3.2vw,40px) 0;border-top:1px solid oklch(0.86 0.02 55);" data-chapter="">
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:800;color:oklch(0.5 0.13 45);letter-spacing:0.4px;">02</div>
+          <div style="font-size:11px;letter-spacing:1.8px;font-weight:800;color:oklch(0.45 0.02 50);margin-top:8px;">WHAT I BUILT</div>
+        </div>
+        <div style="max-width:64ch;">
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(21px,2.3vw,28px);font-weight:800;letter-spacing:-1.1px;line-height:1.1;margin:0 0 16px;text-wrap:pretty;">One page for campus life, run like a publication.</h3>
+          <p style="font-size:16px;line-height:1.7;color:oklch(0.33 0.02 50);margin:0 0 14px;text-wrap:pretty;">I named it, designed the wordmark, palette, and post templates, and set a format with three pillars: <strong>campus news</strong> as the reason to check in daily, <strong>food &amp; places</strong> as the most-saved posts and where businesses fit in, and <strong>student life</strong> as relatable posts that travel beyond followers.</p>
+          <p style="font-size:16px;line-height:1.7;color:oklch(0.33 0.02 50);margin:0 0 14px;text-wrap:pretty;">I did all of it myself, with no team and no budget. I found the stories, filmed, edited, wrote the captions, and posted every day.</p>
+        </div>
+        <figure style="margin:0;display:flex;flex-direction:column;gap:8px;">
+          <div style="position:relative;aspect-ratio:4/5;border-radius:12px;overflow:hidden;border:1px solid oklch(0.86 0.02 55);background:oklch(0.94 0.014 55);"><image-slot id="dud-ev-brand" src="slide5.jpg" fit="contain" shape="rect" placeholder="Drop the wordmark / templates"></image-slot></div>
+          <figcaption style="font-size:10.5px;letter-spacing:1.2px;font-weight:800;color:oklch(0.5 0.02 50);">The identity: wordmark, palette, templates</figcaption>
+        </figure>
+      </div>
+
+      <div style="display:grid;grid-template-columns:minmax(0,160px) minmax(0,1fr) minmax(0,300px);gap:clamp(16px,3.4vw,48px);align-items:start;padding:clamp(26px,3.2vw,40px) 0;border-top:1px solid oklch(0.86 0.02 55);" data-chapter="">
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:800;color:oklch(0.5 0.13 45);letter-spacing:0.4px;">03</div>
+          <div style="font-size:11px;letter-spacing:1.8px;font-weight:800;color:oklch(0.45 0.02 50);margin-top:8px;">HOW IT GREW</div>
+        </div>
+        <div style="max-width:64ch;">
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(21px,2.3vw,28px);font-weight:800;letter-spacing:-1.1px;line-height:1.1;margin:0 0 16px;text-wrap:pretty;">It became the page students checked first.</h3>
+          <p style="font-size:16px;line-height:1.7;color:oklch(0.33 0.02 50);margin:0 0 14px;text-wrap:pretty;">Because the format was consistent, it was easy to share. I watched the insights and kept making whatever reached non-followers. In the first 30 days it hit 1.2M views, and 3.3M by day 90, all organic.</p>
+          <p style="font-size:16px;line-height:1.7;color:oklch(0.33 0.02 50);margin:0 0 14px;text-wrap:pretty;">Students started sending in tips, events, and questions without being asked. That was the sign it had become the campus hub, not just another account.</p>
+        </div>
+        <figure style="margin:0;display:flex;flex-direction:column;gap:8px;">
+          <div style="position:relative;aspect-ratio:4/5;border-radius:12px;overflow:hidden;border:1px solid oklch(0.86 0.02 55);background:oklch(0.94 0.014 55);"><image-slot id="dud-ev-insights" src="slide7.jpg" fit="contain" shape="rect" placeholder="Drop an Instagram insights screenshot"></image-slot></div>
+          <figcaption style="font-size:10.5px;letter-spacing:1.2px;font-weight:800;color:oklch(0.5 0.02 50);">Instagram insights, first 90 days</figcaption>
+        </figure>
+      </div>
+
+      <div style="display:grid;grid-template-columns:minmax(0,160px) minmax(0,1fr) minmax(0,300px);gap:clamp(16px,3.4vw,48px);align-items:start;padding:clamp(26px,3.2vw,40px) 0;border-top:1px solid oklch(0.86 0.02 55);" data-chapter="">
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:800;color:oklch(0.5 0.13 45);letter-spacing:0.4px;">04</div>
+          <div style="font-size:11px;letter-spacing:1.8px;font-weight:800;color:oklch(0.45 0.02 50);margin-top:8px;">THE BUSINESS</div>
+        </div>
+        <div style="max-width:64ch;">
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(21px,2.3vw,28px);font-weight:800;letter-spacing:-1.1px;line-height:1.1;margin:0 0 16px;text-wrap:pretty;">Then I sold the audience I’d built.</h3>
+          <p style="font-size:16px;line-height:1.7;color:oklch(0.33 0.02 50);margin:0 0 14px;text-wrap:pretty;">With a proven audience, I pitched local shops, campus orgs, and national brands. I handled outreach, pricing, production, and delivery, and built every collab into the existing format so it didn’t read as an ad.</p>
+          <p style="font-size:16px;line-height:1.7;color:oklch(0.33 0.02 50);margin:0 0 14px;text-wrap:pretty;">The ASUCD giveaway shows how it worked: 3,145 entries, 103K views, and 588 shares from one post designed to make people act, not just scroll.</p>
+        </div>
+        <figure style="margin:0;display:flex;flex-direction:column;gap:8px;">
+          <div style="position:relative;aspect-ratio:4/5;border-radius:12px;overflow:hidden;border:1px solid oklch(0.86 0.02 55);background:oklch(0.94 0.014 55);"><image-slot id="dud-ev-asucd" shape="rect" placeholder="Drop the ASUCD giveaway post"></image-slot></div>
+          <figcaption style="font-size:10.5px;letter-spacing:1.2px;font-weight:800;color:oklch(0.5 0.02 50);">The ASUCD giveaway post</figcaption>
+        </figure>
+      </div>
+  </section>
+
+  <section data-screen-label="Growth" style="padding:clamp(36px,4.4vw,56px) clamp(20px,4vw,44px) 0;max-width:1200px;margin:0 auto;">
+    <div style="font-size:11px;letter-spacing:2.2px;font-weight:800;color:oklch(0.5 0.13 45);margin-bottom:14px;">GROWTH · CUMULATIVE VIEWS</div>
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,2.8vw,32px);font-weight:800;letter-spacing:-1.3px;line-height:1.08;margin:0 0 22px;max-width:30ch;text-wrap:pretty;">Zero to 3.3M views in 90 days.</h2>
+    <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.86 0.02 55);border-radius:14px;padding:clamp(16px,2.4vw,28px);">
+      <svg viewBox="0 0 800 256" style="display:block;width:100%;height:auto;font-family:'Public Sans',sans-serif;" role="img" aria-label="Cumulative views: 0 at day 0, 1.2M at day 30, 3.3M at day 90">
+        <line x1="60" x2="760" y1="220" y2="220" stroke="oklch(0.88 0.01 55)" stroke-width="1"/><text x="48" y="224" text-anchor="end" font-size="11" fill="oklch(0.5 0.02 50)">0</text><line x1="60" x2="760" y1="162" y2="162" stroke="oklch(0.88 0.01 55)" stroke-width="1"/><text x="48" y="166" text-anchor="end" font-size="11" fill="oklch(0.5 0.02 50)">1M</text><line x1="60" x2="760" y1="105" y2="105" stroke="oklch(0.88 0.01 55)" stroke-width="1"/><text x="48" y="109" text-anchor="end" font-size="11" fill="oklch(0.5 0.02 50)">2M</text><line x1="60" x2="760" y1="47" y2="47" stroke="oklch(0.88 0.01 55)" stroke-width="1"/><text x="48" y="51" text-anchor="end" font-size="11" fill="oklch(0.5 0.02 50)">3M</text><text x="60" y="244" text-anchor="middle" font-size="11" fill="oklch(0.5 0.02 50)">Day 0</text><text x="293" y="244" text-anchor="middle" font-size="11" fill="oklch(0.5 0.02 50)">Day 30</text><text x="527" y="244" text-anchor="middle" font-size="11" fill="oklch(0.5 0.02 50)">Day 60</text><text x="760" y="244" text-anchor="middle" font-size="11" fill="oklch(0.5 0.02 50)">Day 90</text>
+        <polygon points="60,220 60,220 293,151 760,30 760,220" fill="oklch(0.72 0.13 45 / 0.14)"/>
+        <polyline points="60,220 293,151 760,30" fill="none" stroke="oklch(0.56 0.13 45)" stroke-width="3" stroke-linejoin="round"/>
+        <circle cx="293" cy="151" r="6" fill="oklch(0.56 0.13 45)"/><text x="307" y="175" font-size="13" font-weight="700" fill="oklch(0.2 0.015 50)" stroke="oklch(0.995 0.004 60)" stroke-width="5" paint-order="stroke">1.2M · day 30</text><circle cx="138" cy="197" r="10" fill="oklch(0.995 0.004 60)" stroke="oklch(0.56 0.13 45)" stroke-width="2"/><text x="138" y="201" text-anchor="middle" font-size="11" font-weight="800" fill="oklch(0.5 0.13 45)">A</text><circle cx="410" cy="121" r="10" fill="oklch(0.995 0.004 60)" stroke="oklch(0.56 0.13 45)" stroke-width="2"/><text x="410" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="oklch(0.5 0.13 45)">B</text><circle cx="604" cy="70" r="10" fill="oklch(0.995 0.004 60)" stroke="oklch(0.56 0.13 45)" stroke-width="2"/><text x="604" y="74" text-anchor="middle" font-size="11" font-weight="800" fill="oklch(0.5 0.13 45)">C</text>
+        <circle cx="760" cy="30" r="6" fill="oklch(0.2 0.015 50)"/><text x="748" y="18" text-anchor="end" font-size="13" font-weight="700" fill="oklch(0.2 0.015 50)">3.3M · day 90</text>
+      </svg>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px;padding-top:16px;border-top:1px solid oklch(0.9 0.01 55);">
+        <div style="display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:13px;line-height:1.5;color:oklch(0.4 0.02 50);"><span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;color:oklch(0.56 0.13 45);">A</span><span><strong style="color:oklch(0.2 0.015 50);">[Week / moment]</strong> [What drove the first spike]</span></div>
+        <div style="display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:13px;line-height:1.5;color:oklch(0.4 0.02 50);"><span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;color:oklch(0.56 0.13 45);">B</span><span><strong style="color:oklch(0.2 0.015 50);">[Week / moment]</strong> [What kept it growing]</span></div>
+        <div style="display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:13px;line-height:1.5;color:oklch(0.4 0.02 50);"><span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;color:oklch(0.56 0.13 45);">C</span><span><strong style="color:oklch(0.2 0.015 50);">[Week / moment]</strong> [e.g. ASUCD collab]</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Results" style="padding:clamp(28px,3.5vw,44px) clamp(20px,4vw,44px) 0;max-width:1200px;margin:0 auto;">
+    <div style="font-size:11px;letter-spacing:2.2px;font-weight:800;color:oklch(0.5 0.13 45);margin-bottom:14px;">RESULTS</div>
+    <div data-results="" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;">
+      <div style="padding:20px 22px;background:oklch(0.995 0.004 60);border:1px solid oklch(0.86 0.02 55);border-radius:12px;"><div style="font-size:9.5px;letter-spacing:1.6px;font-weight:800;color:oklch(0.5 0.13 45);">REACH</div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3vw,36px);font-weight:800;letter-spacing:-1.4px;line-height:1;margin-top:12px;">3.3M</div><div style="font-size:12.5px;font-weight:600;color:oklch(0.35 0.02 50);margin-top:8px;">views in 90 days</div><div style="font-size:12.5px;color:oklch(0.5 0.02 50);line-height:1.5;margin-top:10px;padding-top:10px;border-top:1px solid oklch(0.9 0.01 55);text-wrap:pretty;">608K accounts reached, starting from zero.</div></div>
+      <div style="padding:20px 22px;background:oklch(0.995 0.004 60);border:1px solid oklch(0.86 0.02 55);border-radius:12px;"><div style="font-size:9.5px;letter-spacing:1.6px;font-weight:800;color:oklch(0.5 0.13 45);">DISCOVERY</div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3vw,36px);font-weight:800;letter-spacing:-1.4px;line-height:1;margin-top:12px;">57.8%</div><div style="font-size:12.5px;font-weight:600;color:oklch(0.35 0.02 50);margin-top:8px;">of views from non-followers</div><div style="font-size:12.5px;color:oklch(0.5 0.02 50);line-height:1.5;margin-top:10px;padding-top:10px;border-top:1px solid oklch(0.9 0.01 55);text-wrap:pretty;">The page kept finding new students instead of only reaching the same ones.</div></div>
+      <div style="padding:20px 22px;background:oklch(0.995 0.004 60);border:1px solid oklch(0.86 0.02 55);border-radius:12px;"><div style="font-size:9.5px;letter-spacing:1.6px;font-weight:800;color:oklch(0.5 0.13 45);">ACTION</div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3vw,36px);font-weight:800;letter-spacing:-1.4px;line-height:1;margin-top:12px;">98%</div><div style="font-size:12.5px;font-weight:600;color:oklch(0.35 0.02 50);margin-top:8px;">click rate on the link hub</div><div style="font-size:12.5px;color:oklch(0.5 0.02 50);line-height:1.5;margin-top:10px;padding-top:10px;border-top:1px solid oklch(0.9 0.01 55);text-wrap:pretty;">People didn’t just watch. They tapped through.</div></div>
+      <div style="padding:20px 22px;background:oklch(0.995 0.004 60);border:1px solid oklch(0.86 0.02 55);border-radius:12px;"><div style="font-size:9.5px;letter-spacing:1.6px;font-weight:800;color:oklch(0.5 0.13 45);">REVENUE</div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3vw,36px);font-weight:800;letter-spacing:-1.4px;line-height:1;margin-top:12px;">20+</div><div style="font-size:12.5px;font-weight:600;color:oklch(0.35 0.02 50);margin-top:8px;">paid collaborations</div><div style="font-size:12.5px;color:oklch(0.5 0.02 50);line-height:1.5;margin-top:10px;padding-top:10px;border-top:1px solid oklch(0.9 0.01 55);text-wrap:pretty;">Local shops, campus orgs, and national brands.</div></div>
+    </div>
+  </section>
+
+  <section id="collabs" data-screen-label="Collab wall" style="scroll-margin-top:90px;padding:clamp(40px,5vw,64px) clamp(20px,4vw,40px) 0;max-width:1200px;margin:0 auto;">
+    <div style="display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:22px;">
+      <div style="max-width:640px;">
+        <div style="font-size:12px;letter-spacing:1.6px;color:oklch(0.56 0.13 45);font-weight:800;margin-bottom:14px;">THE COLLAB WALL</div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3.4vw,40px);font-weight:700;letter-spacing:-1.4px;line-height:1.05;margin:0 0 12px;text-wrap:balance;"><span style="color:oklch(0.56 0.13 45);">30+</span> collabs with orgs &amp; businesses.</h2>
+        <p style="font-size:15.5px;line-height:1.6;color:oklch(0.4 0.02 50);margin:0;text-wrap:pretty;">Across Daily UC Davis and DavisWithMaya, I planned, filmed, and edited each one myself. Tap any video to watch the original post.</p>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+          <div onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;">
+      <sc-for list="{{ collabs }}" as="c" hint-placeholder-count="8">
+        <a href="{{ c.link }}" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:10px;color:oklch(0.2 0.015 50);">
+          <div style="position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:oklch(0.9 0.012 55);border:1px solid oklch(0.85 0.01 55);">
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px;text-align:center;font-size:11.5px;line-height:1.4;color:oklch(0.5 0.02 50);"><span style="font-size:20px;">▶</span><span style="font-weight:700;">Add video</span><span style="font-family:ui-monospace,monospace;font-size:10.5px;word-break:break-all;">{{ c.file }}</span></div>
+            <video data-autoplay="" autoplay="" muted="" loop="" playsinline="" preload="metadata" src="{{ c.file }}" onLoadedData="{{ showVid }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;opacity:0;transition:opacity .3s;"></video>
+            <span style="position:absolute;top:10px;left:10px;font-size:9.5px;letter-spacing:1px;font-weight:800;padding:4px 8px;border-radius:100px;background:oklch(0.2 0.015 50 / 0.82);color:oklch(0.97 0.01 60);">{{ c.channel }}</span>
+            <sc-if value="{{ c.hasViews }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;bottom:10px;left:10px;font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:800;padding:4px 9px;border-radius:100px;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);">{{ c.views }} views</span></sc-if>
           </div>
-          <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:24px;">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;color:oklch(0.85 0.01 55);margin-bottom:10px;">02</div>
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;">Food &amp; places</div>
-            <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.55;text-wrap:pretty;">The highest-saving content on the page, and the format local businesses could slot straight into.</div>
+          <div>
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700;letter-spacing:-0.2px;">{{ c.name }}</div>
+            <div style="font-size:12px;color:oklch(0.5 0.02 50);margin-top:2px;">{{ c.type }}</div>
+            <div style="font-size:12.5px;font-weight:800;color:oklch(0.5 0.13 45);margin-top:6px;">{{ c.result }}</div>
           </div>
-          <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:24px;">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;color:oklch(0.85 0.01 55);margin-bottom:10px;">03</div>
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;">Student life</div>
-            <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.55;text-wrap:pretty;">The relatable posts that travel past our own followers and bring new ones back with them.</div>
-          </div>
-        </div>
-        <img src="slide6.jpg" alt="Content strategy — three pillars, one format" style="width:100%;border-radius:14px;border:1px solid oklch(0.85 0.01 55);">
-      </div>
+        </a>
+      </sc-for>
     </div>
+    <div style="margin-top:26px;padding:18px 22px;border-radius:14px;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);font-size:13px;line-height:1.7;color:oklch(0.42 0.02 50);"><strong style="color:oklch(0.2 0.015 50);letter-spacing:1px;font-size:10.5px;margin-right:8px;">ALSO WORKED WITH</strong>ASUCD · Tower 28 · CapCut · American Eagle · Olive &amp; June · Hero Cosmetics · Beachwaver · Elevated Faith · Honey D Cafe · Urban Plates</div>
   </section>
 
-  <section data-screen-label="Growth" style="padding:clamp(64px,8vw,96px) clamp(20px,4vw,40px) 0;max-width:1200px;margin:0 auto;">
-    <div style="font-size:12px;letter-spacing:1.6px;color:oklch(0.56 0.13 45);font-weight:800;margin-bottom:14px;">GROWTH &amp; PERFORMANCE</div>
-    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.4vw,40px);font-weight:700;letter-spacing:-1.2px;line-height:1.1;margin:0 0 30px;max-width:700px;text-wrap:pretty;">1.2M in the first month. 3.3M by the ninetieth day.</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;align-items:center;">
-      <img src="slide7.jpg" alt="Growth and performance — Instagram insights" style="width:100%;border-radius:14px;border:1px solid oklch(0.85 0.01 55);">
-      <div style="display:flex;flex-direction:column;gap:16px;">
-        <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:22px;">
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:800;color:oklch(0.56 0.13 45);letter-spacing:-1px;">3.3M</div>
-          <div style="font-size:13.5px;color:oklch(0.42 0.02 50);line-height:1.5;margin-top:6px;">views across the first 90 days at scale, with 608K accounts reached — up 53%.</div>
-        </div>
-        <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:22px;">
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:800;color:oklch(0.56 0.13 45);letter-spacing:-1px;">57.8%</div>
-          <div style="font-size:13.5px;color:oklch(0.42 0.02 50);line-height:1.5;margin-top:6px;">of views came from non-followers — the page kept finding new people rather than recycling the same ones.</div>
-        </div>
-        <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:22px;">
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:800;color:oklch(0.56 0.13 45);letter-spacing:-1px;">98%</div>
-          <div style="font-size:13.5px;color:oklch(0.42 0.02 50);line-height:1.5;margin-top:6px;">click rate on the link hub — attention that actually moved somewhere.</div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
-  <section data-screen-label="Partnerships" style="padding:clamp(64px,8vw,96px) clamp(20px,4vw,40px) 0;max-width:1200px;margin:0 auto;">
-    <div style="font-size:12px;letter-spacing:1.6px;color:oklch(0.56 0.13 45);font-weight:800;margin-bottom:14px;">PARTNERSHIPS &amp; REVENUE</div>
-    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.4vw,40px);font-weight:700;letter-spacing:-1.2px;line-height:1.1;margin:0 0 18px;max-width:700px;text-wrap:pretty;">Then I sold the channel I'd built.</h2>
-    <p style="font-size:16.5px;line-height:1.65;color:oklch(0.35 0.02 50);margin:0 0 30px;max-width:640px;text-wrap:pretty;">20+ business collaborations sourced and delivered — local shops, campus organizations, and national brand ambassadorships — with the promotion built inside the existing format instead of bolted onto it.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;">
-      <img src="slide9.jpg" alt="Collaborations — local, campus, national" style="width:100%;border-radius:14px;border:1px solid oklch(0.85 0.01 55);">
-      <img src="slide8.jpg" alt="Content samples — promotion inside the format" style="width:100%;border-radius:14px;border:1px solid oklch(0.85 0.01 55);">
-    </div>
-    <div style="margin-top:18px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);border-radius:16px;padding:clamp(24px,3vw,34px);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;align-items:center;">
-      <div>
-        <div style="font-size:11px;letter-spacing:1.3px;font-weight:800;color:oklch(0.72 0.13 45);margin-bottom:10px;">CAMPAIGN HIGHLIGHT · THE ASUCD GIVEAWAY</div>
-        <div style="font-size:15px;line-height:1.6;color:oklch(0.86 0.01 60);text-wrap:pretty;">A giveaway built for participation rather than reach — the mechanics asked people to act, not just watch.</div>
-      </div>
-      <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:34px;font-weight:800;color:oklch(0.72 0.13 45);letter-spacing:-1.2px;">3,145</div><div style="font-size:12.5px;color:oklch(0.78 0.015 55);margin-top:4px;">entries</div></div>
-      <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:34px;font-weight:800;letter-spacing:-1.2px;">103K</div><div style="font-size:12.5px;color:oklch(0.78 0.015 55);margin-top:4px;">views</div></div>
-      <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:34px;font-weight:800;letter-spacing:-1.2px;">588</div><div style="font-size:12.5px;color:oklch(0.78 0.015 55);margin-top:4px;">shares</div></div>
-    </div>
-  </section>
-
-  <section data-screen-label="Community" style="padding:clamp(64px,8vw,96px) clamp(20px,4vw,40px) 0;max-width:1200px;margin:0 auto;">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:52px;align-items:center;">
-      <div>
-        <div style="font-size:12px;letter-spacing:1.6px;color:oklch(0.56 0.13 45);font-weight:800;margin-bottom:14px;">COMMUNITY RESPONSE</div>
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.4vw,40px);font-weight:700;letter-spacing:-1.2px;line-height:1.1;margin:0 0 18px;text-wrap:pretty;">Students started treating it as the source.</h2>
-        <p style="font-size:16.5px;line-height:1.65;color:oklch(0.35 0.02 50);margin:0;text-wrap:pretty;">Unprompted messages asking us to post things, correct things, and cover things — the point at which a page stops being an account and starts being infrastructure students rely on.</p>
-      </div>
-      <img src="slide10.jpg" alt="Community response — unprompted student DMs" style="width:100%;border-radius:14px;border:1px solid oklch(0.85 0.01 55);">
-    </div>
-  </section>
-
-  <section id="deck" data-screen-label="Deck" style="padding:clamp(64px,8vw,96px) clamp(20px,4vw,40px) 0;max-width:1200px;margin:0 auto;">
-    <div style="font-size:12px;letter-spacing:1.6px;color:oklch(0.56 0.13 45);font-weight:800;margin-bottom:8px;">THE FULL DECK</div>
-    <p style="font-size:14.5px;color:oklch(0.45 0.02 50);margin:0 0 28px;">Every slide, in order. Click any image to open it full size.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
-      <a href="slide1.jpg" target="_blank" rel="noopener" style="display:block;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:12px;overflow:hidden;" style-hover="border-color:oklch(0.56 0.13 45);">
-        <img src="slide1.jpg" alt="Portfolio case study" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
-        <div style="padding:12px 14px;font-size:12px;color:oklch(0.5 0.02 50);border-top:1px solid oklch(0.88 0.01 55);">Portfolio case study</div>
-      </a>
-      <a href="slide2.jpg" target="_blank" rel="noopener" style="display:block;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:12px;overflow:hidden;" style-hover="border-color:oklch(0.56 0.13 45);">
-        <img src="slide2.jpg" alt="At a glance — first 90 days at scale" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
-        <div style="padding:12px 14px;font-size:12px;color:oklch(0.5 0.02 50);border-top:1px solid oklch(0.88 0.01 55);">At a glance — first 90 days at scale</div>
-      </a>
-      <a href="slide3.jpg" target="_blank" rel="noopener" style="display:block;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:12px;overflow:hidden;" style-hover="border-color:oklch(0.56 0.13 45);">
-        <img src="slide3.jpg" alt="The opportunity — the gap nobody was running" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
-        <div style="padding:12px 14px;font-size:12px;color:oklch(0.5 0.02 50);border-top:1px solid oklch(0.88 0.01 55);">The opportunity — the gap nobody was running</div>
-      </a>
-      <a href="slide4.jpg" target="_blank" rel="noopener" style="display:block;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:12px;overflow:hidden;" style-hover="border-color:oklch(0.56 0.13 45);">
-        <img src="slide4.jpg" alt="My role — strategy through operations" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
-        <div style="padding:12px 14px;font-size:12px;color:oklch(0.5 0.02 50);border-top:1px solid oklch(0.88 0.01 55);">My role — strategy through operations</div>
-      </a>
-      <a href="slide5.jpg" target="_blank" rel="noopener" style="display:block;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:12px;overflow:hidden;" style-hover="border-color:oklch(0.56 0.13 45);">
-        <img src="slide5.jpg" alt="Brand identity — wordmark, type, palette" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
-        <div style="padding:12px 14px;font-size:12px;color:oklch(0.5 0.02 50);border-top:1px solid oklch(0.88 0.01 55);">Brand identity — wordmark, type, palette</div>
-      </a>
-      <a href="slide6.jpg" target="_blank" rel="noopener" style="display:block;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:12px;overflow:hidden;" style-hover="border-color:oklch(0.56 0.13 45);">
-        <img src="slide6.jpg" alt="Content strategy — three pillars, one format" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
-        <div style="padding:12px 14px;font-size:12px;color:oklch(0.5 0.02 50);border-top:1px solid oklch(0.88 0.01 55);">Content strategy — three pillars, one format</div>
-      </a>
-      <a href="slide7.jpg" target="_blank" rel="noopener" style="display:block;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:12px;overflow:hidden;" style-hover="border-color:oklch(0.56 0.13 45);">
-        <img src="slide7.jpg" alt="Growth and performance — Instagram insights" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
-        <div style="padding:12px 14px;font-size:12px;color:oklch(0.5 0.02 50);border-top:1px solid oklch(0.88 0.01 55);">Growth &amp; performance — Instagram insights</div>
-      </a>
-      <a href="slide8.jpg" target="_blank" rel="noopener" style="display:block;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:12px;overflow:hidden;" style-hover="border-color:oklch(0.56 0.13 45);">
-        <img src="slide8.jpg" alt="Content samples — promotion inside the format" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
-        <div style="padding:12px 14px;font-size:12px;color:oklch(0.5 0.02 50);border-top:1px solid oklch(0.88 0.01 55);">Content samples — promotion inside the format</div>
-      </a>
-      <a href="slide9.jpg" target="_blank" rel="noopener" style="display:block;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:12px;overflow:hidden;" style-hover="border-color:oklch(0.56 0.13 45);">
-        <img src="slide9.jpg" alt="Collaborations — local, campus, national" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
-        <div style="padding:12px 14px;font-size:12px;color:oklch(0.5 0.02 50);border-top:1px solid oklch(0.88 0.01 55);">Collaborations — local, campus, national</div>
-      </a>
-      <a href="slide10.jpg" target="_blank" rel="noopener" style="display:block;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:12px;overflow:hidden;" style-hover="border-color:oklch(0.56 0.13 45);">
-        <img src="slide10.jpg" alt="Community response — unprompted student DMs" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
-        <div style="padding:12px 14px;font-size:12px;color:oklch(0.5 0.02 50);border-top:1px solid oklch(0.88 0.01 55);">Community response — unprompted student DMs</div>
-      </a>
-      <a href="slide11.jpg" target="_blank" rel="noopener" style="display:block;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:12px;overflow:hidden;" style-hover="border-color:oklch(0.56 0.13 45);">
-        <img src="slide11.jpg" alt="Takeaways" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
-        <div style="padding:12px 14px;font-size:12px;color:oklch(0.5 0.02 50);border-top:1px solid oklch(0.88 0.01 55);">Takeaways</div>
-      </a>
-    </div>
-  </section>
-
-  <section data-screen-label="What this proves" style="padding:clamp(64px,8vw,96px) clamp(20px,4vw,40px) 0;max-width:1200px;margin:0 auto;">
-    <div style="font-size:12px;letter-spacing:1.6px;color:oklch(0.56 0.13 45);font-weight:800;margin-bottom:14px;">WHAT THIS PROVES</div>
-    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.4vw,40px);font-weight:700;letter-spacing:-1.2px;line-height:1.1;margin:0 0 34px;max-width:700px;text-wrap:pretty;">Five things a hiring manager can take from this.</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;">
-      <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:24px;">
-        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:700;margin-bottom:8px;">I can start from nothing</div>
-        <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.55;text-wrap:pretty;">1.2M views in 30 days with no existing audience, no budget, and no team to inherit.</div>
-      </div>
-      <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:24px;">
-        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:700;margin-bottom:8px;">I build systems, not posts</div>
-        <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.55;text-wrap:pretty;">Three pillars and one repeatable format — the reason output stayed consistent instead of spiking once.</div>
-      </div>
-      <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:24px;">
-        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:700;margin-bottom:8px;">I read the right metrics</div>
-        <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.55;text-wrap:pretty;">Non-follower reach and click rate over raw views — the numbers that predict growth rather than flatter it.</div>
-      </div>
-      <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:24px;">
-        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:700;margin-bottom:8px;">I can sell it afterwards</div>
-        <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.55;text-wrap:pretty;">20+ business collaborations sourced and delivered, with promotion built inside the format that already worked.</div>
-      </div>
-      <div style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);border:1px solid oklch(0.2 0.015 50);border-radius:14px;padding:24px;">
-        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:700;margin-bottom:8px;">And it wasn't luck</div>
-        <div style="font-size:13.5px;color:oklch(0.82 0.01 60);line-height:1.55;text-wrap:pretty;">This is the second brand I grew past a million views. The playbook transferred, which is the whole point.</div>
-      </div>
-    </div>
-  </section>
-
-  <section style="padding:clamp(64px,8vw,96px) clamp(20px,4vw,40px) 0;max-width:1200px;margin:0 auto;">
+  <section style="padding:clamp(28px,3.5vw,44px) clamp(20px,4vw,40px) 0;max-width:1200px;margin:0 auto;">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
       <a href="daviswithmaya.html" style="display:block;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:16px;padding:26px;color:oklch(0.2 0.015 50);" style-hover="border-color:oklch(0.56 0.13 45);">
         <div style="font-size:11.5px;letter-spacing:1.4px;color:oklch(0.5 0.02 50);font-weight:800;margin-bottom:10px;">NEXT VENTURE</div>
@@ -311,7 +314,15 @@
     </div>
   </section>
 
-  <footer style="padding:56px clamp(20px,4vw,40px) 40px;margin-top:clamp(64px,8vw,96px);border-top:1px solid oklch(0.85 0.01 55);">
+  <section data-screen-label="Next" style="padding:24px clamp(20px,4vw,40px) 72px;max-width:1200px;margin:0 auto;box-sizing:border-box;">
+    <a href="story-and-spoon.html" style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;border-top:1px solid oklch(0.85 0.01 55);border-bottom:1px solid oklch(0.85 0.01 55);color:oklch(0.2 0.015 50);" style-hover="color:oklch(0.56 0.13 45);">
+      <span><span style="display:block;font-size:11px;letter-spacing:1.4px;font-weight:800;color:oklch(0.5 0.02 50);margin-bottom:6px;">NEXT VENTURE</span><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3vw,36px);font-weight:800;letter-spacing:-0.8px;">Story &amp; Spoon</span></span>
+      <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:36px;font-weight:800;">→</span>
+    </a>
+    <a href="ventures.html" style="display:inline-block;margin-top:20px;font-weight:700;font-size:14px;">← Back to Ventures</a>
+  </section>
+
+  <footer style="padding:56px clamp(20px,4vw,40px) 40px;margin-top:clamp(28px,3.5vw,44px);border-top:1px solid oklch(0.85 0.01 55);">
     <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:26px;">
       <div>
         <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px;">Maya Faith Yoo</div>
@@ -330,7 +341,33 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  renderVals() { return {}; }
+  state = { filter: 'all' };
+  renderVals() {
+    const IG_D = 'https://www.instagram.com/dailyucdavis/', IG_M = 'https://www.instagram.com/daviswithmaya/';
+    // Add collabs here. Drop the .mp4 into site-flat/ with the matching filename.
+    const all = [
+      { name: 'ASUCD Giveaway', type: 'Campus org · giveaway', channel: 'DAILY UC DAVIS', ch: 'daily', views: '103K', file: 'daily-collab-asucd.mp4', result: '3,145 entries · 588 shares', link: IG_D },
+      { name: 'Guads', type: 'Local business · giveaway', channel: 'DAVISWITHMAYA', ch: 'maya', views: '19.6K', file: 'collab-guads.mp4', result: '998 entries', link: 'https://www.instagram.com/reel/DT6k5IHiU4L/' },
+      { name: 'Volt', type: 'Local business · giveaway', channel: 'DAVISWITHMAYA', ch: 'maya', views: '18.7K', file: 'collab-volt.mp4', result: '843 entries', link: IG_M },
+      { name: 'Molly Jasmine', type: 'Local business · giveaway', channel: 'DAVISWITHMAYA', ch: 'maya', views: '13.8K', file: 'collab-molly-jasmine.mp4', result: '667 entries', link: IG_M },
+      { name: 'Little Gem Waffles', type: 'Local business · giveaway', channel: 'DAVISWITHMAYA', ch: 'maya', views: '10.1K', file: 'collab-little-gem.mp4', result: '502 entries', link: IG_M },
+      { name: 'Crazy D\u2019s Chicken', type: 'Local business · giveaway', channel: 'DAVISWITHMAYA', ch: 'maya', views: '9.5K', file: 'collab-crazy-ds.mp4', result: '313 entries', link: IG_M },
+      { name: 'Shabu Shack', type: 'Local business · giveaway', channel: 'DAVISWITHMAYA', ch: 'maya', views: '8.7K', file: 'collab-shabu-shack.mp4', result: '337 entries', link: IG_M },
+      { name: 'Beachwaver', type: 'National brand', channel: 'DAVISWITHMAYA', ch: 'maya', views: '', file: 'brand-beachwaver.mp4', result: 'Add result', link: 'https://www.instagram.com/p/DQdLDYICQqh/' },
+      { name: 'Daily collab #2', type: 'Add business or org', channel: 'DAILY UC DAVIS', ch: 'daily', views: '', file: 'daily-collab-2.mp4', result: 'Add result', link: IG_D },
+      { name: 'Daily collab #3', type: 'Add business or org', channel: 'DAILY UC DAVIS', ch: 'daily', views: '', file: 'daily-collab-3.mp4', result: 'Add result', link: IG_D },
+      { name: 'Daily collab #4', type: 'Add business or org', channel: 'DAILY UC DAVIS', ch: 'daily', views: '', file: 'daily-collab-4.mp4', result: 'Add result', link: IG_D },
+      { name: 'Daily collab #5', type: 'Add business or org', channel: 'DAILY UC DAVIS', ch: 'daily', views: '', file: 'daily-collab-5.mp4', result: 'Add result', link: IG_D },
+    ];
+    const f = this.state.filter;
+    const collabs = all.filter(c => f === 'all' || c.ch === f).map(c => ({ ...c, hasViews: !!c.views }));
+    const opts = [['all', 'All'], ['daily', 'Daily UC Davis'], ['maya', 'DavisWithMaya']];
+    const filters = opts.map(([id, label]) => ({
+      label, onClick: () => this.setState({ filter: id }),
+      style: { cursor: 'pointer', fontSize: 12.5, fontWeight: 700, padding: '8px 14px', borderRadius: 100, border: '1.5px solid oklch(0.2 0.015 50)', background: f === id ? 'oklch(0.2 0.015 50)' : 'transparent', color: f === id ? 'oklch(0.97 0.01 60)' : 'oklch(0.2 0.015 50)' },
+    }));
+    return { collabs, filters, showVid: (e) => { e.currentTarget.style.opacity = 1; } };
+  }
 }
 </script>
 </body>

@@ -10,6 +10,11 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg">
 <script src="./support.js"></script>
+<script data-mute-all>(function(){function m(v){if(!v.hasAttribute('controls')){v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.volume=0;}}
+document.addEventListener('play',function(e){if(e.target&&e.target.tagName==='VIDEO')m(e.target);},true);
+document.addEventListener('volumechange',function(e){var v=e.target;if(v&&v.tagName==='VIDEO'&&!v.hasAttribute('controls')&&!v.muted)m(v);},true);
+new MutationObserver(function(){document.querySelectorAll('video').forEach(m);}).observe(document.documentElement,{childList:true,subtree:true});})();</script>
+<script data-force-download>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[download]');if(!a)return;var href=a.getAttribute('href');if(!href||!/\.pdf($|\?)/i.test(href))return;e.preventDefault();var name=a.getAttribute('download')||'download.pdf';fetch(a.href).then(function(r){if(!r.ok)throw 0;return r.blob();}).then(function(b){var u=URL.createObjectURL(b),t=document.createElement('a');t.href=u;t.download=name;document.body.appendChild(t);t.click();t.remove();setTimeout(function(){URL.revokeObjectURL(u);},4000);}).catch(function(){window.location.href=a.href;});},true);</script>
 </head>
 <body>
 <x-dc>
@@ -34,8 +39,8 @@
   @keyframes wordIn2{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
   @media (max-width:900px){[data-photo-grid]{grid-template-columns:repeat(3,minmax(0,1fr))!important;}}
   @media (max-width:560px){[data-photo-grid]{grid-template-columns:repeat(2,minmax(0,1fr))!important;}}
-  body{cursor:none;}
-  a,[onclick],button{cursor:none;}
+  
+  
 
   @media (max-width:760px){
     html{-webkit-text-size-adjust:100%;}
@@ -68,20 +73,18 @@
 </style>
 </helmet>
 <div style="font-family:'Public Sans',sans-serif;background:oklch(0.97 0.01 60);color:oklch(0.2 0.015 50);min-height:100vh;overflow-x:hidden;">
-  <div id="cursor-glow" style="{{ cursorGlowStyle }}"></div>
-  <div id="cursor-ring" style="{{ cursorRingStyle }}"></div>
 
   <nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px clamp(16px,3vw,40px);background:oklch(0.97 0.01 60 / 0.88);backdrop-filter:blur(14px);border-bottom:1px solid oklch(0.85 0.01 55);">
     <div onClick="{{ goHome }}" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;letter-spacing:0.2px;cursor:pointer;">Maya Yoo</div>
     <div style="display:flex;align-items:center;gap:clamp(14px,2vw,30px);flex-wrap:wrap;">
-      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="5">
         <div onClick="{{ item.onClick }}" style="{{ item.style }}">{{ item.label }}</div>
       </sc-for>
-      <a href="{{ resumeUrl }}" target="_blank" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:10px 20px;border-radius:100px;font-weight:700;font-size:13px;" style-hover="background:oklch(0.56 0.13 45);">Résumé ↓</a>
+      <a href="{{ resumeUrl }}" download="MayaYoo_Resume.pdf" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:10px 20px;border-radius:100px;font-weight:700;font-size:13px;" style-hover="background:oklch(0.56 0.13 45);">Résumé ↓</a>
     </div>
   </nav>
 
-    <section style="padding:clamp(96px,12vw,160px) clamp(20px,4vw,40px) 20px;max-width:1200px;margin:0 auto;">
+    <section style="padding:clamp(82px,9vw,110px) clamp(20px,4vw,40px) 20px;max-width:1200px;margin:0 auto;">
       <div style="font-size:13px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">PHOTOGRAPHY · BY MAI FAITH</div>
       <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(30px,5vw,44px);font-weight:700;margin:0 0 16px;">Documenting people, places, and moments as they happen.</h1>
       <p style="color:oklch(0.45 0.02 50);font-size:16px;max-width:640px;line-height:1.6;">Photography is where my eye for story started — it's still how I think about every brand and every frame.</p>
@@ -95,7 +98,7 @@
         <div data-photo-grid="" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;">
           <sc-for list="{{ cat.images }}" as="im" hint-placeholder-count="8">
             <div onClick="{{ im.open }}" style="{{ im.style }}overflow:hidden;border-radius:10px;position:relative;cursor:pointer;">
-              <img src="{{ im.src }}" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;" style-hover="transform:scale(1.06);">
+              <img decoding="async" src="{{ im.src }}" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;" style-hover="transform:scale(1.06);">
               <div style="position:absolute;inset:0;background:oklch(0.1 0.02 50 / 0);opacity:0;transition:background .25s ease,opacity .25s ease;display:flex;align-items:flex-end;padding:14px;" style-hover="background:oklch(0.1 0.02 50 / 0.38);opacity:1;">
                 <div>
                   <div style="color:#fff;font-weight:700;font-size:14px;">{{ im.title }}</div>
@@ -110,7 +113,7 @@
     <sc-if value="{{ lightboxPhoto }}" hint-placeholder-val="{{ false }}">
       <div onClick="{{ closeLightbox }}" style="position:fixed;inset:0;background:oklch(0.08 0.01 50 / 0.94);z-index:200;display:flex;align-items:center;justify-content:center;padding:32px;animation:lightboxFade .25s ease;">
         <div onClick="{{ stopProp }}" style="max-width:840px;width:100%;max-height:92vh;display:flex;flex-direction:column;animation:lightboxScale .3s cubic-bezier(0.2,0.8,0.3,1);">
-          <img src="{{ lightboxPhoto.src }}" style="width:100%;max-height:70vh;object-fit:contain;border-radius:6px;">
+          <img decoding="async" src="{{ lightboxPhoto.src }}" style="width:100%;max-height:70vh;object-fit:contain;border-radius:6px;">
           <div style="margin-top:18px;color:#fff;">
             <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:700;">{{ lightboxPhoto.title }}</div>
             <div style="font-size:12.5px;color:oklch(0.65 0.02 55);margin-top:4px;">{{ lightboxPhoto.category }} · {{ lightboxPhoto.year }}</div>
@@ -126,7 +129,7 @@
   <sc-if value="{{ slideLightbox }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ closeSlide }}" style="position:fixed;inset:0;background:oklch(0.08 0.01 50 / 0.94);z-index:210;display:flex;align-items:center;justify-content:center;padding:32px;animation:lightboxFade .25s ease;">
       <div onClick="{{ stopProp }}" style="max-width:1040px;width:100%;display:flex;flex-direction:column;animation:lightboxScale .3s cubic-bezier(0.2,0.8,0.3,1);">
-        <img src="{{ slideLightbox.src }}" style="width:100%;max-height:76vh;object-fit:contain;border-radius:8px;">
+        <img decoding="async" src="{{ slideLightbox.src }}" style="width:100%;max-height:76vh;object-fit:contain;border-radius:8px;">
         <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;color:#fff;">
           <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:700;">{{ slideLightbox.label }}</div>
           <div style="font-size:12.5px;color:oklch(0.65 0.02 55);flex-shrink:0;">{{ slideLightbox.counter }}</div>
@@ -143,7 +146,7 @@
       <div onClick="{{ stopProp }}" style="max-width:400px;width:100%;display:flex;flex-direction:column;animation:lightboxScale .3s cubic-bezier(0.2,0.8,0.3,1);position:relative;">
         <div style="position:relative;width:100%;height:min(72vh,700px);border-radius:12px;overflow:hidden;background:oklch(0.15 0.02 50);">
           <sc-if value="{{ activeVideo.canEmbed }}" hint-placeholder-val="{{ true }}">
-            <iframe src="{{ activeVideo.embedUrl }}" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="" scrolling="no"></iframe>
+            <iframe loading="lazy" src="{{ activeVideo.embedUrl }}" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="" scrolling="no"></iframe>
           </sc-if>
           <sc-if value="{{ activeVideo.noEmbed }}" hint-placeholder-val="{{ false }}">
             <a href="{{ activeVideo.link }}" target="_blank" rel="noopener" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:14px;padding:26px;text-align:center;background-image:linear-gradient(oklch(0.15 0.02 50 / 0.1),oklch(0.15 0.02 50 / 0.85)),url('{{ activeVideo.tileCover }}');background-size:cover;background-position:center;color:oklch(0.97 0.01 60);">
@@ -181,7 +184,7 @@
 
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;showFaithWork&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Tweaks&quot;},&quot;resumeUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://drive.google.com/file/d/1POKkfz5ka_epCnrfIOHhEX-hjA__O_J8/view?usp=sharing&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tweaks&quot;},&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;maya.faith.yoo@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tweaks&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;showFaithWork&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Tweaks&quot;},&quot;resumeUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;maya-yoo-resume.pdf&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tweaks&quot;},&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;maya.faith.yoo@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tweaks&quot;}}">
 const IMG = 'https://images.squarespace-cdn.com/content/v1/67a1585e91654d42a21cd470/';
 const CURRENT_PAGE = 'photography';
 const PAGE_HREFS = {"home":"index.html","marketing":"marketing.html","design":"design.html","ventures":"ventures.html","content":"storytelling.html","storytelling":"storytelling.html","photography":"photography.html","about":"about.html"};
@@ -228,9 +231,9 @@ class Component extends DCLogic {
     this._revealTimer = setInterval(this._revealCheck, 500); this._revealCheck();
     this._onMouseDown = () => { this.cursorDown = true; };
     this._onMouseUp = () => { this.cursorDown = false; };
-    window.addEventListener('mousemove', this._onMouseMove);
-    window.addEventListener('mousedown', this._onMouseDown);
-    window.addEventListener('mouseup', this._onMouseUp);
+    
+    
+    
   }
   componentWillUnmount() { if (this._raf) cancelAnimationFrame(this._raf); if (this._revealTimer) clearInterval(this._revealTimer); window.removeEventListener('scroll', this._onScrollReveal); window.removeEventListener('resize', this._onScrollReveal); if (this._statsPoll) clearInterval(this._statsPoll); if (this._io) this._io.disconnect(); window.removeEventListener('keydown', this._onKeyDown); window.removeEventListener('mousemove', this._onMouseMove); window.removeEventListener('mousedown', this._onMouseDown); window.removeEventListener('mouseup', this._onMouseUp); if (this._wordTimer) clearInterval(this._wordTimer); window.removeEventListener('hashchange', this._onHash); }
   componentDidUpdate() { this.setupStatsObserver(); if (this._revealCheck) this._revealCheck(); }
@@ -327,13 +330,13 @@ class Component extends DCLogic {
   renderVals() {
     const t = this.state.t;
     const page = CURRENT_PAGE;
-    const pages = ['home', 'ventures', 'marketing', 'storytelling', 'design', 'about'];
-    const labels = { home: 'Home', marketing: 'Marketing', storytelling: 'Storytelling', design: 'Design', ventures: 'Ventures', about: 'About' };
-    const navItems = pages.map(id => ({ label: labels[id], onClick: () => { if (id !== CURRENT_PAGE) window.location.href = PAGE_HREFS[id]; }, style: this.navStyle(page === id) }));
+    const pages = ['ventures', 'marketing', 'design', 'storytelling', 'about'];
+    const labels = { home: 'Home', marketing: 'Marketing', storytelling: 'Content', design: 'Design', ventures: 'Ventures', about: 'About' };
+    const navItems = pages.map(id => ({ label: labels[id], onClick: () => { if (id !== CURRENT_PAGE) window.location.href = PAGE_HREFS[id]; }, style: this.navStyle(page === id || (id === 'storytelling' && page === 'photography')) }));
     const goto = {};
-    pages.concat(['content','photography']).forEach(id => { goto[id] = () => { if (id !== CURRENT_PAGE) window.location.href = PAGE_HREFS[id]; }; });
+    pages.concat(['home','content','photography']).forEach(id => { goto[id] = () => { if (id !== CURRENT_PAGE) window.location.href = PAGE_HREFS[id]; }; });
 
-    const resumeUrl = this.props.resumeUrl ?? 'https://drive.google.com/file/d/1POKkfz5ka_epCnrfIOHhEX-hjA__O_J8/view?usp=sharing';
+    const resumeUrl = this.props.resumeUrl ?? 'maya-yoo-resume.pdf';
     const email = this.props.contactEmail ?? 'maya.faith.yoo@gmail.com';
     const showFaithWork = this.props.showFaithWork ?? true;
     const heroWords = ['stick around for.', 'come back to.', 'share with friends.', 'talk about.'];
@@ -533,7 +536,7 @@ class Component extends DCLogic {
           { title: 'Faith in Jesus', views: '3.5M views', subStat: '833K likes · 56K saves', link: 'https://www.tiktok.com/@daviswithmaya/video/7555530233898650893', cover: 'dwm-faith-in-jesus.jpg' },
           { title: 'Thankfulness', views: '2.2M views', subStat: '268K likes · 51K shares', link: 'https://www.instagram.com/reel/DRkmKVHknI1/', cover: 'dwm-thankfulness.jpg' },
           { title: 'Friends', views: '2.4M views', subStat: '330K likes · 61K shares · 110K saves', link: 'https://www.instagram.com/reel/DT30YDHEi1j/', cover: 'dwm-friends.jpg' },
-          { title: 'Side Quests', views: '2.3M views', subStat: 'College depression can\u2019t hit if you\u2019re busy', link: 'https://www.instagram.com/daviswithmaya/reels/', cover: 'dwm-side-quests.jpg' },
+          { title: 'Side Quests', views: '2.3M views', subStat: 'College depression can\u2019t hit if you\u2019re busy', link: 'https://www.instagram.com/reel/DRVupkvEvKE/', cover: 'dwm-side-quests.jpg' },
         ] },
       { name: 'Daily UC Davis', handle: '@dailyucdavis', role: 'Growth Strategy, Editing', desc: 'Campus media platform covering student life, events, and everyday UC Davis culture.', cover: IMG + '5037c585-fa9e-4676-b097-27d8b738e838/DailyDavis+%283%29.png', impact: [{ num: '1.2M+', label: '30-day views' }, { num: '400K', label: 'top video' }],
         videos: [
@@ -634,7 +637,7 @@ class Component extends DCLogic {
     contentAccounts.forEach(acc => { acc.videos.forEach(v => { v.id = v.link; v.tileCover = v.cover || acc.cover; v.open = () => this.openVideo(v.id); v.embedUrl = this.toEmbedUrl(v.link); v.canEmbed = !!v.embedUrl; v.noEmbed = !v.embedUrl; v.platform = v.link.includes('tiktok.com') ? 'TikTok' : 'Instagram'; this.allVideos.push(v); }); });
     const activeVideo = this.state.activeVideoId ? this.allVideos.find(v => v.id === this.state.activeVideoId) : null;
     const featPick = [
-      { link: 'https://www.instagram.com/daviswithmaya/reels/', role: 'PERSONAL BRAND', big: '2.3M views', account: '@daviswithmaya', why: 'Side quests. Shot with friends on a random night out \u2014 no hook, no trend, it traveled because it was real.' },
+      { link: 'https://www.instagram.com/reel/DRVupkvEvKE/', role: 'PERSONAL BRAND', big: '2.3M views', account: '@daviswithmaya', why: 'Side quests. Shot with friends on a random night out \u2014 no hook, no trend, it traveled because it was real.' },
       { link: 'https://www.instagram.com/reel/DKAISUmppyu/', role: 'CAMPUS MEDIA', big: '3,145 entries', account: '@dailyucdavis', why: 'The ASUCD giveaway. 103K views and 588 shares \u2014 a campaign built to make people act, not just watch.' },
       { link: 'https://www.instagram.com/reel/DXwqP9qKF-g/', role: 'EVENT MARKETING', big: '310 RSVPs', account: '@tmgatdavis', why: 'The Love & Lattes push. 310 RSVPs, 130+ people in the room \u2014 content built to fill seats, not feeds.' },
       { link: 'https://www.instagram.com/reel/DVKOFytAVWT/', role: 'LAUNCH', big: '100+ at launch', account: 'Worship on the Lawn', why: 'The teaser for an event that didn\u2019t exist yet. It\u2019s still running monthly a year later.' },
@@ -672,7 +675,7 @@ class Component extends DCLogic {
       isHome: page === 'home', isVentures: page === 'ventures', isProjects: page === 'projects', isContent: page === 'content', isMarketing: page === 'marketing', isPhotography: page === 'photography', isAbout: page === 'about',
       activeVideo, closeVideo: this.closeVideo,
       heroWord, heroWordStyle, marqueeBrands, slideLightbox, closeSlide: this.closeSlide, nextSlide: this.nextSlide, prevSlide: this.prevSlide,
-      goHome: () => this.setPage('home'), goto, navItems, resumeUrl, email, showFaithWork, lightboxPhoto, closeLightbox: this.closeLightbox, prevPhoto: this.prevPhoto, nextPhoto: this.nextPhoto, stopProp: this.stopProp,
+      goHome: () => { const home = (typeof PAGE_HREFS !== 'undefined' && PAGE_HREFS.home) || 'index.html'; if (typeof CURRENT_PAGE !== 'undefined' && CURRENT_PAGE !== 'home') { window.location.href = home; } else { window.scrollTo({ top: 0, behavior: 'smooth' }); } }, goto, navItems, resumeUrl, email, showFaithWork, lightboxPhoto, closeLightbox: this.closeLightbox, prevPhoto: this.prevPhoto, nextPhoto: this.nextPhoto, stopProp: this.stopProp,
       cursorGlowStyle: { position: 'fixed', left: 0, top: 0, width: '46px', height: '46px', borderRadius: '50%', background: 'radial-gradient(circle, oklch(0.72 0.13 45 / 0.35), transparent 70%)', pointerEvents: 'none', zIndex: 998, transform: 'translate(-100px,-100px)', transition: 'transform 0.05s linear' },
       cursorRingStyle: { position: 'fixed', left: 0, top: 0, width: '30px', height: '30px', borderRadius: '50%', border: '1.5px solid oklch(0.56 0.13 45 / 0.7)', pointerEvents: 'none', zIndex: 999, transform: 'translate(-100px,-100px)', transition: 'transform 0.05s linear' },
       displayViews: (6.6 * t).toFixed(1) + 'M+',

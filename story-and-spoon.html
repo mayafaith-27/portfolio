@@ -9,7 +9,15 @@
 <meta property="og:description" content="A restaurant marketing studio, from validation to launch.">
 <meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg">
+<script src="./case-embed.js"></script>
 <script src="./support.js"></script>
+<script data-mute-all>(function(){function m(v){if(!v.hasAttribute('controls')){v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.volume=0;}}
+document.addEventListener('play',function(e){if(e.target&&e.target.tagName==='VIDEO')m(e.target);},true);
+document.addEventListener('volumechange',function(e){var v=e.target;if(v&&v.tagName==='VIDEO'&&!v.hasAttribute('controls')&&!v.muted)m(v);},true);
+new MutationObserver(function(){document.querySelectorAll('video').forEach(m);}).observe(document.documentElement,{childList:true,subtree:true});})();</script>
+<script data-force-download>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[download]');if(!a)return;var href=a.getAttribute('href');if(!href||!/\.pdf($|\?)/i.test(href))return;e.preventDefault();var name=a.getAttribute('download')||'download.pdf';fetch(a.href).then(function(r){if(!r.ok)throw 0;return r.blob();}).then(function(b){var u=URL.createObjectURL(b),t=document.createElement('a');t.href=u;t.download=name;document.body.appendChild(t);t.click();t.remove();setTimeout(function(){URL.revokeObjectURL(u);},4000);}).catch(function(){window.location.href=a.href;});},true);</script>
+<link rel="preload" href="halfpast.html" as="document">
+<link rel="preload" href="halfpast-instagram.html" as="document">
 </head>
 <body>
 <x-dc>
@@ -23,6 +31,7 @@
   a:hover{color:oklch(0.4 0.13 45);}
   img{cursor:zoom-in}
   ::selection{background:oklch(0.56 0.13 45);color:#fff;}
+
   .shelf::-webkit-scrollbar{height:6px}
   .shelf::-webkit-scrollbar-thumb{background:oklch(0.8 0.01 55);border-radius:3px}
 
@@ -30,14 +39,15 @@
     html{-webkit-text-size-adjust:100%;}
     body,a,[onclick],button{cursor:auto !important;}
     #cursor-glow,#cursor-ring{display:none !important;}
-    nav{padding:9px 12px !important;gap:8px !important;flex-wrap:nowrap !important;overflow:visible !important;}
-    nav>div:first-child{flex-shrink:0 !important;font-size:17px !important;}
-    nav>div:last-child{flex:1 1 auto !important;min-width:0 !important;overflow-x:auto !important;flex-wrap:nowrap !important;justify-content:flex-end !important;gap:14px !important;}
+    nav{padding:8px 12px !important;gap:8px !important;flex-wrap:nowrap !important;}
+    nav>a:first-child{font-size:16px !important;flex-shrink:0;}
+    nav>div:last-child{flex:1 1 auto;min-width:0;overflow-x:auto;flex-wrap:nowrap !important;justify-content:flex-end;gap:13px !important;}
     nav>div:last-child::-webkit-scrollbar{display:none;}
-    nav div{font-size:12.5px !important;flex-shrink:0 !important;}
-    nav a{position:sticky !important;right:0 !important;flex-shrink:0 !important;padding:7px 12px !important;font-size:11.5px !important;white-space:nowrap !important;box-shadow:-14px 0 14px 6px oklch(0.97 0.01 60) !important;}
+    nav>div:last-child a{font-size:11.5px !important;flex-shrink:0;white-space:nowrap;}
+    nav a[data-resume]{position:sticky;right:0;padding:6px 11px !important;font-size:11px !important;box-shadow:-14px 0 14px 6px oklch(0.97 0.01 60);}
     section{padding-left:18px !important;padding-right:18px !important;}
-    nav+section,section:first-of-type{padding-top:104px !important;}
+    nav+section,section:first-of-type{padding-top:0 !important;}
+    section:first-of-type>div{padding-top:96px !important;}
     section[style*="min-height:100vh"],section[style*="min-height: 100vh"]{min-height:auto !important;padding-top:104px !important;padding-bottom:44px !important;}
     h1{font-size:33px !important;letter-spacing:-0.9px !important;line-height:1.08 !important;}
     h2{font-size:25px !important;letter-spacing:-0.6px !important;line-height:1.15 !important;}
@@ -58,41 +68,52 @@
 </helmet>
 <div style="font-family:'Public Sans',sans-serif;background:oklch(0.97 0.01 60);color:oklch(0.2 0.015 50);min-height:100vh;overflow-x:hidden;">
 
-  <nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 40px;background:oklch(0.97 0.01 60 / 0.88);backdrop-filter:blur(14px);border-bottom:1px solid oklch(0.85 0.01 55);">
-    <a href="index.html" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;letter-spacing:0.2px;color:oklch(0.2 0.015 50);">Maya Yoo</a>
-    <div style="display:flex;align-items:center;gap:26px;">
-      <a href="ventures.html" style="font-size:13.5px;font-weight:600;color:oklch(0.45 0.02 50);">← All ventures</a>
-      <a href="daviswithmaya.html" style="font-size:13.5px;font-weight:600;color:oklch(0.45 0.02 50);">DavisWithMaya →</a>
-      <a href="https://storyandspoon.co/" target="_blank" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:10px 20px;border-radius:100px;font-weight:700;font-size:13px;" style-hover="background:oklch(0.56 0.13 45);color:oklch(0.97 0.01 60);">storyandspoon.co ↗</a>
+  <div style="position:fixed;top:0;left:0;right:0;z-index:100;">
+  <nav style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px clamp(16px,3vw,40px);background:oklch(0.97 0.01 60 / 0.9);backdrop-filter:blur(14px);border-bottom:1px solid oklch(0.85 0.01 55);">
+    <a href="index.html" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;letter-spacing:0.2px;color:oklch(0.2 0.015 50);">Maya Yoo</a>
+    <div style="display:flex;align-items:center;gap:clamp(12px,1.8vw,26px);">
+      <a href="ventures.html" style="font-size:12.5px;font-weight:600;color:oklch(0.2 0.015 50);padding-bottom:3px;border-bottom:2px solid oklch(0.56 0.13 45);">Ventures</a>
+      <a href="marketing.html" style="font-size:12.5px;font-weight:600;color:oklch(0.5 0.02 50);padding-bottom:3px;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;" style-hover="color:oklch(0.2 0.015 50);">Marketing</a>
+      <a href="design.html" style="font-size:12.5px;font-weight:600;color:oklch(0.5 0.02 50);padding-bottom:3px;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;" style-hover="color:oklch(0.2 0.015 50);">Design</a>
+      <a href="storytelling.html" style="font-size:12.5px;font-weight:600;color:oklch(0.5 0.02 50);padding-bottom:3px;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;" style-hover="color:oklch(0.2 0.015 50);">Content</a>
+      <a href="about.html" style="font-size:12.5px;font-weight:600;color:oklch(0.5 0.02 50);padding-bottom:3px;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;" style-hover="color:oklch(0.2 0.015 50);">About</a>
+      <a data-resume="" href="maya-yoo-resume.pdf" download="MayaYoo_Resume.pdf" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:9px 17px;border-radius:100px;font-weight:700;font-size:12px;white-space:nowrap;" style-hover="background:oklch(0.56 0.13 45);color:oklch(0.97 0.01 60);">Résumé ↓</a>
     </div>
   </nav>
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px clamp(16px,3vw,40px);background:oklch(0.94 0.014 55 / 0.94);backdrop-filter:blur(12px);border-bottom:1px solid oklch(0.86 0.02 55);font-size:11.5px;">
+    <div style="display:flex;align-items:center;gap:9px;min-width:0;">
+      <a href="ventures.html" style="font-weight:700;color:oklch(0.5 0.13 45);white-space:nowrap;">← Ventures</a>
+      <span style="color:oklch(0.7 0.02 55);">/</span>
+      <span style="font-weight:700;color:oklch(0.2 0.015 50);white-space:nowrap;">Story &amp; Spoon</span>
+      <span style="color:oklch(0.5 0.02 50);letter-spacing:0.8px;font-size:10px;font-weight:700;white-space:nowrap;">CASE STUDY</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;overflow-x:auto;">
+      <a href="daviswithmaya.html" style="color:oklch(0.45 0.02 50);font-weight:600;white-space:nowrap;" style-hover="color:oklch(0.5 0.13 45);">DavisWithMaya →</a>
+      <a href="daily.html" style="color:oklch(0.45 0.02 50);font-weight:600;white-space:nowrap;" style-hover="color:oklch(0.5 0.13 45);">Daily UC Davis →</a>
+    </div>
+  </div>
+  </div>
 
   <!-- HERO -->
-  <section data-screen-label="Hero" style="padding:128px 40px 40px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:48px;align-items:center;">
+  <section data-screen-label="Hero" data-pad="" style="padding:136px 40px 72px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:clamp(40px,6vw,80px);align-items:center;">
     <div>
-      <div style="font-size:13px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:16px;">CASE STUDY · STORY &amp; SPOON · PRE-LAUNCH</div>
-      <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(44px,6vw,72px);line-height:1;font-weight:800;margin:0 0 22px;letter-spacing:-1.5px;text-wrap:pretty;">A marketing studio for the restaurants nobody markets.</h1>
-      <p style="color:oklch(0.4 0.02 50);font-size:19px;line-height:1.55;margin:0 0 22px;max-width:600px;text-wrap:pretty;">Owner-operated restaurants in Davis and Sacramento have great food and no time. Story &amp; Spoon gives them a website, Instagram, and Google presence in one shoot day and one launch.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px;">
-        <div style="font-size:11.5px;font-weight:700;padding:6px 12px;border-radius:100px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);">Brand strategy</div>
-        <div style="font-size:11.5px;font-weight:700;padding:6px 12px;border-radius:100px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);">Sales &amp; outreach</div>
-        <div style="font-size:11.5px;font-weight:700;padding:6px 12px;border-radius:100px;border:1px solid oklch(0.75 0.02 50);color:oklch(0.35 0.02 50);">Web &amp; Instagram design</div>
-        <div style="font-size:11.5px;font-weight:700;padding:6px 12px;border-radius:100px;border:1px solid oklch(0.75 0.02 50);color:oklch(0.35 0.02 50);">Photo &amp; video direction</div>
-        <div style="font-size:11.5px;font-weight:700;padding:6px 12px;border-radius:100px;border:1px solid oklch(0.75 0.02 50);color:oklch(0.35 0.02 50);">Studio operations</div>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px;padding-top:26px;border-top:1px solid oklch(0.85 0.01 55);">
+      <div style="font-size:13px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:22px;">CASE STUDY · STORY &amp; SPOON · FIRST CLIENT</div>
+      <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(35px,4.9vw,55px);line-height:1;font-weight:800;margin:0 0 24px;letter-spacing:-1.5px;text-wrap:balance;">A marketing studio for the restaurants nobody markets.</h1>
+      <p style="color:oklch(0.4 0.02 50);font-size:19px;line-height:1.55;margin:0 0 36px;max-width:540px;text-wrap:pretty;">Local restaurants have great food and no time for marketing. We build their website, Instagram, and Google presence from one shoot day.</p>
+      <div style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px 32px;padding-top:24px;border-top:1px solid oklch(0.85 0.01 55);">
         <div>
           <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:8px;">ROLE</div>
           <div style="font-size:13.5px;line-height:1.55;color:oklch(0.3 0.02 50);"><strong>Co-founder, Creative &amp; Marketing Director</strong> — strategy, brand, content, outreach, client relationships.</div>
         </div>
-        <div>
-          <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:8px;">PARTNER</div>
-          <div style="font-size:13.5px;line-height:1.55;color:oklch(0.3 0.02 50);">Lucas Yoo, Technical Director (web builds)</div>
-        </div>
-        <div>
-          <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:8px;">FOUNDED</div>
-          <div style="font-size:13.5px;line-height:1.55;color:oklch(0.3 0.02 50);">July 2026</div>
-          <a href="https://storyandspoon.co/" target="_blank" style="display:inline-block;margin-top:10px;font-size:13.5px;color:oklch(0.3 0.02 50);text-decoration:underline;text-decoration-color:oklch(0.72 0.13 45);text-underline-offset:3px;">storyandspoon.co ↗</a>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div>
+            <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:8px;">PARTNER</div>
+            <div style="font-size:13.5px;line-height:1.55;color:oklch(0.3 0.02 50);">Lucas Yoo, Technical Director (web builds)</div>
+          </div>
+          <div>
+            <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:8px;">FOUNDED</div>
+            <div style="font-size:13.5px;line-height:1.55;color:oklch(0.3 0.02 50);">July 2026 · <a href="https://storyandspoon.co/" target="_blank" style="color:oklch(0.3 0.02 50);text-decoration:underline;text-decoration-color:oklch(0.72 0.13 45);text-underline-offset:3px;">storyandspoon.co ↗</a></div>
+          </div>
         </div>
       </div>
     </div>
@@ -104,7 +125,7 @@
           <div style="display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:1px;font-weight:700;color:oklch(0.56 0.13 45);white-space:nowrap;"><span style="width:6px;height:6px;border-radius:50%;background:oklch(0.6 0.15 145);display:inline-block;"></span>LIVE · SCROLL</div>
         </div>
         <div style="position:relative;aspect-ratio:4/3;overflow:hidden;background:oklch(0.97 0.005 55) url('screenshot-2026-07-22-at-3-45-12-pm.jpg') top / cover no-repeat;">
-          <iframe src="https://storyandspoon.co/" title="storyandspoon.co — live site, scrollable" scrolling="yes" loading="lazy" style="position:absolute;top:0;left:0;width:200%;height:200%;border:0;transform:scale(0.5);transform-origin:0 0;display:block;background:transparent;"></iframe>
+          <iframe src="https://storyandspoon.co/" title="storyandspoon.co — live site, scrollable" scrolling="yes" loading="eager" style="position:absolute;top:0;left:0;width:200%;height:200%;border:0;transform:scale(0.5);transform-origin:0 0;display:block;background:transparent;"></iframe>
         </div>
       </div>
       <a href="https://storyandspoon.co/" target="_blank" style="position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:9px 16px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:0.6px;white-space:nowrap;box-shadow:0 10px 24px oklch(0.2 0.02 50 / 0.25);" style-hover="background:oklch(0.56 0.13 45);color:oklch(0.97 0.01 60);">THE REAL SITE · SCROLL IT OR OPEN FULL ↗</a>
@@ -112,59 +133,60 @@
   </section>
 
   <!-- STAT TILES -->
-  <section data-reveal="1" style="padding:0 40px 18px;max-width:1200px;margin:0 auto;">
-    <p style="font-size:14px;color:oklch(0.5 0.02 50);line-height:1.6;margin:0;max-width:640px;text-wrap:pretty;"><strong style="color:oklch(0.2 0.015 50);">Status: pre-launch.</strong> No paying clients yet — the numbers below are the research, outreach, and operations groundwork built before the first shoot day.</p>
+  <section data-reveal="1" data-pad="" style="padding:0 40px 16px;max-width:1200px;margin:0 auto;">
+    <p style="font-size:14px;color:oklch(0.5 0.02 50);line-height:1.6;margin:0;max-width:640px;text-wrap:pretty;"><strong style="color:oklch(0.2 0.015 50);">First client signed and shot.</strong> Results are still coming in — these numbers are the groundwork that got us there.</p>
   </section>
-  <section data-reveal="1" data-screen-label="Stats" style="padding:0 40px 56px;max-width:1200px;margin:0 auto;">
+  <section data-reveal="1" data-screen-label="Stats" data-pad="" style="padding:0 40px 64px;max-width:1200px;margin:0 auto;">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;">
-      <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:16px;padding:26px 24px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(44px,5vw,60px);font-weight:800;color:oklch(0.56 0.13 45);line-height:1;letter-spacing:-1px;">50</div><div style="font-size:14.5px;color:oklch(0.45 0.02 50);margin-top:12px;line-height:1.4;font-weight:600;">restaurants researched</div></div>
-      <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:16px;padding:26px 24px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(44px,5vw,60px);font-weight:800;color:oklch(0.2 0.015 50);line-height:1;letter-spacing:-1px;">20</div><div style="font-size:14.5px;color:oklch(0.45 0.02 50);margin-top:12px;line-height:1.4;font-weight:600;">restaurants contacted</div></div>
-      <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:16px;padding:26px 24px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(44px,5vw,60px);font-weight:800;color:oklch(0.56 0.13 45);line-height:1;letter-spacing:-1px;">3</div><div style="font-size:14.5px;color:oklch(0.45 0.02 50);margin-top:12px;line-height:1.4;font-weight:600;">proposal decks built</div></div>
-      <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:16px;padding:26px 24px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(44px,5vw,60px);font-weight:800;color:oklch(0.2 0.015 50);line-height:1;letter-spacing:-1px;">30+</div><div style="font-size:14.5px;color:oklch(0.45 0.02 50);margin-top:12px;line-height:1.4;font-weight:600;">prior local-restaurant collaborations</div></div>
+      <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:16px 18px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3vw,34px);font-weight:800;color:oklch(0.56 0.13 45);line-height:1;letter-spacing:-1px;">50</div><div style="font-size:13px;color:oklch(0.45 0.02 50);margin-top:8px;line-height:1.35;font-weight:600;">restaurants researched</div></div>
+      <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:16px 18px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3vw,34px);font-weight:800;color:oklch(0.2 0.015 50);line-height:1;letter-spacing:-1px;">20</div><div style="font-size:13px;color:oklch(0.45 0.02 50);margin-top:8px;line-height:1.35;font-weight:600;">restaurants contacted</div></div>
+      <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:16px 18px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3vw,34px);font-weight:800;color:oklch(0.56 0.13 45);line-height:1;letter-spacing:-1px;">3</div><div style="font-size:13px;color:oklch(0.45 0.02 50);margin-top:8px;line-height:1.35;font-weight:600;">proposal decks built</div></div>
+      <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:16px 18px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3vw,34px);font-weight:800;color:oklch(0.2 0.015 50);line-height:1;letter-spacing:-1px;">30+</div><div style="font-size:13px;color:oklch(0.45 0.02 50);margin-top:8px;line-height:1.35;font-weight:600;">prior local-restaurant collaborations</div></div>
+    </div>
+  </section>
+
+  <section data-reveal="1" data-screen-label="First client" style="padding:0 40px 64px;max-width:1200px;margin:0 auto;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:22px;">
+      <div>
+        <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">FIRST CLIENT · NAYA DESSERT CAFÉ</div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3.3vw,35px);font-weight:800;margin:0;line-height:1.05;letter-spacing:-0.8px;text-wrap:pretty;">Shoot day, in practice.</h2>
+      </div>
+      <p style="font-size:14.5px;color:oklch(0.45 0.02 50);line-height:1.6;margin:0;max-width:460px;text-wrap:pretty;">I directed the shoot: menu styling, talent, and on-set camera work. The photos below are from that day.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
+      <figure style="margin:0;"><div style="aspect-ratio:2/3;border-radius:14px;overflow:hidden;background:oklch(0.94 0.014 55);"><img decoding="async" src="sas-naya-hero.png" alt="NaYa hero menu post: so their food finally looks how it tastes" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"></div><figcaption style="font-size:11.5px;color:oklch(0.45 0.02 50);margin-top:8px;">Hero menu shot</figcaption></figure>
+      <figure style="margin:0;"><div style="aspect-ratio:2/3;border-radius:14px;overflow:hidden;background:oklch(0.94 0.014 55);"><img decoding="async" src="sas-naya-shoot.jpg" alt="Directing talent on set" style="width:100%;height:100%;object-fit:cover;display:block;"></div><figcaption style="font-size:11.5px;color:oklch(0.45 0.02 50);margin-top:8px;">Directing talent</figcaption></figure>
+      <figure style="margin:0;"><div style="aspect-ratio:2/3;border-radius:14px;overflow:hidden;background:oklch(0.94 0.014 55);"><video src="sas-naya-detail.mp4" poster="sas-naya-bowl.jpg" autoplay="" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" aria-label="Product detail video" style="width:100%;height:100%;object-fit:cover;display:block;"></video></div><figcaption style="font-size:11.5px;color:oklch(0.45 0.02 50);margin-top:8px;">Product detail</figcaption></figure>
+      <figure style="margin:0;"><div style="aspect-ratio:2/3;border-radius:14px;overflow:hidden;background:oklch(0.94 0.014 55);"><img decoding="async" src="sas-naya-brand.jpg" alt="NaYa branded cup and apron" style="width:100%;height:100%;object-fit:cover;display:block;"></div><figcaption style="font-size:11.5px;color:oklch(0.45 0.02 50);margin-top:8px;">Brand details</figcaption></figure>
     </div>
   </section>
 
   <!-- THESIS -->
-  <section data-reveal="1" data-screen-label="Thesis" style="padding:64px 40px;background:oklch(0.94 0.014 55);border-top:1px solid oklch(0.85 0.01 55);border-bottom:1px solid oklch(0.85 0.01 55);">
+  <section id="thesis" data-reveal="1" data-screen-label="Thesis" style="scroll-margin-top:90px;padding:32px 40px;background:oklch(0.94 0.014 55);border-top:1px solid oklch(0.85 0.01 55);border-bottom:1px solid oklch(0.85 0.01 55);">
     <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:48px;align-items:start;">
       <div>
         <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">THE THESIS</div>
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,46px);font-weight:800;margin:0 0 18px;line-height:1.05;letter-spacing:-0.8px;text-wrap:pretty;">The food was the easy part.</h2>
-        <p style="color:oklch(0.4 0.02 50);line-height:1.6;font-size:17px;margin:0;text-wrap:pretty;">Through DavisWithMaya I'd already worked with 30+ local businesses and seen the same thing every time: the food was the easy part. Most had an Instagram nobody ran, a website that didn't exist or didn't work, and a Google listing with the wrong hours. Story &amp; Spoon is that gap turned into a product.</p>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3.3vw,35px);font-weight:800;margin:0 0 18px;line-height:1.05;letter-spacing:-0.8px;text-wrap:pretty;">The food was the easy part.</h2>
+        <p style="color:oklch(0.4 0.02 50);line-height:1.6;font-size:17px;margin:0;text-wrap:pretty;">After 30+ collabs with local restaurants through DavisWithMaya, I saw the same gap every time: an Instagram nobody ran, a broken or missing website, and wrong hours on Google. Story &amp; Spoon turns that gap into a product.</p>
       </div>
       <div>
-        <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:14px;">WHO IT'S FOR</div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;">
-          <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:18px 16px;font-size:13.5px;font-weight:700;line-height:1.4;">Owner-operated</div>
-          <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:18px 16px;font-size:13.5px;font-weight:700;line-height:1.4;">Davis and Sacramento</div>
-          <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:18px 16px;font-size:13.5px;font-weight:700;line-height:1.4;">Weak or no digital presence</div>
+        <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:14px;">HOW IT WORKS · ONE SHOOT DAY, ONE LAUNCH</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:baseline;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:12px;padding:12px 16px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;color:oklch(0.56 0.13 45);">{{ s.n }}</div><div style="font-size:13.5px;line-height:1.45;"><strong>{{ s.title }}</strong> — <span style="color:oklch(0.45 0.02 50);">{{ s.desc }}</span></div></div>
+          </sc-for>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section data-reveal="1" data-screen-label="How it works" style="padding:64px 40px;max-width:1200px;margin:0 auto;">
-    <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">HOW IT WORKS</div>
-    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,46px);font-weight:800;margin:0 0 34px;line-height:1.05;letter-spacing:-0.8px;">One shoot day. One launch.</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;">
-      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
-        <div style="background:oklch(0.94 0.014 55);border-radius:16px;padding:22px;">
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:700;color:oklch(0.56 0.13 45);line-height:1;margin-bottom:12px;">{{ s.n }}</div>
-          <div style="font-weight:700;font-size:15px;margin-bottom:6px;">{{ s.title }}</div>
-          <div style="font-size:12.5px;color:oklch(0.45 0.02 50);line-height:1.5;text-wrap:pretty;">{{ s.desc }}</div>
-        </div>
-      </sc-for>
     </div>
   </section>
 
   <!-- PITCH WORK · HALF PAST -->
-  <section data-reveal="1" data-screen-label="Pitch work" style="padding:64px 40px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);">
+  <section data-reveal="1" data-screen-label="Pitch work" style="padding:32px 40px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);">
     <div style="max-width:1200px;margin:0 auto;">
       <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.72 0.13 45);font-weight:700;margin-bottom:12px;">THE SHOWCASE BUILD · WHAT A CLIENT GETS</div>
-      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,46px);font-weight:800;margin:0 0 14px;letter-spacing:-0.8px;line-height:1.15;text-wrap:pretty;">Half Past. A café by morning, a bar by night, and a brand that finally says so.</h2>
-      <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:40px;align-items:start;margin-bottom:44px;">
-        <p style="color:oklch(0.75 0.01 55);font-size:15px;margin:0;max-width:620px;line-height:1.65;">Half Past is the restaurant we designed to show owners the full package before they sign: a Midtown café that runs two lives in one room — pastries and espresso at 7:00, cocktails and small plates by 9:00. We treated it like a real client from brief to launch, so a prospective restaurant can scroll the website, flip through the Instagram kit, and see exactly what they'd walk away with.</p>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3.3vw,35px);font-weight:800;margin:0 0 14px;letter-spacing:-0.8px;line-height:1.15;text-wrap:pretty;">Half Past: the demo we pitch with.</h2>
+      <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:40px;align-items:start;margin-bottom:28px;">
+        <p style="color:oklch(0.75 0.01 55);font-size:15px;margin:0;max-width:620px;line-height:1.65;">A concept café-by-day, bar-by-night that we branded like a real client, so owners can see exactly what they’d get before they sign.</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;font-size:13px;line-height:1.5;">
           <div><div style="font-size:10.5px;letter-spacing:1px;color:oklch(0.72 0.13 45);font-weight:700;margin-bottom:4px;">CLIENT</div>Half Past · Story &amp; Spoon showcase concept</div>
           <div><div style="font-size:10.5px;letter-spacing:1px;color:oklch(0.72 0.13 45);font-weight:700;margin-bottom:4px;">SCOPE</div>Website, Instagram system, photography direction</div>
@@ -173,78 +195,68 @@
         </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:34px 28px;align-items:start;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:28px 32px;align-items:start;">
         <div>
           <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:14px;"><div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.72 0.13 45);font-weight:700;">01 · THE WEBSITE — WORKING BUILD</div><a href="halfpast.html" target="_blank" style="font-size:13px;font-weight:700;color:oklch(0.72 0.13 45);">Open full site ↗</a></div>
-          <div style="max-width:620px;background:oklch(0.27 0.02 50);border-radius:14px;padding:12px;box-shadow:0 24px 60px oklch(0 0 0 / 0.35);border:1px solid oklch(0.35 0.02 50);">
+          <div style="width:100%;box-sizing:border-box;background:oklch(0.27 0.02 50);border-radius:12px;padding:10px;box-shadow:0 24px 60px oklch(0 0 0 / 0.35);border:1px solid oklch(0.35 0.02 50);">
             <div style="display:flex;align-items:center;gap:7px;margin-bottom:10px;">
               <div style="width:10px;height:10px;border-radius:50%;background:oklch(0.7 0.14 30);"></div>
               <div style="width:10px;height:10px;border-radius:50%;background:oklch(0.8 0.12 80);"></div>
               <div style="width:10px;height:10px;border-radius:50%;background:oklch(0.65 0.1 145);"></div>
               <div style="margin-left:12px;flex:1;max-width:420px;background:oklch(0.33 0.02 50);border-radius:6px;padding:5px 12px;font-size:11px;color:oklch(0.8 0.01 55);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;display:flex;align-items:center;gap:8px;"><span style="opacity:0.6;">🔒</span>halfpast.co</div>
-              <div style="margin-left:auto;font-size:10px;letter-spacing:1px;font-weight:700;color:oklch(0.72 0.13 45);white-space:nowrap;">50% · SCROLL INSIDE</div>
+              <div style="margin-left:auto;font-size:10px;letter-spacing:1px;font-weight:700;color:oklch(0.72 0.13 45);white-space:nowrap;">SCROLL INSIDE</div>
             </div>
-            <div style="position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:oklch(0.97 0.005 55);">
-              <iframe src="halfpast.html" title="Half Past website — scrollable, zoomed to 50%" scrolling="yes" loading="lazy" style="position:absolute;top:0;left:0;width:200%;height:200%;border:0;transform:scale(0.5);transform-origin:0 0;display:block;"></iframe>
+            <div style="position:relative;aspect-ratio:16/11;border-radius:8px;overflow:hidden;background:oklch(0.97 0.005 55);">
+              <iframe src="halfpast.html" title="Half Past website — scrollable, zoomed out" scrolling="yes" loading="eager" fetchpriority="high" style="position:absolute;top:0;left:0;width:250%;height:250%;border:0;transform:scale(0.4);transform-origin:0 0;display:block;"></iframe>
             </div>
           </div>
-          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px;font-size:11px;font-weight:700;letter-spacing:0.5px;color:oklch(0.75 0.01 55);">
-            <span style="color:oklch(0.72 0.13 45);letter-spacing:1px;font-size:10.5px;">WHAT YOU'LL SCROLL THROUGH</span>
-            <span style="padding:4px 10px;border-radius:100px;border:1px solid oklch(0.4 0.02 50);">Hero</span><span style="padding:4px 10px;border-radius:100px;border:1px solid oklch(0.4 0.02 50);">The day in three acts</span><span style="padding:4px 10px;border-radius:100px;border:1px solid oklch(0.4 0.02 50);">Menu</span><span style="padding:4px 10px;border-radius:100px;border:1px solid oklch(0.4 0.02 50);">The room</span><span style="padding:4px 10px;border-radius:100px;border:1px solid oklch(0.4 0.02 50);">Events</span><span style="padding:4px 10px;border-radius:100px;border:1px solid oklch(0.4 0.02 50);">Hours</span>
-          </div>
-          <div style="font-size:12.5px;color:oklch(0.75 0.01 55);margin-top:10px;line-height:1.5;max-width:720px;">Zoomed out so a whole section reads at a glance — scroll and click inside the frame. This is the working site, not a static mockup, with photography direction built to hold the warmth of the space.</div>
+          <div style="font-size:12.5px;color:oklch(0.75 0.01 55);margin-top:10px;line-height:1.5;max-width:720px;">The working site — scroll inside the frame.</div>
         </div>
         <div>
           <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:14px;"><div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.72 0.13 45);font-weight:700;">02 · INSTAGRAM SYSTEM</div><a href="halfpast-instagram.html" target="_blank" style="font-size:13px;font-weight:700;color:oklch(0.72 0.13 45);">Open full size ↗</a></div>
-          <div style="max-width:620px;background:oklch(0.27 0.02 50);border-radius:14px;padding:12px;box-shadow:0 24px 60px oklch(0 0 0 / 0.35);border:1px solid oklch(0.35 0.02 50);">
+          <div style="width:100%;box-sizing:border-box;background:oklch(0.27 0.02 50);border-radius:12px;padding:10px;box-shadow:0 24px 60px oklch(0 0 0 / 0.35);border:1px solid oklch(0.35 0.02 50);">
             <div style="display:flex;align-items:center;gap:7px;margin-bottom:10px;">
               <div style="width:10px;height:10px;border-radius:50%;background:oklch(0.7 0.14 30);"></div>
               <div style="width:10px;height:10px;border-radius:50%;background:oklch(0.8 0.12 80);"></div>
               <div style="width:10px;height:10px;border-radius:50%;background:oklch(0.65 0.1 145);"></div>
               <div style="margin-left:12px;flex:1;max-width:420px;background:oklch(0.33 0.02 50);border-radius:6px;padding:5px 12px;font-size:11px;color:oklch(0.8 0.01 55);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;">@halfpast.sac — content system</div>
-              <div style="margin-left:auto;font-size:10px;letter-spacing:1px;font-weight:700;color:oklch(0.72 0.13 45);white-space:nowrap;">50% · SCROLL INSIDE</div>
+              <div style="margin-left:auto;font-size:10px;letter-spacing:1px;font-weight:700;color:oklch(0.72 0.13 45);white-space:nowrap;">SCROLL INSIDE</div>
             </div>
-            <div style="position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:oklch(0.97 0.005 55);">
-              <iframe src="halfpast-instagram.html" title="Half Past Instagram system — scrollable, zoomed to 50%" scrolling="yes" loading="lazy" style="position:absolute;top:0;left:0;width:200%;height:200%;border:0;transform:scale(0.5);transform-origin:0 0;display:block;"></iframe>
+            <div style="position:relative;aspect-ratio:16/11;border-radius:8px;overflow:hidden;background:oklch(0.97 0.005 55);">
+              <iframe src="halfpast-instagram.html" title="Half Past Instagram system — scrollable, zoomed out" scrolling="yes" loading="eager" fetchpriority="high" style="position:absolute;top:0;left:0;width:250%;height:250%;border:0;transform:scale(0.4);transform-origin:0 0;display:block;"></iframe>
             </div>
           </div>
-          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px;font-size:11px;font-weight:700;letter-spacing:0.5px;color:oklch(0.75 0.01 55);">
-            <span style="color:oklch(0.72 0.13 45);letter-spacing:1px;font-size:10.5px;">WHAT YOU'LL SCROLL THROUGH</span>
-            <span style="padding:4px 10px;border-radius:100px;border:1px solid oklch(0.4 0.02 50);">Profile &amp; grid</span><span style="padding:4px 10px;border-radius:100px;border:1px solid oklch(0.4 0.02 50);">4:5 post templates</span><span style="padding:4px 10px;border-radius:100px;border:1px solid oklch(0.4 0.02 50);">9:16 stories</span>
-          </div>
-          <div style="font-size:12.5px;color:oklch(0.75 0.01 55);margin-top:10px;line-height:1.5;max-width:720px;">Profile and grid; 4:5 post templates for morning, lunch, and bar; 9:16 stories that follow the day from 7:00 to last call — one voice across the whole day, built so the team can keep posting without a designer.</div>
+          <div style="font-size:12.5px;color:oklch(0.75 0.01 55);margin-top:10px;line-height:1.5;max-width:720px;">Grid, post and story templates the staff can keep using without a designer.</div>
         </div>
-        <div style="grid-column:1/-1;">
-          <div style="margin-bottom:14px;"><div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.72 0.13 45);font-weight:700;">03 · FROM THE PITCH DECK</div></div>
+        <details style="grid-column:1/-1;"><summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:20px 24px;border-radius:16px;background:oklch(0.27 0.02 50);border:1px solid oklch(0.35 0.02 50);"><span style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:11px;letter-spacing:1.3px;font-weight:800;color:oklch(0.72 0.13 45);">03 · FROM THE PITCH DECK</span><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.3px;">See the pitch deck slides</span></span><span style="font-size:12.5px;font-weight:800;padding:8px 14px;border-radius:100px;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);white-space:nowrap;">Expand +</span></summary><div style="padding-top:16px;">
           <div class="shelf" style="display:flex;gap:14px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory;">
             <sc-for list="{{ deck }}" as="d" hint-placeholder-count="6">
-              <figure style="margin:0;flex:0 0 340px;scroll-snap-align:start;">
-                <div style="aspect-ratio:16/9;overflow:hidden;border-radius:10px;background:oklch(0.27 0.02 50);transition:transform .35s ease;" style-hover="transform:translateY(-4px) scale(1.02);"><img src="{{ d.src }}" style="width:100%;height:100%;object-fit:cover;"/></div>
+              <figure style="margin:0;flex:0 0 260px;scroll-snap-align:start;">
+                <div style="aspect-ratio:16/9;overflow:hidden;border-radius:10px;background:oklch(0.27 0.02 50);transition:transform .35s ease;" style-hover="transform:translateY(-4px) scale(1.02);"><img decoding="async" src="{{ d.src }}" style="width:100%;height:100%;object-fit:cover;"/></div>
                 <figcaption style="font-size:10.5px;color:oklch(0.75 0.01 55);margin-top:8px;letter-spacing:0.6px;text-transform:uppercase;font-weight:600;">{{ d.label }}</figcaption>
               </figure>
             </sc-for>
           </div>
-        </div>
+        </div></details>
       </div>
 
-      <div style="background:oklch(0.27 0.02 50);border-radius:18px;padding:26px 28px;margin-top:44px;">
+      <div style="background:oklch(0.27 0.02 50);border-radius:18px;padding:22px 26px;margin-top:28px;">
         <div style="font-size:11px;letter-spacing:1.2px;color:oklch(0.72 0.13 45);font-weight:700;margin-bottom:14px;">RESULT</div>
         <div style="display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.5;">
-          <div style="display:flex;gap:12px;"><span style="color:oklch(0.72 0.13 45);font-weight:800;">→</span><span>A complete, working brand system — live website and Instagram kit — built for a real Sacramento business as the Story &amp; Spoon flagship pitch</span></div>
-          <div style="display:flex;gap:12px;"><span style="color:oklch(0.72 0.13 45);font-weight:800;">→</span><span>Every asset ready to hand off: templates, photography, copy voice, and a site the owners can update themselves</span></div>
-          <div style="display:flex;gap:12px;"><span style="color:oklch(0.72 0.13 45);font-weight:800;">→</span><span>Pitch in progress — 50 restaurants researched, 20 contacted, pipeline open</span></div>
+          <div style="display:flex;gap:12px;"><span style="color:oklch(0.72 0.13 45);font-weight:800;">→</span><span>A working website and Instagram kit, ready to show any owner</span></div>
+          <div style="display:flex;gap:12px;"><span style="color:oklch(0.72 0.13 45);font-weight:800;">→</span><span>Built to hand off — owners can update everything themselves</span></div>
+          <div style="display:flex;gap:12px;"><span style="color:oklch(0.72 0.13 45);font-weight:800;">→</span><span>Now pitching: 20 of 50 researched restaurants contacted</span></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- OPERATING SYSTEM -->
-  <section data-reveal="1" data-screen-label="Operating system" style="padding:64px 40px;max-width:1200px;margin:0 auto;">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:48px;align-items:start;">
+  <section data-reveal="1" data-screen-label="Operating system" style="padding:12px 40px;max-width:1200px;margin:0 auto;">
+    <details><summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:20px 24px;border-radius:16px;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);"><span style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:11px;letter-spacing:1.3px;font-weight:800;color:oklch(0.56 0.13 45);">THE OPERATING SYSTEM</span><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.3px;">Pipeline tracker, invoices, and brand kit — built before client one</span></span><span style="font-size:12.5px;font-weight:800;padding:8px 14px;border-radius:100px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);white-space:nowrap;">Expand +</span></summary><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:36px;align-items:start;padding-top:22px;">
       <div>
-        <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">THE OPERATING SYSTEM</div>
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,46px);font-weight:800;margin:0 0 18px;line-height:1.05;letter-spacing:-0.8px;text-wrap:pretty;">Before the first client, I built the machine so the studio could take one on tomorrow.</h2>
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:28px;">
+        
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
           <sc-for list="{{ tools }}" as="t" hint-placeholder-count="6">
             <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:16px 18px;font-size:13.5px;line-height:1.5;"><div style="font-weight:700;">{{ t.name }}</div><div style="font-size:12.5px;color:oklch(0.45 0.02 50);margin-top:4px;">{{ t.desc }}</div></div>
           </sc-for>
@@ -252,33 +264,29 @@
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;">
         <figure style="margin:0;">
-          <div style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);background:oklch(0.995 0.004 60);"><img src="screenshot-2026-09-02-at-4-30-08-pm.jpg" alt="Client pipeline tracker" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;"></div>
+          <div style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);background:oklch(0.995 0.004 60);"><img decoding="async" src="screenshot-2026-09-02-at-4-30-08-pm.jpg" alt="Client pipeline tracker" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;"></div>
           <figcaption style="font-size:11.5px;color:oklch(0.45 0.02 50);margin-top:8px;line-height:1.5;">Client pipeline tracker — every prospect on one row, moving Researched → Contacted → Meeting → Proposal → Client</figcaption>
         </figure>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
           <figure style="margin:0;">
-            <div style="aspect-ratio:4/3;border-radius:14px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);background:oklch(0.995 0.004 60);"><img src="screenshot-2026-09-02-at-4-30-21-pm.jpg" alt="Invoice template" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;"></div>
+            <div style="aspect-ratio:4/3;border-radius:14px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);background:oklch(0.995 0.004 60);"><img decoding="async" src="screenshot-2026-09-02-at-4-30-21-pm.jpg" alt="Invoice template" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;"></div>
             <figcaption style="font-size:11.5px;color:oklch(0.45 0.02 50);margin-top:8px;line-height:1.5;">Invoice template, one of six tabs in the toolkit</figcaption>
           </figure>
           <figure style="margin:0;">
-            <div style="aspect-ratio:4/3;border-radius:14px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);background:oklch(0.995 0.004 60);"><img src="screenshot-2026-09-02-at-4-31-34-pm.jpg" alt="Story & Spoon brand kit" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;"></div>
+            <div style="aspect-ratio:4/3;border-radius:14px;overflow:hidden;border:1px solid oklch(0.85 0.01 55);background:oklch(0.995 0.004 60);"><img decoding="async" src="screenshot-2026-09-02-at-4-31-34-pm.jpg" alt="Story & Spoon brand kit" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top;"></div>
             <figcaption style="font-size:11.5px;color:oklch(0.45 0.02 50);margin-top:8px;line-height:1.5;">Brand kit — logo lockups, charcoal / cream / terracotta, DM Serif + Work Sans</figcaption>
           </figure>
         </div>
       </div>
-    </div>
+    </div></details>
   </section>
 
   <!-- PROOF SHELF -->
-  <section data-reveal="1" data-screen-label="Proof" style="padding:64px 0;background:oklch(0.94 0.014 55);border-top:1px solid oklch(0.85 0.01 55);border-bottom:1px solid oklch(0.85 0.01 55);">
-    <div style="max-width:1200px;margin:0 auto;padding:0 40px;">
-      <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">THE PROOF BEHIND IT</div>
-      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,46px);font-weight:800;margin:0 0 14px;letter-spacing:-0.8px;max-width:720px;line-height:1.15;text-wrap:pretty;">Every restaurant I pitch has already seen this work — it's why the DMs get answered.</h2>
-      <div style="font-size:12.5px;color:oklch(0.5 0.02 50);margin-bottom:28px;">Local-restaurant collabs from DavisWithMaya. Scroll →</div>
-    </div>
-    <div class="shelf" style="display:flex;gap:26px;overflow-x:auto;padding:10px max(40px, calc((100vw - 1200px) / 2 + 40px)) 28px;scroll-snap-type:x mandatory;">
+  <section data-reveal="1" data-screen-label="Proof" style="padding:12px 40px 20px;max-width:1200px;margin:0 auto;">
+    <details><summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:20px 24px;border-radius:16px;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);"><span style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:11px;letter-spacing:1.3px;font-weight:800;color:oklch(0.56 0.13 45);">THE PROOF BEHIND IT</span><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.3px;">30+ restaurant collabs owners have already seen</span></span><span style="font-size:12.5px;font-weight:800;padding:8px 14px;border-radius:100px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);white-space:nowrap;">Expand +</span></summary>
+    <div class="shelf" style="display:flex;gap:26px;overflow-x:auto;padding:18px 0 12px;scroll-snap-type:x mandatory;">
       <sc-for list="{{ proof }}" as="v" hint-placeholder-count="5">
-        <div style="flex:0 0 260px;width:260px;scroll-snap-align:start;">
+        <div style="flex:0 0 190px;width:190px;scroll-snap-align:start;">
           <div style="position:relative;background:oklch(0.2 0.015 50);border-radius:36px;padding:9px;box-shadow:0 26px 50px -26px oklch(0.2 0.015 50 / 0.55);transition:transform .4s cubic-bezier(.2,.7,.2,1);" style-hover="transform:translateY(-8px) rotate(-1deg);">
             <div style="position:relative;border-radius:29px;overflow:hidden;background:#000;aspect-ratio:9/20;">
               <iframe src="{{ v.embedUrl }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true" scrolling="no"></iframe>
@@ -289,14 +297,14 @@
           <div style="font-size:12.5px;color:oklch(0.4 0.02 50);margin-top:12px;line-height:1.5;padding:0 6px;">{{ v.caption }} <sc-if value="{{ v.hasEmbed }}" hint-placeholder-val="{{ true }}"><a href="{{ v.link }}" target="_blank" rel="noopener" style="font-weight:700;white-space:nowrap;">Open ↗</a></sc-if></div>
         </div>
       </sc-for>
-    </div>
+    </div></details>
   </section>
 
   <!-- WHAT THIS PROVES -->
-  <section data-reveal="1" data-screen-label="What this proves" style="padding:64px 40px;max-width:1200px;margin:0 auto;">
+  <section data-reveal="1" data-screen-label="What this proves" style="padding:32px 40px;max-width:1200px;margin:0 auto;">
     <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">WHAT THIS PROVES</div>
-    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4vw,46px);font-weight:800;margin:0 0 14px;letter-spacing:-0.8px;line-height:1.15;">A venture in market, not a finished story.</h2>
-    <p style="color:oklch(0.45 0.02 50);font-size:14.5px;margin:0 0 34px;max-width:640px;line-height:1.6;">No published client results yet — the numbers on this page are pipeline, not outcomes. What's here is the judgment and the system.</p>
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3.3vw,35px);font-weight:800;margin:0 0 14px;letter-spacing:-0.8px;line-height:1.15;">A venture in market, not a finished story.</h2>
+    <p style="color:oklch(0.45 0.02 50);font-size:14.5px;margin:0 0 34px;max-width:640px;line-height:1.6;">No client results yet. What’s here is the judgment and the system.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
       <sc-for list="{{ proves }}" as="p" hint-placeholder-count="5">
         <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:16px;padding:24px;">
@@ -309,6 +317,14 @@
         <div style="font-size:13.5px;font-weight:700;">storyandspoon.co ↗</div>
       </a>
     </div>
+  </section>
+
+  <section data-screen-label="Next" style="padding:24px clamp(20px,4vw,40px) 72px;max-width:1200px;margin:0 auto;box-sizing:border-box;">
+    <a href="daviswithmaya.html" style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;border-top:1px solid oklch(0.85 0.01 55);border-bottom:1px solid oklch(0.85 0.01 55);color:oklch(0.2 0.015 50);" style-hover="color:oklch(0.56 0.13 45);">
+      <span><span style="display:block;font-size:11px;letter-spacing:1.4px;font-weight:800;color:oklch(0.5 0.02 50);margin-bottom:6px;">NEXT VENTURE</span><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3vw,36px);font-weight:800;letter-spacing:-0.8px;">DavisWithMaya</span></span>
+      <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:36px;font-weight:800;">→</span>
+    </a>
+    <a href="ventures.html" style="display:inline-block;margin-top:20px;font-weight:700;font-size:14px;">← Back to Ventures</a>
   </section>
 
   <footer style="border-top:1px solid oklch(0.85 0.01 55);padding:40px;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
@@ -390,11 +406,10 @@ class Component extends DCLogic {
       this.phone('https://www.instagram.com/reel/DRSuQFAEj7Z/', 'Urban Plates', 'Urban Plates \u2014 collab'),
     ];
     const proves = [
-      { title: 'Business judgment', text: 'Found a gap I\u2019d seen firsthand and built a product for it' },
-      { title: 'Positioning and packaging', text: 'Turned services into a clear five-step process a restaurant owner can say yes to' },
-      { title: 'Sales', text: 'Direct outreach, proposals, and follow-ups with restaurants' },
-      { title: 'Brand and web', text: 'Full concept decks, feed mockups, and site designs' },
-      { title: 'Operations', text: 'Built the contracts, pipeline, and delivery system before revenue' },
+      { title: 'Business judgment', text: 'Spotted a gap firsthand and built a product for it' },
+      { title: 'Packaging', text: 'Turned services into a 5-step offer an owner can say yes to' },
+      { title: 'Sales', text: 'Researched 50 restaurants, contacted 20, built 3 proposals' },
+      { title: 'Operations', text: 'Contracts, pipeline, and delivery ready before revenue' },
     ];
     return { steps, deck, tools, proof, proves };
   }

@@ -10,6 +10,11 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg">
 <script src="./support.js"></script>
+<script data-mute-all>(function(){function m(v){if(!v.hasAttribute('controls')){v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.volume=0;}}
+document.addEventListener('play',function(e){if(e.target&&e.target.tagName==='VIDEO')m(e.target);},true);
+document.addEventListener('volumechange',function(e){var v=e.target;if(v&&v.tagName==='VIDEO'&&!v.hasAttribute('controls')&&!v.muted)m(v);},true);
+new MutationObserver(function(){document.querySelectorAll('video').forEach(m);}).observe(document.documentElement,{childList:true,subtree:true});})();</script>
+<script data-force-download>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[download]');if(!a)return;var href=a.getAttribute('href');if(!href||!/\.pdf($|\?)/i.test(href))return;e.preventDefault();var name=a.getAttribute('download')||'download.pdf';fetch(a.href).then(function(r){if(!r.ok)throw 0;return r.blob();}).then(function(b){var u=URL.createObjectURL(b),t=document.createElement('a');t.href=u;t.download=name;document.body.appendChild(t);t.click();t.remove();setTimeout(function(){URL.revokeObjectURL(u);},4000);}).catch(function(){window.location.href=a.href;});},true);</script>
 </head>
 <body>
 <x-dc>
@@ -22,6 +27,12 @@
   a{color:oklch(0.5 0.13 45);text-decoration:none;}
   a:hover{color:oklch(0.4 0.13 45);}
   ::selection{background:oklch(0.56 0.13 45);color:#fff;}
+  [data-pillar] img{opacity:0;}
+  [data-pillar]:hover img{opacity:0.5;}
+  [data-pillar] [data-scrim]{opacity:0;}
+  [data-pillar]:hover [data-scrim]{opacity:0.52;}
+  @keyframes ctaBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+  @keyframes pulseDot{0%{box-shadow:0 0 0 0 oklch(0.75 0.15 150 / 0.6)}70%{box-shadow:0 0 0 10px oklch(0.75 0.15 150 / 0)}100%{box-shadow:0 0 0 0 oklch(0.75 0.15 150 / 0)}}
   @keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
   @keyframes lightboxFade{from{opacity:0}to{opacity:1}}
   @keyframes lightboxScale{from{opacity:0;transform:scale(0.94)}to{opacity:1;transform:scale(1)}}
@@ -29,12 +40,24 @@
   @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   @keyframes wordIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
   @keyframes scrollCue{0%{transform:scaleY(0);opacity:0}40%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1) translateY(10px);opacity:0}}
+  @keyframes feedScroll{0%,10%{transform:translateY(0)}90%,100%{transform:translateY(-38%)}}
   @keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
   @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
   @keyframes wordIn2{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-  body{cursor:none;}
-  a,[onclick],button{cursor:none;}
+  
+  
 
+  @keyframes bob{0%,100%{translate:0 0}50%{translate:0 -8px}}
+  [data-brands] [style*="aspect-ratio:4/5"]>div[style*="z-index:3"],[data-skills] [style*="aspect-ratio:16/10"]>div[style*="z-index:3"]{animation:bob 6s ease-in-out infinite;}
+  [data-brands] [style*="aspect-ratio:4/5"]>div[style*="z-index:4"],[data-skills] [style*="aspect-ratio:16/10"]>div[style*="z-index:4"]{animation:bob 7.5s ease-in-out -2s infinite;}
+  @media (prefers-reduced-motion:reduce){[data-brands] *,[data-skills] *{animation:none !important;}}
+  @media (max-width:980px){[data-brands]{grid-template-columns:minmax(0,1fr) !important;max-width:520px;margin:0 auto;}}
+  @media (max-width:1080px){[data-skills]{grid-template-columns:minmax(0,1fr) !important;}}@media (max-width:560px){[data-skills]>a{grid-template-columns:minmax(0,1fr) !important;}}
+  @media (min-width:880px) and (max-width:1480px){[data-hstage]{left:0 !important;margin:0 auto !important;zoom:0.9;}}
+  @media (min-width:880px) and (max-width:1320px){[data-hstage]{zoom:0.8;}}
+  @media (min-width:880px) and (max-width:1160px){[data-hstage]{zoom:0.7;}}
+  @media (min-width:880px) and (max-width:1020px){[data-hstage]{zoom:0.6;}}
+  @media (max-width:879px){[data-hstage]{left:0 !important;width:auto !important;margin:0 !important;height:auto !important;display:flex !important;flex-direction:column !important;align-items:center !important;gap:14px !important;padding:0 18px 48px !important;}[data-hstage]>*{position:relative !important;left:auto !important;top:auto !important;bottom:auto !important;transform:none !important;width:min(380px,100%) !important;}[data-hphoto]{height:auto !important;aspect-ratio:4/5;}[data-hdrop]{display:none !important;}}
   @media (max-width:760px){
     html{-webkit-text-size-adjust:100%;}
     body,a,[onclick],button{cursor:auto !important;}
@@ -66,343 +89,232 @@
 </style>
 </helmet>
 <div style="font-family:'Public Sans',sans-serif;background:oklch(0.97 0.01 60);color:oklch(0.2 0.015 50);min-height:100vh;overflow-x:hidden;">
-  <div id="cursor-glow" style="{{ cursorGlowStyle }}"></div>
-  <div id="cursor-ring" style="{{ cursorRingStyle }}"></div>
 
   <nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px clamp(16px,3vw,40px);background:oklch(0.97 0.01 60 / 0.88);backdrop-filter:blur(14px);border-bottom:1px solid oklch(0.85 0.01 55);">
     <div onClick="{{ goHome }}" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;letter-spacing:0.2px;cursor:pointer;">Maya Yoo</div>
     <div style="display:flex;align-items:center;gap:clamp(14px,2vw,30px);flex-wrap:wrap;">
-      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="5">
         <div onClick="{{ item.onClick }}" style="{{ item.style }}">{{ item.label }}</div>
       </sc-for>
-      <a href="{{ resumeUrl }}" target="_blank" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:10px 20px;border-radius:100px;font-weight:700;font-size:13px;" style-hover="background:oklch(0.56 0.13 45);">Résumé ↓</a>
+      <a href="{{ resumeUrl }}" download="MayaYoo_Resume.pdf" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:10px 20px;border-radius:100px;font-weight:700;font-size:13px;box-shadow:0 10px 24px -10px oklch(0.2 0.02 50 / 0.45);transition:background .25s,color .25s,transform .25s,box-shadow .25s;" style-hover="background:oklch(0.56 0.13 45);transform:translateY(-3px);box-shadow:0 18px 32px -12px oklch(0.2 0.02 50 / 0.5);">Résumé ↓</a>
     </div>
   </nav>
-
-    <section style="position:relative;min-height:100vh;display:flex;align-items:center;padding:clamp(88px,11vw,120px) clamp(20px,4vw,40px) 80px;box-sizing:border-box;overflow:hidden;">
-      <div style="position:absolute;right:-6%;top:-10%;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,oklch(0.82 0.1 55 / 0.42),transparent 62%);pointer-events:none;"></div>
-      <div style="position:absolute;left:-14%;bottom:-30%;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,oklch(0.9 0.04 55 / 0.7),transparent 62%);pointer-events:none;"></div>
-      <div style="position:absolute;left:40px;right:40px;bottom:0;height:1px;background:oklch(0.85 0.01 55);"></div>
-      <div style="position:relative;max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:60px;align-items:center;">
-        <div>
-          <div style="font-size:13px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:22px;animation:riseIn .7s ease-out both;">Brand Strategy · Growth Marketing · Product &amp; Visual Design</div>
-          <div style="display:inline-flex;align-items:center;gap:8px;background:oklch(0.94 0.014 55);padding:7px 14px;border-radius:100px;font-size:12.5px;font-weight:700;color:oklch(0.4 0.02 50);margin-bottom:18px;animation:riseIn .7s ease-out .1s both;"><span style="width:7px;height:7px;border-radius:50%;background:oklch(0.6 0.15 145);display:inline-block;"></span>Open to summer 2027 internships</div>
-          <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(52px,5.4vw,74px);line-height:1;font-weight:800;margin:0 0 28px;letter-spacing:-1.8px;animation:riseIn .8s ease-out .18s both;">I build things<br>people actually<span style="{{ heroWordStyle }}">{{ heroWord }}</span></h1>
-          <p style="font-size:19px;line-height:1.55;color:oklch(0.4 0.02 50);max-width:540px;margin:0 0 32px;animation:riseIn .8s ease-out .3s both;">Three brands built from scratch, one of them a studio I co-founded. Millions of people who've stopped scrolling because of something I made. I'm Maya — and I'd like to build the same kind of thing for you.</p>
-          <div style="display:flex;gap:14px;flex-wrap:wrap;animation:riseIn .8s ease-out .4s both;">
-            <a href="{{ resumeUrl }}" target="_blank" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:15px 26px;border-radius:100px;font-weight:700;font-size:14.5px;transition:background .25s,transform .25s;" style-hover="background:oklch(0.56 0.13 45);transform:translateY(-2px);">Download Résumé</a>
-            <div onClick="{{ goto.about }}" style="border:1.5px solid oklch(0.2 0.015 50);padding:15px 26px;border-radius:100px;font-weight:700;font-size:14.5px;cursor:pointer;transition:background .25s,color .25s,transform .25s;" style-hover="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);transform:translateY(-2px);">Get in Touch →</div>
-          </div>
-          <div style="display:flex;gap:28px;margin-top:44px;padding-top:24px;border-top:1px solid oklch(0.85 0.01 55);animation:riseIn .8s ease-out .55s both;">
-            <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:700;">6.6M+</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);letter-spacing:0.3px;">monthly views</div></div>
-            <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:700;">3</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);letter-spacing:0.3px;">brands built from zero</div></div>
-            <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:700;">30+</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);letter-spacing:0.3px;">brand partnerships</div></div>
-          </div>
-        </div>
-        <div style="position:relative;justify-self:end;animation:riseIn 1s ease-out .2s both;">
-          <div style="position:absolute;inset:-14px -14px -14px -14px;border:1.5px solid oklch(0.56 0.13 45 / 0.5);border-radius:12px;transform:rotate(-3.5deg);"></div>
-          <div style="position:absolute;inset:0;background:oklch(0.72 0.13 45);border-radius:8px;transform:translate(16px,16px);"></div>
-          <img src="maya-hero-toned.jpg" style="position:relative;display:block;width:min(330px,72vw);height:auto;aspect-ratio:33/42;object-fit:cover;border-radius:8px;box-shadow:0 30px 60px oklch(0.2 0.02 50 / 0.28);">
-          <div style="position:absolute;bottom:-22px;left:-40px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:14px 18px;border-radius:10px;box-shadow:0 16px 36px oklch(0.2 0.02 50 / 0.3);">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;color:oklch(0.72 0.13 45);">5.4M+</div>
-            <div style="font-size:10.5px;color:oklch(0.75 0.01 55);letter-spacing:0.4px;">monthly profile views</div>
-          </div>
-          <div style="position:absolute;top:-16px;right:-26px;background:oklch(0.97 0.01 60);border:1px solid oklch(0.85 0.01 55);padding:9px 13px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:0.6px;color:oklch(0.2 0.015 50);box-shadow:0 10px 24px oklch(0.2 0.02 50 / 0.12);">UC DAVIS · DESIGN</div>
+    <section data-screen-label="Hero" style="position:relative;overflow:hidden;background:oklch(0.935 0.012 60);padding:clamp(104px,9vw,128px) 0 0;box-sizing:border-box;">
+      <div style="position:absolute;left:50%;top:380px;width:1100px;height:700px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,oklch(0.98 0.02 70),transparent);pointer-events:none;"></div>
+      <div style="position:relative;text-align:center;padding:0 20px;animation:riseIn .7s ease-out both;">
+        <div style="font-size:13px;letter-spacing:4px;font-weight:700;color:oklch(0.5 0.02 50);margin-bottom:14px;">BRAND STRATEGY · GROWTH MARKETING · DESIGN</div>
+        <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(48px,7.6vw,110px);line-height:0.95;font-weight:800;letter-spacing:-0.035em;margin:0 0 26px;">I build brands<br><span style="color:oklch(0.56 0.13 45);">people follow.</span></h1>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;">
+          <a href="{{ resumeUrl }}" download="MayaYoo_Resume.pdf" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:14px 24px;border-radius:100px;font-weight:700;font-size:14.5px;transition:background .25s,transform .25s;" style-hover="background:oklch(0.56 0.13 45);color:oklch(0.97 0.01 60);transform:translateY(-2px);">Download résumé ↓</a>
+          <a href="#work" style="border:1.5px solid oklch(0.2 0.015 50);color:oklch(0.2 0.015 50);padding:13px 24px;border-radius:100px;font-weight:700;font-size:14.5px;background:oklch(0.995 0.004 60);transition:background .25s,color .25s,transform .25s;" style-hover="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);transform:translateY(-2px);">See my work ↓</a>
         </div>
       </div>
-      <div style="position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:oklch(0.5 0.02 50);font-size:10.5px;letter-spacing:1.5px;font-weight:700;">SCROLL<div style="width:1px;height:26px;background:oklch(0.56 0.13 45);animation:scrollCue 1.6s ease-in-out infinite;transform-origin:top;"></div></div>
-    </section>
+      <div data-hstage="" style="position:relative;left:50%;width:1440px;margin-left:-720px;height:640px;">
+        <div data-hphoto="" style="position:absolute;left:520px;top:0;width:400px;height:560px;border-radius:30px;overflow:hidden;box-shadow:0 40px 80px -30px oklch(0.2 0.02 50 / 0.5);"><img src="maya-portrait.jpg" alt="Maya Yoo on the UC Davis campus" decoding="async" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;"></div>
 
+        <a href="daviswithmaya.html" style="position:absolute;left:150px;top:36px;width:330px;background:oklch(0.99 0.003 60 / 0.9);backdrop-filter:blur(16px);border-radius:20px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;color:oklch(0.2 0.015 50);box-sizing:border-box;box-shadow:0 24px 50px -20px oklch(0.2 0.02 50 / 0.45);transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-5px);color:oklch(0.2 0.015 50);">
+          <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,oklch(0.7 0.2 50),oklch(0.6 0.24 340));flex-shrink:0;"></div>
+          <div style="flex:1;min-width:0;"><div style="display:flex;justify-content:space-between;font-size:11.5px;color:oklch(0.5 0.02 50);font-weight:600;"><span>INSTAGRAM INSIGHTS</span><span>now</span></div><div style="font-weight:700;font-size:14.5px;margin-top:2px;">5.4M profile views this month</div><div style="font-size:13.5px;color:oklch(0.35 0.02 50);line-height:1.4;">@daviswithmaya · started from zero</div></div>
+        </a>
+        <a href="story-and-spoon.html" style="position:absolute;left:150px;top:150px;width:330px;background:oklch(0.99 0.003 60 / 0.9);backdrop-filter:blur(16px);border-radius:20px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;color:oklch(0.2 0.015 50);box-sizing:border-box;box-shadow:0 24px 50px -20px oklch(0.2 0.02 50 / 0.45);transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-5px);color:oklch(0.2 0.015 50);">
+          <div style="width:38px;height:38px;border-radius:10px;background:oklch(0.56 0.13 45);flex-shrink:0;"></div>
+          <div style="flex:1;min-width:0;"><div style="display:flex;justify-content:space-between;font-size:11.5px;color:oklch(0.5 0.02 50);font-weight:600;"><span>STORY &amp; SPOON</span><span>today</span></div><div style="font-weight:700;font-size:14.5px;margin-top:2px;">First client signed</div><div style="font-size:13.5px;color:oklch(0.35 0.02 50);line-height:1.4;">NaYa Dessert Café · photo + video shoot</div></div>
+        </a>
 
-    <section data-stats-bar="" style="padding:54px clamp(20px,4vw,40px);border-bottom:1px solid oklch(0.85 0.01 55);">
-      <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;text-align:center;">
-        <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:38px;font-weight:700;color:oklch(0.56 0.13 45);">{{ displayViews }}</div><div style="font-size:12.5px;color:oklch(0.45 0.02 50);margin-top:6px;">combined monthly views</div></div>
-        <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:38px;font-weight:700;color:oklch(0.2 0.015 50);">{{ displayLaunch }}</div><div style="font-size:12.5px;color:oklch(0.45 0.02 50);margin-top:6px;">brand partnerships</div></div>
-        <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:38px;font-weight:700;color:oklch(0.56 0.13 45);">{{ displayGuides }}</div><div style="font-size:12.5px;color:oklch(0.45 0.02 50);margin-top:6px;">of reach from non-followers</div></div>
-      </div>
-    </section>
+        <div data-halert="" style="position:absolute;left:150px;top:282px;width:330px;background:oklch(0.97 0.004 60 / 0.92);backdrop-filter:blur(18px);border-radius:20px;overflow:hidden;text-align:center;box-shadow:0 24px 50px -20px oklch(0.2 0.02 50 / 0.45);transition:transform .3s ease,box-shadow .3s ease;">
+          <div style="padding:18px 20px 16px;">
+            <div style="font-weight:700;font-size:17px;margin-bottom:6px;">Marketer, Founder, Designer</div>
+            <div style="font-size:13.5px;line-height:1.5;color:oklch(0.3 0.015 50);text-wrap:pretty;">I grow brands from zero: 6.6M+ monthly views, 30+ brand partnerships, and a studio I co-founded. Strategy, content, and design, all done myself.</div>
+          </div>
+          <a href="mailto:{{ email }}" style="display:block;border-top:1px solid oklch(0.86 0.008 60);padding:13px;font-weight:700;font-size:16px;color:oklch(0.55 0.19 255);transition:background .2s;" style-hover="background:oklch(0.93 0.008 60);color:oklch(0.5 0.19 255);">Hire Me</a>
+        </div>
 
-    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:86px clamp(20px,4vw,40px) 0;max-width:1200px;margin:0 auto;">
-      <div style="font-size:13px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:26px;">WHAT OTHER PEOPLE SAY</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;">
-        <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:24px;">
-          <div style="font-size:11px;letter-spacing:1.3px;font-weight:800;color:oklch(0.56 0.13 45);margin-bottom:12px;">PRESS</div>
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-0.3px;">The California Aggie</div>
-          <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.55;text-wrap:pretty;">Profiled me and DavisWithMaya — “a digital diary” of college life at UC Davis.</div>
+        <div style="position:absolute;left:960px;top:36px;width:300px;display:flex;flex-direction:column;gap:10px;">
+          <div style="align-self:flex-start;background:oklch(0.12 0.01 50);color:#fff;font-weight:700;font-size:15px;padding:12px 22px;border-radius:16px;">Skills</div>
+          <div style="background:oklch(0.33 0.008 60 / 0.86);backdrop-filter:blur(14px);border-radius:16px;overflow:hidden;color:#fff;font-size:15.5px;box-shadow:0 24px 50px -20px oklch(0.2 0.02 50 / 0.5);">
+            <div style="display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid oklch(1 0 0 / 0.1);color:oklch(0.8 0.13 50);font-weight:700;"><span>Growth marketing</span><span>★</span></div><div style="display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid oklch(1 0 0 / 0.1);"><span>Short-form video &amp; content</span><span>★</span></div><div style="display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid oklch(1 0 0 / 0.1);"><span>Brand partnerships</span><span>★</span></div><div style="display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid oklch(1 0 0 / 0.1);"><span>Brand strategy</span><span>★</span></div><div style="display:flex;justify-content:space-between;padding:12px 16px;"><span>UX/UI design</span><span>★</span></div>
+          </div>
         </div>
-        <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:24px;">
-          <div style="font-size:11px;letter-spacing:1.3px;font-weight:800;color:oklch(0.56 0.13 45);margin-bottom:12px;">AWARDS</div>
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-0.3px;">Ambassador of the Month, twice</div>
-          <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.55;text-wrap:pretty;">Named by BeachWaver in March and Elevated Faith in June, out of their full ambassador rosters.</div>
-        </div>
-        <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:24px;">
-          <div style="font-size:11px;letter-spacing:1.3px;font-weight:800;color:oklch(0.56 0.13 45);margin-bottom:12px;">COMMUNITY</div>
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-0.3px;">Unprompted student DMs</div>
-          <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.55;text-wrap:pretty;">Students message Daily UC Davis to say it’s how they find out what’s happening on campus.</div>
-        </div>
-      </div>
-      <div style="margin-top:16px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);border-radius:14px;padding:24px 26px;display:flex;gap:26px;flex-wrap:wrap;align-items:center;">
-        <div style="font-size:11px;letter-spacing:1.3px;font-weight:800;color:oklch(0.72 0.13 45);">AND I WORK ON TEAMS</div>
-        <div style="font-size:14.5px;line-height:1.55;color:oklch(0.86 0.01 60);flex:1;min-width:260px;text-wrap:pretty;">One of four marketing leads at ASUCD · 7-person design team at Fourth &amp; Hope · 9-person product team at CodeLab Davis. The solo brands are a choice, not a limit.</div>
-      </div>
-    </section>
 
-    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:clamp(64px,8vw,96px) clamp(20px,4vw,40px) 30px;max-width:1200px;margin:0 auto;">
-      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;">
-        <div>
-          <div style="font-size:13px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:14px;">START HERE · THREE BRANDS I FOUNDED</div>
-          <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,4.4vw,58px);font-weight:800;letter-spacing:-1.6px;line-height:1.02;margin:0;max-width:820px;text-wrap:pretty;">If you only read three things, read these.</h2>
-        </div>
-        <div onClick="{{ goto.ventures }}" style="cursor:pointer;font-weight:700;color:oklch(0.56 0.13 45);padding-bottom:8px;">All three ventures in detail →</div>
-      </div>
-    </section>
+        <a href="https://theaggie.org/2026/5/5/daviscasocialmediacommunitydiary" target="_blank" rel="noopener" style="position:absolute;left:960px;top:362px;width:300px;background:oklch(0.12 0.01 50);border-radius:14px;padding:8px 14px 8px 8px;display:flex;align-items:center;gap:12px;color:#fff;box-sizing:border-box;box-shadow:0 24px 50px -20px oklch(0.2 0.02 50 / 0.45);transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-4px);color:#fff;">
+          <div style="width:44px;height:44px;border-radius:8px;overflow:hidden;flex-shrink:0;"><img src="calaggie-dwm.jpg" alt="" decoding="async" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div><div style="font-size:10.5px;letter-spacing:1.2px;font-weight:800;color:oklch(0.8 0.13 50);">FEATURED IN</div><div style="font-weight:700;font-size:14px;">The California Aggie ↗</div></div>
+        </a>
 
-    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:20px clamp(20px,4vw,40px) 24px;max-width:1200px;margin:0 auto;">
-      <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;align-items:center;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);border-radius:24px;padding:clamp(22px,3vw,38px);overflow:hidden;">
-        <div style="position:absolute;top:-38px;right:-6px;font-family:'Bricolage Grotesque',sans-serif;font-size:150px;font-weight:800;color:oklch(0.25 0.02 50);line-height:1;pointer-events:none;letter-spacing:-8px;">01</div>
-        <div style="position:relative;">
-          <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.72 0.13 45);font-weight:700;margin-bottom:16px;">FOUNDER · MEDIA BRAND · MAR 2025–PRESENT</div>
-          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(27px,2.7vw,37px);font-weight:800;letter-spacing:-1.3px;line-height:1.04;margin:0 0 16px;">DavisWithMaya</h3>
-          <p style="font-size:14.5px;color:oklch(0.82 0.01 55);line-height:1.55;margin:0 0 28px;max-width:480px;text-wrap:pretty;">5.4M profile views in a single month — no team, no template. Faith, college life, and the stuff nobody says out loud, turned into a brand people trust and a product line that actually sells.</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px;margin-bottom:22px;max-width:480px;">
-            <div style="border-top:1px solid oklch(0.35 0.02 50);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.72 0.13 45);">5.4M+</div><div style="font-size:11.5px;color:oklch(0.7 0.01 55);margin-top:3px;">profile views, one month</div></div>
-            <div style="border-top:1px solid oklch(0.35 0.02 50);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.72 0.13 45);">5</div><div style="font-size:11.5px;color:oklch(0.7 0.01 55);margin-top:3px;">videos past 1M views</div></div>
-            <div style="border-top:1px solid oklch(0.35 0.02 50);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.72 0.13 45);">131</div><div style="font-size:11.5px;color:oklch(0.7 0.01 55);margin-top:3px;">guides sold</div></div>
-          </div>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;">
-            <a href="daviswithmaya.html" style="display:inline-flex;align-items:center;gap:8px;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);padding:12px 20px;border-radius:100px;font-weight:700;font-size:13px;transition:background .25s,transform .25s;" style-hover="background:oklch(0.97 0.01 60);transform:translateY(-2px);">Read the case study →</a>
-            <a href="https://www.instagram.com/daviswithmaya" target="_blank" style="display:inline-flex;align-items:center;gap:8px;border:1.5px solid oklch(0.45 0.02 50);color:oklch(0.9 0.01 55);padding:12px 18px;border-radius:100px;font-weight:700;font-size:13px;" style-hover="border-color:oklch(0.72 0.13 45);color:oklch(0.72 0.13 45);">@daviswithmaya ↗</a>
-          </div>
-          <div style="display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:12px;color:oklch(0.75 0.01 55);"><span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;color:oklch(0.72 0.13 45);letter-spacing:0.8px;font-size:10.5px;">PRESS</span>Featured in The California Aggie — “Davis with Maya: a digital diary”</div>
-        </div>
-        <div style="position:relative;height:288px;border-radius:16px;">
-          <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateX(-108px) translateY(20px) rotate(-11deg);transition:transform .35s ease;" style-hover="transform:translate(-50%,-50%) translateX(-108px) translateY(20px) rotate(-11deg) scale(1.06);z-index:5;">
-            <div style="animation:floatA 6.5s ease-in-out infinite;">
-              <div style="position:relative;width:82px;aspect-ratio:9/16;border-radius:18px;overflow:hidden;border:5px solid oklch(0.33 0.02 50);background:oklch(0.15 0.01 50);box-shadow:0 26px 50px oklch(0 0 0 / 0.45);">
-                <img src="dwm-thankfulness.jpg" alt="Thankfulness reel" style="width:100%;height:100%;object-fit:cover;display:block;">
-                <div style="position:absolute;left:0;right:0;bottom:0;padding:26px 9px 9px;background:linear-gradient(180deg,transparent,oklch(0 0 0 / 0.75));">
-                  <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;color:#fff;line-height:1;">2.2M</div>
-                  <div style="font-size:10px;color:oklch(0.85 0.01 55);margin-top:4px;letter-spacing:0.4px;">views</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateX(108px) translateY(20px) rotate(11deg);transition:transform .35s ease;" style-hover="transform:translate(-50%,-50%) translateX(108px) translateY(20px) rotate(11deg) scale(1.06);z-index:5;">
-            <div style="animation:floatB 7.5s ease-in-out infinite;">
-              <div style="position:relative;width:82px;aspect-ratio:9/16;border-radius:18px;overflow:hidden;border:5px solid oklch(0.33 0.02 50);background:oklch(0.15 0.01 50);box-shadow:0 26px 50px oklch(0 0 0 / 0.45);">
-                <img src="dwm-friends.jpg" alt="Friends reel" style="width:100%;height:100%;object-fit:cover;display:block;">
-                <div style="position:absolute;left:0;right:0;bottom:0;padding:26px 9px 9px;background:linear-gradient(180deg,transparent,oklch(0 0 0 / 0.75));">
-                  <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;color:#fff;line-height:1;">2.4M</div>
-                  <div style="font-size:10px;color:oklch(0.85 0.01 55);margin-top:4px;letter-spacing:0.4px;">views</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateX(-36px) translateY(-14px) rotate(-4deg);transition:transform .35s ease;" style-hover="transform:translate(-50%,-50%) translateX(-36px) translateY(-14px) rotate(-4deg) scale(1.06);z-index:5;">
-            <div style="animation:floatB 6s ease-in-out infinite;">
-              <div style="position:relative;width:82px;aspect-ratio:9/16;border-radius:18px;overflow:hidden;border:5px solid oklch(0.33 0.02 50);background:oklch(0.15 0.01 50);box-shadow:0 26px 50px oklch(0 0 0 / 0.45);">
-                <img src="dwm-faith-in-jesus.jpg" alt="Faith in Jesus video" style="width:100%;height:100%;object-fit:cover;display:block;">
-                <div style="position:absolute;left:0;right:0;bottom:0;padding:26px 9px 9px;background:linear-gradient(180deg,transparent,oklch(0 0 0 / 0.75));">
-                  <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;color:#fff;line-height:1;">3.5M</div>
-                  <div style="font-size:10px;color:oklch(0.85 0.01 55);margin-top:4px;letter-spacing:0.4px;">views</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateX(36px) translateY(-14px) rotate(4deg);transition:transform .35s ease;" style-hover="transform:translate(-50%,-50%) translateX(36px) translateY(-14px) rotate(4deg) scale(1.06);z-index:5;">
-            <div style="animation:floatA 7s ease-in-out infinite;">
-              <div style="position:relative;width:82px;aspect-ratio:9/16;border-radius:18px;overflow:hidden;border:5px solid oklch(0.33 0.02 50);background:oklch(0.15 0.01 50);box-shadow:0 26px 50px oklch(0 0 0 / 0.45);">
-                <img src="dwm-side-quests.jpg" alt="Side quests reel" style="width:100%;height:100%;object-fit:cover;display:block;">
-                <div style="position:absolute;left:0;right:0;bottom:0;padding:26px 9px 9px;background:linear-gradient(180deg,transparent,oklch(0 0 0 / 0.75));">
-                  <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;color:#fff;line-height:1;">2.3M</div>
-                  <div style="font-size:10px;color:oklch(0.85 0.01 55);margin-top:4px;letter-spacing:0.4px;">views</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style="position:absolute;right:8px;top:8px;background:oklch(0.72 0.13 45);color:oklch(0.15 0.02 50);padding:8px 12px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:0.6px;animation:floatA 5.5s ease-in-out infinite;z-index:6;">833K LIKES · ONE POST</div>
-          <div style="position:absolute;left:8px;bottom:8px;background:oklch(0.97 0.01 60);color:oklch(0.2 0.015 50);padding:8px 12px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:0.6px;animation:floatB 6.5s ease-in-out infinite;z-index:6;">94.5% NON-FOLLOWER REACH</div>
+        <a href="story-and-spoon.html" style="position:absolute;left:960px;top:432px;width:300px;height:44px;background:#fff;border-radius:12px;display:flex;align-items:center;gap:10px;padding:0 14px;box-sizing:border-box;font-size:14px;color:oklch(0.2 0.015 50);box-shadow:0 24px 50px -20px oklch(0.2 0.02 50 / 0.45);transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-4px);color:oklch(0.2 0.015 50);">
+          <span style="font-size:11px;font-weight:700;color:oklch(0.5 0.02 50);">AA</span><span style="flex:1;text-align:center;font-weight:600;">storyandspoon.co</span><span style="color:oklch(0.5 0.02 50);">↻</span>
+        </a>
+
+        <div data-hdrop="" style="position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;gap:12px;padding:12px 16px;background:oklch(0.99 0.003 60 / 0.82);backdrop-filter:blur(16px);border-radius:24px;box-shadow:0 24px 50px -24px oklch(0.2 0.02 50 / 0.5);">
+          <div style="width:52px;height:52px;border-radius:13px;background:oklch(0.25 0.01 280);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;">Figma</div><div style="width:52px;height:52px;border-radius:13px;background:oklch(0.22 0.06 250);color:oklch(0.75 0.15 240);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;">Ps</div><div style="width:52px;height:52px;border-radius:13px;background:oklch(0.22 0.08 290);color:oklch(0.75 0.15 290);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;">Pr</div><div style="width:52px;height:52px;border-radius:13px;background:oklch(0.25 0.06 60);color:oklch(0.78 0.16 70);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;">Ai</div><div style="width:52px;height:52px;border-radius:13px;background:oklch(0.25 0.05 240);color:oklch(0.78 0.12 230);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;">Lr</div><div style="width:52px;height:52px;border-radius:13px;background:oklch(0.65 0.15 200);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;">Canva</div><div style="width:52px;height:52px;border-radius:13px;background:oklch(0.15 0 0);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;">CapCut</div><div style="width:52px;height:52px;border-radius:13px;background:#fff;color:oklch(0.45 0.18 255);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;">Meta</div><div style="width:52px;height:52px;border-radius:13px;background:oklch(0.92 0.02 55);color:oklch(0.5 0.13 45);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;">Claude</div>
         </div>
       </div>
     </section>
 
-    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:0 clamp(20px,4vw,40px) 40px;max-width:1200px;margin:0 auto;">
-      <div style="position:relative;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;background:oklch(0.94 0.014 55);border-radius:24px;padding:clamp(22px,3vw,38px);overflow:hidden;">
-        <div style="position:absolute;top:-38px;left:-2px;font-family:'Bricolage Grotesque',sans-serif;font-size:150px;font-weight:800;color:oklch(0.9 0.02 55);line-height:1;pointer-events:none;letter-spacing:-8px;">02</div>
-        <div style="position:relative;">
-          <div style="background:oklch(0.28 0.02 50);border-radius:14px;padding:12px 12px 14px;box-shadow:0 28px 60px oklch(0.2 0.02 50 / 0.3);">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
-              <div style="width:8px;height:8px;border-radius:50%;background:oklch(0.7 0.14 30);"></div>
-              <div style="width:8px;height:8px;border-radius:50%;background:oklch(0.8 0.12 80);"></div>
-              <div style="width:8px;height:8px;border-radius:50%;background:oklch(0.65 0.1 145);"></div>
-              <div style="margin-left:10px;flex:1;background:oklch(0.35 0.02 50);border-radius:6px;padding:4px 10px;font-size:10px;color:oklch(0.8 0.01 55);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;">storyandspoon.co</div>
-            </div>
-            <div style="position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:oklch(0.97 0.005 55);">
-              <iframe src="https://storyandspoon.co" title="Story &amp; Spoon website — scrollable preview" loading="lazy" scrolling="yes" style="position:absolute;top:0;left:0;width:250%;height:250%;border:0;transform:scale(0.4);transform-origin:0 0;display:block;"></iframe>
-            </div>
-          </div>
-          <div style="position:absolute;top:-14px;right:-12px;display:inline-flex;align-items:center;gap:7px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:8px 12px;border-radius:100px;font-size:10.5px;font-weight:800;letter-spacing:0.6px;box-shadow:0 10px 24px oklch(0.2 0.02 50 / 0.25);"><span style="width:7px;height:7px;border-radius:50%;background:oklch(0.72 0.13 45);display:inline-block;"></span>LIVE SITE · STORY &amp; SPOON</div>
-          <a href="https://storyandspoon.co" target="_blank" style="position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);background:oklch(0.56 0.13 45);color:oklch(0.97 0.01 60);padding:9px 14px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:0.6px;white-space:nowrap;box-shadow:0 10px 24px oklch(0.2 0.02 50 / 0.25);" style-hover="background:oklch(0.2 0.015 50);">SCROLL IT · OR OPEN FULL SITE ↗</a>
-        </div>
-        <div style="position:relative;">
-          <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:16px;">CO-FOUNDER · PRE-LAUNCH · JUL 2026–PRESENT</div>
-          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(27px,2.7vw,37px);font-weight:800;letter-spacing:-1.3px;line-height:1.04;margin:0 0 16px;">Story &amp; Spoon</h3>
-          <p style="font-size:14.5px;color:oklch(0.4 0.02 50);line-height:1.55;margin:0 0 14px;max-width:480px;text-wrap:pretty;">A restaurant marketing studio I co-founded: one shoot day, and an owner-operated restaurant walks away with real photos, video, a managed Instagram, and a website that does the food justice.</p>
-          <p style="font-size:14px;color:oklch(0.5 0.02 50);line-height:1.55;margin:0 0 28px;max-width:480px;text-wrap:pretty;">The studio site is in the frame — scroll it. <a href="halfpast.html" target="_blank">Half Past</a> is the showcase restaurant build we made to show owners the full package before they sign.</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px;margin-bottom:22px;max-width:480px;">
-            <div style="border-top:1px solid oklch(0.82 0.015 55);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.56 0.13 45);">50</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);margin-top:3px;">restaurants researched and scored</div></div>
-            <div style="border-top:1px solid oklch(0.82 0.015 55);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.56 0.13 45);">20</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);margin-top:3px;">owners contacted directly</div></div>
-            <div style="border-top:1px solid oklch(0.82 0.015 55);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.56 0.13 45);">3</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);margin-top:3px;">proposal decks built</div></div>
-          </div>
-          <p style="font-size:13.5px;color:oklch(0.5 0.02 50);line-height:1.55;margin:-16px 0 28px;max-width:480px;">No paying clients yet — this is the validation work before launch.</p>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;">
-            <a href="story-and-spoon.html" style="display:inline-flex;align-items:center;gap:8px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:12px 20px;border-radius:100px;font-weight:700;font-size:13px;transition:background .25s,transform .25s;" style-hover="background:oklch(0.56 0.13 45);transform:translateY(-2px);">Read the case study →</a>
-            <a href="https://storyandspoon.co" target="_blank" style="display:inline-flex;align-items:center;gap:8px;border:1.5px solid oklch(0.7 0.02 50);color:oklch(0.3 0.02 50);padding:12px 18px;border-radius:100px;font-weight:700;font-size:13px;" style-hover="border-color:oklch(0.56 0.13 45);color:oklch(0.56 0.13 45);">storyandspoon.co ↗</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:0 clamp(20px,4vw,40px) 40px;max-width:1200px;margin:0 auto;">
-      <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;align-items:center;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:24px;padding:clamp(22px,3vw,38px);overflow:hidden;">
-        <div style="position:absolute;top:-38px;right:-6px;font-family:'Bricolage Grotesque',sans-serif;font-size:150px;font-weight:800;color:oklch(0.94 0.012 55);line-height:1;pointer-events:none;letter-spacing:-8px;">03</div>
-        <div style="position:relative;">
-          <div style="font-size:12px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:16px;">FOUNDER · CAMPUS MEDIA · 2025–PRESENT</div>
-          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(27px,2.7vw,37px);font-weight:800;letter-spacing:-1.3px;line-height:1.04;margin:0 0 16px;">Daily UC Davis</h3>
-          <p style="font-size:14.5px;color:oklch(0.45 0.02 50);line-height:1.55;margin:0 0 28px;max-width:480px;text-wrap:pretty;">A 30,000-person campus with its news scattered across group chats. I built the page that consolidated it — then sold local businesses a channel to reach it.</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-bottom:22px;max-width:480px;">
-            <div style="border-top:1px solid oklch(0.85 0.01 55);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.56 0.13 45);">1.2M+</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);margin-top:3px;">views in 30 days</div></div>
-            <div style="border-top:1px solid oklch(0.85 0.01 55);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.56 0.13 45);">57.8%</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);margin-top:3px;">from non-followers</div></div>
-            <div style="border-top:1px solid oklch(0.85 0.01 55);padding-top:12px;"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;color:oklch(0.56 0.13 45);">20+</div><div style="font-size:11.5px;color:oklch(0.5 0.02 50);margin-top:3px;">business collabs</div></div>
-          </div>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;">
-            <a href="daily.html" style="display:inline-flex;align-items:center;gap:8px;background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:12px 20px;border-radius:100px;font-weight:700;font-size:13px;transition:background .25s,transform .25s;" style-hover="background:oklch(0.56 0.13 45);transform:translateY(-2px);">Read the case study →</a>
-            <a href="https://www.instagram.com/dailyucdavis" target="_blank" style="display:inline-flex;align-items:center;gap:8px;border:1.5px solid oklch(0.7 0.02 50);color:oklch(0.3 0.02 50);padding:12px 18px;border-radius:100px;font-weight:700;font-size:13px;" style-hover="border-color:oklch(0.56 0.13 45);color:oklch(0.56 0.13 45);">@dailyucdavis ↗</a>
-          </div>
-        </div>
-        <div style="position:relative;">
-          <img src="slide1.jpg" alt="Daily UC Davis case study" style="width:100%;border-radius:14px;border:1px solid oklch(0.85 0.01 55);display:block;">
-        </div>
-      </div>
-    </section>
-
-    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:clamp(56px,7vw,80px) clamp(20px,4vw,40px);background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);">
-      <div style="max-width:1200px;margin:0 auto;">
-        <div style="font-size:12.5px;letter-spacing:1.5px;color:oklch(0.72 0.13 45);font-weight:700;margin-bottom:40px;">HOW I GOT HERE</div>
-        <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:30px;">
-          <div style="position:absolute;left:0;right:0;top:5px;height:1px;background:linear-gradient(90deg,oklch(0.72 0.13 45),oklch(0.72 0.13 45 / 0.15));"></div>
-          <sc-for list="{{ storyBeats }}" as="s" hint-placeholder-count="4">
-            <div style="position:relative;padding-top:26px;transition:transform .3s ease;" style-hover="transform:translateY(-6px);">
-              <div style="position:absolute;top:0;left:0;width:11px;height:11px;border-radius:50%;background:oklch(0.72 0.13 45);box-shadow:0 0 0 5px oklch(0.72 0.13 45 / 0.18);"></div>
-              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:15px;color:oklch(0.72 0.13 45);margin-bottom:14px;font-weight:600;">{{ s.year }}</div>
-              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:600;margin-bottom:10px;">{{ s.title }}</div>
-              <div style="font-size:14.5px;color:oklch(0.8 0.01 55);line-height:1.6;">{{ s.text }}</div>
-            </div>
-          </sc-for>
-        </div>
-      </div>
-    </section>
-
-    
-
-    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:36px 0 30px;border-bottom:1px solid oklch(0.85 0.01 55);overflow:hidden;">
-      <div style="max-width:1200px;margin:0 auto 20px;padding:0 clamp(20px,4vw,40px);font-size:12px;letter-spacing:1.5px;color:oklch(0.5 0.02 50);font-weight:700;text-align:center;">BRANDS &amp; ORGS I'VE MARKETED FOR</div>
-      <div style="display:flex;overflow:hidden;">
-        <div style="display:flex;align-items:center;flex-shrink:0;animation:marquee 32s linear infinite;">
-          <sc-for list="{{ marqueeBrands }}" as="mb" hint-placeholder-count="10">
-            <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;margin-right:52px;">
-              <img src="{{ mb.image }}" style="width:26px;height:26px;border-radius:6px;object-fit:cover;">
-              <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:15.5px;color:oklch(0.4 0.02 50);white-space:nowrap;">{{ mb.name }}</div>
-            </div>
-          </sc-for>
-        </div>
-      </div>
-    </section>
-
-    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:clamp(70px,9vw,110px) clamp(20px,4vw,40px);max-width:1200px;margin:0 auto;">
-      <div style="font-size:13px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">WHAT I DO</div>
-      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:38px;font-weight:700;margin:0 0 50px;max-width:680px;">One hire, every skill a growing brand actually needs.</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;">
-        <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="4">
-          <div style="background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;padding:28px 24px;transition:border-color .25s,transform .25s;" style-hover="transform:translateY(-4px);border-color:oklch(0.56 0.13 45);">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:700;color:oklch(0.85 0.01 55);margin-bottom:16px;">{{ p.num }}</div>
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:600;margin-bottom:10px;">{{ p.title }}</div>
-            <div style="font-size:14px;color:oklch(0.45 0.02 50);line-height:1.55;">{{ p.desc }}</div>
-          </div>
+    <section data-reveal="1" data-screen-label="Logos" style="padding:44px clamp(20px,4vw,40px);max-width:1200px;margin:0 auto;box-sizing:border-box;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:14px 40px;flex-wrap:wrap;">
+        <span style="font-size:11.5px;letter-spacing:2.5px;font-weight:700;color:oklch(0.55 0.02 50);">TRUSTED BY</span>
+        <sc-for list="{{ marqueeBrands }}" as="mb" hint-placeholder-count="8">
+          <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.2px;color:oklch(0.55 0.015 50);white-space:nowrap;">{{ mb.name }}</span>
         </sc-for>
       </div>
     </section>
 
-    
-
-    
-
-    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:0 clamp(20px,4vw,40px) 110px;max-width:1200px;margin:0 auto;">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:36px;">
-        <div>
-          <div style="font-size:13px;letter-spacing:1.5px;color:oklch(0.56 0.13 45);font-weight:700;margin-bottom:12px;">FEATURED WORK</div>
-          <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:34px;font-weight:700;margin:0;">Selected projects</h2>
-        </div>
-        <div onClick="{{ goto.projects }}" style="cursor:pointer;font-weight:700;color:oklch(0.56 0.13 45);">View all →</div>
+    <section id="work" data-reveal="1" data-screen-label="Work" style="padding:clamp(72px,9vw,128px) clamp(20px,4vw,40px) clamp(56px,7vw,96px);max-width:1200px;margin:0 auto;box-sizing:border-box;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:48px;">
+        <div><div style="font-size:12.5px;letter-spacing:3.5px;font-weight:700;color:oklch(0.5 0.02 50);margin-bottom:16px;">SELECTED WORK</div><h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(36px,4.4vw,58px);font-weight:800;letter-spacing:-0.035em;line-height:1;margin:0;text-wrap:balance;color:oklch(0.2 0.015 50);">Three brands,<br>built from zero.</h2></div>
+        <div style="display:flex;gap:22px;font-size:14.5px;font-weight:700;padding-bottom:8px;"><a href="marketing.html">Marketing</a><a href="design.html">Design</a><a href="storytelling.html">Content</a></div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px;">
-        <sc-for list="{{ featuredProjects }}" as="proj" hint-placeholder-count="4">
-          <div onClick="{{ proj.open }}" style="cursor:pointer;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);border-radius:14px;overflow:hidden;transition:transform .25s,border-color .25s;" style-hover="border-color:oklch(0.56 0.13 45);transform:translateY(-4px);">
-            <sc-if value="{{ proj.hasImage }}" hint-placeholder-val="{{ true }}"><div style="height:180px;overflow:hidden;position:relative;background:oklch(0.96 0.018 60);">
-              <img src="{{ proj.image }}" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;" style-hover="transform:scale(1.05);">
-              <div style="position:absolute;inset:0;background:oklch(0.3 0.06 45 / 0.14);"></div>
-            </div></sc-if>
-            <div style="padding:22px;">
-              <div style="font-size:11.5px;color:oklch(0.56 0.13 45);font-weight:700;letter-spacing:0.8px;margin-bottom:8px;">{{ proj.tag }}</div>
-              <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:700;margin-bottom:8px;">{{ proj.title }}</div>
-              <div style="font-size:13.5px;color:oklch(0.45 0.02 50);line-height:1.5;margin-bottom:8px;">{{ proj.stat }}</div>
-              <div style="font-size:11.5px;color:oklch(0.55 0.02 50);">{{ proj.role }} · {{ proj.skills }}</div>
+      <div data-brands="" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(28px,3.5vw,48px);">
+        <a href="daviswithmaya.html" style="display:flex;flex-direction:column;gap:24px;color:oklch(0.2 0.015 50);transition:transform .35s ease;" style-hover="transform:translateY(-6px);color:oklch(0.2 0.015 50);">
+          <div><div style="position:relative;aspect-ratio:4/5;"><div style="position:absolute;left:14%;top:9%;width:46%;aspect-ratio:9/19;border-radius:30px;background:oklch(0.14 0.01 50);padding:6px;box-sizing:border-box;transform:rotate(-4deg);box-shadow:0 40px 70px -30px oklch(0.2 0.02 50 / 0.6);"><div style="width:100%;height:100%;border-radius:24px;overflow:hidden;"><img src="dwm-side-quests.jpg" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div></div><div style="position:absolute;right:7%;top:38%;width:52%;border-radius:16px;overflow:hidden;transform:rotate(3deg);box-shadow:0 24px 50px -20px oklch(0.2 0.02 50 / 0.45);z-index:3;"><img src="dwm-metrics.jpg" alt="Instagram content insights: 2.8M, 2.4M, 2.4M views" loading="lazy" decoding="async" style="width:100%;display:block;"></div></div></div>
+          <div style="display:flex;flex-direction:column;gap:12px;padding-top:20px;border-top:1px solid oklch(0.88 0.01 55);">
+            <div style="display:flex;align-items:baseline;gap:14px;font-size:11px;letter-spacing:1.6px;font-weight:700;text-transform:uppercase;color:oklch(0.5 0.02 50);"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:13px;letter-spacing:0;color:oklch(0.56 0.13 45);">01 / 03</span>Founder · Media brand</div>
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,2.6vw,36px);font-weight:800;letter-spacing:-0.03em;line-height:1;">DavisWithMaya</div>
+            <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding-top:4px;"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(36px,3.4vw,48px);font-weight:800;letter-spacing:-0.04em;line-height:1;color:oklch(0.56 0.13 45);">5.4M</span><span style="font-size:15px;font-weight:700;line-height:1.35;max-width:180px;">profile views in one month</span></div>
+            <div style="font-size:14px;color:oklch(0.45 0.02 50);">30+ paid brand partnerships</div>
+            <div style="display:flex;align-items:center;gap:12px;font-size:14.5px;font-weight:700;margin-top:auto;padding-top:8px;"><span style="width:44px;height:44px;border-radius:50%;border:1.5px solid oklch(0.82 0.01 55);display:flex;align-items:center;justify-content:center;">→</span>See the case study</div>
+          </div>
+        </a>
+        <a href="daily.html" style="display:flex;flex-direction:column;gap:24px;color:oklch(0.2 0.015 50);transition:transform .35s ease;" style-hover="transform:translateY(-6px);color:oklch(0.2 0.015 50);">
+          <div><div style="position:relative;aspect-ratio:4/5;"><div style="position:absolute;left:27%;top:7%;width:46%;aspect-ratio:9/19;border-radius:30px;background:oklch(0.14 0.01 50);padding:6px;box-sizing:border-box;transform:rotate(3deg);box-shadow:0 40px 70px -30px oklch(0.2 0.02 50 / 0.6);"><div style="width:100%;height:100%;border-radius:24px;overflow:hidden;"><img src="dud-grid-full.png" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;"></div></div><div style="position:absolute;left:9%;top:14%;width:21%;aspect-ratio:1;border-radius:50%;overflow:hidden;background:#fff;box-shadow:0 24px 50px -20px oklch(0.2 0.02 50 / 0.45);z-index:3;"><img src="dud-logo.png" alt="Daily UC Davis logo" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;"></div></div></div>
+          <div style="display:flex;flex-direction:column;gap:12px;padding-top:20px;border-top:1px solid oklch(0.88 0.01 55);">
+            <div style="display:flex;align-items:baseline;gap:14px;font-size:11px;letter-spacing:1.6px;font-weight:700;text-transform:uppercase;color:oklch(0.5 0.02 50);"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:13px;letter-spacing:0;color:oklch(0.56 0.13 45);">02 / 03</span>Founder · Campus media</div>
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,2.6vw,36px);font-weight:800;letter-spacing:-0.03em;line-height:1;">Daily UC Davis</div>
+            <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding-top:4px;"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(36px,3.4vw,48px);font-weight:800;letter-spacing:-0.04em;line-height:1;color:oklch(0.56 0.13 45);">1.2M</span><span style="font-size:15px;font-weight:700;line-height:1.35;max-width:180px;">views in the first 30 days</span></div>
+            <div style="font-size:14px;color:oklch(0.45 0.02 50);">57.8% from non-followers · 20+ local collabs</div>
+            <div style="display:flex;align-items:center;gap:12px;font-size:14.5px;font-weight:700;margin-top:auto;padding-top:8px;"><span style="width:44px;height:44px;border-radius:50%;border:1.5px solid oklch(0.82 0.01 55);display:flex;align-items:center;justify-content:center;">→</span>See the case study</div>
+          </div>
+        </a>
+        <a href="story-and-spoon.html" style="display:flex;flex-direction:column;gap:24px;color:oklch(0.2 0.015 50);transition:transform .35s ease;" style-hover="transform:translateY(-6px);color:oklch(0.2 0.015 50);">
+          <div><div style="position:relative;aspect-ratio:4/5;"><div style="position:absolute;left:24%;top:8%;width:60%;background:#fff;border-radius:16px;padding:8px 8px 0;box-sizing:border-box;transform:rotate(3deg);box-shadow:0 24px 50px -20px oklch(0.2 0.02 50 / 0.45);"><div style="aspect-ratio:4/5;border-radius:10px;overflow:hidden;"><img src="sas-naya-hero.png" alt="NaYa Dessert Café post" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div style="font-size:11.5px;font-weight:700;padding:8px 4px 10px;">naya.dessertcafe</div></div><div style="position:absolute;left:7%;top:36%;width:32%;border-radius:12px;overflow:hidden;border:5px solid #fff;transform:rotate(-7deg);box-shadow:0 24px 50px -20px oklch(0.2 0.02 50 / 0.45);z-index:3;"><img src="sas-naya-bts.jpg" alt="Behind the scenes at the shoot" loading="lazy" decoding="async" style="width:100%;aspect-ratio:2/3;object-fit:cover;display:block;"></div><div style="position:absolute;right:7%;top:5%;height:38px;padding:0 14px;background:#fff;border-radius:11px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;box-shadow:0 24px 50px -20px oklch(0.2 0.02 50 / 0.45);z-index:4;"><span style="font-size:10.5px;font-weight:700;color:oklch(0.5 0.02 50);">AA</span>storyandspoon.co</div></div></div>
+          <div style="display:flex;flex-direction:column;gap:12px;padding-top:20px;border-top:1px solid oklch(0.88 0.01 55);">
+            <div style="display:flex;align-items:baseline;gap:14px;font-size:11px;letter-spacing:1.6px;font-weight:700;text-transform:uppercase;color:oklch(0.5 0.02 50);"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:13px;letter-spacing:0;color:oklch(0.56 0.13 45);">03 / 03</span>Co-founder · Restaurant studio</div>
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,2.6vw,36px);font-weight:800;letter-spacing:-0.03em;line-height:1;">Story &amp; Spoon</div>
+            <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding-top:4px;"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(36px,3.4vw,48px);font-weight:800;letter-spacing:-0.04em;line-height:1;color:oklch(0.56 0.13 45);">01</span><span style="font-size:15px;font-weight:700;line-height:1.35;max-width:180px;">first client: NaYa Dessert Café</span></div>
+            <div style="font-size:14px;color:oklch(0.45 0.02 50);">storyandspoon.co</div>
+            <div style="display:flex;align-items:center;gap:12px;font-size:14.5px;font-weight:700;margin-top:auto;padding-top:8px;"><span style="width:44px;height:44px;border-radius:50%;border:1.5px solid oklch(0.82 0.01 55);display:flex;align-items:center;justify-content:center;">→</span>See the case study</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section data-reveal="1" data-screen-label="What I do" style="padding:clamp(40px,5vw,72px) clamp(20px,4vw,40px) clamp(72px,9vw,128px);max-width:1200px;margin:0 auto;box-sizing:border-box;">
+      <div style="font-size:12.5px;letter-spacing:3.5px;font-weight:700;color:oklch(0.5 0.02 50);margin-bottom:16px;">WHAT I BRING</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(36px,4.4vw,58px);font-weight:800;letter-spacing:-0.035em;line-height:1;margin:0;text-wrap:balance;color:oklch(0.2 0.015 50);max-width:760px;margin-bottom:48px;">Four skills.<br>Here’s the proof.</h2>
+      <div data-skills="" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(40px,5vw,72px);border-bottom:1px solid oklch(0.88 0.01 55);">
+        <a href="daviswithmaya.html" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(20px,3vw,40px);align-items:center;padding:clamp(28px,3.5vw,44px) 0;border-top:1px solid oklch(0.88 0.01 55);color:oklch(0.2 0.015 50);transition:transform .35s ease;" style-hover="transform:translateX(6px);color:oklch(0.2 0.015 50);">
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;align-items:baseline;gap:12px;"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:700;color:oklch(0.56 0.13 45);">01</span><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.4px;">Growth marketing</span></div>
+            <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(48px,5vw,68px);font-weight:800;letter-spacing:-0.045em;line-height:0.9;color:oklch(0.56 0.13 45);">6.6M+</span><span style="font-size:14px;font-weight:700;">monthly views</span></div>
+            <div style="font-size:15px;line-height:1.55;color:oklch(0.45 0.02 50);text-wrap:pretty;max-width:340px;">A 2–3 posts a day system with hook-first editing, built from zero twice.</div>
+          </div>
+          <div style="position:relative;aspect-ratio:16/10;"><div style="position:absolute;left:12%;top:10%;width:34%;border-radius:16px;overflow:hidden;transform:rotate(-3deg);box-shadow:0 24px 50px -20px oklch(0.2 0.02 50 / 0.45);"><img src="dwm-views-ring.jpg" alt="Instagram: 5,467,771 views in 30 days" loading="lazy" decoding="async" style="width:100%;display:block;"></div><div style="position:absolute;right:9%;top:20%;background:#fff;border-radius:5px;padding:10px 13px 11px;display:flex;gap:10px;align-items:center;box-shadow:0 1px 0 oklch(0.2 0.02 50 / 0.06),0 18px 30px -18px oklch(0.2 0.02 50 / 0.35);z-index:4;"><div style="width:7px;height:7px;border-radius:50%;background:oklch(0.62 0.22 15);flex-shrink:0;align-self:flex-start;margin-top:5px;"></div><div style="min-width:0;"><div style="font-size:10.5px;letter-spacing:0.6px;font-weight:700;color:oklch(0.5 0.02 50);">NON-FOLLOWERS</div><div style="font-size:14px;font-weight:700;color:oklch(0.2 0.015 50);line-height:1.3;">94.5% of all views</div></div></div><div style="position:absolute;right:14%;top:52%;background:#fff;border-radius:5px;padding:10px 13px 11px;display:flex;gap:10px;align-items:center;box-shadow:0 1px 0 oklch(0.2 0.02 50 / 0.06),0 18px 30px -18px oklch(0.2 0.02 50 / 0.35);z-index:4;"><div style="width:7px;height:7px;border-radius:50%;background:oklch(0.6 0.15 145);flex-shrink:0;align-self:flex-start;margin-top:5px;"></div><div style="min-width:0;"><div style="font-size:10.5px;letter-spacing:0.6px;font-weight:700;color:oklch(0.5 0.02 50);">ACCOUNTS REACHED</div><div style="font-size:14px;font-weight:700;color:oklch(0.2 0.015 50);line-height:1.3;">2.7M · up 122%</div></div></div></div>
+        </a>
+        <a href="marketing.html" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(20px,3vw,40px);align-items:center;padding:clamp(28px,3.5vw,44px) 0;border-top:1px solid oklch(0.88 0.01 55);color:oklch(0.2 0.015 50);transition:transform .35s ease;" style-hover="transform:translateX(6px);color:oklch(0.2 0.015 50);">
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;align-items:baseline;gap:12px;"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:700;color:oklch(0.56 0.13 45);">02</span><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.4px;">Brand partnerships</span></div>
+            <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(48px,5vw,68px);font-weight:800;letter-spacing:-0.045em;line-height:0.9;color:oklch(0.56 0.13 45);">30+</span><span style="font-size:14px;font-weight:700;">paid partnerships</span></div>
+            <div style="font-size:15px;line-height:1.55;color:oklch(0.45 0.02 50);text-wrap:pretty;max-width:340px;">Pitched, negotiated, and delivered every deal myself, including 1 of 50 Hero Cosmetics ambassadors.</div>
+          </div>
+          <div style="position:relative;aspect-ratio:16/10;"><div style="position:absolute;left:8%;top:10%;width:72%;background:#fff;border-radius:5px;padding:11px 13px;display:flex;gap:11px;align-items:center;transform:rotate(-2deg);box-shadow:0 1px 0 oklch(0.2 0.02 50 / 0.06),0 18px 30px -18px oklch(0.2 0.02 50 / 0.35);z-index:4;"><img src="https://unavatar.io/herocosmetics.com" alt="" loading="lazy" decoding="async" style="width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#fff;"><div style="flex:1;min-width:0;"><div style="display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;color:oklch(0.5 0.02 50);"><span>NEW PARTNERSHIP</span><span>✓</span></div><div style="font-size:14px;font-weight:700;color:oklch(0.2 0.015 50);">Hero Cosmetics × @daviswithmaya</div></div></div><div style="position:absolute;left:20%;top:34%;width:72%;background:#fff;border-radius:5px;padding:11px 13px;display:flex;gap:11px;align-items:center;transform:rotate(1.5deg);box-shadow:0 1px 0 oklch(0.2 0.02 50 / 0.06),0 18px 30px -18px oklch(0.2 0.02 50 / 0.35);z-index:3;"><img src="https://unavatar.io/capcut.com" alt="" loading="lazy" decoding="async" style="width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#fff;"><div style="flex:1;min-width:0;"><div style="display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;color:oklch(0.5 0.02 50);"><span>NEW PARTNERSHIP</span><span>✓</span></div><div style="font-size:14px;font-weight:700;color:oklch(0.2 0.015 50);">CapCut × @daviswithmaya</div></div></div><div style="position:absolute;left:10%;top:58%;width:72%;background:#fff;border-radius:5px;padding:11px 13px;display:flex;gap:11px;align-items:center;transform:rotate(-1deg);box-shadow:0 1px 0 oklch(0.2 0.02 50 / 0.06),0 18px 30px -18px oklch(0.2 0.02 50 / 0.35);z-index:2;"><img src="https://unavatar.io/beachwaver.com" alt="" loading="lazy" decoding="async" style="width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#fff;"><div style="flex:1;min-width:0;"><div style="display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;color:oklch(0.5 0.02 50);"><span>NEW PARTNERSHIP</span><span>✓</span></div><div style="font-size:14px;font-weight:700;color:oklch(0.2 0.015 50);">BeachWaver × @daviswithmaya</div></div></div><div style="position:absolute;right:7%;bottom:10%;background:oklch(0.2 0.015 50);color:#fff;border-radius:100px;padding:8px 14px;font-size:12.5px;font-weight:700;z-index:5;">+ 27 more</div></div>
+        </a>
+        <a href="design.html#p-nonprofit" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(20px,3vw,40px);align-items:center;padding:clamp(28px,3.5vw,44px) 0;border-top:1px solid oklch(0.88 0.01 55);color:oklch(0.2 0.015 50);transition:transform .35s ease;" style-hover="transform:translateX(6px);color:oklch(0.2 0.015 50);">
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;align-items:baseline;gap:12px;"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:700;color:oklch(0.56 0.13 45);">03</span><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.4px;">UX/UI design</span></div>
+            <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(48px,5vw,68px);font-weight:800;letter-spacing:-0.045em;line-height:0.9;color:oklch(0.56 0.13 45);">5</span><span style="font-size:14px;font-weight:700;">design projects</span></div>
+            <div style="font-size:15px;line-height:1.55;color:oklch(0.45 0.02 50);text-wrap:pretty;max-width:340px;">Research to Figma prototype for Fourth &amp; Hope, CampusBites, Nova, and more.</div>
+          </div>
+          <div style="position:relative;aspect-ratio:16/10;"><div style="position:absolute;left:10%;top:13%;width:66%;">
+     <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:600;color:oklch(0.5 0.02 50);margin:0 2px 6px;"><span>Fourth &amp; Hope — Home</span><span>Figma</span></div>
+     <div style="position:relative;outline:1.5px solid oklch(0.62 0.18 255);box-shadow:0 24px 50px -20px oklch(0.2 0.02 50 / 0.45);"><img src="fh-home-screen.jpg" alt="Fourth & Hope homepage redesign" loading="lazy" decoding="async" style="width:100%;display:block;"><div style="position:absolute;width:8px;height:8px;background:#fff;border:1.5px solid oklch(0.62 0.18 255);left:-5px;top:-5px;"></div><div style="position:absolute;width:8px;height:8px;background:#fff;border:1.5px solid oklch(0.62 0.18 255);right:-5px;top:-5px;"></div><div style="position:absolute;width:8px;height:8px;background:#fff;border:1.5px solid oklch(0.62 0.18 255);left:-5px;bottom:-5px;"></div><div style="position:absolute;width:8px;height:8px;background:#fff;border:1.5px solid oklch(0.62 0.18 255);right:-5px;bottom:-5px;"></div></div>
+     <div style="margin-top:8px;display:inline-block;background:oklch(0.62 0.18 255);color:#fff;font-size:10.5px;font-weight:700;padding:3px 7px;border-radius:4px;">1440 × 900</div>
+   </div>
+   <div style="position:absolute;left:70%;top:58%;display:flex;align-items:flex-start;gap:2px;z-index:5;"><div style="width:0;height:0;border-left:7px solid oklch(0.65 0.2 25);border-bottom:7px solid transparent;border-top:7px solid oklch(0.65 0.2 25);border-right:7px solid transparent;transform:rotate(-12deg);"></div><div style="background:oklch(0.65 0.2 25);color:#fff;font-size:11.5px;font-weight:700;padding:4px 8px;border-radius:6px;margin-top:10px;">Maya</div></div><div style="position:absolute;right:6%;top:9%;max-width:40%;background:#fff;border-radius:5px;padding:10px 13px 11px;display:flex;gap:10px;align-items:center;box-shadow:0 1px 0 oklch(0.2 0.02 50 / 0.06),0 18px 30px -18px oklch(0.2 0.02 50 / 0.35);z-index:4;"><div style="width:7px;height:7px;border-radius:50%;background:oklch(0.62 0.18 255);flex-shrink:0;align-self:flex-start;margin-top:5px;"></div><div style="min-width:0;"><div style="font-size:10.5px;letter-spacing:0.6px;font-weight:700;color:oklch(0.5 0.02 50);">USER TESTING</div><div style="font-size:14px;font-weight:700;color:oklch(0.2 0.015 50);line-height:1.3;">80% got lost. Fixed the flow.</div></div></div></div>
+        </a>
+        <a href="story-and-spoon.html" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(20px,3vw,40px);align-items:center;padding:clamp(28px,3.5vw,44px) 0;border-top:1px solid oklch(0.88 0.01 55);color:oklch(0.2 0.015 50);transition:transform .35s ease;" style-hover="transform:translateX(6px);color:oklch(0.2 0.015 50);">
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;align-items:baseline;gap:12px;"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:700;color:oklch(0.56 0.13 45);">04</span><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.4px;">Founding &amp; operations</span></div>
+            <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(48px,5vw,68px);font-weight:800;letter-spacing:-0.045em;line-height:0.9;color:oklch(0.56 0.13 45);">3</span><span style="font-size:14px;font-weight:700;">brands founded</span></div>
+            <div style="font-size:15px;line-height:1.55;color:oklch(0.45 0.02 50);text-wrap:pretty;max-width:340px;">Pipeline, contracts, invoices, and content calendars, all built and run myself.</div>
+          </div>
+          <div style="position:relative;aspect-ratio:16/10;"><div style="position:absolute;left:8%;top:12%;width:78%;border-radius:12px;overflow:hidden;background:#fff;transform:rotate(-1.5deg);box-shadow:0 24px 50px -20px oklch(0.2 0.02 50 / 0.45);"><div style="display:flex;align-items:center;gap:6px;padding:8px 10px;background:oklch(0.95 0.008 60);"><span style="width:8px;height:8px;border-radius:50%;background:oklch(0.7 0.18 25);"></span><span style="width:8px;height:8px;border-radius:50%;background:oklch(0.82 0.15 85);"></span><span style="width:8px;height:8px;border-radius:50%;background:oklch(0.72 0.16 145);"></span><span style="flex:1;text-align:center;font-size:10.5px;font-weight:600;color:oklch(0.45 0.02 50);">Story &amp; Spoon — Business Toolkit</span></div><img src="screenshot-2026-09-02-at-4-30-08-pm.jpg" alt="Story & Spoon client pipeline tracker" loading="lazy" decoding="async" style="width:100%;aspect-ratio:16/8;object-fit:cover;object-position:top;display:block;"></div><div style="position:absolute;right:6%;bottom:12%;background:#fff;border-radius:5px;padding:10px 13px 11px;display:flex;gap:10px;align-items:center;box-shadow:0 1px 0 oklch(0.2 0.02 50 / 0.06),0 18px 30px -18px oklch(0.2 0.02 50 / 0.35);z-index:4;"><div style="width:7px;height:7px;border-radius:50%;background:oklch(0.56 0.13 45);flex-shrink:0;align-self:flex-start;margin-top:5px;"></div><div style="min-width:0;"><div style="font-size:10.5px;letter-spacing:0.6px;font-weight:700;color:oklch(0.5 0.02 50);">CLIENT PIPELINE</div><div style="font-size:14px;font-weight:700;color:oklch(0.2 0.015 50);line-height:1.3;">50 restaurants researched</div></div></div></div>
+        </a>
+      </div>
+    </section>
+
+    <section data-reveal="1" data-screen-label="Press" style="background:oklch(0.935 0.012 60);padding:clamp(72px,9vw,128px) clamp(20px,4vw,40px);">
+      <div style="max-width:1200px;margin:0 auto;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,88px);align-items:center;">
+        <a href="https://theaggie.org/2026/5/5/daviscasocialmediacommunitydiary" target="_blank" rel="noopener" style="display:block;border-radius:24px;overflow:hidden;box-shadow:0 50px 90px -40px oklch(0.2 0.02 50 / 0.55);transform:rotate(-2deg);transition:transform .5s ease;" style-hover="transform:rotate(0deg) scale(1.01);"><img src="dwm-aggie-print.jpg" alt="The California Aggie feature on Maya Yoo" loading="lazy" decoding="async" style="width:100%;display:block;"></a>
+        <div>
+          <div style="font-size:12.5px;letter-spacing:3.5px;font-weight:700;color:oklch(0.5 0.02 50);margin-bottom:16px;">AS FEATURED IN THE CALIFORNIA AGGIE</div>
+          <blockquote style="margin:0 0 18px;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(30px,3.4vw,46px);font-weight:700;letter-spacing:-0.03em;line-height:1.08;text-wrap:balance;">“Being a content creator has taught me that authenticity matters most.”</blockquote>
+          <div style="font-size:14.5px;color:oklch(0.45 0.02 50);margin-bottom:36px;">Maya Yoo · <a href="https://theaggie.org/2026/5/5/daviscasocialmediacommunitydiary" target="_blank" rel="noopener" style="font-weight:700;">Read the profile ↗</a></div>
+          <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-top:1px solid oklch(0.85 0.01 55);font-size:15.5px;color:oklch(0.3 0.02 50);"><span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px;color:oklch(0.2 0.015 50);min-width:84px;">1 of 50</span><span style="flex:1;min-width:0;">national ambassadors for Hero Cosmetics</span></div>
+          <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-top:1px solid oklch(0.85 0.01 55);font-size:15.5px;color:oklch(0.3 0.02 50);"><span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px;color:oklch(0.2 0.015 50);min-width:84px;">2×</span><span style="flex:1;min-width:0;">Ambassador of the Month: BeachWaver and Elevated Faith</span></div>
+          <div style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-top:1px solid oklch(0.85 0.01 55);font-size:15.5px;color:oklch(0.3 0.02 50);"><span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px;color:oklch(0.2 0.015 50);min-width:84px;">30+</span><span style="flex:1;min-width:0;">paid brand partnerships, all outreach done myself</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section data-reveal="1" data-screen-label="Top videos" style="background:oklch(0.16 0.012 50);color:#fff;padding:clamp(88px,10vw,144px) clamp(20px,4vw,40px);position:relative;overflow:hidden;">
+      <div style="position:absolute;left:50%;top:-20%;width:1200px;height:800px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,oklch(0.56 0.13 45 / 0.22),transparent);pointer-events:none;"></div>
+      <div style="position:relative;max-width:1200px;margin:0 auto;box-sizing:border-box;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:56px;">
+          <div><div style="font-size:12.5px;letter-spacing:3.5px;font-weight:700;color:oklch(0.72 0.02 60);margin-bottom:16px;">THE VIDEOS THAT DID IT</div><h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(36px,4.4vw,58px);font-weight:800;letter-spacing:-0.035em;line-height:1;margin:0;text-wrap:balance;color:#fff;font-size:clamp(44px,6vw,88px);">10M+ views.<br><span style="color:oklch(0.78 0.13 55);">Four videos.</span></h2></div>
+          <a href="storytelling.html" style="font-weight:700;font-size:15px;color:oklch(0.85 0.1 55);padding-bottom:10px;" style-hover="color:#fff;">See all my content →</a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:22px;">
+          <a href="daviswithmaya.html" style="display:flex;flex-direction:column;gap:14px;color:#fff;" style-hover="color:#fff;">
+          <div style="aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:oklch(0.25 0.01 50);box-shadow:0 40px 80px -40px oklch(0.56 0.13 45 / 0.45);transition:transform .4s ease;" style-hover="transform:translateY(-8px);"><video src="dwm-faith-in-jesus.mp4" poster="dwm-faith-in-jesus.jpg" aria-label="Faith in Jesus" autoplay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsinline="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;"></video></div>
+          <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:34px;font-weight:800;letter-spacing:-1px;line-height:1;">3.5M</div><div style="font-size:13px;color:oklch(0.72 0.01 60);margin-top:6px;">Faith in Jesus · @daviswithmaya</div></div>
+        </a>
+          <a href="daviswithmaya.html" style="display:flex;flex-direction:column;gap:14px;color:#fff;" style-hover="color:#fff;">
+          <div style="aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:oklch(0.25 0.01 50);box-shadow:0 40px 80px -40px oklch(0.56 0.13 45 / 0.45);transition:transform .4s ease;" style-hover="transform:translateY(-8px);"><video src="dwm-friends.mp4" poster="dwm-friends.jpg" aria-label="Friends" autoplay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsinline="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;"></video></div>
+          <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:34px;font-weight:800;letter-spacing:-1px;line-height:1;">2.4M</div><div style="font-size:13px;color:oklch(0.72 0.01 60);margin-top:6px;">Friends · @daviswithmaya</div></div>
+        </a>
+          <a href="daviswithmaya.html" style="display:flex;flex-direction:column;gap:14px;color:#fff;" style-hover="color:#fff;">
+          <div style="aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:oklch(0.25 0.01 50);box-shadow:0 40px 80px -40px oklch(0.56 0.13 45 / 0.45);transition:transform .4s ease;" style-hover="transform:translateY(-8px);"><video src="dwm-side-quests.mp4" poster="dwm-side-quests.jpg" aria-label="Side quests" autoplay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsinline="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;"></video></div>
+          <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:34px;font-weight:800;letter-spacing:-1px;line-height:1;">2.3M</div><div style="font-size:13px;color:oklch(0.72 0.01 60);margin-top:6px;">Side quests · @daviswithmaya</div></div>
+        </a>
+          <a href="daviswithmaya.html" style="display:flex;flex-direction:column;gap:14px;color:#fff;" style-hover="color:#fff;">
+          <div style="aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:oklch(0.25 0.01 50);box-shadow:0 40px 80px -40px oklch(0.56 0.13 45 / 0.45);transition:transform .4s ease;" style-hover="transform:translateY(-8px);"><video src="dwm-thankfulness.mp4" poster="dwm-thankfulness.jpg" aria-label="Thankfulness" autoplay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsinline="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;"></video></div>
+          <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:34px;font-weight:800;letter-spacing:-1px;line-height:1;">2.2M</div><div style="font-size:13px;color:oklch(0.72 0.01 60);margin-top:6px;">Thankfulness · @daviswithmaya</div></div>
+        </a>
+        </div>
+      </div>
+    </section>
+
+    <section data-reveal="1" data-screen-label="Contact" style="background:oklch(0.16 0.012 50);color:#fff;padding:clamp(40px,5vw,72px) clamp(20px,4vw,40px) clamp(96px,11vw,160px);position:relative;overflow:hidden;">
+      <div style="position:absolute;left:50%;bottom:-40%;width:1400px;height:900px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,oklch(0.6 0.14 50 / 0.35),transparent);pointer-events:none;"></div>
+      <div style="position:relative;max-width:900px;margin:0 auto;text-align:center;">
+        <div style="display:inline-flex;align-items:center;gap:8px;border:1px solid oklch(1 0 0 / 0.16);padding:7px 14px;border-radius:100px;font-size:12.5px;font-weight:700;color:oklch(0.85 0.01 60);margin-bottom:28px;"><span style="width:7px;height:7px;border-radius:50%;background:oklch(0.7 0.17 145);"></span>Open to summer 2027 internships</div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(36px,4.4vw,58px);font-weight:800;letter-spacing:-0.035em;line-height:1;margin:0;text-wrap:balance;color:#fff;font-size:clamp(52px,8vw,120px);margin-bottom:40px;">Let’s build<br><span style="color:oklch(0.78 0.13 55);">something.</span></h2>
+        <div style="max-width:420px;margin:0 auto;background:oklch(0.97 0.004 60 / 0.94);backdrop-filter:blur(18px);border-radius:24px;overflow:hidden;color:oklch(0.2 0.015 50);box-shadow:0 40px 90px -30px oklch(0 0 0 / 0.6);">
+          <div style="padding:24px 24px 20px;">
+            <div style="font-weight:700;font-size:17px;margin-bottom:4px;">Maya Yoo</div>
+            <a href="mailto:{{ email }}" style="font-size:15px;color:oklch(0.45 0.02 50);">{{ email }}</a>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px;">
+              <a href="{{ resumeUrl }}" download="MayaYoo_Resume.pdf" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:11px 20px;border-radius:100px;font-weight:700;font-size:13.5px;" style-hover="background:oklch(0.56 0.13 45);color:oklch(0.97 0.01 60);">Résumé ↓</a>
+              <div onClick="{{ copyEmail }}" style="cursor:pointer;border:1.5px solid oklch(0.85 0.01 55);padding:10px 18px;border-radius:100px;font-weight:700;font-size:13.5px;" style-hover="border-color:oklch(0.2 0.015 50);">{{ copyLabel }}</div>
             </div>
           </div>
-        </sc-for>
-      </div>
-    </section>
-
-    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:50px clamp(20px,4vw,40px);max-width:1200px;margin:0 auto;">
-      <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;">
-        <a href="https://www.instagram.com/daviswithmaya" target="_blank" style="display:flex;align-items:center;gap:8px;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);padding:12px 20px;border-radius:100px;font-weight:700;font-size:13.5px;" style-hover="border-color:oklch(0.56 0.13 45);color:oklch(0.56 0.13 45);">Instagram — @daviswithmaya</a>
-        <a href="http://www.linkedin.com/in/mayayoo" target="_blank" style="display:flex;align-items:center;gap:8px;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);padding:12px 20px;border-radius:100px;font-weight:700;font-size:13.5px;" style-hover="border-color:oklch(0.56 0.13 45);color:oklch(0.56 0.13 45);">LinkedIn</a>
-        <a href="https://storyandspoon.co" target="_blank" style="display:flex;align-items:center;gap:8px;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);padding:12px 20px;border-radius:100px;font-weight:700;font-size:13.5px;" style-hover="border-color:oklch(0.56 0.13 45);color:oklch(0.56 0.13 45);">Story &amp; Spoon</a>
-        <a href="mailto:{{ email }}" style="display:flex;align-items:center;gap:8px;background:oklch(0.995 0.004 60);border:1px solid oklch(0.85 0.01 55);padding:12px 20px;border-radius:100px;font-weight:700;font-size:13.5px;" style-hover="border-color:oklch(0.56 0.13 45);color:oklch(0.56 0.13 45);">Email</a>
-      </div>
-    </section>
-
-
-    <section data-reveal="1" style="opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;padding:clamp(88px,11vw,120px) clamp(20px,4vw,40px);text-align:center;">
-      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:38px;font-weight:700;margin:0 0 16px;">Let's build something that grows.</h2>
-      <p style="color:oklch(0.45 0.02 50);font-size:16px;margin:0 0 30px;">Marketing roles, design roles, or something in between — I'm ready.</p>
-      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-        <a href="mailto:{{ email }}" style="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);padding:15px 28px;border-radius:100px;font-weight:700;" style-hover="background:oklch(0.56 0.13 45);">Email Me</a>
-        <div onClick="{{ goto.about }}" style="border:1.5px solid oklch(0.2 0.015 50);padding:15px 28px;border-radius:100px;font-weight:700;cursor:pointer;" style-hover="background:oklch(0.2 0.015 50);color:oklch(0.97 0.01 60);">Full Contact Page →</div>
-      </div>
-    </section>
-
-  <sc-if value="{{ slideLightbox }}" hint-placeholder-val="{{ false }}">
-    <div onClick="{{ closeSlide }}" style="position:fixed;inset:0;background:oklch(0.08 0.01 50 / 0.94);z-index:210;display:flex;align-items:center;justify-content:center;padding:32px;animation:lightboxFade .25s ease;">
-      <div onClick="{{ stopProp }}" style="max-width:1040px;width:100%;display:flex;flex-direction:column;animation:lightboxScale .3s cubic-bezier(0.2,0.8,0.3,1);">
-        <img src="{{ slideLightbox.src }}" style="width:100%;max-height:76vh;object-fit:contain;border-radius:8px;">
-        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;color:#fff;">
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:700;">{{ slideLightbox.label }}</div>
-          <div style="font-size:12.5px;color:oklch(0.65 0.02 55);flex-shrink:0;">{{ slideLightbox.counter }}</div>
+          <a href="mailto:{{ email }}" style="display:block;border-top:1px solid oklch(0.86 0.008 60);padding:15px;font-weight:700;font-size:17px;color:oklch(0.55 0.19 255);" style-hover="background:oklch(0.93 0.008 60);color:oklch(0.5 0.19 255);">Hire Me</a>
+        </div>
+        <div style="display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-top:36px;font-size:14px;font-weight:600;">
+          <a href="http://www.linkedin.com/in/mayayoo" target="_blank" rel="noopener" style="color:oklch(0.85 0.01 60);" style-hover="color:#fff;">LinkedIn ↗</a>
+          <a href="https://www.instagram.com/daviswithmaya" target="_blank" rel="noopener" style="color:oklch(0.85 0.01 60);" style-hover="color:#fff;">Instagram ↗</a>
+          <a href="https://storyandspoon.co" target="_blank" rel="noopener" style="color:oklch(0.85 0.01 60);" style-hover="color:#fff;">storyandspoon.co ↗</a>
         </div>
       </div>
-      <div onClick="{{ prevSlide }}" style="position:absolute;left:18px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:oklch(1 0 0 / 0.1);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;transition:background .2s;" style-hover="background:oklch(1 0 0 / 0.2);">‹</div>
-      <div onClick="{{ nextSlide }}" style="position:absolute;right:18px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:oklch(1 0 0 / 0.1);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;transition:background .2s;" style-hover="background:oklch(1 0 0 / 0.2);">›</div>
-      <div onClick="{{ closeSlide }}" style="position:absolute;top:22px;right:26px;color:#fff;font-size:26px;font-weight:300;cursor:pointer;">×</div>
-    </div>
-  </sc-if>
+    </section>
 
   <sc-if value="{{ activeVideo }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ closeVideo }}" style="position:fixed;inset:0;background:oklch(0.08 0.01 50 / 0.94);z-index:200;display:flex;align-items:center;justify-content:center;padding:32px;animation:lightboxFade .25s ease;">
       <div onClick="{{ stopProp }}" style="max-width:400px;width:100%;display:flex;flex-direction:column;animation:lightboxScale .3s cubic-bezier(0.2,0.8,0.3,1);position:relative;">
         <div style="position:relative;width:100%;height:min(72vh,700px);border-radius:12px;overflow:hidden;background:oklch(0.15 0.02 50);">
           <sc-if value="{{ activeVideo.canEmbed }}" hint-placeholder-val="{{ true }}">
-            <iframe src="{{ activeVideo.embedUrl }}" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="" scrolling="no"></iframe>
+            <iframe loading="lazy" src="{{ activeVideo.embedUrl }}" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="" scrolling="no"></iframe>
           </sc-if>
           <sc-if value="{{ activeVideo.noEmbed }}" hint-placeholder-val="{{ false }}">
             <a href="{{ activeVideo.link }}" target="_blank" rel="noopener" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:14px;padding:26px;text-align:center;background-image:linear-gradient(oklch(0.15 0.02 50 / 0.1),oklch(0.15 0.02 50 / 0.85)),url('{{ activeVideo.tileCover }}');background-size:cover;background-position:center;color:oklch(0.97 0.01 60);">
@@ -421,18 +333,18 @@
     </div>
   </sc-if>
 
-  <footer style="padding:56px clamp(20px,4vw,40px) 40px;border-top:1px solid oklch(0.85 0.01 55);">
+  <footer style="padding:56px clamp(20px,4vw,40px) 28px;background:oklch(0.16 0.012 50);color:oklch(0.8 0.01 60);border-top:1px solid oklch(1 0 0 / 0.08);">
     <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:26px;">
       <div>
-        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px;">Maya Faith Yoo</div>
-        <div style="font-size:12.5px;color:oklch(0.5 0.02 50);">Marketing · Design · Business · AI</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px;;color:#fff;">Maya Faith Yoo</div>
+        <div style="font-size:12.5px;color:oklch(0.72 0.01 60);">Marketing · Design · Business · AI</div>
       </div>
-      <div style="display:flex;gap:22px;font-size:12.5px;color:oklch(0.5 0.02 50);flex-wrap:wrap;">
-        <a href="mailto:{{ email }}">{{ email }}</a>
-        <a href="photography.html">Photography</a>
-        <a href="http://www.linkedin.com/in/mayayoo" target="_blank">LinkedIn</a>
-        <a href="https://www.instagram.com/daviswithmaya" target="_blank">Instagram</a>
-        <a href="https://storyandspoon.co" target="_blank">Story &amp; Spoon</a>
+      <div style="display:flex;gap:22px;font-size:12.5px;color:oklch(0.72 0.01 60);flex-wrap:wrap;">
+        <a style="color:oklch(0.8 0.01 60);" href="mailto:{{ email }}">{{ email }}</a>
+        <a style="color:oklch(0.8 0.01 60);" href="photography.html">Photography</a>
+        <a style="color:oklch(0.8 0.01 60);" href="http://www.linkedin.com/in/mayayoo" target="_blank">LinkedIn</a>
+        <a style="color:oklch(0.8 0.01 60);" href="https://www.instagram.com/daviswithmaya" target="_blank">Instagram</a>
+        <a style="color:oklch(0.8 0.01 60);" href="https://storyandspoon.co" target="_blank">Story &amp; Spoon</a>
       </div>
     </div>
   </footer>
@@ -440,7 +352,7 @@
 
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;resumeUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://drive.google.com/file/d/1POKkfz5ka_epCnrfIOHhEX-hjA__O_J8/view?usp=sharing&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tweaks&quot;},&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;maya.faith.yoo@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tweaks&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;resumeUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;maya-yoo-resume.pdf&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tweaks&quot;},&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;maya.faith.yoo@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tweaks&quot;}}">
 const IMG = 'https://images.squarespace-cdn.com/content/v1/67a1585e91654d42a21cd470/';
 const CURRENT_PAGE = 'home';
 const PAGE_HREFS = {"home":"index.html","marketing":"marketing.html","design":"design.html","ventures":"ventures.html","content":"storytelling.html","storytelling":"storytelling.html","photography":"photography.html","about":"about.html"};
@@ -460,7 +372,7 @@ class Component extends DCLogic {
     if (pagesList.includes(h0) && h0 !== this.state.page) this.setState({ page: h0 });
     this._onHash = () => { const h = (location.hash || '#home').slice(1); if (pagesList.includes(h) && h !== this.state.page) this.setState({ page: h }, () => window.scrollTo(0, 0)); };
     window.addEventListener('hashchange', this._onHash);
-    this._wordTimer = setInterval(() => { if (CURRENT_PAGE === 'home') this.setState(s => ({ heroWordIdx: s.heroWordIdx + 1 })); }, 2600);
+    
     this._onKeyDown = (e) => {
       if (this.state.slideLB) {
         if (e.key === 'Escape') this.closeSlide();
@@ -487,9 +399,9 @@ class Component extends DCLogic {
     this._revealTimer = setInterval(this._revealCheck, 500); this._revealCheck();
     this._onMouseDown = () => { this.cursorDown = true; };
     this._onMouseUp = () => { this.cursorDown = false; };
-    window.addEventListener('mousemove', this._onMouseMove);
-    window.addEventListener('mousedown', this._onMouseDown);
-    window.addEventListener('mouseup', this._onMouseUp);
+    
+    
+    
   }
   componentWillUnmount() { if (this._raf) cancelAnimationFrame(this._raf); if (this._revealTimer) clearInterval(this._revealTimer); window.removeEventListener('scroll', this._onScrollReveal); window.removeEventListener('resize', this._onScrollReveal); if (this._statsPoll) clearInterval(this._statsPoll); if (this._io) this._io.disconnect(); window.removeEventListener('keydown', this._onKeyDown); window.removeEventListener('mousemove', this._onMouseMove); window.removeEventListener('mousedown', this._onMouseDown); window.removeEventListener('mouseup', this._onMouseUp); if (this._wordTimer) clearInterval(this._wordTimer); window.removeEventListener('hashchange', this._onHash); }
   componentDidUpdate() { this.setupStatsObserver(); if (this._revealCheck) this._revealCheck(); }
@@ -586,13 +498,13 @@ class Component extends DCLogic {
   renderVals() {
     const t = this.state.t;
     const page = CURRENT_PAGE;
-    const pages = ['home', 'ventures', 'marketing', 'storytelling', 'design', 'about'];
-    const labels = { home: 'Home', marketing: 'Marketing', storytelling: 'Storytelling', design: 'Design', ventures: 'Ventures', about: 'About' };
-    const navItems = pages.map(id => ({ label: labels[id], onClick: () => { if (id !== CURRENT_PAGE) window.location.href = PAGE_HREFS[id]; }, style: this.navStyle(page === id) }));
+    const pages = ['ventures', 'marketing', 'design', 'storytelling', 'about'];
+    const labels = { home: 'Home', marketing: 'Marketing', storytelling: 'Content', design: 'Design', ventures: 'Ventures', about: 'About' };
+    const navItems = pages.map(id => ({ label: labels[id], onClick: () => { if (id !== CURRENT_PAGE) window.location.href = PAGE_HREFS[id]; }, style: this.navStyle(page === id || (id === 'storytelling' && page === 'photography')) }));
     const goto = {};
-    pages.concat(['content','photography']).forEach(id => { goto[id] = () => { if (id !== CURRENT_PAGE) window.location.href = PAGE_HREFS[id]; }; });
+    pages.concat(['home','content','photography']).forEach(id => { goto[id] = () => { if (id !== CURRENT_PAGE) window.location.href = PAGE_HREFS[id]; }; });
 
-    const resumeUrl = this.props.resumeUrl ?? 'https://drive.google.com/file/d/1POKkfz5ka_epCnrfIOHhEX-hjA__O_J8/view?usp=sharing';
+    const resumeUrl = this.props.resumeUrl ?? 'maya-yoo-resume.pdf';
     const email = this.props.contactEmail ?? 'maya.faith.yoo@gmail.com';
     const showFaithWork = this.props.showFaithWork ?? true;
     const heroWords = ['stick around for.', 'come back to.', 'share with friends.', 'talk about.'];
@@ -610,7 +522,7 @@ class Component extends DCLogic {
       { name: 'DavisWithMaya', image: IMG + 'ed1ffa9f-9bd3-4191-9a87-9385ca903d5c/34.png' },
       { name: '#Include at Davis', image: IMG + 'a56758dc-f022-4833-ab7e-a63ff4e27fbf/include.jpg' },
     ];
-    const marqueeBrands = marqueeBase.concat(marqueeBase);
+    const marqueeBrands = marqueeBase.filter(b => !['Daily UC Davis','DavisWithMaya','The Midnight Grind','#Include at Davis'].includes(b.name));
 
     const storyBeats = [
       { year: '2024', title: 'A camera and no plan', text: 'Started posting about UC Davis life with zero strategy. Just wanted to make something people related to.' },
@@ -620,10 +532,10 @@ class Component extends DCLogic {
     ];
 
     const pillars = [
-      { num: '01', title: 'Marketing & Growth', desc: 'Campaign strategy, brand partnerships, and organic growth that turns strangers into audiences.' },
-      { num: '02', title: 'Product & UX Design', desc: 'Research, wireframes, and high-fidelity prototypes in Figma — from concept to demo day.' },
-      { num: '03', title: 'Brand & Business', desc: 'Founded and scaled platforms and a studio from zero, owning strategy and operations.' },
-      { num: '04', title: 'AI-Powered Workflow', desc: 'Fluent in prompting and AI tools woven into research, design, and content production.' },
+      { num: '01', title: 'Marketing & Growth', desc: 'Campaign strategy, brand partnerships, and organic growth that turns strangers into audiences.', img: 'tmg-quarter-recap.jpg' },
+      { num: '02', title: 'Product & UX Design', desc: 'Research, wireframes, and high-fidelity prototypes in Figma — from concept to demo day.', img: 'screenshot-2026-08-28-at-3-36-46-pm-a19680d1.jpg' },
+      { num: '03', title: 'Brand & Business', desc: 'Founded and scaled platforms and a studio from zero, owning strategy and operations.', img: 'slide5.jpg' },
+      { num: '04', title: 'AI-Powered Workflow', desc: 'Fluent in prompting and AI tools woven into research, design, and content production.', img: 'img-4026.jpg' },
     ];
 
     const featuredProjects = [
@@ -651,7 +563,7 @@ class Component extends DCLogic {
       { n: '04', title: 'Productize', desc: 'Free UC Davis Starter Guide, dorm & packing guides, resource hubs' },
       { n: '05', title: 'Monetize', desc: 'Amazon storefront, digital guides, brand collaborations' },
     ];
-    const spoonStats = [{ num: '50', label: 'restaurants researched and scored' }, { num: '20', label: 'owners contacted' }, { num: '3', label: 'proposal decks built' }, { num: '30+', label: 'local restaurants already partnered with via DavisWithMaya' }];
+    const spoonStats = [{ num: '50', label: 'restaurant collabs behind the studio' }, { num: '20', label: 'owners contacted' }, { num: '3', label: 'site, Instagram &amp; Google in one package' }, { num: '30+', label: 'local restaurants already partnered with via DavisWithMaya' }];
     const dwmStats = [{ num: '5.4M+', label: 'profile views in one month' }, { num: '131', label: 'digital guide purchases' }, { num: '3.4M', label: 'top video views' }, { num: '998', label: 'comments on one giveaway post' }];
     const spoonImages = [
       { src: 'screenshot-2026-07-22-at-3-45-12-pm.jpg', pos: 'center' },
@@ -792,7 +704,7 @@ class Component extends DCLogic {
           { title: 'Faith in Jesus', views: '3.5M views', subStat: '833K likes · 56K saves', link: 'https://www.tiktok.com/@daviswithmaya/video/7555530233898650893', cover: 'dwm-faith-in-jesus.jpg' },
           { title: 'Thankfulness', views: '2.2M views', subStat: '268K likes · 51K shares', link: 'https://www.instagram.com/reel/DRkmKVHknI1/', cover: 'dwm-thankfulness.jpg' },
           { title: 'Friends', views: '2.4M views', subStat: '330K likes · 61K shares · 110K saves', link: 'https://www.instagram.com/reel/DT30YDHEi1j/', cover: 'dwm-friends.jpg' },
-          { title: 'Side Quests', views: '2.3M views', subStat: 'College depression can\u2019t hit if you\u2019re busy', link: 'https://www.instagram.com/daviswithmaya/reels/', cover: 'dwm-side-quests.jpg' },
+          { title: 'Side Quests', views: '2.3M views', subStat: 'College depression can\u2019t hit if you\u2019re busy', link: 'https://www.instagram.com/reel/DRVupkvEvKE/', cover: 'dwm-side-quests.jpg' },
         ] },
       { name: 'Daily UC Davis', handle: '@dailyucdavis', role: 'Growth Strategy, Editing', desc: 'Campus media platform covering student life, events, and everyday UC Davis culture.', cover: IMG + '5037c585-fa9e-4676-b097-27d8b738e838/DailyDavis+%283%29.png', impact: [{ num: '1.2M+', label: '30-day views' }, { num: '400K', label: 'top video' }],
         videos: [
@@ -899,7 +811,7 @@ class Component extends DCLogic {
     contentAccounts.forEach(acc => { acc.videos.forEach(v => { v.id = v.link; v.tileCover = v.cover || acc.cover; v.open = () => this.openVideo(v.id); v.embedUrl = this.toEmbedUrl(v.link); v.canEmbed = !!v.embedUrl; v.noEmbed = !v.embedUrl; v.platform = v.link.includes('tiktok.com') ? 'TikTok' : 'Instagram'; this.allVideos.push(v); }); });
     const activeVideo = this.state.activeVideoId ? this.allVideos.find(v => v.id === this.state.activeVideoId) : null;
     const featPick = [
-      { link: 'https://www.instagram.com/daviswithmaya/reels/', role: 'PERSONAL BRAND', big: '2.3M views', account: '@daviswithmaya', why: 'Side quests. Shot with friends on a random night out \u2014 no hook, no trend, it traveled because it was real.' },
+      { link: 'https://www.instagram.com/reel/DRVupkvEvKE/', role: 'PERSONAL BRAND', big: '2.3M views', account: '@daviswithmaya', why: 'Side quests. Shot with friends on a random night out \u2014 no hook, no trend, it traveled because it was real.' },
       { link: 'https://www.instagram.com/reel/DKAISUmppyu/', role: 'CAMPUS MEDIA', big: '3,145 entries', account: '@dailyucdavis', why: 'The ASUCD giveaway. 103K views and 588 shares \u2014 a campaign built to make people act, not just watch.' },
       { link: 'https://www.instagram.com/reel/DXwqP9qKF-g/', role: 'EVENT MARKETING', big: '310 RSVPs', account: '@tmgatdavis', why: 'The Love & Lattes push. 310 RSVPs, 130+ people in the room \u2014 content built to fill seats, not feeds.' },
       { link: 'https://www.instagram.com/reel/DVKOFytAVWT/', role: 'LAUNCH', big: '100+ at launch', account: 'Worship on the Lawn', why: 'The teaser for an event that didn\u2019t exist yet. It\u2019s still running monthly a year later.' },
@@ -932,12 +844,14 @@ class Component extends DCLogic {
     const marketingProjects = ["asucd","daily","tmg","worship"].map(i => byId[i]).filter(Boolean);
     const designProjects = ["nonprofit","vintage","quickbite","nova","green"].map(i => byId[i]).filter(Boolean);
 
-    return {
+    const copyLabel = this.state.emailCopied ? 'Copied ✓' : 'Copy email';
+    const copyEmail = () => { try { navigator.clipboard.writeText(email); } catch (e) {} this.setState({ emailCopied: true }); clearTimeout(this._cpT); this._cpT = setTimeout(() => this.setState({ emailCopied: false }), 1800); };
+    return { copyLabel, copyEmail,
       marketingProjects, designProjects,
       isHome: page === 'home', isVentures: page === 'ventures', isProjects: page === 'projects', isContent: page === 'content', isMarketing: page === 'marketing', isPhotography: page === 'photography', isAbout: page === 'about',
       activeVideo, closeVideo: this.closeVideo,
       heroWord, heroWordStyle, marqueeBrands, slideLightbox, closeSlide: this.closeSlide, nextSlide: this.nextSlide, prevSlide: this.prevSlide,
-      goHome: () => this.setPage('home'), goto, navItems, resumeUrl, email, showFaithWork, lightboxPhoto, closeLightbox: this.closeLightbox, prevPhoto: this.prevPhoto, nextPhoto: this.nextPhoto, stopProp: this.stopProp,
+      goHome: () => { const home = (typeof PAGE_HREFS !== 'undefined' && PAGE_HREFS.home) || 'index.html'; if (typeof CURRENT_PAGE !== 'undefined' && CURRENT_PAGE !== 'home') { window.location.href = home; } else { window.scrollTo({ top: 0, behavior: 'smooth' }); } }, goto, navItems, resumeUrl, email, showFaithWork, lightboxPhoto, closeLightbox: this.closeLightbox, prevPhoto: this.prevPhoto, nextPhoto: this.nextPhoto, stopProp: this.stopProp,
       cursorGlowStyle: { position: 'fixed', left: 0, top: 0, width: '46px', height: '46px', borderRadius: '50%', background: 'radial-gradient(circle, oklch(0.72 0.13 45 / 0.35), transparent 70%)', pointerEvents: 'none', zIndex: 998, transform: 'translate(-100px,-100px)', transition: 'transform 0.05s linear' },
       cursorRingStyle: { position: 'fixed', left: 0, top: 0, width: '30px', height: '30px', borderRadius: '50%', border: '1.5px solid oklch(0.56 0.13 45 / 0.7)', pointerEvents: 'none', zIndex: 999, transform: 'translate(-100px,-100px)', transition: 'transform 0.05s linear' },
       displayViews: (6.6 * t).toFixed(1) + 'M+',

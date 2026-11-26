@@ -200,7 +200,7 @@ new MutationObserver(function(){document.querySelectorAll('video').forEach(m);})
 <script type="text/x-dc" data-dc-script data-props="{&quot;showFaithWork&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Tweaks&quot;},&quot;resumeUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;maya-yoo-resume.pdf&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tweaks&quot;},&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;maya.faith.yoo@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tweaks&quot;}}">
 const IMG = 'https://images.squarespace-cdn.com/content/v1/67a1585e91654d42a21cd470/';
 const CURRENT_PAGE = 'about';
-const PAGE_HREFS = {"home":"index.html","marketing":"marketing.html","design":"design.html","ventures":"ventures.html","content":"storytelling.html","storytelling":"storytelling.html","photography":"photography.html","about":"about.html"};
+const PAGE_HREFS = {"home":"index.html","marketing":"marketing.html","design":"design.html","ventures":"daviswithmaya.html","content":"storytelling.html","storytelling":"storytelling.html","photography":"photography.html","about":"about.html"};
 const PROJECT_PAGE = {asucd:'marketing',daily:'ventures',tmg:'marketing',worship:'marketing',nonprofit:'design',vintage:'design',quickbite:'design',nova:'design',green:'design'};
 
 class Component extends DCLogic {
@@ -344,7 +344,7 @@ class Component extends DCLogic {
     const t = this.state.t;
     const page = CURRENT_PAGE;
     const pages = ['ventures', 'marketing', 'design', 'storytelling', 'about'];
-    const labels = { home: 'Home', marketing: 'Marketing', storytelling: 'Content', design: 'Design', ventures: 'Ventures', about: 'About' };
+    const labels = { home: 'Home', marketing: 'Marketing', storytelling: 'Content', design: 'Design', ventures: 'Work', about: 'About' };
     const navItems = pages.map(id => ({ label: labels[id], onClick: () => { if (id !== CURRENT_PAGE) window.location.href = PAGE_HREFS[id]; }, style: this.navStyle(page === id || (id === 'storytelling' && page === 'photography')) }));
     const goto = {};
     pages.concat(['home','content','photography']).forEach(id => { goto[id] = () => { if (id !== CURRENT_PAGE) window.location.href = PAGE_HREFS[id]; }; });
@@ -384,7 +384,7 @@ class Component extends DCLogic {
     ];
 
     const featuredProjects = [
-      { id: 'daily', title: 'DailyDavis', tag: 'MEDIA · GROWTH', stat: '1.2M+ views in the first 30 days from zero', role: 'Founder', skills: 'Content strategy, partnerships', image: 'slide1.jpg' },
+      { id: 'daily', title: 'DailyDavis', tag: 'MEDIA · GROWTH', stat: '3.3M views in the first 90 days from zero', role: 'Founder', skills: 'Content strategy, partnerships', image: 'slide1.jpg' },
       { id: 'tmg', title: 'The Midnight Grind', tag: 'MARKETING · PARTNERSHIPS', stat: '382 RSVPs at a single event across 20+ events run', role: 'Business Lead', skills: 'Event marketing, funnels', image: 'screenshot-2026-07-07-at-5-06-46-pm.jpg' },
       { id: 'vintage', title: 'Yesterday Vintage', tag: 'UI/UX DESIGN', stat: 'End-to-end app & web redesign for a Davis retailer', role: 'UI/UX Designer', skills: 'Figma, visual identity', image: '1-3-30-45-pm-cc774448.jpg' },
       { id: 'nonprofit', title: 'Fourth & Hope', tag: 'UI/UX DESIGN · RESEARCH', stat: 'Nonprofit site redesign: 80% of testers struggled to navigate the old one', role: 'UX/UI Designer', skills: 'Research, Figma, mobile', image: 'fh-01.jpg' },
@@ -467,7 +467,7 @@ class Component extends DCLogic {
         {src:U+'09-the-system.jpg',label:'The system \u2014 Aggie blue, Aggie gold, white'},
         {src:U+'10-whats-next.jpg',label:'What\u2019s next'}
       ], hasLink: true, link: 'https://www.instagram.com/asucd', linkLabel: 'View @asucd' }),
-      mk('daily', { tag: 'MEDIA · GROWTH', title: 'Daily UC Davis', hook: 'Built, branded and grown from zero to 1.2M views in 30 days.', role: 'Founder & Marketing Lead', timeline: '2025 – Present', overview: 'UC Davis had demand without a home — students hunting campus news, events and food across scattered group chats, existing pages posting irregularly with no recognizable voice, and local businesses with no trusted student channel to buy. I built Daily UC Davis to fill that gap at scale, running brand, content, growth, partnerships and operations end to end.', bullets: ['1.2M+ views in the first 30 days from zero \u2014 then 3.3M views and 608K accounts reached (+53%) across the first 90 days', '57.8% of views came from non-followers — reach well beyond the existing audience', '6K+ followers, fully organic, and a 98% click rate on the link hub', '20+ business collaborations sourced and delivered, from local shops to national ambassadorships'], image: U + 'slide1.jpg', screenImage: U + 'slide7.jpg', visual: 'mockup', mockupType: 'computer', gallery: [
+      mk('daily', { tag: 'MEDIA · GROWTH', title: 'Daily UC Davis', hook: 'Built, branded and grown from zero to 1.2M views in 30 days.', role: 'Founder & Marketing Lead', timeline: '2025 – Present', overview: 'UC Davis had demand without a home — students hunting campus news, events and food across scattered group chats, existing pages posting irregularly with no recognizable voice, and local businesses with no trusted student channel to buy. I built Daily UC Davis to fill that gap at scale, running brand, content, growth, partnerships and operations end to end.', bullets: ['3.3M views in the first 90 days from zero \u2014 then 3.3M views and 608K accounts reached (+53%) across the first 90 days', '57.8% of views came from non-followers — reach well beyond the existing audience', '6K+ followers, fully organic, and a 98% click rate on the link hub', '20+ business collaborations sourced and delivered, from local shops to national ambassadorships'], image: U + 'slide1.jpg', screenImage: U + 'slide7.jpg', visual: 'mockup', mockupType: 'computer', gallery: [
         {src:U + 'slide1.jpg',label:'Daily UC Davis — portfolio case study'},
         {src:U + 'slide2.jpg',label:'At a glance — first 90 days at scale'},
         {src:U + 'slide3.jpg',label:'The opportunity — the gap nobody was running'},
